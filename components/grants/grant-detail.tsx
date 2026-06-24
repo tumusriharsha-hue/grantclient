@@ -1,0 +1,184 @@
+import Link from "next/link";
+import { ArrowLeft, ArrowRight, Bookmark, Check, Lightbulb, Share2, X } from "lucide-react";
+import { notFound } from "next/navigation";
+import {
+  eligibilityItems,
+  featuredGrant,
+  grantMatches,
+  pastWinners,
+} from "@/data";
+import { AppShell } from "@/components/layout";
+import { PublicNav } from "@/components/marketing/public-nav";
+import {
+  Badge,
+  Button,
+  Card,
+  getDeadlineVariant,
+  MatchScore,
+} from "@/components/ui";
+
+interface GrantDetailViewProps {
+  grantId: string;
+  publicMode?: boolean;
+}
+
+export function GrantDetailView({ grantId, publicMode = false }: GrantDetailViewProps) {
+  const grant =
+    grantId === featuredGrant.id
+      ? featuredGrant
+      : grantMatches.find((g) => g.id === grantId);
+
+  if (!grant) notFound();
+
+  const urgency = getDeadlineVariant(grant.daysLeft);
+  const backHref = publicMode ? "/browse" : "/grants";
+  const backLabel = publicMode ? "Back to Browse" : "Back to Finder";
+
+  const content = (
+    <>
+      <div className={`border-b border-border bg-surface px-4 py-4 md:px-8 ${publicMode ? "" : ""}`}>
+        <Link
+          href={backHref}
+          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {backLabel}
+        </Link>
+      </div>
+
+      <div className="mx-auto max-w-6xl p-6 md:p-8">
+        <div className="grid gap-8 lg:grid-cols-3">
+          <div className="space-y-6 lg:col-span-2">
+            <div>
+              <div className="mb-3 flex flex-wrap gap-2">
+                <Badge variant="default">{grant.category}</Badge>
+                <Badge variant={urgency}>{grant.deadlineLabel}</Badge>
+              </div>
+              <h1 className="text-3xl font-bold text-text">{grant.title}</h1>
+              <p className="mt-1 text-text-secondary">{grant.organization}</p>
+            </div>
+
+            {urgency === "danger" && (
+              <Card padding="md" className="border-danger/30 bg-danger-light/30">
+                <p className="text-sm font-medium text-danger-dark">
+                  Deadline approaching — {grant.daysLeft} days left to apply.
+                </p>
+              </Card>
+            )}
+
+            <Card padding="lg">
+              <h2 className="mb-4 text-xl font-bold text-text">About this grant</h2>
+              <p className="leading-relaxed text-text-secondary">{grant.description}</p>
+            </Card>
+
+            <Card padding="lg">
+              <h2 className="mb-4 text-xl font-bold text-text">Eligibility checklist</h2>
+              <ul className="space-y-4">
+                {eligibilityItems.map((item) => (
+                  <li key={item.title} className="flex gap-3">
+                    {item.met ? (
+                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-success" />
+                    ) : (
+                      <X className="mt-0.5 h-5 w-5 shrink-0 text-danger" />
+                    )}
+                    <div>
+                      <p className="font-medium text-text">{item.title}</p>
+                      <p className="text-sm text-text-secondary">{item.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            <Card padding="lg">
+              <h2 className="mb-4 text-xl font-bold text-text">Past winners</h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {pastWinners.map((winner) => (
+                  <div
+                    key={winner.name}
+                    className="rounded-md border border-border bg-bg p-4"
+                  >
+                    <p className="font-medium text-text">{winner.name}</p>
+                    <p className="text-sm text-text-secondary">{winner.amount}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card padding="lg" className="border-primary/20 bg-primary-light/20">
+              <div className="flex gap-3">
+                <Lightbulb className="h-5 w-5 shrink-0 text-primary" />
+                <div>
+                  <h3 className="font-semibold text-text">AI tips</h3>
+                  <p className="mt-1 text-sm text-text-secondary">
+                    Emphasize your youth education outcomes and community partnerships
+                    for the strongest application.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          <div className="lg:col-span-1">
+            <Card padding="lg" className="sticky top-24">
+              <div className="mb-6 flex justify-center">
+                <MatchScore score={grant.matchScore} />
+              </div>
+              <dl className="space-y-3 text-sm">
+                <div>
+                  <dt className="text-text-secondary">Funding</dt>
+                  <dd className="font-semibold">{grant.amountRange}</dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary">Deadline</dt>
+                  <dd>
+                    <Badge variant={urgency}>{grant.deadlineLabel}</Badge>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary">Match score</dt>
+                  <dd className="font-semibold">{grant.matchScore}%</dd>
+                </div>
+              </dl>
+              <div className="mt-6 flex gap-2">
+                <Button variant="secondary" size="sm" className="flex-1">
+                  <Bookmark className="h-4 w-4" />
+                  Save
+                </Button>
+                <Button variant="secondary" size="sm" className="flex-1">
+                  <Share2 className="h-4 w-4" />
+                  Share
+                </Button>
+              </div>
+              {publicMode ? (
+                <Link href="/auth/signup" className="mt-4 block">
+                  <Button className="w-full" size="lg">
+                    Sign Up to Apply
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              ) : (
+                <Link href="/applications/builder" className="mt-4 block">
+                  <Button className="w-full" size="lg">
+                    Draft Application
+                  </Button>
+                </Link>
+              )}
+            </Card>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
+  if (publicMode) {
+    return (
+      <div className="min-h-screen bg-bg">
+        <PublicNav showSignIn />
+        {content}
+      </div>
+    );
+  }
+
+  return <AppShell header={null}>{content}</AppShell>;
+}

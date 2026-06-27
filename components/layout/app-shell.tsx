@@ -10,6 +10,9 @@ import { cn } from "@/lib/utils";
 export function AppSidebar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const activeItem = mainNavItems
+    .filter((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))
+    .sort((a, b) => b.href.length - a.href.length)[0];
 
   const nav = (
     <>
@@ -21,8 +24,7 @@ export function AppSidebar() {
       </div>
       <nav className="flex-1 space-y-0.5 px-3">
         {mainNavItems.map((item) => {
-          const active =
-            pathname === item.href || pathname.startsWith(`${item.href}/`);
+          const active = activeItem?.id === item.id;
           const Icon = item.icon;
           return (
             <Link

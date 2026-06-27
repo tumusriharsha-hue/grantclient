@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, FileText, PenLine, Search } from "lucide-react";
 import { PublicNav } from "./public-nav";
+import { TypedHeadline } from "./typed-headline";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
@@ -29,7 +30,7 @@ export function LandingPage() {
 
       <section className="mx-auto flex min-h-[60vh] max-w-6xl flex-col items-center justify-center px-6 py-20 text-center md:py-28">
         <h1 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-text md:text-5xl">
-          Find grants. Draft faster. Track everything.
+          <TypedHeadline />
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
           AI-powered grant discovery and application builder. Spend less time

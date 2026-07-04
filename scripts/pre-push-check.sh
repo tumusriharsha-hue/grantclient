@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 echo "🔍 Checking for secrets in source..."
-if rg -i "sk_live_|sk_test_|SUPABASE_SERVICE_ROLE|GOOGLE_CLIENT_SECRET" \
+if rg -i "sk_live_|sk_test_|eyJhbGciOiJ[A-Za-z0-9_-]{10,}|SUPABASE_SERVICE_ROLE_KEY=ey|GOOGLE_CLIENT_SECRET=[^y]" \
   --glob '!node_modules' --glob '!.next' --glob '!package-lock.json' --glob '!.env*' \
   --glob '!scripts/pre-push-check.sh' --glob '!.env.example' \
   app components lib services types data hooks 2>/dev/null; then

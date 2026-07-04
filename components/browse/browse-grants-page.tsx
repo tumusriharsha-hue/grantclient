@@ -2,28 +2,36 @@
 
 import Link from "next/link";
 import { ArrowRight, SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
-import { grantMatches } from "@/data";
+import { useMemo, useState } from "react";
 import { PublicNav } from "@/components/marketing/public-nav";
-import {
-  Badge,
-  Button,
-  Card,
-  MatchScore,
-} from "@/components/ui";
+import { GrantBrowserCard } from "@/components/grants/grant-browser-card";
+import { Button, Card } from "@/components/ui";
+import { filterAndSortGrants, scoreGrant } from "@/lib/grant-matching";
+import type { Grant } from "@/types/grant";
 
-const categories = ["Education", "Environment", "Community", "Food Security"];
-const locations = ["National (USA)", "Urban USA", "Pacific Northwest", "Global"];
+interface BrowseGrantsPageProps {
+  grants: Grant[];
+}
 
-export function BrowseGrantsPage() {
+export function BrowseGrantsPage({ grants }: BrowseGrantsPageProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [search, setSearch] = useState("");
 
-  const filtered = grantMatches.filter(
-    (g) =>
-      !search ||
-      g.title.toLowerCase().includes(search.toLowerCase()) ||
-      g.organization.toLowerCase().includes(search.toLowerCase()),
+  const scoredGrants = useMemo(
+    () => grants.map((grant) => scoreGrant(grant, null)),
+    [grants],
+  );
+
+  const filtered = useMemo(
+    () =>
+      filterAndSortGrants(scoredGrants, {
+        search,
+        category: "all",
+        amountRange: "any",
+        deadlineRange: "any",
+        sort: "deadline",
+      }),
+    [scoredGrants, search],
   );
 
   return (
@@ -55,80 +63,32 @@ export function BrowseGrantsPage() {
           className={`${showFilters ? "block" : "hidden"} w-full shrink-0 space-y-4 md:block md:w-64`}
         >
           <Card padding="md">
-            <h3 className="mb-3 text-sm font-semibold text-text">Location</h3>
-            <div className="space-y-2">
-              {locations.map((loc) => (
-                <label key={loc} className="flex items-center gap-2 text-sm text-text-secondary">
-                  <input type="checkbox" className="rounded border-border" />
-                  {loc}
-                </label>
-              ))}
-            </div>
+            <h3 className="mb-2 text-sm font-semibold text-text">Public preview</h3>
+            <p className="text-sm text-text-secondary">
+              Browse {grants.length} open grants. Create a free account for personalized
+              matching and saved grants.
+            </p>
+            <Link href="/auth/signup" className="mt-4 inline-flex">
+              <Button size="sm">
+                Sign Up Free
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </Card>
-          <Card padding="md">
-            <h3 className="mb-3 text-sm font-semibold text-text">Category</h3>
-            <div className="space-y-2">
-              {categories.map((cat) => (
-                <label key={cat} className="flex items-center gap-2 text-sm text-text-secondary">
-                  <input type="checkbox" className="rounded border-border" />
-                  {cat}
-                </label>
-              ))}
-            </div>
-          </Card>
-          <Button variant="ghost" size="sm" className="w-full">
-            Apply Filters
-          </Button>
         </aside>
 
         <div className="min-w-0 flex-1">
           <p className="mb-4 text-sm text-text-secondary">
-            Showing {filtered.length} grants
+            Showing {filtered.length} of {grants.length} grants
           </p>
           <div className="space-y-4">
             {filtered.map((grant) => (
-              <Card key={grant.id} hover padding="lg">
-                <div className="flex flex-col gap-5 lg:flex-row">
-                  <MatchScore score={grant.matchScore} size="sm" />
-                  <div className="min-w-0 flex-1">
-                    <Link
-                      href={`/browse/${grant.id}`}
-                      className="text-lg font-semibold text-text hover:text-primary"
-                    >
-                      {grant.title}
-                    </Link>
-                    <p className="text-sm text-text-secondary">{grant.organization}</p>
-                    <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
-                      <span className="font-medium">{grant.amountRange}</span>
-                      <span className="text-text-muted">·</span>
-                      <span>Deadline: {grant.deadlineLabel}</span>
-                    </div>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {grant.tags.map((tag) => (
-                        <Badge key={tag}>{tag}</Badge>
-                      ))}
-                    </div>
-                    {grant.aiInsight && (
-                      <p className="mt-3 text-sm italic text-text-secondary">
-                        &ldquo;{grant.aiInsight}&rdquo;
-                      </p>
-                    )}
-                    <div className="mt-4 flex gap-2">
-                      <Link href={`/browse/${grant.id}`}>
-                        <Button variant="secondary" size="sm">
-                          View Details
-                        </Button>
-                      </Link>
-                      <Link href="/auth/signup">
-                        <Button size="sm">
-                          Sign Up to Apply
-                          <ArrowRight className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+              <GrantBrowserCard
+                key={grant.id}
+                grant={grant}
+                saved={false}
+                onToggleSave={() => {}}
+              />
             ))}
           </div>
         </div>

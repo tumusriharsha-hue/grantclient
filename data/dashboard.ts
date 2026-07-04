@@ -13,6 +13,8 @@ export const recommendedGrants = [
     daysLeft: 2,
     deadlineLabel: "Oct 15 (12 days)",
     matchScore: 94,
+    applicationUrl:
+      "https://www.rockefellerfoundation.org/grants/apply/rockefeller-community-resilience",
     insight:
       "Highly aligned with your 2022 youth impact report. Focus on metropolitan green spaces matches your mission.",
   },
@@ -24,6 +26,8 @@ export const recommendedGrants = [
     daysLeft: 12,
     deadlineLabel: "Oct 15 (12 days)",
     matchScore: 91,
+    applicationUrl:
+      "https://www.luminafoundation.org/grants/apply/global-stem-innovation-fund",
     insight: "Matches your digital literacy focus in urban schools.",
   },
   {
@@ -33,6 +37,8 @@ export const recommendedGrants = [
     amountRange: "$25,000 – $100,000",
     daysLeft: 18,
     matchScore: 86,
+    applicationUrl:
+      "https://techforward-alliance.org/grants/apply/urban-youth-tech",
     insight: "Prioritizes organizations serving 500+ teens annually.",
   },
 ];

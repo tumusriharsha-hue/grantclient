@@ -2,21 +2,29 @@
 
 import { useState } from "react";
 import { AppHeader, AppShell } from "@/components/layout";
-import { Button, Card, Input, Textarea } from "@/components/ui";
+import { OnboardingWizard } from "@/components/onboarding";
+import { Card } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import type { Organization } from "@/types/database";
+import type { User } from "@supabase/supabase-js";
 
 const sections = [
   { id: "profile", label: "Organization Profile" },
-  { id: "team", label: "Team Members" },
   { id: "notifications", label: "Notifications" },
-  { id: "accounts", label: "Linked Accounts" },
   { id: "help", label: "Help & Support" },
 ] as const;
 
 type SectionId = (typeof sections)[number]["id"];
 
-export function SettingsPage() {
+interface SettingsPageProps {
+  user: User | null;
+  organization: Organization | null;
+}
+
+export function SettingsPage({ user, organization }: SettingsPageProps) {
   const [active, setActive] = useState<SectionId>("profile");
+  const isGuest = Boolean(user?.is_anonymous);
+  const canEditProfile = Boolean(user && !user.is_anonymous);
 
   return (
     <AppShell header={<AppHeader showSearch={false} title="Settings" />}>
@@ -41,38 +49,21 @@ export function SettingsPage() {
 
         <div className="min-w-0 flex-1">
           {active === "profile" && (
-            <Card padding="lg">
-              <h2 className="mb-6 text-xl font-bold text-text">
-                Organization Profile
-              </h2>
-              <div className="space-y-5">
-                <Input label="Organization name" defaultValue="Urban Reach Initiative" />
-                <Input label="Website" defaultValue="https://urbanreach.org" />
-                <Input label="EIN (Tax ID)" defaultValue="12-3456789" />
-                <Textarea
-                  label="Mission statement"
-                  rows={4}
-                  defaultValue="To empower underserved communities through sustainable technology education."
-                />
-                <Input label="Location" defaultValue="Brooklyn, NY" />
-              </div>
-              <div className="mt-6 flex justify-end">
-                <Button>Save changes</Button>
-              </div>
-            </Card>
-          )}
-
-          {active === "team" && (
-            <Card padding="lg">
-              <h2 className="mb-4 text-xl font-bold text-text">Team Members</h2>
-              <p className="text-sm text-text-secondary">
-                Invite colleagues to collaborate on grant applications.
-              </p>
-              <div className="mt-4 flex gap-2">
-                <Input placeholder="Email address" className="flex-1" />
-                <Button>Invite</Button>
-              </div>
-            </Card>
+            <div className="space-y-4">
+              <Card padding="md">
+                <h2 className="text-xl font-bold text-text">Organization Profile</h2>
+                <p className="mt-1 text-sm text-text-secondary">
+                  Update your onboarding answers to improve grant recommendations.
+                </p>
+              </Card>
+              <OnboardingWizard
+                key={organization?.id ?? "new-org"}
+                organization={organization}
+                canEditProfile={canEditProfile}
+                isGuest={isGuest}
+                mode="settings"
+              />
+            </div>
           )}
 
           {active === "notifications" && (
@@ -93,11 +84,9 @@ export function SettingsPage() {
             </Card>
           )}
 
-          {active !== "profile" && active !== "team" && active !== "notifications" && (
+          {active === "help" && (
             <Card padding="lg">
-              <h2 className="text-xl font-bold text-text">
-                {sections.find((s) => s.id === active)?.label}
-              </h2>
+              <h2 className="text-xl font-bold text-text">Help & Support</h2>
               <p className="mt-2 text-sm text-text-secondary">Coming soon.</p>
             </Card>
           )}

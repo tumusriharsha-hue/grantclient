@@ -3,9 +3,10 @@ import { cn } from "@/lib/utils";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   hint?: string;
+  error?: string;
 }
 
-export function Input({ label, hint, className, id, ...props }: InputProps) {
+export function Input({ label, hint, error, className, id, ...props }: InputProps) {
   const inputId = id ?? label?.toLowerCase().replace(/\s+/g, "-");
 
   return (
@@ -19,11 +20,16 @@ export function Input({ label, hint, className, id, ...props }: InputProps) {
         id={inputId}
         className={cn(
           "w-full rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10",
+          error && "border-danger focus:border-danger focus:ring-danger/10",
           className,
         )}
         {...props}
       />
-      {hint && <p className="text-xs text-text-muted">{hint}</p>}
+      {error ? (
+        <p className="text-xs text-danger">{error}</p>
+      ) : (
+        hint && <p className="text-xs text-text-muted">{hint}</p>
+      )}
     </div>
   );
 }
@@ -31,9 +37,10 @@ export function Input({ label, hint, className, id, ...props }: InputProps) {
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   hint?: string;
+  error?: string;
 }
 
-export function Textarea({ label, hint, className, id, ...props }: TextareaProps) {
+export function Textarea({ label, hint, error, className, id, ...props }: TextareaProps) {
   const inputId = id ?? label?.toLowerCase().replace(/\s+/g, "-");
 
   return (
@@ -47,11 +54,16 @@ export function Textarea({ label, hint, className, id, ...props }: TextareaProps
         id={inputId}
         className={cn(
           "w-full resize-y rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10",
+          error && "border-danger focus:border-danger focus:ring-danger/10",
           className,
         )}
         {...props}
       />
-      {hint && <p className="text-xs text-text-muted">{hint}</p>}
+      {error ? (
+        <p className="text-xs text-danger">{error}</p>
+      ) : (
+        hint && <p className="text-xs text-text-muted">{hint}</p>
+      )}
     </div>
   );
 }
@@ -59,9 +71,10 @@ export function Textarea({ label, hint, className, id, ...props }: TextareaProps
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   options: { value: string; label: string }[];
+  error?: string;
 }
 
-export function Select({ label, options, className, id, ...props }: SelectProps) {
+export function Select({ label, options, error, className, id, ...props }: SelectProps) {
   const inputId = id ?? label?.toLowerCase().replace(/\s+/g, "-");
 
   return (
@@ -75,6 +88,7 @@ export function Select({ label, options, className, id, ...props }: SelectProps)
         id={inputId}
         className={cn(
           "w-full rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm text-text focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10",
+          error && "border-danger focus:border-danger focus:ring-danger/10",
           className,
         )}
         {...props}
@@ -85,6 +99,7 @@ export function Select({ label, options, className, id, ...props }: SelectProps)
           </option>
         ))}
       </select>
+      {error && <p className="text-xs text-danger">{error}</p>}
     </div>
   );
 }

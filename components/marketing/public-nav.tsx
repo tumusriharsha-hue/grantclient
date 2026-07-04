@@ -14,16 +14,14 @@ export function PublicNav({ showSignIn = true }: PublicNavProps) {
         </Link>
         <div className="flex items-center gap-3">
           {showSignIn && (
-            <Link href="/auth/signin">
+            <Link href="/login">
               <Button variant="ghost" size="sm">
                 Sign In
               </Button>
             </Link>
           )}
-          <Link href="/auth/signup">
-            <Button size="sm">
-              Get Started →
-            </Button>
+          <Link href="/signup">
+            <Button size="sm">Get Started →</Button>
           </Link>
         </div>
       </div>

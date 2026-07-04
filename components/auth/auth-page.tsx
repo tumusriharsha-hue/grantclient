@@ -1,20 +1,137 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useRef, useState } from "react";
+import { AUTH_ROUTES } from "@/lib/auth/constants";
+import { sanitizeRedirectPath } from "@/lib/auth/redirect";
+import { formatAuthError } from "@/lib/auth/errors";
+import { signUpWithEmail } from "@/app/actions/auth";
 import { Button, Input } from "@/components/ui";
+import { createClient } from "@/lib/supabase/client";
 
-export function AuthPage() {
+interface AuthPageProps {
+  mode: "signup" | "signin";
+}
+
+export function AuthPage({ mode }: AuthPageProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const [mode, setMode] = useState<"signup" | "signin">(
-    pathname.includes("signin") ? "signin" : "signup",
-  );
+  const searchParams = useSearchParams();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submittingRef = useRef(false);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    router.push("/setup");
+  const nextPath = sanitizeRedirectPath(
+    searchParams.get("next"),
+    AUTH_ROUTES.dashboard,
+  );
+  const guestReason = searchParams.get("reason") === "guest";
+  const formDisabled = isSubmitting || Boolean(successMessage);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (submittingRef.current) return;
+
+    setError(null);
+    setSuccessMessage(null);
+    submittingRef.current = true;
+    setIsSubmitting(true);
+
+    try {
+      const supabase = createClient();
+
+      if (mode === "signup") {
+        const result = await signUpWithEmail(email, password);
+
+        if (!result.success) {
+          setError(result.error);
+          return;
+        }
+
+        router.push(nextPath);
+        router.refresh();
+        return;
+      }
+
+      const { data, error: signInError } =
+        await supabase.auth.signInWithPassword({ email, password });
+
+      if (signInError) {
+        setError(formatAuthError(signInError.message, "signin"));
+        return;
+      }
+
+      if (!data.session) {
+        setError(
+          "Sign-in did not complete. If you just signed up, confirm your email first.",
+        );
+        return;
+      }
+
+      router.push(nextPath);
+      router.refresh();
+    } finally {
+      submittingRef.current = false;
+      setIsSubmitting(false);
+    }
+  }
+
+  async function handleGoogleAuth() {
+    setError(null);
+    setIsSubmitting(true);
+
+    const supabase = createClient();
+    const redirectTo = `${window.location.origin}${AUTH_ROUTES.callback}?next=${encodeURIComponent(nextPath)}`;
+
+    const { error: authError } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo },
+    });
+
+    setIsSubmitting(false);
+
+    if (authError) {
+      setError(authError.message);
+    }
+  }
+
+  async function handleGuestContinue() {
+    setError(null);
+    setIsSubmitting(true);
+
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user && !user.is_anonymous) {
+      router.push(AUTH_ROUTES.grants);
+      router.refresh();
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (user?.is_anonymous) {
+      router.push(AUTH_ROUTES.grants);
+      router.refresh();
+      setIsSubmitting(false);
+      return;
+    }
+
+    const { error: guestError } = await supabase.auth.signInAnonymously();
+
+    setIsSubmitting(false);
+
+    if (guestError) {
+      setError(guestError.message);
+      return;
+    }
+
+    router.push(AUTH_ROUTES.grants);
+    router.refresh();
   }
 
   return (
@@ -34,14 +151,22 @@ export function AuthPage() {
       <div className="flex flex-1 items-center justify-center bg-surface p-8">
         <div className="w-full max-w-sm">
           <h1 className="text-2xl font-bold text-text">
-            {mode === "signup" ? "Sign up for GrantClient" : "Sign in to GrantClient"}
+            {mode === "signup" ? "Create your account" : "Sign in to GrantClient"}
           </h1>
+
+          {guestReason && (
+            <p className="mt-3 rounded-md bg-primary-light/20 px-3 py-2 text-sm text-text-secondary">
+              Create a free account to save grants, set up your organization profile,
+              and generate proposals.
+            </p>
+          )}
 
           <Button
             type="button"
             variant="secondary"
             className="mt-6 w-full"
-            onClick={() => router.push("/setup")}
+            onClick={handleGoogleAuth}
+            disabled={isSubmitting}
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -61,7 +186,7 @@ export function AuthPage() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            {mode === "signup" ? "Sign up with Google" : "Sign in with Google"}
+            Continue with Google
           </Button>
 
           <div className="my-6 flex items-center gap-3">
@@ -75,39 +200,92 @@ export function AuthPage() {
               label="Email"
               type="email"
               placeholder="you@nonprofit.org"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               required
+              disabled={formDisabled}
             />
             <Input
               label="Password"
               type="password"
               placeholder="••••••••"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               required
+              minLength={6}
+              disabled={formDisabled}
             />
-            <Button type="submit" className="w-full">
-              {mode === "signup" ? "Sign Up" : "Sign In"}
+            {successMessage && (
+              <div className="space-y-3 rounded-md bg-success-light px-3 py-2 text-sm text-success-dark">
+                <p>{successMessage}</p>
+                <Link
+                  href={`${AUTH_ROUTES.login}?next=${encodeURIComponent(nextPath)}`}
+                  className="font-medium underline"
+                >
+                  Go to sign in →
+                </Link>
+              </div>
+            )}
+            {error && (
+              <div className="space-y-2 rounded-md bg-danger-light px-3 py-2 text-sm text-danger-dark">
+                <p>{error}</p>
+                {mode === "signup" &&
+                  error.toLowerCase().includes("already registered") && (
+                    <Link
+                      href={`${AUTH_ROUTES.login}?next=${encodeURIComponent(nextPath)}`}
+                      className="font-medium underline"
+                    >
+                      Go to sign in →
+                    </Link>
+                  )}
+              </div>
+            )}
+            <Button type="submit" className="w-full" disabled={formDisabled}>
+              {isSubmitting
+                ? mode === "signup"
+                  ? "Creating account..."
+                  : "Signing in..."
+                : mode === "signup"
+                  ? "Sign Up"
+                  : "Sign In"}
             </Button>
           </form>
 
           <p className="mt-4 text-center text-sm text-text-secondary">
             {mode === "signup" ? "Already have an account?" : "Don't have an account?"}{" "}
-            <button
-              type="button"
-              onClick={() => setMode(mode === "signup" ? "signin" : "signup")}
+            <Link
+              href={mode === "signup" ? AUTH_ROUTES.login : AUTH_ROUTES.signup}
               className="font-medium text-primary hover:underline"
             >
               {mode === "signup" ? "Sign In →" : "Sign Up →"}
-            </button>
+            </Link>
           </p>
 
-          <div className="mt-8 border-t border-border pt-6 text-center">
-            <Link
-              href="/dashboard"
-              className="text-sm text-text-muted underline-offset-2 hover:text-primary hover:underline"
-            >
-              Bypass to Demo ↗
+          <p className="mt-6 text-center text-xs leading-relaxed text-text-muted">
+            By {mode === "signup" ? "creating an account" : "signing in"}, you agree to
+            our{" "}
+            <Link href="/terms" className="text-primary hover:underline">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy" className="text-primary hover:underline">
+              Privacy Policy
             </Link>
-            <p className="mt-1 text-xs text-text-muted">
-              Skip auth and explore with mock data
+            .
+          </p>
+
+          <div className="mt-8 border-t border-border pt-6">
+            <Button
+              type="button"
+              variant="ghost"
+              className="w-full"
+              onClick={handleGuestContinue}
+              disabled={isSubmitting}
+            >
+              Continue as Guest
+            </Button>
+            <p className="mt-2 text-center text-xs text-text-muted">
+              Browse grants with sample match scores. No account required.
             </p>
           </div>
         </div>

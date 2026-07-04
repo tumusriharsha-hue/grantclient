@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Bell, History, Menu, Search, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Bell, History, LogOut, Menu, Search, X } from "lucide-react";
 import { useState } from "react";
-import { mainNavItems, orgName } from "@/data";
+import { mainNavItems } from "@/data";
+import { useUser, signOut } from "@/hooks/use-user";
+import { getUserInitials } from "@/lib/auth/session";
+import { Badge } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 export function AppSidebar() {
@@ -93,6 +96,15 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
+  const router = useRouter();
+  const { user, isGuest, isAuthenticated, loading } = useUser();
+
+  async function handleSignOut() {
+    await signOut();
+    router.push("/");
+    router.refresh();
+  }
+
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border bg-surface/95 px-4 backdrop-blur-sm md:px-8">
       <div className="w-8 md:hidden" />
@@ -113,6 +125,16 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
         <div className="flex-1" />
       )}
       <div className="ml-auto flex items-center gap-3">
+        {!loading && isGuest && (
+          <Badge variant="neutral" className="hidden sm:inline-flex">
+            Guest Mode
+          </Badge>
+        )}
+        {!loading && !user && (
+          <Link href="/login" className="text-sm font-medium text-primary hover:underline">
+            Sign in
+          </Link>
+        )}
         <button
           type="button"
           className="rounded-md p-2 text-text-secondary hover:bg-bg hover:text-text"
@@ -127,11 +149,21 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
         >
           <History className="h-[18px] w-[18px]" />
         </button>
+        {(isAuthenticated || isGuest) && (
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="rounded-md p-2 text-text-secondary hover:bg-bg hover:text-text"
+            aria-label="Sign out"
+          >
+            <LogOut className="h-[18px] w-[18px]" />
+          </button>
+        )}
         <div
           className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white"
-          title={orgName}
+          title={user?.email ?? "Guest"}
         >
-          UR
+          {getUserInitials(user)}
         </div>
       </div>
     </header>

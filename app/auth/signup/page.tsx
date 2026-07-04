@@ -1,10 +1,5 @@
-import { Suspense } from "react";
-import { AuthPage } from "@/components/auth/auth-page";
+import { redirect } from "next/navigation";
 
-export default function SignUpPage() {
-  return (
-    <Suspense>
-      <AuthPage />
-    </Suspense>
-  );
+export default function LegacySignUpPage() {
+  redirect("/signup");
 }

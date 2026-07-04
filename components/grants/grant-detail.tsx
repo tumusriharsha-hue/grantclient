@@ -1,12 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Bookmark, Check, Lightbulb, Share2, X } from "lucide-react";
-import { notFound } from "next/navigation";
-import {
-  eligibilityItems,
-  featuredGrant,
-  grantMatches,
-  pastWinners,
-} from "@/data";
+import { ArrowLeft, ArrowRight, Bookmark, Check, ExternalLink, Lightbulb, Share2, X } from "lucide-react";
 import { AppShell } from "@/components/layout";
 import { PublicNav } from "@/components/marketing/public-nav";
 import {
@@ -16,27 +11,28 @@ import {
   getDeadlineVariant,
   MatchScore,
 } from "@/components/ui";
+import { eligibilityItems } from "@/data";
+import { useRequireFullAccount } from "@/hooks/use-user";
+import { getGrantApplicationUrl } from "@/lib/grants/application-url";
+import { formatCurrency } from "@/lib/utils";
+import type { ScoredGrant } from "@/lib/grant-matching";
 
 interface GrantDetailViewProps {
-  grantId: string;
+  grant: ScoredGrant;
   publicMode?: boolean;
 }
 
-export function GrantDetailView({ grantId, publicMode = false }: GrantDetailViewProps) {
-  const grant =
-    grantId === featuredGrant.id
-      ? featuredGrant
-      : grantMatches.find((g) => g.id === grantId);
-
-  if (!grant) notFound();
-
-  const urgency = getDeadlineVariant(grant.daysLeft);
+export function GrantDetailView({ grant, publicMode = false }: GrantDetailViewProps) {
+  const { requireFullAccount, isGuest, isAuthenticated } = useRequireFullAccount();
+  const readOnly = publicMode || !isAuthenticated || isGuest;
+  const urgency = getDeadlineVariant(Math.max(grant.daysLeft, 0));
   const backHref = publicMode ? "/browse" : "/grants";
   const backLabel = publicMode ? "Back to Browse" : "Back to Finder";
+  const applicationUrl = getGrantApplicationUrl(grant);
 
   const content = (
     <>
-      <div className={`border-b border-border bg-surface px-4 py-4 md:px-8 ${publicMode ? "" : ""}`}>
+      <div className="border-b border-border bg-surface px-4 py-4 md:px-8">
         <Link
           href={backHref}
           className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
@@ -55,10 +51,10 @@ export function GrantDetailView({ grantId, publicMode = false }: GrantDetailView
                 <Badge variant={urgency}>{grant.deadlineLabel}</Badge>
               </div>
               <h1 className="text-3xl font-bold text-text">{grant.title}</h1>
-              <p className="mt-1 text-text-secondary">{grant.organization}</p>
+              <p className="mt-1 text-text-secondary">{grant.funder}</p>
             </div>
 
-            {urgency === "danger" && (
+            {urgency === "danger" && grant.daysLeft >= 0 && (
               <Card padding="md" className="border-danger/30 bg-danger-light/30">
                 <p className="text-sm font-medium text-danger-dark">
                   Deadline approaching — {grant.daysLeft} days left to apply.
@@ -90,44 +86,51 @@ export function GrantDetailView({ grantId, publicMode = false }: GrantDetailView
               </ul>
             </Card>
 
-            <Card padding="lg">
-              <h2 className="mb-4 text-xl font-bold text-text">Past winners</h2>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {pastWinners.map((winner) => (
-                  <div
-                    key={winner.name}
-                    className="rounded-md border border-border bg-bg p-4"
-                  >
-                    <p className="font-medium text-text">{winner.name}</p>
-                    <p className="text-sm text-text-secondary">{winner.amount}</p>
+            {publicMode ? (
+              <Card padding="lg" className="border-primary/20 bg-primary-light/20">
+                <div className="flex gap-3">
+                  <Lightbulb className="h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <h3 className="font-semibold text-text">AI tips</h3>
+                    <p className="mt-1 text-sm text-text-secondary">
+                      Emphasize outcomes aligned with {grant.category.toLowerCase()} and
+                      your organization&apos;s mission for the strongest application.
+                    </p>
                   </div>
-                ))}
-              </div>
-            </Card>
-
-            <Card padding="lg" className="border-primary/20 bg-primary-light/20">
-              <div className="flex gap-3">
-                <Lightbulb className="h-5 w-5 shrink-0 text-primary" />
-                <div>
-                  <h3 className="font-semibold text-text">AI tips</h3>
-                  <p className="mt-1 text-sm text-text-secondary">
-                    Emphasize your youth education outcomes and community partnerships
-                    for the strongest application.
-                  </p>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            ) : (
+              <Card padding="lg" className="border-primary/20 bg-primary-light/20">
+                <h3 className="font-semibold text-text">Application</h3>
+                <p className="mt-1 text-sm text-text-secondary">
+                  Apply directly on the funder&apos;s website.
+                </p>
+                <a
+                  href={applicationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                >
+                  Apply on funder site
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </Card>
+            )}
           </div>
 
           <div className="lg:col-span-1">
             <Card padding="lg" className="sticky top-24">
-              <div className="mb-6 flex justify-center">
-                <MatchScore score={grant.matchScore} />
-              </div>
+              {publicMode && (
+                <div className="mb-6 flex justify-center">
+                  <MatchScore score={grant.matchScore} />
+                </div>
+              )}
               <dl className="space-y-3 text-sm">
                 <div>
                   <dt className="text-text-secondary">Funding</dt>
-                  <dd className="font-semibold">{grant.amountRange}</dd>
+                  <dd className="font-semibold">
+                    {grant.amount ? formatCurrency(grant.amount) : "Amount varies"}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-text-secondary">Deadline</dt>
@@ -136,12 +139,41 @@ export function GrantDetailView({ grantId, publicMode = false }: GrantDetailView
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-text-secondary">Match score</dt>
-                  <dd className="font-semibold">{grant.matchScore}%</dd>
+                  <dt className="text-text-secondary">Region</dt>
+                  <dd className="font-semibold">{grant.region}</dd>
                 </div>
+                {!publicMode && (
+                  <div>
+                    <dt className="text-text-secondary">Application</dt>
+                    <dd>
+                      <a
+                        href={applicationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+                      >
+                        Apply on funder site
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {publicMode && (
+                  <div>
+                    <dt className="text-text-secondary">Match score</dt>
+                    <dd className="font-semibold">{grant.matchScore}%</dd>
+                  </div>
+                )}
               </dl>
               <div className="mt-6 flex gap-2">
-                <Button variant="secondary" size="sm" className="flex-1">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  className="flex-1"
+                  disabled={readOnly}
+                  onClick={() => requireFullAccount()}
+                >
                   <Bookmark className="h-4 w-4" />
                   Save
                 </Button>
@@ -151,18 +183,24 @@ export function GrantDetailView({ grantId, publicMode = false }: GrantDetailView
                 </Button>
               </div>
               {publicMode ? (
-                <Link href="/auth/signup" className="mt-4 block">
+                <Link href="/signup" className="mt-4 block">
                   <Button className="w-full" size="lg">
                     Sign Up to Apply
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
               ) : (
-                <Link href="/applications/builder" className="mt-4 block">
+                <a
+                  href={applicationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 block"
+                >
                   <Button className="w-full" size="lg">
-                    Draft Application
+                    Apply on funder site
+                    <ExternalLink className="h-4 w-4" />
                   </Button>
-                </Link>
+                </a>
               )}
             </Card>
           </div>

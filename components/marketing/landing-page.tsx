@@ -37,12 +37,17 @@ export function LandingPage() {
           searching, more time growing.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link href="/auth/signup">
+          <Link href="/signup">
             <Button size="lg">Get Started</Button>
           </Link>
-          <Link href="/browse">
+          <Link href="/login">
             <Button variant="secondary" size="lg">
-              Browse Grants Without Sign Up
+              Sign In
+            </Button>
+          </Link>
+          <Link href="/grants">
+            <Button variant="ghost" size="lg">
+              Browse Grants
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
@@ -75,8 +80,8 @@ export function LandingPage() {
           <div className="flex gap-6">
             <span>Privacy</span>
             <span>Contact</span>
-            <Link href="/browse" className="font-medium text-primary hover:underline">
-              Browse grants without signing up
+            <Link href="/grants" className="font-medium text-primary hover:underline">
+              Browse grants
             </Link>
           </div>
         </div>

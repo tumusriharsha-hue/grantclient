@@ -344,7 +344,7 @@ export function OnboardingWizard({
             {isGuest ? (
               <>
                 Create a free account to save your organization profile.{" "}
-                <Link href="/signup?reason=guest" className="font-medium text-primary hover:underline">
+                <Link href="/signup?reason=account" className="font-medium text-primary hover:underline">
                   Sign up
                 </Link>
               </>

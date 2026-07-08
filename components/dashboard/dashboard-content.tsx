@@ -13,12 +13,17 @@ import {
 } from "@/components/ui";
 import { getStateLabel } from "@/lib/onboarding/us-states";
 import { getTopMatchedGrants } from "@/lib/grant-matching";
+import {
+  getDecisionLabel,
+  getLastUpdatedLabel,
+  getSubmittedLabel,
+} from "@/lib/applications/date-labels";
 import { formatCurrency } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import type { Organization } from "@/types/database";
 import type { Grant } from "@/types/grant";
 
-type AppTab = "all" | "drafting" | "submitted" | "outcomes";
+type AppTab = "all" | "drafting" | "submitted" | "approved" | "rejected";
 
 const statusStyles: Record<string, string> = {
   Drafting: "bg-gray-100 text-text-secondary",
@@ -31,6 +36,16 @@ interface DashboardContentProps {
   organization: Organization;
   grants: Grant[];
 }
+
+const applicationRowClass =
+  "flex min-h-[82px] flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between";
+const applicationContentClass = "flex min-h-[54px] flex-col";
+const applicationTitleStatusClass = "min-h-[42px]";
+const applicationDetailsClass = "mt-1 min-h-[24px] space-y-1";
+const centeredApplicationDetailsClass =
+  "mt-1 flex min-h-[24px] flex-1 items-center";
+const applicationActionsClass =
+  "flex min-w-[132px] flex-col gap-2 sm:self-center sm:flex-row md:flex-col lg:flex-row";
 
 export function DashboardContent({ organization, grants }: DashboardContentProps) {
   const [appTab, setAppTab] = useState<AppTab>("all");
@@ -53,8 +68,21 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
     { id: "all", label: "All" },
     { id: "drafting", label: "Drafting" },
     { id: "submitted", label: "Submitted" },
-    { id: "outcomes", label: "Approved/Rejected" },
+    { id: "approved", label: "Approved" },
+    { id: "rejected", label: "Rejected" },
   ];
+
+  const approvedApplications = applicationStatus.outcomes.items.filter(
+    (item) => item.outcome === "Approved",
+  );
+  const rejectedApplications = applicationStatus.outcomes.items.filter(
+    (item) => item.outcome === "Rejected",
+  );
+
+  const showDrafting = appTab === "all" || appTab === "drafting";
+  const showSubmitted = appTab === "all" || appTab === "submitted";
+  const showApproved = appTab === "all" || appTab === "approved";
+  const showRejected = appTab === "all" || appTab === "rejected";
 
   return (
     <div className="mx-auto max-w-6xl space-y-10 p-6 md:p-8">
@@ -104,24 +132,31 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
                   <p className="text-sm italic text-text-secondary">
                     &ldquo;{grant.matchReasons[0] ?? "Strong fit based on your organization profile."}&rdquo;
                   </p>
-                </div>
-                <div className="mt-4 flex gap-2">
-                  <Link href={`/grants/${grant.id}`} className="flex-1">
-                    <Button variant="secondary" size="sm" className="w-full">
-                      View Details
-                    </Button>
-                  </Link>
                   <a
                     href={grant.applicationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1"
+                    className="mt-1 inline-flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline"
                   >
-                    <Button size="sm" className="w-full">
-                      Apply on funder site
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
+                    Apply on funder site
+                    <ExternalLink className="h-3.5 w-3.5" />
                   </a>
+                </div>
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row md:flex-col xl:flex-row">
+                  <Link href={`/grants/${grant.id}`} className="sm:flex-[0.85] md:flex-none xl:flex-[0.85]">
+                    <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                      View Details
+                    </Button>
+                  </Link>
+                  <Link
+                    href={`/applications/builder?grant=${encodeURIComponent(grant.id)}`}
+                    className="sm:flex-[1.15] md:flex-none xl:flex-[1.15]"
+                  >
+                    <Button size="sm" className="w-full whitespace-nowrap">
+                      Draft application
+                      <PenLine className="h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             ))}
@@ -132,7 +167,7 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
       <Card padding="lg" className="border-primary/20 bg-primary-light/10">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-white">
+            <div className="flex h-12 w-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-lg bg-primary text-white">
               <PenLine className="h-6 w-6" />
             </div>
             <div>
@@ -142,16 +177,16 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-2 sm:items-end">
+          <div className="flex flex-col gap-2 sm:items-end md:items-stretch lg:items-end">
             <Link href="/applications/builder">
-              <Button>
+              <Button className="w-full whitespace-nowrap">
                 Start Drafting
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
             <Link
               href="/applications"
-              className="text-sm text-text-muted hover:text-primary hover:underline"
+              className="text-center text-sm text-text-muted hover:text-primary hover:underline sm:text-right md:text-center lg:text-right"
             >
               View Recent Drafts
             </Link>
@@ -179,76 +214,183 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
           ))}
         </div>
 
-        <div className="space-y-3">
-          {applicationStatus.drafting.items.map((item) => (
-            <Card key={item.id} padding="md">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="font-semibold text-text">{item.title}</h3>
-                  <span
-                    className={cn(
-                      "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
-                      statusStyles.Drafting,
-                    )}
-                  >
-                    Drafting
-                  </span>
-                  <p className="mt-1 text-xs text-text-muted">Last updated: Oct 5, 2024</p>
-                </div>
-                <div className="flex gap-2">
-                  <Link href={item.href}>
-                    <Button variant="secondary" size="sm">
-                      View Draft
-                    </Button>
-                  </Link>
-                  <Button variant="ghost" size="sm">
-                    Update Status
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          ))}
+        <div className="space-y-6">
+          {showDrafting && applicationStatus.drafting.items.length > 0 && (
+            <div className="space-y-3">
+              {appTab === "all" && (
+                <h3 className="text-sm font-semibold text-text-secondary">Drafting</h3>
+              )}
+              {applicationStatus.drafting.items.map((item) => (
+                <Card key={item.id} padding="md">
+                  <div className={applicationRowClass}>
+                    <div className={applicationContentClass}>
+                      <div className={applicationTitleStatusClass}>
+                        <h4 className="font-semibold text-text">{item.title}</h4>
+                        <span
+                          className={cn(
+                            "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
+                            statusStyles.Drafting,
+                          )}
+                        >
+                          Drafting
+                        </span>
+                      </div>
+                      <div className={centeredApplicationDetailsClass}>
+                        <p className="text-xs text-text-muted">
+                          {getLastUpdatedLabel(item.lastUpdated)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={applicationActionsClass}>
+                      <Link href={item.href}>
+                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                          View Application
+                        </Button>
+                      </Link>
+                      <Link href={`/applications/status/${item.id}`}>
+                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                          Update Status
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
 
-          {applicationStatus.submitted.items.map((item) => (
-            <Card key={item.id} padding="md">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="font-semibold text-text">{item.title}</h3>
-                  <span
-                    className={cn(
-                      "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
-                      statusStyles.Submitted,
-                    )}
-                  >
-                    Submitted
-                  </span>
-                  <p className="mt-1 text-xs text-text-muted">{item.date}</p>
-                </div>
-                <Button variant="ghost" size="sm">
-                  Update Status
-                </Button>
-              </div>
-            </Card>
-          ))}
+          {showSubmitted && applicationStatus.submitted.items.length > 0 && (
+            <div className="space-y-3">
+              {appTab === "all" && (
+                <h3 className="text-sm font-semibold text-text-secondary">Submitted</h3>
+              )}
+              {applicationStatus.submitted.items.map((item) => (
+                <Card key={item.id} padding="md">
+                  <div className={applicationRowClass}>
+                    <div className={applicationContentClass}>
+                      <div className={applicationTitleStatusClass}>
+                        <h4 className="font-semibold text-text">{item.title}</h4>
+                        <span
+                          className={cn(
+                            "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
+                            statusStyles.Submitted,
+                          )}
+                        >
+                          Submitted
+                        </span>
+                      </div>
+                      <div className={centeredApplicationDetailsClass}>
+                        <p className="text-xs text-text-muted">
+                          {getSubmittedLabel(item.submissionDate)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={applicationActionsClass}>
+                      <Link href={`/applications/${item.id}`}>
+                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                          View Application
+                        </Button>
+                      </Link>
+                      <Link href={`/applications/status/${item.id}`}>
+                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                          Update Status
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
 
-          {applicationStatus.outcomes.items.map((item) => (
-            <Card key={item.id} padding="md">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="font-semibold text-text">{item.title}</h3>
-                  <span
-                    className={cn(
-                      "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
-                      statusStyles.Approved,
-                    )}
-                  >
-                    {item.outcome}
-                  </span>
-                  <p className="mt-1 text-xs text-success-dark">{item.amount}</p>
-                </div>
-              </div>
-            </Card>
-          ))}
+          {showApproved && approvedApplications.length > 0 && (
+            <div className="space-y-3">
+              {appTab === "all" && (
+                <h3 className="text-sm font-semibold text-text-secondary">Approved</h3>
+              )}
+              {approvedApplications.map((item) => (
+                <Card key={item.id} padding="md">
+                  <div className={applicationRowClass}>
+                    <div className={applicationContentClass}>
+                      <div className={applicationTitleStatusClass}>
+                        <h4 className="font-semibold text-text">{item.title}</h4>
+                        <span
+                          className={cn(
+                            "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
+                            statusStyles.Approved,
+                          )}
+                        >
+                          Approved
+                        </span>
+                      </div>
+                      <div className={applicationDetailsClass}>
+                        <p className="text-xs text-success-dark">{item.amount}</p>
+                        <p className="text-xs text-text-muted">
+                          {getDecisionLabel(item.decisionDate)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={applicationActionsClass}>
+                      <Link href={`/applications/${item.id}`}>
+                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                          View Application
+                        </Button>
+                      </Link>
+                      <Link href={`/applications/status/${item.id}`}>
+                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                          Update Status
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {showRejected && rejectedApplications.length > 0 && (
+            <div className="space-y-3">
+              {appTab === "all" && (
+                <h3 className="text-sm font-semibold text-text-secondary">Rejected</h3>
+              )}
+              {rejectedApplications.map((item) => (
+                <Card key={item.id} padding="md">
+                  <div className={applicationRowClass}>
+                    <div className={applicationContentClass}>
+                      <div className={applicationTitleStatusClass}>
+                        <h4 className="font-semibold text-text">{item.title}</h4>
+                        <span
+                          className={cn(
+                            "mt-1 inline-block rounded px-2 py-0.5 text-xs font-semibold uppercase",
+                            statusStyles.Rejected,
+                          )}
+                        >
+                          Rejected
+                        </span>
+                      </div>
+                      <div className={centeredApplicationDetailsClass}>
+                        <p className="text-xs text-text-muted">
+                          {getDecisionLabel(item.decisionDate)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className={applicationActionsClass}>
+                      <Link href={`/applications/${item.id}`}>
+                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                          View Application
+                        </Button>
+                      </Link>
+                      <Link href={`/applications/status/${item.id}`}>
+                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                          Update Status
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>

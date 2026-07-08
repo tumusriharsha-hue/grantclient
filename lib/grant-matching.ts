@@ -148,9 +148,9 @@ export type GrantSortOption = "match" | "deadline" | "amount";
 
 export interface GrantBrowserFilters {
   search: string;
-  category: GrantCategory | "all";
-  amountRange: AmountRangeFilter;
-  deadlineRange: DeadlineRangeFilter;
+  category: GrantCategory | "all" | GrantCategory[];
+  amountRange: AmountRangeFilter | AmountRangeFilter[];
+  deadlineRange: DeadlineRangeFilter | DeadlineRangeFilter[];
   sort: GrantSortOption;
 }
 
@@ -175,6 +175,21 @@ export function matchesAmountRange(
   }
 }
 
+function matchesAnyAmountRange(
+  amount: number | undefined,
+  ranges: AmountRangeFilter | AmountRangeFilter[],
+): boolean {
+  const activeRanges = Array.isArray(ranges)
+    ? ranges.filter((range) => range !== "any")
+    : ranges === "any"
+      ? []
+      : [ranges];
+
+  return activeRanges.length === 0
+    ? true
+    : activeRanges.some((range) => matchesAmountRange(amount, range));
+}
+
 export function matchesDeadlineRange(
   daysLeft: number,
   range: DeadlineRangeFilter,
@@ -194,6 +209,21 @@ export function matchesDeadlineRange(
   }
 }
 
+function matchesAnyDeadlineRange(
+  daysLeft: number,
+  ranges: DeadlineRangeFilter | DeadlineRangeFilter[],
+): boolean {
+  const activeRanges = Array.isArray(ranges)
+    ? ranges.filter((range) => range !== "any")
+    : ranges === "any"
+      ? []
+      : [ranges];
+
+  return activeRanges.length === 0
+    ? true
+    : activeRanges.some((range) => matchesDeadlineRange(daysLeft, range));
+}
+
 export function filterAndSortGrants(
   grants: ScoredGrant[],
   filters: GrantBrowserFilters,
@@ -205,19 +235,25 @@ export function filterAndSortGrants(
       return false;
     }
 
-    if (filters.category !== "all" && grant.category !== filters.category) {
+    const activeCategories = Array.isArray(filters.category)
+      ? filters.category
+      : filters.category === "all"
+        ? []
+        : [filters.category];
+
+    if (activeCategories.length > 0 && !activeCategories.includes(grant.category)) {
       return false;
     }
 
-    if (!matchesAmountRange(grant.amount, filters.amountRange)) {
+    if (!matchesAnyAmountRange(grant.amount, filters.amountRange)) {
       return false;
     }
 
-    if (!matchesDeadlineRange(grant.daysLeft, filters.deadlineRange)) {
+    if (!matchesAnyDeadlineRange(grant.daysLeft, filters.deadlineRange)) {
       return false;
     }
 
-    return grant.status === "open";
+    return grant.status === "open" && grant.daysLeft >= 0;
   });
 
   return filtered.sort((a, b) => {

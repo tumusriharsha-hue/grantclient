@@ -35,11 +35,9 @@ yarn-error.log*
 # IDE / editor
 .cursor/
 
-# env files (can opt-in for committing if needed)
-.env
-.env.local
-.env.*.local
-.env.production.local
+# env files
+.env*
+!.env.example
 
 # vercel
 .vercel
@@ -47,6 +45,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local agent/tooling state
+/.agents/
+/.codex/
+/.turbo/
+/.cache/
+/tmp/
+
+# test artifacts
+/playwright-report/
+/test-results/
 
 # stitch exports (generated during design sync)
 /stitch-export*/

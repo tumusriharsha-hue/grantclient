@@ -1,12 +1,13 @@
 import type { GrantRow, TablesInsert } from "@/types/database";
+import { sanitizeGrantText } from "@/lib/grants/sanitize-text";
 import type { Grant } from "@/types/grant";
 
 export function mapGrantRow(row: GrantRow): Grant {
   return {
     id: row.id,
-    title: row.title,
-    description: row.description,
-    funder: row.funder,
+    title: sanitizeGrantText(row.title),
+    description: sanitizeGrantText(row.description),
+    funder: sanitizeGrantText(row.funder),
     category: row.category as Grant["category"],
     region: row.region as Grant["region"],
     status: row.status as Grant["status"],

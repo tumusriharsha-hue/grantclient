@@ -23,8 +23,9 @@ interface GrantDetailViewProps {
 }
 
 export function GrantDetailView({ grant, publicMode = false }: GrantDetailViewProps) {
-  const { requireFullAccount, isGuest, isAuthenticated } = useRequireFullAccount();
-  const readOnly = publicMode || !isAuthenticated || isGuest;
+  const { requireFullAccount, isGuest, isAuthenticated, hasDevFullAccess } =
+    useRequireFullAccount();
+  const readOnly = publicMode || (!hasDevFullAccess && (!isAuthenticated || isGuest));
   const urgency = getDeadlineVariant(Math.max(grant.daysLeft, 0));
   const backHref = publicMode ? "/browse" : "/grants";
   const backLabel = publicMode ? "Back to Browse" : "Back to Finder";

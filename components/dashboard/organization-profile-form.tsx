@@ -116,7 +116,7 @@ export function OrganizationProfileForm({
             {isGuest ? (
               <>
                 Guest mode is read-only.{" "}
-                <Link href="/signup?reason=guest" className="font-medium text-primary hover:underline">
+                <Link href="/signup?reason=account" className="font-medium text-primary hover:underline">
                   Create a free account
                 </Link>{" "}
                 to set up your organization profile.

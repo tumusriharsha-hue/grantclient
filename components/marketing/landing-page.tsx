@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, FileText, PenLine, Search } from "lucide-react";
+import { FileText, PenLine, Search } from "lucide-react";
 import { PublicNav } from "./public-nav";
 import { TypedHeadline } from "./typed-headline";
+import { GrantClientLogo } from "@/components/brand/grantclient-logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
@@ -45,12 +46,6 @@ export function LandingPage() {
               Sign In
             </Button>
           </Link>
-          <Link href="/grants">
-            <Button variant="ghost" size="lg">
-              Browse Grants
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
         </div>
       </section>
 
@@ -76,7 +71,10 @@ export function LandingPage() {
 
       <footer className="border-t border-border bg-bg">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-text-secondary sm:flex-row">
-          <span>© {new Date().getFullYear()} GrantClient</span>
+          <div className="flex items-center gap-3">
+            <GrantClientLogo className="w-[145px]" />
+            <span>© {new Date().getFullYear()}</span>
+          </div>
           <div className="flex gap-6">
             <span>Privacy</span>
             <span>Contact</span>

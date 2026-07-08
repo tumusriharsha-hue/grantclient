@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { fontVariables } from "@/lib/fonts";
 import { siteMetadata } from "@/data";
 import "./globals.css";
@@ -17,8 +18,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontVariables} h-full antialiased`}>
-      <body className="min-h-full">{children}</body>
+    <html
+      lang="en"
+      className={`${fontVariables} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-full">
+        <Script
+          id="grantclient-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+try {
+  var theme = window.localStorage.getItem("grantclient:theme");
+  var dark = theme === "dark";
+  document.documentElement.classList.toggle("dark", dark);
+} catch (_) {}
+            `.trim(),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

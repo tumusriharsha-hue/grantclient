@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Check } from "lucide-react";
 import { US_STATES } from "@/lib/onboarding/us-states";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +47,7 @@ export function StateSelect({
           error && "border-danger",
         )}
       />
-      <div className="max-h-48 overflow-y-auto rounded-md border border-border bg-surface">
+      <div className="max-h-48 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg">
         {filteredStates.map((state) => (
           <button
             key={state.value}
@@ -57,12 +58,17 @@ export function StateSelect({
               setQuery("");
             }}
             className={cn(
-              "flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-bg",
-              value === state.value && "bg-primary-light/30 font-medium text-primary",
+              "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+              value === state.value
+                ? "bg-primary-light font-medium text-primary-hover"
+                : "text-text-secondary hover:bg-primary-light/60 hover:text-text",
             )}
           >
             <span>{state.label}</span>
-            <span className="text-xs text-text-muted">{state.value}</span>
+            <span className="flex items-center gap-2">
+              <span className="text-xs text-text-muted">{state.value}</span>
+              {value === state.value && <Check className="h-4 w-4 text-primary" />}
+            </span>
           </button>
         ))}
         {filteredStates.length === 0 && (

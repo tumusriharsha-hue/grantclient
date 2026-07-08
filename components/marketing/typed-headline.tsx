@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 
 const HEADLINE = "Find grants. Draft faster. Track everything.";
+const UNDERLINED_WORD = "everything";
+const UNDERLINED_PHRASE = "everything.";
 const START_DELAY_MS = 250;
 const PHRASE_PAUSE_MS = 520;
 const CHARACTER_DELAYS_MS = [34, 42, 29, 38, 46, 31, 36, 44, 33, 40];
@@ -68,11 +70,35 @@ export function TypedHeadline() {
         {HEADLINE}
       </span>
       <span className="absolute inset-0" aria-hidden="true">
-        {HEADLINE.slice(0, characterCount)}
+        {HEADLINE.slice(0, characterCount).includes(UNDERLINED_WORD) ? (
+          <>
+            {HEADLINE.slice(0, HEADLINE.indexOf(UNDERLINED_WORD))}
+            <span className="relative inline-block whitespace-nowrap">
+              {UNDERLINED_WORD}
+              <span
+                className="headline-underline"
+                data-visible={isComplete ? "true" : "false"}
+                aria-hidden="true"
+              />
+              {HEADLINE.slice(
+                HEADLINE.indexOf(UNDERLINED_WORD) + UNDERLINED_WORD.length,
+                Math.min(
+                  characterCount,
+                  HEADLINE.indexOf(UNDERLINED_WORD) + UNDERLINED_PHRASE.length,
+                ),
+              )}
+            </span>
+            {HEADLINE.slice(
+              HEADLINE.indexOf(UNDERLINED_WORD) + UNDERLINED_PHRASE.length,
+              characterCount,
+            )}
+          </>
+        ) : (
+          HEADLINE.slice(0, characterCount)
+        )}
         <span
-          className={`ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.08em] ${
-            cursorIsBlack ? "bg-black" : "bg-white"
-          }`}
+          className="typed-headline-cursor ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.08em]"
+          data-visible={cursorIsBlack ? "true" : "false"}
         />
       </span>
     </span>

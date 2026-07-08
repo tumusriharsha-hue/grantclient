@@ -7,7 +7,16 @@ export const AUTH_ROUTES = {
 } as const;
 
 /** Requires a signed-in, non-anonymous user */
-export const PROTECTED_ROUTES = ["/dashboard", "/saved"] as const;
+export const PROTECTED_ROUTES = [
+  "/dashboard",
+  "/grants",
+  "/saved",
+  "/applications",
+  "/assistant",
+  "/documents",
+  "/settings",
+  "/setup",
+] as const;
 
 /** Requires full account — guests are redirected to signup */
 export const FULL_ACCOUNT_ROUTES = [

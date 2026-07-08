@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import { AUTH_ROUTES } from "@/lib/auth/constants";
+import { DEV_FULL_ACCESS_COOKIE, DEV_FULL_ACCESS_KEY } from "@/lib/auth/dev-access";
 import { sanitizeRedirectPath } from "@/lib/auth/redirect";
 import { formatAuthError } from "@/lib/auth/errors";
 import { signUpWithEmail } from "@/app/actions/auth";
+import { GrantClientLogo } from "@/components/brand/grantclient-logo";
 import { Button, Input } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
 
@@ -28,8 +30,9 @@ export function AuthPage({ mode }: AuthPageProps) {
     searchParams.get("next"),
     AUTH_ROUTES.dashboard,
   );
-  const guestReason = searchParams.get("reason") === "guest";
+  const accountRequired = searchParams.get("reason") === "account";
   const formDisabled = isSubmitting || Boolean(successMessage);
+  const showDeveloperAccess = process.env.NODE_ENV !== "production";
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -98,46 +101,18 @@ export function AuthPage({ mode }: AuthPageProps) {
     }
   }
 
-  async function handleGuestContinue() {
-    setError(null);
-    setIsSubmitting(true);
-
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (user && !user.is_anonymous) {
-      router.push(AUTH_ROUTES.grants);
-      router.refresh();
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (user?.is_anonymous) {
-      router.push(AUTH_ROUTES.grants);
-      router.refresh();
-      setIsSubmitting(false);
-      return;
-    }
-
-    const { error: guestError } = await supabase.auth.signInAnonymously();
-
-    setIsSubmitting(false);
-
-    if (guestError) {
-      setError(guestError.message);
-      return;
-    }
-
+  function handleDeveloperAccess() {
+    window.localStorage.setItem(DEV_FULL_ACCESS_KEY, "true");
+    document.cookie = `${DEV_FULL_ACCESS_COOKIE}=true; path=/; max-age=604800; SameSite=Lax`;
     router.push(AUTH_ROUTES.grants);
     router.refresh();
   }
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
-      <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-primary-light/40 to-bg p-8 md:p-12">
+      <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-primary-light/70 via-surface to-bg p-8 md:p-12">
         <div className="max-w-md text-center md:text-left">
+          <GrantClientLogo className="mx-auto mb-8 w-[245px] md:mx-0" priority />
           <h2 className="text-2xl font-bold text-text">
             Grants made simple for nonprofits
           </h2>
@@ -150,14 +125,14 @@ export function AuthPage({ mode }: AuthPageProps) {
 
       <div className="flex flex-1 items-center justify-center bg-surface p-8">
         <div className="w-full max-w-sm">
+          <GrantClientLogo className="mb-8 w-[190px]" priority />
           <h1 className="text-2xl font-bold text-text">
             {mode === "signup" ? "Create your account" : "Sign in to GrantClient"}
           </h1>
 
-          {guestReason && (
+          {accountRequired && (
             <p className="mt-3 rounded-md bg-primary-light/20 px-3 py-2 text-sm text-text-secondary">
-              Create a free account to save grants, set up your organization profile,
-              and generate proposals.
+              Sign in or create a free account to access GrantClient.
             </p>
           )}
 
@@ -274,20 +249,23 @@ export function AuthPage({ mode }: AuthPageProps) {
             .
           </p>
 
-          <div className="mt-8 border-t border-border pt-6">
-            <Button
-              type="button"
-              variant="ghost"
-              className="w-full"
-              onClick={handleGuestContinue}
-              disabled={isSubmitting}
-            >
-              Continue as Guest
-            </Button>
-            <p className="mt-2 text-center text-xs text-text-muted">
-              Browse grants with sample match scores. No account required.
-            </p>
-          </div>
+          {showDeveloperAccess && (
+            <div className="mt-8 border-t border-border pt-6">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="w-full text-xs"
+                onClick={handleDeveloperAccess}
+                disabled={isSubmitting}
+              >
+                Developer access without sign-in
+              </Button>
+              <p className="mt-1 text-center text-xs text-danger">
+                Temporary dev-only bypass. Remove before public launch.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

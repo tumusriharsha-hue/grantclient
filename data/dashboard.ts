@@ -47,20 +47,58 @@ export const applicationStatus = {
   drafting: {
     count: 2,
     items: [
-      { id: "1", title: "Community Impact Fund LOI", href: "/applications/builder" },
-      { id: "2", title: "STEM Innovation Proposal", href: "/applications/builder" },
+      {
+        id: "1",
+        title: "Community Impact Fund LOI",
+        href: "/applications/1",
+        grantName: "Community Impact Fund",
+        funder: "Community Impact Fund",
+        lastUpdated: "2024-10-05",
+        progress: 60,
+        summary:
+          "Letter of inquiry focused on expanding neighborhood food access and after-school family support services.",
+      },
+      {
+        id: "2",
+        title: "STEM Innovation Proposal",
+        href: "/applications/2",
+        grantName: "STEM Innovation Proposal",
+        funder: "Lumina Foundation",
+        lastUpdated: "2024-10-05",
+        progress: 45,
+        summary:
+          "Draft proposal for hands-on STEM programming, mentor-led workshops, and classroom technology access.",
+      },
     ],
   },
   submitted: {
     count: 1,
     items: [
-      { id: "3", title: "Green Foundation Grant", date: "Submitted Oct 1" },
+      {
+        id: "3",
+        title: "Green Foundation Grant",
+        submissionDate: "2024-10-01",
+      },
     ],
   },
   outcomes: {
-    count: 1,
+    count: 2,
     items: [
-      { id: "4", title: "Youth Literacy Fund", outcome: "Approved", amount: "$45,000" },
+      {
+        id: "4",
+        title: "Youth Literacy Fund",
+        outcome: "Approved",
+        amount: "$45,000",
+        submissionDate: "2024-09-03",
+        decisionDate: "2024-09-24",
+      },
+      {
+        id: "5",
+        title: "Neighborhood Arts Access Grant",
+        outcome: "Rejected",
+        submissionDate: "2024-08-28",
+        decisionDate: "2024-09-18",
+      },
     ],
   },
 };

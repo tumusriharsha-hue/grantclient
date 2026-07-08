@@ -1,9 +1,10 @@
 "use client";
 
-import { CheckCircle2, Sparkles, Wand2 } from "lucide-react";
+import { CheckCircle2, Sparkles, Target, Wand2, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { AppShell } from "@/components/layout";
-import { Button, Card, Input, Textarea } from "@/components/ui";
+import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
 
 const aiTools = [
   "Improve this answer",
@@ -13,8 +14,21 @@ const aiTools = [
   "Check eligibility",
 ];
 
-export function ApplicationBuilderPage() {
+interface ApplicationBuilderPageProps {
+  grantContext?: {
+    id: string;
+    title: string;
+    funder: string;
+    category: string;
+    deadline?: string;
+  } | null;
+}
+
+export function ApplicationBuilderPage({ grantContext }: ApplicationBuilderPageProps) {
   const [saved] = useState("2 minutes ago");
+  const draftHref = grantContext
+    ? `/applications/builder/draft?grant=${encodeURIComponent(grantContext.id)}`
+    : "/applications/builder/draft";
 
   return (
     <AppShell header={null}>
@@ -37,6 +51,34 @@ export function ApplicationBuilderPage() {
 
       <div className="mx-auto grid max-w-6xl gap-0 lg:grid-cols-2">
         <div className="space-y-6 border-b border-border p-6 md:p-8 lg:border-b-0 lg:border-r">
+          {grantContext && (
+            <Card padding="md" className="border-primary/20 bg-primary-light/20">
+              <div className="flex gap-3">
+                <Target className="h-5 w-5 shrink-0 text-primary" />
+                <div className="min-w-0 flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-2">
+                    <Badge variant="default">Drafting for grant</Badge>
+                    <span className="text-xs text-text-muted">{grantContext.category}</span>
+                  </div>
+                  <h2 className="break-words font-semibold text-text">
+                    {grantContext.title}
+                  </h2>
+                  <p className="mt-1 text-sm text-text-secondary">
+                    {grantContext.funder}
+                    {grantContext.deadline ? ` · Deadline ${grantContext.deadline}` : ""}
+                  </p>
+                </div>
+                <Link
+                  href="/applications/builder"
+                  aria-label="Remove selected grant"
+                  title="Remove selected grant"
+                  className="group -mr-1 -mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-text-muted shadow-sm transition-all hover:-translate-y-0.5 hover:border-danger/30 hover:bg-danger-light hover:text-danger-dark focus:outline-none focus:ring-[3px] focus:ring-danger/10"
+                >
+                  <X className="h-4 w-4 transition-transform group-hover:scale-110" />
+                </Link>
+              </div>
+            </Card>
+          )}
           <Input label="Organization name" defaultValue="Urban Reach Initiative" />
           <Textarea
             label="Mission statement"
@@ -62,10 +104,6 @@ export function ApplicationBuilderPage() {
                 </button>
               </p>
             </div>
-          </div>
-          <div className="flex gap-3">
-            <Button variant="secondary">Save draft</Button>
-            <Button>Continue</Button>
           </div>
         </div>
 
@@ -97,10 +135,12 @@ export function ApplicationBuilderPage() {
             ))}
           </div>
 
-          <Button className="w-full">
-            <Wand2 className="h-4 w-4" />
-            Generate first draft
-          </Button>
+          <Link href={draftHref}>
+            <Button className="w-full">
+              <Wand2 className="h-4 w-4" />
+              Generate first draft
+            </Button>
+          </Link>
         </div>
       </div>
     </AppShell>

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { FULL_ACCOUNT_ROUTES, PROTECTED_ROUTES, PUBLIC_AUTH_ROUTES } from "@/lib/auth/constants";
+import { DEV_FULL_ACCESS_COOKIE, isDevFullAccessEnabled } from "@/lib/auth/dev-access";
 import { sanitizeRedirectPath } from "@/lib/auth/redirect";
 import { isAuthenticatedUser, isGuestUser } from "@/lib/auth/session";
 import { createServerClient } from "@supabase/ssr";
@@ -39,18 +40,21 @@ export async function updateSession(request: NextRequest) {
   const requiresFullAccount = FULL_ACCOUNT_ROUTES.some((route) =>
     pathname.startsWith(route),
   );
+  const hasDevFullAccess = isDevFullAccessEnabled(
+    request.cookies.get(DEV_FULL_ACCESS_COOKIE)?.value,
+  );
 
-  if (isProtected && !user) {
+  if (isProtected && (!user || isGuestUser(user)) && !hasDevFullAccess) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
     loginUrl.searchParams.set("next", sanitizeRedirectPath(pathname));
     return NextResponse.redirect(loginUrl);
   }
 
-  if (requiresFullAccount && isGuestUser(user)) {
+  if (requiresFullAccount && isGuestUser(user) && !hasDevFullAccess) {
     const signupUrl = request.nextUrl.clone();
     signupUrl.pathname = "/signup";
-    signupUrl.searchParams.set("reason", "guest");
+    signupUrl.searchParams.set("reason", "account");
     return NextResponse.redirect(signupUrl);
   }
 

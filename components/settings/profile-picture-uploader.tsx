@@ -4,7 +4,6 @@ import { ImagePlus, Trash2, Upload } from "lucide-react";
 import { useRef, useState, useTransition } from "react";
 import { updateOrganizationProfilePicture } from "@/app/actions/organization";
 import { Button, Card } from "@/components/ui";
-import { createClient } from "@/lib/supabase/client";
 
 interface ProfilePictureUploaderProps {
   userId: string | null;
@@ -58,29 +57,24 @@ export function ProfilePictureUploader({
     setMessage(null);
 
     startTransition(async () => {
-      const supabase = createClient();
-      const path = `${userId}/profile-${Date.now()}.${extension}`;
-      const { error } = await supabase.storage
-        .from("profile-pictures")
-        .upload(path, file, {
-          cacheControl: "3600",
-          upsert: true,
-        });
+      const body = new FormData();
+      body.set("file", file);
 
-      if (error) {
-        setMessage(error.message);
+      const response = await fetch("/api/profile-picture", {
+        method: "POST",
+        body,
+      });
+      const payload = (await response.json().catch(() => null)) as {
+        error?: string;
+        profilePictureUrl?: string;
+      } | null;
+
+      if (!response.ok || !payload?.profilePictureUrl) {
+        setMessage(payload?.error ?? "Unable to upload profile picture.");
         return;
       }
 
-      const { data } = supabase.storage.from("profile-pictures").getPublicUrl(path);
-      const result = await updateOrganizationProfilePicture(data.publicUrl);
-
-      if (!result.success) {
-        setMessage(result.error);
-        return;
-      }
-
-      setProfileUrl(data.publicUrl);
+      setProfileUrl(payload.profilePictureUrl);
       setMessage("Profile picture updated.");
     });
 

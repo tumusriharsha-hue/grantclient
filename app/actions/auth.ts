@@ -1,7 +1,6 @@
 "use server";
 
 import { formatAuthError } from "@/lib/auth/errors";
-import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { signUpSchema } from "@/lib/validations/auth";
 
@@ -12,99 +11,6 @@ export type SignUpActionResult =
 function isExistingUserError(message: string): boolean {
   const lower = message.toLowerCase();
   return lower.includes("already") || lower.includes("registered");
-}
-
-async function signInWithPassword(
-  email: string,
-  password: string,
-): Promise<{ success: true } | { success: false; message: string }> {
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
-
-  if (!error) {
-    return { success: true };
-  }
-
-  return { success: false, message: error.message };
-}
-
-async function lookupUserByEmail(
-  admin: NonNullable<ReturnType<typeof createAdminClient>>,
-  email: string,
-) {
-  const { data, error } = await admin.auth.admin.generateLink({
-    type: "magiclink",
-    email,
-  });
-
-  if (error || !data.user) {
-    return null;
-  }
-
-  return data.user;
-}
-
-async function recoverUnconfirmedAccount(
-  admin: NonNullable<ReturnType<typeof createAdminClient>>,
-  userId: string,
-  email: string,
-  password: string,
-): Promise<SignUpActionResult> {
-  const { error: updateError } = await admin.auth.admin.updateUserById(userId, {
-    email_confirm: true,
-    password,
-  });
-
-  if (updateError) {
-    return {
-      success: false,
-      error: formatAuthError(updateError.message, "signup"),
-    };
-  }
-
-  const signIn = await signInWithPassword(email, password);
-
-  if (signIn.success) {
-    return { success: true };
-  }
-
-  return {
-    success: false,
-    error: formatAuthError(signIn.message, "signup"),
-  };
-}
-
-async function handleExistingUserSignup(
-  admin: NonNullable<ReturnType<typeof createAdminClient>>,
-  email: string,
-  password: string,
-): Promise<SignUpActionResult> {
-  const existingUser = await lookupUserByEmail(admin, email);
-
-  if (existingUser && !existingUser.email_confirmed_at) {
-    return recoverUnconfirmedAccount(admin, existingUser.id, email, password);
-  }
-
-  const signIn = await signInWithPassword(email, password);
-
-  if (signIn.success) {
-    return { success: true };
-  }
-
-  const lower = signIn.message.toLowerCase();
-
-  if (lower.includes("invalid login credentials")) {
-    return {
-      success: false,
-      error:
-        "This email is already registered. Sign in with your password, or use a different email.",
-    };
-  }
-
-  return {
-    success: false,
-    error: formatAuthError(signIn.message, "signup"),
-  };
 }
 
 export async function signUpWithEmail(
@@ -120,60 +26,29 @@ export async function signUpWithEmail(
     };
   }
 
-  const admin = createAdminClient();
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.signUp({
+    email: parsed.data.email,
+    password: parsed.data.password,
+  });
 
-  if (!admin) {
-    const supabase = await createClient();
-    const { data, error } = await supabase.auth.signUp({
-      email: parsed.data.email,
-      password: parsed.data.password,
-    });
-
-    if (error) {
+  if (error) {
+    if (isExistingUserError(error.message)) {
       return {
         success: false,
-        error: formatAuthError(error.message, "signup"),
+        error:
+          "This email is already registered. Sign in with your password, or use a different email.",
       };
     }
 
     return {
-      success: true,
-      requiresEmailConfirmation: !data.session,
+      success: false,
+      error: formatAuthError(error.message, "signup"),
     };
   }
 
-  const { error: createError } = await admin.auth.admin.createUser({
-    email: parsed.data.email,
-    password: parsed.data.password,
-    email_confirm: true,
-  });
-
-  if (createError) {
-    if (!isExistingUserError(createError.message)) {
-      return {
-        success: false,
-        error: formatAuthError(createError.message, "signup"),
-      };
-    }
-
-    return handleExistingUserSignup(
-      admin,
-      parsed.data.email,
-      parsed.data.password,
-    );
-  }
-
-  const signIn = await signInWithPassword(
-    parsed.data.email,
-    parsed.data.password,
-  );
-
-  if (signIn.success) {
-    return { success: true };
-  }
-
   return {
-    success: false,
-    error: formatAuthError(signIn.message, "signup"),
+    success: true,
+    requiresEmailConfirmation: !data.session,
   };
 }

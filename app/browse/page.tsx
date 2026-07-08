@@ -1,8 +1,5 @@
-import { BrowseGrantsPage } from "@/components/browse/browse-grants-page";
-import { getAllGrants } from "@/lib/grants/queries";
+import { redirect } from "next/navigation";
 
-export default async function BrowsePage() {
-  const grants = await getAllGrants();
-
-  return <BrowseGrantsPage grants={grants} />;
+export default function BrowsePage() {
+  redirect("/grants");
 }

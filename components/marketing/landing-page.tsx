@@ -82,8 +82,8 @@ export function LandingPage() {
             <a href="mailto:support@grantclient.com" className="hover:text-primary hover:underline">
               Contact
             </a>
-            <Link href="/browse" className="font-medium text-primary hover:underline">
-              Browse grants
+            <Link href="/signup" className="font-medium text-primary hover:underline">
+              Get started
             </Link>
           </div>
         </div>

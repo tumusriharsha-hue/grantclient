@@ -1,17 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Bookmark, Check, ExternalLink, Lightbulb, Share2, X } from "lucide-react";
+import { ArrowLeft, Bookmark, Check, ExternalLink, Share2, X } from "lucide-react";
 import { useState, useTransition } from "react";
 import { toggleSavedGrant } from "@/app/actions/saved-grants";
 import { AppShell } from "@/components/layout";
-import { PublicNav } from "@/components/marketing/public-nav";
 import {
   Badge,
   Button,
   Card,
   getDeadlineVariant,
-  MatchScore,
 } from "@/components/ui";
 import { eligibilityItems } from "@/data";
 import { useRequireFullAccount } from "@/hooks/use-user";
@@ -21,24 +19,19 @@ import type { ScoredGrant } from "@/lib/grant-matching";
 
 interface GrantDetailViewProps {
   grant: ScoredGrant;
-  publicMode?: boolean;
   saved?: boolean;
 }
 
 export function GrantDetailView({
   grant,
-  publicMode = false,
   saved = false,
 }: GrantDetailViewProps) {
-  const { requireFullAccount, isGuest, isAuthenticated, hasDevFullAccess } =
-    useRequireFullAccount();
+  const { requireFullAccount, isGuest, isAuthenticated } = useRequireFullAccount();
   const [isSaved, setIsSaved] = useState(saved);
   const [shareMessage, setShareMessage] = useState<string | null>(null);
   const [, startSaveTransition] = useTransition();
-  const readOnly = publicMode || (!hasDevFullAccess && (!isAuthenticated || isGuest));
+  const readOnly = !isAuthenticated || isGuest;
   const urgency = getDeadlineVariant(Math.max(grant.daysLeft, 0));
-  const backHref = publicMode ? "/browse" : "/grants";
-  const backLabel = publicMode ? "Back to Browse" : "Back to Finder";
   const applicationUrl = getGrantApplicationUrl(grant);
 
   function handleSave() {
@@ -95,11 +88,11 @@ export function GrantDetailView({
     <>
       <div className="border-b border-border bg-surface px-4 py-4 md:px-8">
         <Link
-          href={backHref}
+          href="/grants"
           className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
         >
           <ArrowLeft className="h-4 w-4" />
-          {backLabel}
+          Back to Finder
         </Link>
       </div>
 
@@ -147,45 +140,25 @@ export function GrantDetailView({
               </ul>
             </Card>
 
-            {publicMode ? (
-              <Card padding="lg" className="border-primary/20 bg-primary-light/20">
-                <div className="flex gap-3">
-                  <Lightbulb className="h-5 w-5 shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-semibold text-text">AI tips</h3>
-                    <p className="mt-1 text-sm text-text-secondary">
-                      Emphasize outcomes aligned with {grant.category.toLowerCase()} and
-                      your organization&apos;s mission for the strongest application.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ) : (
-              <Card padding="lg" className="border-primary/20 bg-primary-light/20">
-                <h3 className="font-semibold text-text">Application</h3>
-                <p className="mt-1 text-sm text-text-secondary">
-                  Apply directly on the funder&apos;s website.
-                </p>
-                <a
-                  href={applicationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                >
-                  Apply on funder site
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </Card>
-            )}
+            <Card padding="lg" className="border-primary/20 bg-primary-light/20">
+              <h3 className="font-semibold text-text">Application</h3>
+              <p className="mt-1 text-sm text-text-secondary">
+                Apply directly on the funder&apos;s website.
+              </p>
+              <a
+                href={applicationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+              >
+                Apply on funder site
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Card>
           </div>
 
           <div className="lg:col-span-1">
             <Card padding="lg" className="sticky top-24">
-              {publicMode && (
-                <div className="mb-6 flex justify-center">
-                  <MatchScore score={grant.matchScore} />
-                </div>
-              )}
               <dl className="space-y-3 text-sm">
                 <div>
                   <dt className="text-text-secondary">Funding</dt>
@@ -203,28 +176,20 @@ export function GrantDetailView({
                   <dt className="text-text-secondary">Region</dt>
                   <dd className="font-semibold">{grant.region}</dd>
                 </div>
-                {!publicMode && (
-                  <div>
-                    <dt className="text-text-secondary">Application</dt>
-                    <dd>
-                      <a
-                        href={applicationUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
-                      >
-                        Apply on funder site
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      </a>
-                    </dd>
-                  </div>
-                )}
-                {publicMode && (
-                  <div>
-                    <dt className="text-text-secondary">Match score</dt>
-                    <dd className="font-semibold">{grant.matchScore}%</dd>
-                  </div>
-                )}
+                <div>
+                  <dt className="text-text-secondary">Application</dt>
+                  <dd>
+                    <a
+                      href={applicationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+                    >
+                      Apply on funder site
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </dd>
+                </div>
               </dl>
               <div className="mt-6 flex gap-2">
                 <Button
@@ -252,41 +217,23 @@ export function GrantDetailView({
               {shareMessage && (
                 <p className="mt-2 text-xs text-text-muted">{shareMessage}</p>
               )}
-              {publicMode ? (
-                <Link href="/signup" className="mt-4 block">
-                  <Button className="w-full" size="lg">
-                    Sign Up to Apply
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-              ) : (
-                <a
-                  href={applicationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 block"
-                >
-                  <Button className="w-full" size="lg">
-                    Apply on funder site
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </a>
-              )}
+              <a
+                href={applicationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 block"
+              >
+                <Button className="w-full" size="lg">
+                  Apply on funder site
+                  <ExternalLink className="h-4 w-4" />
+                </Button>
+              </a>
             </Card>
           </div>
         </div>
       </div>
     </>
   );
-
-  if (publicMode) {
-    return (
-      <div className="min-h-screen bg-bg">
-        <PublicNav showSignIn />
-        {content}
-      </div>
-    );
-  }
 
   return <AppShell header={null}>{content}</AppShell>;
 }

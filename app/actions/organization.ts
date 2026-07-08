@@ -8,6 +8,7 @@ import {
   buildMissionFromCategories,
 } from "@/lib/onboarding/helpers";
 import { createClient } from "@/lib/supabase/server";
+import { isOwnProfilePictureUrl } from "@/lib/storage/profile-pictures";
 import {
   onboardingCompleteSchema,
   organizationToOnboardingValues,
@@ -192,6 +193,17 @@ export async function updateOrganizationProfilePicture(
       success: false,
       error: "Create a free account to update your profile picture.",
     };
+  }
+
+  if (profilePictureUrl) {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+
+    if (
+      !supabaseUrl ||
+      !isOwnProfilePictureUrl(profilePictureUrl, user.id, supabaseUrl)
+    ) {
+      return { success: false, error: "Invalid profile picture URL." };
+    }
   }
 
   const { data, error } = await supabase

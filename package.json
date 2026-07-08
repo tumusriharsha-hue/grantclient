@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "install-hooks": "node scripts/install-git-hooks.mjs",
+    "prepare": "node scripts/install-git-hooks.mjs",
     "pre-push": "bash scripts/pre-push-check.sh"
   },
   "dependencies": {
@@ -28,5 +30,8 @@
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "8.5.15"
   }
 }

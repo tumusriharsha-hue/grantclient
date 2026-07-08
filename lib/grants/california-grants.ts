@@ -13,8 +13,8 @@ const SEARCH_URL = "https://data.ca.gov/api/3/action/datastore_search";
 const RESOURCE_ID = "111c8c88-21f6-453c-ae2c-b4785a0624f5";
 const EXTERNAL_ID_PREFIX = "ca-open-data-";
 const DEFAULT_PAGE_SIZE = 100;
-const MAX_FILTERED_PAGES = 50;
-const FILTERED_PAGE_BATCH_SIZE = 5;
+const MAX_FILTERED_PAGES = 10;
+const FILTERED_PAGE_BATCH_SIZE = 2;
 
 type JsonRecord = Record<string, unknown>;
 

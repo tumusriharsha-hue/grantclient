@@ -10,6 +10,7 @@ export const AUTH_ROUTES = {
 export const PROTECTED_ROUTES = [
   "/dashboard",
   "/grants",
+  "/browse",
   "/saved",
   "/applications",
   "/assistant",
@@ -21,6 +22,8 @@ export const PROTECTED_ROUTES = [
 /** Requires full account — guests are redirected to signup */
 export const FULL_ACCOUNT_ROUTES = [
   "/dashboard",
+  "/grants",
+  "/browse",
   "/saved",
   "/applications",
   "/assistant",

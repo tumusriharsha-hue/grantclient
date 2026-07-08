@@ -24,9 +24,8 @@ export function GrantBrowserCard({
   saved,
   onToggleSave,
 }: GrantBrowserCardProps) {
-  const { isGuest, isAuthenticated, hasDevFullAccess, requireFullAccount } =
-    useRequireFullAccount();
-  const readOnly = !hasDevFullAccess && (!isAuthenticated || isGuest);
+  const { isGuest, isAuthenticated, requireFullAccount } = useRequireFullAccount();
+  const readOnly = !isAuthenticated || isGuest;
   const applicationUrl = getGrantApplicationUrl(grant);
 
   function handleSave() {

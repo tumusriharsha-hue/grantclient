@@ -1,13 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { FULL_ACCOUNT_ROUTES, PROTECTED_ROUTES, PUBLIC_AUTH_ROUTES } from "@/lib/auth/constants";
-import { DEV_FULL_ACCESS_COOKIE, isDevFullAccessEnabled } from "@/lib/auth/dev-access";
 import { sanitizeRedirectPath } from "@/lib/auth/redirect";
 import { isAuthenticatedUser, isGuestUser } from "@/lib/auth/session";
 import { createServerClient } from "@supabase/ssr";
 import type { Database } from "@/types/database";
 
-export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request });
+export async function updateSession(
+  request: NextRequest,
+  requestHeaders = new Headers(request.headers),
+) {
+  let supabaseResponse = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
   const { pathname } = request.nextUrl;
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
@@ -28,7 +32,9 @@ export async function updateSession(request: NextRequest) {
           cookiesToSet.forEach(({ name, value }) => {
             request.cookies.set(name, value);
           });
-          supabaseResponse = NextResponse.next({ request });
+          supabaseResponse = NextResponse.next({
+            request: { headers: requestHeaders },
+          });
           cookiesToSet.forEach(({ name, value, options }) => {
             supabaseResponse.cookies.set(name, value, options);
           });
@@ -46,11 +52,8 @@ export async function updateSession(request: NextRequest) {
     pathname.startsWith(route),
   );
   const requestedPath = `${pathname}${request.nextUrl.search}`;
-  const hasDevFullAccess = isDevFullAccessEnabled(
-    request.cookies.get(DEV_FULL_ACCESS_COOKIE)?.value,
-  );
 
-  if (isProtected && (!user || isGuestUser(user)) && !hasDevFullAccess) {
+  if (isProtected && !user) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
     loginUrl.search = "";
@@ -58,7 +61,7 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  if (requiresFullAccount && isGuestUser(user) && !hasDevFullAccess) {
+  if (requiresFullAccount && user && isGuestUser(user)) {
     const signupUrl = request.nextUrl.clone();
     signupUrl.pathname = "/signup";
     signupUrl.search = "";

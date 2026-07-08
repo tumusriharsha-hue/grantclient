@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Script from "next/script";
 import { fontVariables } from "@/lib/fonts";
 import { siteMetadata } from "@/data";
@@ -12,11 +13,13 @@ export const metadata: Metadata = {
   description: siteMetadata.description,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html
       lang="en"
@@ -26,6 +29,7 @@ export default function RootLayout({
       <body className="min-h-full">
         <Script
           id="grantclient-theme"
+          nonce={nonce}
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `

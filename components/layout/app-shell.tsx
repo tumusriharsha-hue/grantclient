@@ -97,7 +97,7 @@ interface AppHeaderProps {
 
 export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
   const router = useRouter();
-  const { user, isGuest, hasDevFullAccess, loading } = useUser();
+  const { user, isGuest, loading } = useUser();
   const [searchQuery, setSearchQuery] = useState("");
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -194,17 +194,12 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
         <div className="flex-1" />
       )}
       <div className="ml-auto flex items-center gap-3">
-        {!loading && hasDevFullAccess && (
-          <Badge variant="neutral" className="hidden sm:inline-flex">
-            Developer Access
-          </Badge>
-        )}
-        {!loading && isGuest && !hasDevFullAccess && (
+        {!loading && isGuest && (
           <Badge variant="neutral" className="hidden sm:inline-flex">
             Account Required
           </Badge>
         )}
-        {!loading && !user && !hasDevFullAccess && (
+        {!loading && !user && (
           <Link href="/login" className="text-sm font-medium text-primary hover:underline">
             Sign in
           </Link>
@@ -247,7 +242,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
           <button
             type="button"
             className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white"
-            title={user?.email ?? (hasDevFullAccess ? "Developer access" : "Profile")}
+            title={user?.email ?? "Profile"}
             aria-label="Profile menu"
             aria-expanded={profileOpen}
             onClick={() => {
@@ -255,7 +250,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
               setNotificationsOpen(false);
             }}
           >
-            {hasDevFullAccess && !user ? "DEV" : getUserInitials(user)}
+            {getUserInitials(user)}
           </button>
           {profileOpen && (
             <div className="absolute right-0 top-11 z-50 w-64 rounded-md border border-border bg-surface shadow-lg">
@@ -265,14 +260,14 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
                 onClick={() => setProfileOpen(false)}
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-light text-sm font-semibold text-primary">
-                  {hasDevFullAccess && !user ? "DEV" : getUserInitials(user)}
+                  {getUserInitials(user)}
                 </div>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold text-text">
-                    {hasDevFullAccess && !user ? "Developer Access" : user?.email ?? "Profile"}
+                    {user?.email ?? "Profile"}
                   </p>
                   <p className="mt-0.5 truncate text-xs text-text-muted">
-                    {hasDevFullAccess ? "Temporary local access" : "Account settings"}
+                    Account settings
                   </p>
                 </div>
               </Link>

@@ -11,8 +11,8 @@ export function formatAuthError(message: string, mode?: "signup" | "signin"): st
     const wait = rateLimitMatch?.[1];
     if (mode === "signup") {
       return wait
-        ? `Supabase email limit reached (applies to all signups, not just one address). Wait ${wait} seconds, or ask your admin to add SUPABASE_SERVICE_ROLE_KEY so sign-up skips confirmation emails.`
-        : "Supabase email limit reached (applies to all signups on this project). Try again in a few minutes, or add SUPABASE_SERVICE_ROLE_KEY to .env.local to skip confirmation emails.";
+        ? `Supabase email limit reached (applies to all signups, not just one address). Wait ${wait} seconds before trying again.`
+        : "Supabase email limit reached (applies to all signups on this project). Try again in a few minutes.";
     }
 
     return wait

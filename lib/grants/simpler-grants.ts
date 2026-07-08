@@ -12,8 +12,8 @@ import {
 const SEARCH_URL = "https://api.simpler.grants.gov/v1/opportunities/search";
 const EXTERNAL_ID_PREFIX = "grants-gov-";
 const DEFAULT_PAGE_SIZE = 100;
-const MAX_FILTERED_PAGES = 100;
-const FILTERED_PAGE_BATCH_SIZE = 5;
+const MAX_FILTERED_PAGES = 10;
+const FILTERED_PAGE_BATCH_SIZE = 2;
 
 type JsonRecord = Record<string, unknown>;
 

@@ -24,6 +24,8 @@ import {
 } from "@/lib/grant-matching";
 import type { Grant, GrantCategory, GrantRegion } from "@/types/grant";
 
+const EXTERNAL_SEARCH_LIMIT = 75;
+
 async function getLocalGrants(): Promise<Grant[]> {
   const supabase = await createClient();
   const { data, error } = await supabase.from("grants").select("*").order("title");
@@ -179,8 +181,8 @@ function grantMatchesCatalogFilters(grant: Grant, filters: GrantCatalogFilters):
 export async function getFilteredGrants(filters: GrantCatalogFilters): Promise<Grant[]> {
   const [localGrants, simplerGrants, californiaGrants] = await Promise.all([
     getLocalGrants(),
-    searchSimplerGrants({ filters }).catch(() => []),
-    searchCaliforniaGrants({ filters }).catch(() => []),
+    searchSimplerGrants({ filters, limit: EXTERNAL_SEARCH_LIMIT }).catch(() => []),
+    searchCaliforniaGrants({ filters, limit: EXTERNAL_SEARCH_LIMIT }).catch(() => []),
   ]);
 
   return [

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import { AUTH_ROUTES } from "@/lib/auth/constants";
-import { DEV_FULL_ACCESS_COOKIE, DEV_FULL_ACCESS_KEY } from "@/lib/auth/dev-access";
 import { sanitizeRedirectPath } from "@/lib/auth/redirect";
 import { formatAuthError } from "@/lib/auth/errors";
 import { signUpWithEmail } from "@/app/actions/auth";
@@ -32,7 +31,6 @@ export function AuthPage({ mode }: AuthPageProps) {
   );
   const accountRequired = searchParams.get("reason") === "account";
   const formDisabled = isSubmitting || Boolean(successMessage);
-  const showDeveloperAccess = process.env.NODE_ENV !== "production";
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -104,13 +102,6 @@ export function AuthPage({ mode }: AuthPageProps) {
     if (authError) {
       setError(authError.message);
     }
-  }
-
-  function handleDeveloperAccess() {
-    window.localStorage.setItem(DEV_FULL_ACCESS_KEY, "true");
-    document.cookie = `${DEV_FULL_ACCESS_COOKIE}=true; path=/; max-age=604800; SameSite=Lax`;
-    router.push(AUTH_ROUTES.grants);
-    router.refresh();
   }
 
   return (
@@ -253,24 +244,6 @@ export function AuthPage({ mode }: AuthPageProps) {
             </Link>
             .
           </p>
-
-          {showDeveloperAccess && (
-            <div className="mt-8 border-t border-border pt-6">
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="w-full text-xs"
-                onClick={handleDeveloperAccess}
-                disabled={isSubmitting}
-              >
-                Developer access without sign-in
-              </Button>
-              <p className="mt-1 text-center text-xs text-danger">
-                Temporary dev-only bypass. Remove before public launch.
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </div>

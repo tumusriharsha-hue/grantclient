@@ -2,7 +2,8 @@
 
 import { Check, ChevronDown, ChevronLeft, ChevronRight, SlidersHorizontal } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useId, useMemo, useRef, useState, useTransition } from "react";
+import { toggleSavedGrant } from "@/app/actions/saved-grants";
 import { AppShell } from "@/components/layout";
 import { Button, Card, Select } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -19,58 +20,7 @@ import type { Grant } from "@/types/grant";
 import { GRANT_CATEGORIES, type GrantCategory } from "@/types/grant";
 import { GrantBrowserCard } from "./grant-browser-card";
 
-const SAVED_GRANTS_KEY = "grantclient:saved-grants";
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
-const savedGrantsListeners = new Set<() => void>();
-
-let cachedSavedRaw: string | null = null;
-let cachedSavedIds: string[] = [];
-
-function readSavedGrantIds(): string[] {
-  try {
-    const stored = window.localStorage.getItem(SAVED_GRANTS_KEY);
-
-    if (stored === cachedSavedRaw) {
-      return cachedSavedIds;
-    }
-
-    cachedSavedRaw = stored;
-    cachedSavedIds = stored ? (JSON.parse(stored) as string[]) : [];
-    return cachedSavedIds;
-  } catch {
-    cachedSavedRaw = null;
-    cachedSavedIds = [];
-    return cachedSavedIds;
-  }
-}
-
-function subscribeSavedGrants(listener: () => void) {
-  savedGrantsListeners.add(listener);
-  window.addEventListener("storage", listener);
-
-  return () => {
-    savedGrantsListeners.delete(listener);
-    window.removeEventListener("storage", listener);
-  };
-}
-
-function writeSavedGrantIds(ids: string[]) {
-  const serialized = JSON.stringify(ids);
-  window.localStorage.setItem(SAVED_GRANTS_KEY, serialized);
-  cachedSavedRaw = serialized;
-  cachedSavedIds = ids;
-  savedGrantsListeners.forEach((listener) => listener());
-}
-
-const EMPTY_SAVED_IDS: string[] = [];
-
-function useSavedGrantIds() {
-  return useSyncExternalStore(
-    subscribeSavedGrants,
-    readSavedGrantIds,
-    () => EMPTY_SAVED_IDS,
-  );
-}
 
 function AnimatedDots() {
   return (
@@ -310,21 +260,29 @@ function MultiFilterSelect({
 interface GrantFinderPageProps {
   organization: Organization | null;
   grants: Grant[];
+  savedGrantIds?: string[];
+  initialSearch?: string;
 }
 
-export function GrantFinderPage({ organization, grants }: GrantFinderPageProps) {
+export function GrantFinderPage({
+  organization,
+  grants,
+  savedGrantIds: initialSavedGrantIds = [],
+  initialSearch = "",
+}: GrantFinderPageProps) {
   const { isGuest, isAuthenticated } = useUser();
   const [catalogGrants, setCatalogGrants] = useState(grants);
+  const [savedGrantIds, setSavedGrantIds] = useState(initialSavedGrantIds);
+  const [, startSaveTransition] = useTransition();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(initialSearch);
   const [categories, setCategories] = useState<GrantCategory[]>([]);
   const [amountRanges, setAmountRanges] = useState<AmountRangeFilter[]>([]);
   const [deadlineRanges, setDeadlineRanges] = useState<DeadlineRangeFilter[]>([]);
   const [sort, setSort] = useState<GrantSortOption>("match");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState<number>(20);
-  const savedGrantIds = useSavedGrantIds();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -388,11 +346,33 @@ export function GrantFinderPage({ organization, grants }: GrantFinderPageProps) 
   const paginatedGrants = filteredGrants.slice(pageStartIndex, pageEndIndex);
 
   function toggleSave(grantId: string) {
-    const next = savedGrantIds.includes(grantId)
+    const wasSaved = savedGrantIds.includes(grantId);
+    const next = wasSaved
       ? savedGrantIds.filter((id) => id !== grantId)
       : [...savedGrantIds, grantId];
 
-    writeSavedGrantIds(next);
+    setSavedGrantIds(next);
+
+    startSaveTransition(async () => {
+      const result = await toggleSavedGrant(grantId);
+
+      if (!result.success) {
+        setSavedGrantIds(savedGrantIds);
+        return;
+      }
+
+      setSavedGrantIds((current) => {
+        if (result.saved && !current.includes(grantId)) {
+          return [...current, grantId];
+        }
+
+        if (!result.saved) {
+          return current.filter((id) => id !== grantId);
+        }
+
+        return current;
+      });
+    });
   }
 
   function clearFilters() {

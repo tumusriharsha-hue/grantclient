@@ -40,6 +40,7 @@ export function ApplicationStatusForm({
       <div className="mt-6 grid gap-5 md:grid-cols-2 md:items-start">
         <Select
           label="Current status"
+          name="status"
           value={status}
           onChange={(event) => handleStatusChange(event.target.value)}
           options={[
@@ -51,16 +52,19 @@ export function ApplicationStatusForm({
         />
         <DatePicker
           label={statusDateLabel}
+          name="statusDate"
           value={statusDate}
           onChange={setStatusDate}
         />
         <Input
           label="Award amount"
+          name="amount"
           placeholder="$0"
           defaultValue={amount ?? ""}
         />
         <DatePicker
           label={isDecisionStatus ? "Decision date" : "Next follow-up"}
+          name="nextDate"
           value={nextDate}
           onChange={setNextDate}
         />
@@ -69,6 +73,7 @@ export function ApplicationStatusForm({
       <div className="mt-5">
         <Textarea
           label="Status notes"
+          name="statusNote"
           rows={5}
           placeholder="Add reviewer feedback, follow-up tasks, decision details, or internal notes..."
           defaultValue={note ?? ""}
@@ -76,10 +81,12 @@ export function ApplicationStatusForm({
       </div>
 
       <div className="mt-6 flex justify-end gap-2 border-t border-border pt-5">
-        <Link href="/dashboard">
-          <Button variant="secondary">Cancel</Button>
+        <Link href="/applications">
+          <Button type="button" variant="secondary">
+            Cancel
+          </Button>
         </Link>
-        <Button>Save status</Button>
+        <Button type="submit">Save status</Button>
       </div>
     </>
   );
@@ -87,6 +94,7 @@ export function ApplicationStatusForm({
 
 interface DatePickerProps {
   label: string;
+  name?: string;
   value: string;
   onChange: (value: string) => void;
 }
@@ -105,7 +113,7 @@ const displayDateFormatter = new Intl.DateTimeFormat("en-US", {
 const weekdayLabels = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const calendarPopoverWidth = 252;
 
-function DatePicker({ label, value, onChange }: DatePickerProps) {
+function DatePicker({ label, name, value, onChange }: DatePickerProps) {
   const id = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -221,6 +229,7 @@ function DatePicker({ label, value, onChange }: DatePickerProps) {
       <label htmlFor={id} className="block text-xs font-semibold text-text-secondary">
         {label}
       </label>
+      {name && <input type="hidden" name={name} value={value} />}
       <div
         ref={triggerRef}
         className="flex h-11 w-full items-center gap-2 rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm leading-6 text-text shadow-sm transition-colors focus-within:border-primary focus-within:outline-none focus-within:ring-[3px] focus-within:ring-primary/10 hover:border-primary hover:bg-bg"

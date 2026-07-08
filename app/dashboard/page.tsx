@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { DashboardPage } from "@/components/dashboard";
+import type { DashboardApplicationItem } from "@/components/dashboard/dashboard-content";
 import { DEV_FULL_ACCESS_COOKIE, isDevFullAccessEnabled } from "@/lib/auth/dev-access";
+import {
+  getDecisionLabel,
+  getLastUpdatedLabel,
+  getSubmittedLabel,
+} from "@/lib/applications/date-labels";
+import {
+  getApplicationStatusLabel,
+  getCurrentUserApplications,
+} from "@/lib/applications/queries";
 import { getAllGrants } from "@/lib/grants/queries";
 import { createClient } from "@/lib/supabase/server";
 import type { Organization } from "@/types/database";
@@ -9,6 +19,27 @@ import type { Organization } from "@/types/database";
 export const metadata: Metadata = {
   title: "Dashboard",
 };
+
+function getApplicationDetail(application: {
+  status: string;
+  last_updated_at: string;
+  submitted_at: string | null;
+  decision_at: string | null;
+}) {
+  if (application.status === "drafting") {
+    return getLastUpdatedLabel(application.last_updated_at);
+  }
+
+  if (application.status === "submitted") {
+    return application.submitted_at
+      ? getSubmittedLabel(application.submitted_at)
+      : "Submission date not set";
+  }
+
+  return application.decision_at
+    ? getDecisionLabel(application.decision_at)
+    : "Decision date not set";
+}
 
 const demoOrganization: Organization = {
   accept_government_grants: true,
@@ -32,6 +63,7 @@ const demoOrganization: Organization = {
   populations_served: ["Teens (13-18)", "Low-Income Communities"],
   preferred_grant_amount: "$25,000-$100,000",
   preferred_grant_types: ["Program Funding", "General Operating Support"],
+  profile_picture_url: null,
   state: "TX",
   user_id: "dev-full-access",
 };
@@ -50,20 +82,42 @@ export default async function DashboardRoute() {
   const { data: { user } } = authResult;
 
   let organization = null;
+  let applications: DashboardApplicationItem[] = [];
 
   if (!user && hasDevFullAccess) {
     organization = demoOrganization;
   }
 
   if (user) {
-    const { data } = await supabase
-      .from("organizations")
-      .select("*")
-      .eq("user_id", user.id)
-      .maybeSingle();
+    const [{ data }, userApplications] = await Promise.all([
+      supabase
+        .from("organizations")
+        .select("*")
+        .eq("user_id", user.id)
+        .maybeSingle(),
+      getCurrentUserApplications(),
+    ]);
 
     organization = data;
+    applications = userApplications.map((application) => ({
+      id: application.id,
+      title: application.title,
+      status: getApplicationStatusLabel(application.status) as
+        | "Drafting"
+        | "Submitted"
+        | "Approved"
+        | "Rejected",
+      detail: getApplicationDetail(application),
+      amount: application.amount ?? undefined,
+    }));
   }
 
-  return <DashboardPage user={user} organization={organization} grants={grants} />;
+  return (
+    <DashboardPage
+      user={user}
+      organization={organization}
+      grants={grants}
+      applications={applications}
+    />
+  );
 }

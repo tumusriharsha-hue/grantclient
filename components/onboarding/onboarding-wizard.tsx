@@ -61,7 +61,11 @@ export function OnboardingWizard({
     setSaveMessage(null);
   }
 
-  async function persist(nextStep: number, complete = false) {
+  async function persist(
+    savedStep: number,
+    complete = false,
+    validationStep = savedStep,
+  ) {
     if (!canEditProfile) {
       setSubmitError(
         isGuest
@@ -75,7 +79,12 @@ export function OnboardingWizard({
     setSubmitError(null);
     setFieldErrors({});
 
-    const result = await saveOnboardingProgress(values, nextStep, complete);
+    const result = await saveOnboardingProgress(
+      values,
+      savedStep,
+      complete,
+      validationStep,
+    );
     setIsSaving(false);
 
     if (!result.success) {
@@ -91,11 +100,12 @@ export function OnboardingWizard({
   }
 
   async function handleNext() {
-    const saved = await persist(step, false);
+    const nextStep = Math.min(step + 1, TOTAL_ONBOARDING_STEPS);
+    const saved = await persist(nextStep, false, step);
     if (!saved) return;
 
     if (step < TOTAL_ONBOARDING_STEPS) {
-      setStep(step + 1);
+      setStep(nextStep);
       return;
     }
 
@@ -318,8 +328,8 @@ export function OnboardingWizard({
   return (
     <div
       className={cn(
-        "mx-auto w-full px-4 py-8",
-        mode === "onboarding" ? "max-w-2xl" : "max-w-3xl",
+        "w-full",
+        mode === "onboarding" ? "mx-auto max-w-2xl px-4 py-8" : "p-0",
       )}
     >
       {mode === "onboarding" && (

@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { signUpSchema } from "@/lib/validations/auth";
 
 export type SignUpActionResult =
-  | { success: true }
+  | { success: true; requiresEmailConfirmation?: boolean }
   | { success: false; error: string };
 
 function isExistingUserError(message: string): boolean {
@@ -123,15 +123,22 @@ export async function signUpWithEmail(
   const admin = createAdminClient();
 
   if (!admin) {
-    const hasEmptyKey =
-      process.env.SUPABASE_SERVICE_ROLE_KEY !== undefined &&
-      !process.env.SUPABASE_SERVICE_ROLE_KEY.trim();
+    const supabase = await createClient();
+    const { data, error } = await supabase.auth.signUp({
+      email: parsed.data.email,
+      password: parsed.data.password,
+    });
+
+    if (error) {
+      return {
+        success: false,
+        error: formatAuthError(error.message, "signup"),
+      };
+    }
 
     return {
-      success: false,
-      error: hasEmptyKey
-        ? "SUPABASE_SERVICE_ROLE_KEY is empty in .env.local. Paste your service_role key after the = sign, save the file (Cmd+S), then restart npm run dev."
-        : "Sign-up is not configured on the server. Add SUPABASE_SERVICE_ROLE_KEY to .env.local (Supabase → Project Settings → API), save the file, then restart the dev server.",
+      success: true,
+      requiresEmailConfirmation: !data.session,
     };
   }
 

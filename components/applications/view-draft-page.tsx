@@ -2,35 +2,29 @@
 
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Download, FileText, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { saveApplicationDraft } from "@/app/actions/applications";
 import { AppHeader, AppShell } from "@/components/layout";
-import { Badge, Button, Card, Textarea } from "@/components/ui";
+import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
+import type { DraftSection } from "@/lib/applications/defaults";
 
-const initialSections = [
-  {
-    title: "Executive summary",
-    body: "Urban Reach Initiative requests support to expand community-based programming for families facing barriers to education, food security, and stable support services.",
-  },
-  {
-    title: "Statement of need",
-    body: "Families in the target neighborhoods continue to experience limited access to coordinated services, reliable referrals, and after-school enrichment opportunities.",
-  },
-  {
-    title: "Program design",
-    body: "The program will combine direct outreach, partner referrals, and participant-centered services to connect families with resources and sustained support.",
-  },
-  {
-    title: "Outcomes and evaluation",
-    body: "The organization will track participant engagement, service referrals, completed activities, and reported improvements in access to support.",
-  },
-  {
-    title: "Budget narrative",
-    body: "Grant funds will support program staffing, participant materials, outreach, evaluation, and direct implementation costs.",
-  },
-];
+interface ViewDraftPageProps {
+  applicationId: string;
+  title: string;
+  sections: DraftSection[];
+  savedAt: string;
+}
 
-export function ViewDraftPage() {
+export function ViewDraftPage({
+  applicationId,
+  title: initialTitle,
+  sections: initialSections,
+  savedAt,
+}: ViewDraftPageProps) {
+  const [title, setTitle] = useState(initialTitle);
   const [sections, setSections] = useState(initialSections);
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [isSaving, startSaving] = useTransition();
 
   function updateSection(index: number, body: string) {
     setSections((current) =>
@@ -41,18 +35,32 @@ export function ViewDraftPage() {
   }
 
   function handleExportPdf() {
-    const pdf = createDraftPdf("Community Impact Fund LOI", sections);
+    const pdf = createDraftPdf(title, sections);
     const url = window.URL.createObjectURL(
       new Blob([pdf], { type: "application/pdf" }),
     );
     const link = document.createElement("a");
 
     link.href = url;
-    link.download = "community-impact-fund-loi.pdf";
+    link.download = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "application-draft"}.pdf`;
     document.body.appendChild(link);
     link.click();
     link.remove();
     window.URL.revokeObjectURL(url);
+  }
+
+  function handleSaveDraft() {
+    setSaveMessage(null);
+
+    startSaving(async () => {
+      const result = await saveApplicationDraft({
+        id: applicationId,
+        title,
+        sections,
+      });
+
+      setSaveMessage(result.success ? "Draft saved" : result.error);
+    });
   }
 
   return (
@@ -78,10 +86,10 @@ export function ViewDraftPage() {
                   </span>
                 </div>
                 <h1 className="text-2xl font-bold text-text">
-                  Community Impact Fund LOI
+                  {title}
                 </h1>
                 <p className="mt-1 text-sm text-text-secondary">
-                  First-pass application draft ready for review.
+                  Last saved {new Date(savedAt).toLocaleDateString()}.
                 </p>
               </div>
               <div className="flex gap-2">
@@ -89,11 +97,21 @@ export function ViewDraftPage() {
                   <Download className="h-4 w-4" />
                   Export PDF
                 </Button>
-                <Button size="sm">Save draft</Button>
+                <Button size="sm" onClick={handleSaveDraft} disabled={isSaving}>
+                  {isSaving ? "Saving..." : "Save draft"}
+                </Button>
               </div>
             </div>
 
             <div className="space-y-5 pt-6">
+              <Input
+                label="Draft title"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+              />
+              {saveMessage && (
+                <p className="text-sm text-text-secondary">{saveMessage}</p>
+              )}
               {sections.map((section, index) => (
                 <section
                   key={section.title}

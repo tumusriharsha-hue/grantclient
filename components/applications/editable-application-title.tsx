@@ -4,10 +4,12 @@ import { useLayoutEffect, useRef, useState } from "react";
 
 interface EditableApplicationTitleProps {
   initialTitle: string;
+  name?: string;
 }
 
 export function EditableApplicationTitle({
   initialTitle,
+  name,
 }: EditableApplicationTitleProps) {
   const [title, setTitle] = useState(initialTitle);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -30,6 +32,7 @@ export function EditableApplicationTitle({
     <textarea
       ref={textareaRef}
       aria-label="Application name"
+      name={name}
       placeholder="Application Name"
       value={title}
       onChange={(event) => setTitle(event.target.value)}

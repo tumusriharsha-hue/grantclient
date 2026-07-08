@@ -4,7 +4,7 @@ const shortDateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 function formatShortDate(value: string) {
-  const [year, month, day] = value.split("-").map(Number);
+  const [year, month, day] = value.slice(0, 10).split("-").map(Number);
 
   if (!year || !month || !day) {
     return value;

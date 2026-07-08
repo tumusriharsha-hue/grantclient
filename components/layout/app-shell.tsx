@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Bell, Menu, Moon, Search, Sun, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { mainNavItems } from "@/data";
 import { signOut, useUser } from "@/hooks/use-user";
 import { getUserInitials } from "@/lib/auth/session";
@@ -98,6 +98,7 @@ interface AppHeaderProps {
 export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
   const router = useRouter();
   const { user, isGuest, hasDevFullAccess, loading } = useUser();
+  const [searchQuery, setSearchQuery] = useState("");
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const notificationsRef = useRef<HTMLDivElement>(null);
@@ -157,22 +158,38 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
     setDarkMode((current) => !current);
   }
 
+  function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const query = searchQuery.trim();
+    const target = query
+      ? `/grants?search=${encodeURIComponent(query)}`
+      : "/grants";
+
+    router.push(target);
+  }
+
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border bg-surface/95 px-4 backdrop-blur-sm md:px-8">
       <div className="w-8 md:hidden" />
       {title ? (
         <h1 className="text-lg font-semibold text-text">{title}</h1>
       ) : showSearch ? (
-        <div className="mx-auto w-full max-w-md flex-1">
+        <form
+          className="mx-auto w-full max-w-md flex-1"
+          role="search"
+          onSubmit={handleSearchSubmit}
+        >
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
             <input
               type="search"
               placeholder="Search grants..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
               className="w-full rounded-md border border-border bg-bg py-2 pl-9 pr-3 text-sm placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
             />
           </div>
-        </div>
+        </form>
       ) : (
         <div className="flex-1" />
       )}

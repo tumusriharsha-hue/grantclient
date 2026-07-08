@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock3, FileText, PenLine } from "lucide-react";
-import { applicationStatus } from "@/data";
 import { AppHeader, AppShell } from "@/components/layout";
 import { SectionJumpLink } from "@/components/applications";
 import { Badge, Button, Card } from "@/components/ui";
@@ -10,22 +9,17 @@ import {
   getLastUpdatedLabel,
   getSubmittedLabel,
 } from "@/lib/applications/date-labels";
+import {
+  getApplicationProgress,
+  getApplicationStatusLabel,
+  getCurrentUserApplications,
+} from "@/lib/applications/queries";
 
 export const metadata: Metadata = {
   title: "My Applications",
 };
 
 type ApplicationStatusLabel = "Drafting" | "Submitted" | "Approved" | "Rejected";
-
-interface ApplicationListItem {
-  id: string;
-  title: string;
-  status: ApplicationStatusLabel;
-  detail: string;
-  summary?: string;
-  amount?: string;
-  progress?: number;
-}
 
 const statusVariant: Record<ApplicationStatusLabel, "default" | "success" | "danger" | "neutral"> = {
   Drafting: "neutral",
@@ -48,41 +42,47 @@ const statusSectionIds: Record<ApplicationStatusLabel, string> = {
   Rejected: "rejected-applications",
 };
 
-function getApplications(): ApplicationListItem[] {
-  return [
-    ...applicationStatus.drafting.items.map((item) => ({
-      id: item.id,
-      title: item.title,
-      status: "Drafting" as const,
-      detail: getLastUpdatedLabel(item.lastUpdated),
-      summary: item.summary,
-      progress: item.progress,
-    })),
-    ...applicationStatus.submitted.items.map((item) => ({
-      id: item.id,
-      title: item.title,
-      status: "Submitted" as const,
-      detail: getSubmittedLabel(item.submissionDate),
-      summary: "Submitted application package is ready for status tracking.",
-      progress: 100,
-    })),
-    ...applicationStatus.outcomes.items.map((item) => ({
-      id: item.id,
-      title: item.title,
-      status: item.outcome as ApplicationStatusLabel,
-      detail: getDecisionLabel(item.decisionDate),
-      summary:
-        item.outcome === "Approved"
-          ? "Award decision recorded and ready for follow-up."
-          : "Decision recorded. Review notes and plan next steps.",
-      amount: "amount" in item ? item.amount : undefined,
-      progress: 100,
-    })),
-  ];
+function getApplicationDetail(application: {
+  status: string;
+  last_updated_at: string;
+  submitted_at: string | null;
+  decision_at: string | null;
+}) {
+  if (application.status === "drafting") {
+    return getLastUpdatedLabel(application.last_updated_at);
+  }
+
+  if (application.status === "submitted") {
+    return application.submitted_at
+      ? getSubmittedLabel(application.submitted_at)
+      : "Submission date not set";
+  }
+
+  return application.decision_at
+    ? getDecisionLabel(application.decision_at)
+    : "Decision date not set";
 }
 
-export default function ApplicationsPage() {
-  const applications = getApplications();
+export default async function ApplicationsPage() {
+  const applications = (await getCurrentUserApplications()).map((application) => {
+    const status = getApplicationStatusLabel(application.status) as ApplicationStatusLabel;
+
+    return {
+      id: application.id,
+      title: application.title,
+      status,
+      detail: getApplicationDetail(application),
+      summary:
+        application.status_note ??
+        application.grant_title ??
+        "Application record saved to your account.",
+      amount: application.amount ?? undefined,
+      progress: getApplicationProgress(
+        application.status as "drafting" | "submitted" | "approved" | "rejected",
+        application.progress,
+      ),
+    };
+  });
   const groupedApplications = (
     ["Drafting", "Submitted", "Approved", "Rejected"] as const
   ).map((status) => ({
@@ -207,7 +207,10 @@ export default function ApplicationsPage() {
                             </Button>
                           </Link>
                           {application.status === "Drafting" ? (
-                            <Link href="/applications/builder/draft" className="w-full">
+                            <Link
+                              href={`/applications/builder/draft?id=${application.id}`}
+                              className="w-full"
+                            >
                               <Button size="sm" className="w-full">
                                 Continue editing
                                 <ArrowRight className="h-4 w-4" />

@@ -5,6 +5,7 @@ import { AppHeader, AppShell } from "@/components/layout";
 import { OnboardingWizard } from "@/components/onboarding";
 import { Card } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { ProfilePictureUploader } from "./profile-picture-uploader";
 import type { Organization } from "@/types/database";
 import type { User } from "@supabase/supabase-js";
 
@@ -49,13 +50,19 @@ export function SettingsPage({ user, organization }: SettingsPageProps) {
 
         <div className="min-w-0 flex-1">
           {active === "profile" && (
-            <div className="space-y-4">
+            <div className="space-y-5">
               <Card padding="md">
                 <h2 className="text-xl font-bold text-text">Organization Profile</h2>
                 <p className="mt-1 text-sm text-text-secondary">
                   Update your onboarding answers to improve grant recommendations.
                 </p>
               </Card>
+              <ProfilePictureUploader
+                userId={user?.id ?? null}
+                organizationName={organization?.organization_name ?? "GrantClient"}
+                initialUrl={organization?.profile_picture_url}
+                canEditProfile={canEditProfile && Boolean(organization)}
+              />
               <OnboardingWizard
                 key={organization?.id ?? "new-org"}
                 organization={organization}

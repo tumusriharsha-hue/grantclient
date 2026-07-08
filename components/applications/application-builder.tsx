@@ -3,6 +3,7 @@
 import { CheckCircle2, Sparkles, Target, Wand2, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { startApplicationDraft } from "@/app/actions/applications";
 import { AppShell } from "@/components/layout";
 import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
 
@@ -21,14 +22,12 @@ interface ApplicationBuilderPageProps {
     funder: string;
     category: string;
     deadline?: string;
+    applicationUrl?: string;
   } | null;
 }
 
 export function ApplicationBuilderPage({ grantContext }: ApplicationBuilderPageProps) {
   const [saved] = useState("2 minutes ago");
-  const draftHref = grantContext
-    ? `/applications/builder/draft?grant=${encodeURIComponent(grantContext.id)}`
-    : "/applications/builder/draft";
 
   return (
     <AppShell header={null}>
@@ -135,12 +134,21 @@ export function ApplicationBuilderPage({ grantContext }: ApplicationBuilderPageP
             ))}
           </div>
 
-          <Link href={draftHref}>
-            <Button className="w-full">
+          <form action={startApplicationDraft}>
+            <input type="hidden" name="grantId" value={grantContext?.id ?? ""} />
+            <input type="hidden" name="grantTitle" value={grantContext?.title ?? ""} />
+            <input type="hidden" name="grantFunder" value={grantContext?.funder ?? ""} />
+            <input type="hidden" name="grantCategory" value={grantContext?.category ?? ""} />
+            <input
+              type="hidden"
+              name="applicationUrl"
+              value={grantContext?.applicationUrl ?? ""}
+            />
+            <Button type="submit" className="w-full">
               <Wand2 className="h-4 w-4" />
               Generate first draft
             </Button>
-          </Link>
+          </form>
         </div>
       </div>
     </AppShell>

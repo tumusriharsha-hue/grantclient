@@ -14,6 +14,69 @@ export type Database = {
   };
   public: {
     Tables: {
+      applications: {
+        Row: {
+          amount: string | null;
+          application_url: string | null;
+          created_at: string;
+          decision_at: string | null;
+          draft_content: Json;
+          grant_category: string | null;
+          grant_funder: string | null;
+          grant_id: string | null;
+          grant_title: string | null;
+          id: string;
+          last_updated_at: string;
+          progress: number;
+          status: string;
+          status_note: string | null;
+          submitted_at: string | null;
+          title: string;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          amount?: string | null;
+          application_url?: string | null;
+          created_at?: string;
+          decision_at?: string | null;
+          draft_content?: Json;
+          grant_category?: string | null;
+          grant_funder?: string | null;
+          grant_id?: string | null;
+          grant_title?: string | null;
+          id?: string;
+          last_updated_at?: string;
+          progress?: number;
+          status?: string;
+          status_note?: string | null;
+          submitted_at?: string | null;
+          title: string;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          amount?: string | null;
+          application_url?: string | null;
+          created_at?: string;
+          decision_at?: string | null;
+          draft_content?: Json;
+          grant_category?: string | null;
+          grant_funder?: string | null;
+          grant_id?: string | null;
+          grant_title?: string | null;
+          id?: string;
+          last_updated_at?: string;
+          progress?: number;
+          status?: string;
+          status_note?: string | null;
+          submitted_at?: string | null;
+          title?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       grants: {
         Row: {
           amount: number | null;
@@ -84,15 +147,7 @@ export type Database = {
           proposal?: string;
           user_id?: string;
         };
-        Relationships: [
-          {
-            foreignKeyName: "generated_proposals_grant_id_fkey";
-            columns: ["grant_id"];
-            isOneToOne: false;
-            referencedRelation: "grants";
-            referencedColumns: ["id"];
-          },
-        ];
+        Relationships: [];
       };
       organizations: {
         Row: {
@@ -116,6 +171,7 @@ export type Database = {
           populations_served: string[] | null;
           preferred_grant_amount: string | null;
           preferred_grant_types: string[] | null;
+          profile_picture_url: string | null;
           state: string | null;
           user_id: string;
         };
@@ -140,6 +196,7 @@ export type Database = {
           populations_served?: string[] | null;
           preferred_grant_amount?: string | null;
           preferred_grant_types?: string[] | null;
+          profile_picture_url?: string | null;
           state?: string | null;
           user_id: string;
         };
@@ -164,6 +221,7 @@ export type Database = {
           populations_served?: string[] | null;
           preferred_grant_amount?: string | null;
           preferred_grant_types?: string[] | null;
+          profile_picture_url?: string | null;
           state?: string | null;
           user_id?: string;
         };
@@ -191,15 +249,7 @@ export type Database = {
           status?: string;
           user_id?: string;
         };
-        Relationships: [
-          {
-            foreignKeyName: "saved_grants_grant_id_fkey";
-            columns: ["grant_id"];
-            isOneToOne: false;
-            referencedRelation: "grants";
-            referencedColumns: ["id"];
-          },
-        ];
+        Relationships: [];
       };
     };
     Views: {
@@ -347,6 +397,10 @@ export type Organization = Tables<"organizations">;
 export type OrganizationInsert = TablesInsert<"organizations">;
 export type OrganizationUpdate = TablesUpdate<"organizations">;
 
+export type Application = Tables<"applications">;
+export type ApplicationInsert = TablesInsert<"applications">;
+export type ApplicationUpdate = TablesUpdate<"applications">;
+
 export type GrantRow = Tables<"grants">;
 export type GrantInsert = TablesInsert<"grants">;
 export type GrantUpdate = TablesUpdate<"grants">;
@@ -380,6 +434,12 @@ export type SavedGrantStatus =
   | "Submitted"
   | "Awarded"
   | "Rejected";
+
+export type ApplicationStatus =
+  | "drafting"
+  | "submitted"
+  | "approved"
+  | "rejected";
 
 export type DraftType =
   | "executive_summary"

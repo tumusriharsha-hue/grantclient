@@ -54,6 +54,11 @@ export function AuthPage({ mode }: AuthPageProps) {
           return;
         }
 
+        if (result.requiresEmailConfirmation) {
+          setSuccessMessage("Check your email to confirm your account, then sign in.");
+          return;
+        }
+
         router.push(nextPath);
         router.refresh();
         return;
@@ -187,7 +192,7 @@ export function AuthPage({ mode }: AuthPageProps) {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
-              minLength={6}
+              minLength={8}
               disabled={formDisabled}
             />
             {successMessage && (

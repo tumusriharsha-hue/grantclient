@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { updateApplicationStatus } from "@/app/actions/applications";
 import { Badge, Card } from "@/components/ui";
 import { ApplicationStatusForm } from "./application-status-form";
 import { EditableApplicationTitle } from "./editable-application-title";
@@ -8,6 +9,7 @@ import { EditableApplicationTitle } from "./editable-application-title";
 type ApplicationStatus = "drafting" | "submitted" | "approved" | "rejected";
 
 interface ApplicationStatusEditorProps {
+  applicationId: string;
   title: string;
   initialStatus: ApplicationStatus;
   initialStatusDate?: string;
@@ -42,6 +44,7 @@ function isApplicationStatus(status: string): status is ApplicationStatus {
 }
 
 export function ApplicationStatusEditor({
+  applicationId,
   title,
   initialStatus,
   initialStatusDate,
@@ -59,26 +62,29 @@ export function ApplicationStatusEditor({
 
   return (
     <Card padding="lg">
-      <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-start sm:justify-between">
-        <div className="min-w-0 flex-1">
-          <EditableApplicationTitle initialTitle={title} />
-          <p className="mt-1 text-sm text-text-secondary">
-            Update where this application stands in your pipeline.
-          </p>
+      <form action={updateApplicationStatus}>
+        <input type="hidden" name="applicationId" value={applicationId} />
+        <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 flex-1">
+            <EditableApplicationTitle initialTitle={title} name="title" />
+            <p className="mt-1 text-sm text-text-secondary">
+              Update where this application stands in your pipeline.
+            </p>
+          </div>
+          <Badge className="shrink-0" variant={getStatusVariant(status)}>
+            {statusLabels[status]}
+          </Badge>
         </div>
-        <Badge className="shrink-0" variant={getStatusVariant(status)}>
-          {statusLabels[status]}
-        </Badge>
-      </div>
 
-      <ApplicationStatusForm
-        initialStatus={initialStatus}
-        initialStatusDate={initialStatusDate}
-        initialDecisionDate={initialDecisionDate}
-        amount={amount}
-        note={note}
-        onStatusChange={handleStatusChange}
-      />
+        <ApplicationStatusForm
+          initialStatus={initialStatus}
+          initialStatusDate={initialStatusDate}
+          initialDecisionDate={initialDecisionDate}
+          amount={amount}
+          note={note}
+          onStatusChange={handleStatusChange}
+        />
+      </form>
     </Card>
   );
 }

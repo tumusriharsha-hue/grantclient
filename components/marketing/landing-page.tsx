@@ -76,9 +76,13 @@ export function LandingPage() {
             <span>© {new Date().getFullYear()}</span>
           </div>
           <div className="flex gap-6">
-            <span>Privacy</span>
-            <span>Contact</span>
-            <Link href="/grants" className="font-medium text-primary hover:underline">
+            <Link href="/privacy" className="hover:text-primary hover:underline">
+              Privacy
+            </Link>
+            <a href="mailto:support@grantclient.com" className="hover:text-primary hover:underline">
+              Contact
+            </a>
+            <Link href="/browse" className="font-medium text-primary hover:underline">
               Browse grants
             </Link>
           </div>

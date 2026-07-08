@@ -1,7 +1,12 @@
 import type { LucideIcon } from "lucide-react";
-import { FileText, LayoutDashboard, PenLine, Search } from "lucide-react";
+import { Bookmark, FileText, LayoutDashboard, PenLine, Search } from "lucide-react";
 
-export type NavItemId = "dashboard" | "grants" | "applications" | "drafting";
+export type NavItemId =
+  | "dashboard"
+  | "grants"
+  | "saved"
+  | "applications"
+  | "drafting";
 
 export interface NavItem {
   id: NavItemId;
@@ -13,6 +18,7 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   { id: "dashboard", label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { id: "grants", label: "Grant Finder", href: "/grants", icon: Search },
+  { id: "saved", label: "Saved Grants", href: "/saved", icon: Bookmark },
   { id: "applications", label: "My Applications", href: "/applications", icon: FileText },
   { id: "drafting", label: "Drafting Lab", href: "/applications/builder", icon: PenLine },
 ];

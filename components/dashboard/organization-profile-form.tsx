@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { saveOrganizationProfile } from "@/app/actions/organization";
 import { Button, Card, Input, Select, Textarea } from "@/components/ui";
 import type { OrganizationProfileInput } from "@/lib/validations/organization";
@@ -40,8 +40,8 @@ export function OrganizationProfileForm({
     register,
     handleSubmit,
     setValue,
-    watch,
     setError,
+    control,
     formState: { errors },
   } = useForm<OrganizationProfileInput>({
     defaultValues: {
@@ -57,7 +57,7 @@ export function OrganizationProfileForm({
     },
   });
 
-  const selectedKeywords = watch("keywords") ?? [];
+  const selectedKeywords = useWatch({ control, name: "keywords" }) ?? [];
 
   function toggleKeyword(area: FocusArea) {
     const next = selectedKeywords.includes(area)

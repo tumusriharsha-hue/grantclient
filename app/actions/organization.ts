@@ -80,6 +80,7 @@ export async function saveOnboardingProgress(
   values: OnboardingFormValues,
   step: number,
   complete = false,
+  validationStep = step,
 ): Promise<OrganizationActionResult> {
   if (complete) {
     const parsed = onboardingCompleteSchema.safeParse(values);
@@ -99,7 +100,7 @@ export async function saveOnboardingProgress(
       };
     }
   } else {
-    const validation = validateOnboardingStep(step, values);
+    const validation = validateOnboardingStep(validationStep, values);
     if (!validation.success) {
       return {
         success: false,
@@ -172,4 +173,40 @@ export async function saveOrganizationProfile(
     6,
     true,
   );
+}
+
+export async function updateOrganizationProfilePicture(
+  profilePictureUrl: string | null,
+): Promise<OrganizationActionResult> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { success: false, error: "Sign in to update your profile picture." };
+  }
+
+  if (isGuestUser(user)) {
+    return {
+      success: false,
+      error: "Create a free account to update your profile picture.",
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("organizations")
+    .update({ profile_picture_url: profilePictureUrl })
+    .eq("user_id", user.id)
+    .select("*")
+    .single();
+
+  if (error) {
+    return { success: false, error: error.message };
+  }
+
+  revalidatePath("/settings");
+  revalidatePath("/dashboard");
+
+  return { success: true, organization: data };
 }

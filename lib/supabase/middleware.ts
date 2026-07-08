@@ -45,6 +45,7 @@ export async function updateSession(request: NextRequest) {
   const requiresFullAccount = FULL_ACCOUNT_ROUTES.some((route) =>
     pathname.startsWith(route),
   );
+  const requestedPath = `${pathname}${request.nextUrl.search}`;
   const hasDevFullAccess = isDevFullAccessEnabled(
     request.cookies.get(DEV_FULL_ACCESS_COOKIE)?.value,
   );
@@ -52,14 +53,17 @@ export async function updateSession(request: NextRequest) {
   if (isProtected && (!user || isGuestUser(user)) && !hasDevFullAccess) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
-    loginUrl.searchParams.set("next", sanitizeRedirectPath(pathname));
+    loginUrl.search = "";
+    loginUrl.searchParams.set("next", sanitizeRedirectPath(requestedPath));
     return NextResponse.redirect(loginUrl);
   }
 
   if (requiresFullAccount && isGuestUser(user) && !hasDevFullAccess) {
     const signupUrl = request.nextUrl.clone();
     signupUrl.pathname = "/signup";
+    signupUrl.search = "";
     signupUrl.searchParams.set("reason", "account");
+    signupUrl.searchParams.set("next", sanitizeRedirectPath(requestedPath));
     return NextResponse.redirect(signupUrl);
   }
 

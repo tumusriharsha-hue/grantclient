@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import { PublicNav } from "@/components/marketing/public-nav";
 import { GrantBrowserCard } from "@/components/grants/grant-browser-card";
@@ -13,9 +13,12 @@ interface BrowseGrantsPageProps {
   grants: Grant[];
 }
 
+const PUBLIC_PAGE_SIZE = 20;
+
 export function BrowseGrantsPage({ grants }: BrowseGrantsPageProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const scoredGrants = useMemo(
     () => grants.map((grant) => scoreGrant(grant, null)),
@@ -33,6 +36,11 @@ export function BrowseGrantsPage({ grants }: BrowseGrantsPageProps) {
       }),
     [scoredGrants, search],
   );
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PUBLIC_PAGE_SIZE));
+  const displayedPage = Math.min(currentPage, totalPages);
+  const pageStartIndex = (displayedPage - 1) * PUBLIC_PAGE_SIZE;
+  const pageEndIndex = Math.min(pageStartIndex + PUBLIC_PAGE_SIZE, filtered.length);
+  const paginatedGrants = filtered.slice(pageStartIndex, pageEndIndex);
 
   return (
     <div className="min-h-screen bg-bg">
@@ -43,7 +51,10 @@ export function BrowseGrantsPage({ grants }: BrowseGrantsPageProps) {
           <input
             type="search"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
             placeholder="Search grants by keyword…"
             className="flex-1 rounded-md border border-border bg-bg px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
           />
@@ -79,10 +90,14 @@ export function BrowseGrantsPage({ grants }: BrowseGrantsPageProps) {
 
         <div className="min-w-0 flex-1">
           <p className="mb-4 text-sm text-text-secondary">
-            Showing {filtered.length} of {grants.length} grants
+            Showing{" "}
+            {filtered.length > 0
+              ? `${pageStartIndex + 1}-${pageEndIndex}`
+              : "0"}{" "}
+            of {filtered.length} grants
           </p>
           <div className="space-y-4">
-            {filtered.map((grant) => (
+            {paginatedGrants.map((grant) => (
               <GrantBrowserCard
                 key={grant.id}
                 grant={grant}
@@ -91,6 +106,35 @@ export function BrowseGrantsPage({ grants }: BrowseGrantsPageProps) {
               />
             ))}
           </div>
+          {filtered.length > PUBLIC_PAGE_SIZE && (
+            <div className="mt-6 flex flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-text-secondary">
+                Page {displayedPage} of {totalPages}
+              </p>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => setCurrentPage(Math.max(1, displayedPage - 1))}
+                  disabled={displayedPage === 1}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  Previous
+                </Button>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => setCurrentPage(Math.min(totalPages, displayedPage + 1))}
+                  disabled={displayedPage === totalPages}
+                >
+                  Next
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

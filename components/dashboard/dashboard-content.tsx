@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Lightbulb, PenLine } from "lucide-react";
 import { useMemo, useState } from "react";
-import { applicationStatus } from "@/data/dashboard";
 import {
   Badge,
   Button,
@@ -13,17 +12,21 @@ import {
 } from "@/components/ui";
 import { getStateLabel } from "@/lib/onboarding/us-states";
 import { getTopMatchedGrants } from "@/lib/grant-matching";
-import {
-  getDecisionLabel,
-  getLastUpdatedLabel,
-  getSubmittedLabel,
-} from "@/lib/applications/date-labels";
 import { formatCurrency } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import type { Organization } from "@/types/database";
 import type { Grant } from "@/types/grant";
 
 type AppTab = "all" | "drafting" | "submitted" | "approved" | "rejected";
+type DashboardApplicationStatus = "Drafting" | "Submitted" | "Approved" | "Rejected";
+
+export interface DashboardApplicationItem {
+  id: string;
+  title: string;
+  status: DashboardApplicationStatus;
+  detail: string;
+  amount?: string;
+}
 
 const statusStyles: Record<string, string> = {
   Drafting: "bg-gray-100 text-text-secondary",
@@ -35,6 +38,7 @@ const statusStyles: Record<string, string> = {
 interface DashboardContentProps {
   organization: Organization;
   grants: Grant[];
+  applications: DashboardApplicationItem[];
 }
 
 const applicationRowClass =
@@ -47,7 +51,11 @@ const centeredApplicationDetailsClass =
 const applicationActionsClass =
   "flex min-w-[132px] flex-col gap-2 sm:self-center sm:flex-row md:flex-col lg:flex-row";
 
-export function DashboardContent({ organization, grants }: DashboardContentProps) {
+export function DashboardContent({
+  organization,
+  grants,
+  applications,
+}: DashboardContentProps) {
   const [appTab, setAppTab] = useState<AppTab>("all");
 
   const recommendedGrants = useMemo(
@@ -72,17 +80,20 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
     { id: "rejected", label: "Rejected" },
   ];
 
-  const approvedApplications = applicationStatus.outcomes.items.filter(
-    (item) => item.outcome === "Approved",
-  );
-  const rejectedApplications = applicationStatus.outcomes.items.filter(
-    (item) => item.outcome === "Rejected",
-  );
+  const draftingApplications = applications.filter((item) => item.status === "Drafting");
+  const submittedApplications = applications.filter((item) => item.status === "Submitted");
+  const approvedApplications = applications.filter((item) => item.status === "Approved");
+  const rejectedApplications = applications.filter((item) => item.status === "Rejected");
 
   const showDrafting = appTab === "all" || appTab === "drafting";
   const showSubmitted = appTab === "all" || appTab === "submitted";
   const showApproved = appTab === "all" || appTab === "approved";
   const showRejected = appTab === "all" || appTab === "rejected";
+  const visibleApplicationCount =
+    (showDrafting ? draftingApplications.length : 0) +
+    (showSubmitted ? submittedApplications.length : 0) +
+    (showApproved ? approvedApplications.length : 0) +
+    (showRejected ? rejectedApplications.length : 0);
 
   return (
     <div className="mx-auto max-w-6xl space-y-10 p-6 md:p-8">
@@ -215,12 +226,21 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
         </div>
 
         <div className="space-y-6">
-          {showDrafting && applicationStatus.drafting.items.length > 0 && (
+          {visibleApplicationCount === 0 && (
+            <Card padding="md">
+              <p className="text-sm text-text-secondary">
+                No applications in this category yet. Start one from the Drafting Lab
+                or choose a grant from Grant Finder.
+              </p>
+            </Card>
+          )}
+
+          {showDrafting && draftingApplications.length > 0 && (
             <div className="space-y-3">
               {appTab === "all" && (
                 <h3 className="text-sm font-semibold text-text-secondary">Drafting</h3>
               )}
-              {applicationStatus.drafting.items.map((item) => (
+              {draftingApplications.map((item) => (
                 <Card key={item.id} padding="md">
                   <div className={applicationRowClass}>
                     <div className={applicationContentClass}>
@@ -237,12 +257,12 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
                       </div>
                       <div className={centeredApplicationDetailsClass}>
                         <p className="text-xs text-text-muted">
-                          {getLastUpdatedLabel(item.lastUpdated)}
+                          {item.detail}
                         </p>
                       </div>
                     </div>
                     <div className={applicationActionsClass}>
-                      <Link href={item.href}>
+                      <Link href={`/applications/${item.id}`}>
                         <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
                           View Application
                         </Button>
@@ -259,12 +279,12 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
             </div>
           )}
 
-          {showSubmitted && applicationStatus.submitted.items.length > 0 && (
+          {showSubmitted && submittedApplications.length > 0 && (
             <div className="space-y-3">
               {appTab === "all" && (
                 <h3 className="text-sm font-semibold text-text-secondary">Submitted</h3>
               )}
-              {applicationStatus.submitted.items.map((item) => (
+              {submittedApplications.map((item) => (
                 <Card key={item.id} padding="md">
                   <div className={applicationRowClass}>
                     <div className={applicationContentClass}>
@@ -281,7 +301,7 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
                       </div>
                       <div className={centeredApplicationDetailsClass}>
                         <p className="text-xs text-text-muted">
-                          {getSubmittedLabel(item.submissionDate)}
+                          {item.detail}
                         </p>
                       </div>
                     </div>
@@ -326,7 +346,7 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
                       <div className={applicationDetailsClass}>
                         <p className="text-xs text-success-dark">{item.amount}</p>
                         <p className="text-xs text-text-muted">
-                          {getDecisionLabel(item.decisionDate)}
+                          {item.detail}
                         </p>
                       </div>
                     </div>
@@ -370,7 +390,7 @@ export function DashboardContent({ organization, grants }: DashboardContentProps
                       </div>
                       <div className={centeredApplicationDetailsClass}>
                         <p className="text-xs text-text-muted">
-                          {getDecisionLabel(item.decisionDate)}
+                          {item.detail}
                         </p>
                       </div>
                     </div>

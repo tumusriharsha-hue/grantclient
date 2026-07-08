@@ -26,6 +26,7 @@ export default async function ApplicationBuilderRoute({
               funder: grant.funder,
               category: grant.category,
               deadline: grant.deadline,
+              applicationUrl: grant.applicationUrl,
             }
           : null
       }

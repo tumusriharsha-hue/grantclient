@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Bookmark, Check, ExternalLink, Lightbulb, Share2, X } from "lucide-react";
+import { useState, useTransition } from "react";
+import { toggleSavedGrant } from "@/app/actions/saved-grants";
 import { AppShell } from "@/components/layout";
 import { PublicNav } from "@/components/marketing/public-nav";
 import {
@@ -20,16 +22,74 @@ import type { ScoredGrant } from "@/lib/grant-matching";
 interface GrantDetailViewProps {
   grant: ScoredGrant;
   publicMode?: boolean;
+  saved?: boolean;
 }
 
-export function GrantDetailView({ grant, publicMode = false }: GrantDetailViewProps) {
+export function GrantDetailView({
+  grant,
+  publicMode = false,
+  saved = false,
+}: GrantDetailViewProps) {
   const { requireFullAccount, isGuest, isAuthenticated, hasDevFullAccess } =
     useRequireFullAccount();
+  const [isSaved, setIsSaved] = useState(saved);
+  const [shareMessage, setShareMessage] = useState<string | null>(null);
+  const [, startSaveTransition] = useTransition();
   const readOnly = publicMode || (!hasDevFullAccess && (!isAuthenticated || isGuest));
   const urgency = getDeadlineVariant(Math.max(grant.daysLeft, 0));
   const backHref = publicMode ? "/browse" : "/grants";
   const backLabel = publicMode ? "Back to Browse" : "Back to Finder";
   const applicationUrl = getGrantApplicationUrl(grant);
+
+  function handleSave() {
+    if (!requireFullAccount()) return;
+
+    const previous = isSaved;
+    setIsSaved(!previous);
+
+    startSaveTransition(async () => {
+      const result = await toggleSavedGrant(grant.id);
+
+      if (!result.success) {
+        setIsSaved(previous);
+        return;
+      }
+
+      setIsSaved(result.saved);
+    });
+  }
+
+  async function handleShare() {
+    const url = window.location.href;
+
+    setShareMessage(null);
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: grant.title,
+          text: `Review this grant from ${grant.funder}.`,
+          url,
+        });
+        setShareMessage("Share sheet opened.");
+        return;
+      }
+
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Link copied to clipboard.");
+        return;
+      }
+
+      setShareMessage("Copy this page URL from your browser.");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+
+      setShareMessage("Unable to share this link.");
+    }
+  }
 
   const content = (
     <>
@@ -169,20 +229,29 @@ export function GrantDetailView({ grant, publicMode = false }: GrantDetailViewPr
               <div className="mt-6 flex gap-2">
                 <Button
                   type="button"
-                  variant="secondary"
+                  variant={isSaved ? "primary" : "secondary"}
                   size="sm"
                   className="flex-1"
                   disabled={readOnly}
-                  onClick={() => requireFullAccount()}
+                  onClick={handleSave}
                 >
-                  <Bookmark className="h-4 w-4" />
-                  Save
+                  <Bookmark className={`h-4 w-4 ${isSaved ? "fill-current" : ""}`} />
+                  {isSaved ? "Saved" : "Save"}
                 </Button>
-                <Button variant="secondary" size="sm" className="flex-1">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  className="flex-1"
+                  onClick={handleShare}
+                >
                   <Share2 className="h-4 w-4" />
                   Share
                 </Button>
               </div>
+              {shareMessage && (
+                <p className="mt-2 text-xs text-text-muted">{shareMessage}</p>
+              )}
               {publicMode ? (
                 <Link href="/signup" className="mt-4 block">
                   <Button className="w-full" size="lg">

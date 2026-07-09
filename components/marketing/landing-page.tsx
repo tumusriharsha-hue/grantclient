@@ -73,7 +73,7 @@ export function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-text-secondary sm:flex-row">
           <div className="flex items-center gap-3">
             <GrantClientLogo className="w-[145px]" />
-            <span>© {new Date().getFullYear()}</span>
+            <span suppressHydrationWarning>© {new Date().getFullYear()}</span>
           </div>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-primary hover:underline">

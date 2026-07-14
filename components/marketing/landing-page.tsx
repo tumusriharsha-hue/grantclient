@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { FileText, PenLine, Search } from "lucide-react";
+import { PublicFooter } from "./public-footer";
 import { PublicNav } from "./public-nav";
 import { TypedHeadline } from "./typed-headline";
-import { GrantClientLogo } from "@/components/brand/grantclient-logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
@@ -69,25 +69,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-bg">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-text-secondary sm:flex-row">
-          <div className="flex items-center gap-3">
-            <GrantClientLogo className="w-[145px]" />
-            <span suppressHydrationWarning>© {new Date().getFullYear()}</span>
-          </div>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-primary hover:underline">
-              Privacy
-            </Link>
-            <a href="mailto:support@grantclient.com" className="hover:text-primary hover:underline">
-              Contact
-            </a>
-            <Link href="/signup" className="font-medium text-primary hover:underline">
-              Get started
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

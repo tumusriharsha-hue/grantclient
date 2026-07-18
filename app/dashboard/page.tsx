@@ -11,6 +11,9 @@ import {
   getCurrentUserApplications,
 } from "@/lib/applications/queries";
 import { getAllGrants } from "@/lib/grants/queries";
+import { rankRecommendedGrants } from "@/lib/grants/rank-recommended-grants";
+import type { RecommendedGrant } from "@/lib/grants/matching-types";
+import { loadCachedMatchExplanations } from "@/lib/ai/match-explanations";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -49,6 +52,7 @@ export default async function DashboardRoute() {
 
   let organization = null;
   let applications: DashboardApplicationItem[] = [];
+  let recommendedGrants: RecommendedGrant[] = [];
 
   if (user) {
     const [{ data }, userApplications] = await Promise.all([
@@ -61,6 +65,12 @@ export default async function DashboardRoute() {
     ]);
 
     organization = data;
+    recommendedGrants = organization
+      ? rankRecommendedGrants(organization, grants, { limit: 5 })
+      : [];
+    if (organization && recommendedGrants.length > 0) {
+      recommendedGrants = await loadCachedMatchExplanations(organization, recommendedGrants);
+    }
     applications = userApplications.map((application) => ({
       id: application.id,
       title: application.title,
@@ -78,7 +88,7 @@ export default async function DashboardRoute() {
     <DashboardPage
       user={user}
       organization={organization}
-      grants={grants}
+      recommendedGrants={recommendedGrants}
       applications={applications}
     />
   );

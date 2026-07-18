@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ViewDraftPage } from "@/components/applications";
 import { normalizeDraftSections } from "@/lib/applications/defaults";
-import { getCurrentUserApplicationById } from "@/lib/applications/queries";
+import {
+  getCurrentUserApplicationById,
+  getCurrentUserApplicationSections,
+} from "@/lib/applications/queries";
 
 export const metadata: Metadata = {
   title: "View Draft",
@@ -25,11 +28,17 @@ export default async function ViewDraftRoute({ searchParams }: ViewDraftRoutePro
     notFound();
   }
 
+  const storedSections = await getCurrentUserApplicationSections(application.id);
+
   return (
     <ViewDraftPage
       applicationId={application.id}
       title={application.title}
-      sections={normalizeDraftSections(application.draft_content)}
+      sections={
+        storedSections.length > 0
+          ? storedSections
+          : normalizeDraftSections(application.draft_content)
+      }
       savedAt={application.updated_at}
     />
   );

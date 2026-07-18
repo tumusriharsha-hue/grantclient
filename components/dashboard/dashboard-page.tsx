@@ -4,21 +4,21 @@ import { AppShell } from "@/components/layout";
 import { OnboardingWizard } from "@/components/onboarding";
 import { isOnboardingComplete } from "@/lib/onboarding/helpers";
 import type { Organization } from "@/types/database";
-import type { Grant } from "@/types/grant";
+import type { RecommendedGrant } from "@/lib/grants/matching-types";
 import type { User } from "@supabase/supabase-js";
 import { DashboardContent, type DashboardApplicationItem } from "./dashboard-content";
 
 interface DashboardPageProps {
   user: User | null;
   organization: Organization | null;
-  grants: Grant[];
+  recommendedGrants: RecommendedGrant[];
   applications: DashboardApplicationItem[];
 }
 
 export function DashboardPage({
   user,
   organization,
-  grants,
+  recommendedGrants,
   applications,
 }: DashboardPageProps) {
   const isGuest = Boolean(user?.is_anonymous);
@@ -30,7 +30,7 @@ export function DashboardPage({
       {setupComplete && organization ? (
         <DashboardContent
           organization={organization}
-          grants={grants}
+          recommendedGrants={recommendedGrants}
           applications={applications}
         />
       ) : (

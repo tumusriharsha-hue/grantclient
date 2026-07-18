@@ -12,8 +12,8 @@ import type { Organization } from "@/types/database";
 import {
   FOCUS_AREAS,
   ORGANIZATION_TYPES,
+  normalizeOrganizationType,
   type FocusArea,
-  type OrganizationType,
 } from "@/types/organization";
 
 interface OrganizationProfileFormProps {
@@ -48,9 +48,7 @@ export function OrganizationProfileForm({
       organization_name: organization?.organization_name ?? "",
       mission: organization?.mission ?? "",
       location: organization?.location ?? "",
-      organization_type:
-        (organization?.organization_type as OrganizationType | undefined) ??
-        "501(c)(3) Nonprofit",
+      organization_type: normalizeOrganizationType(organization?.organization_type),
       keywords: (organization?.keywords ?? []) as FocusArea[],
       budget: organization?.budget ?? "",
       is_501c3: organization?.is_501c3 ?? false,

@@ -4,26 +4,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button, Input, Select } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { MISSION_CATEGORIES, ORGANIZATION_TYPES } from "@/types/organization";
 
-const focusAreas = [
-  "Education",
-  "Youth Development",
-  "Health & Wellness",
-  "Environment",
-  "Community Development",
-  "Food Security",
-  "Arts & Culture",
-  "Technology & Innovation",
-  "Other",
-];
+const focusAreas = MISSION_CATEGORIES;
 
-const orgTypes = [
-  { value: "youth", label: "Youth nonprofit" },
-  { value: "school", label: "School" },
-  { value: "sports", label: "Sports org" },
-  { value: "community", label: "Community org" },
-  { value: "other", label: "Other" },
-];
+const orgTypes = ORGANIZATION_TYPES.map((type) => ({ value: type, label: type }));
 
 const fundingSizes = [
   { value: "small", label: "Small ($5k – $50k)" },
@@ -90,7 +75,7 @@ export function SetupWizard() {
               <Select
                 label="Organization type"
                 options={orgTypes}
-                defaultValue="youth"
+                defaultValue="501(c)(3) Nonprofit"
               />
               <Input label="Location" placeholder="Brooklyn, NY" />
             </div>

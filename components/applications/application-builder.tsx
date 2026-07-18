@@ -1,156 +1,173 @@
 "use client";
 
-import { CheckCircle2, Sparkles, Target, Wand2, X } from "lucide-react";
+import { CheckCircle2, Target } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useActionState } from "react";
 import { startApplicationDraft } from "@/app/actions/applications";
 import { AppShell } from "@/components/layout";
 import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
 
-const aiTools = [
-  "Improve this answer",
-  "Make it more formal",
-  "Shorten / expand",
-  "Match grant tone",
-  "Check eligibility",
-];
-
 interface ApplicationBuilderPageProps {
+  organization: {
+    name: string;
+    mission: string;
+  };
+  documents: Array<{ id: string; fileName: string }>;
   grantContext?: {
     id: string;
     title: string;
     funder: string;
     category: string;
     deadline?: string;
-    applicationUrl?: string;
+    verifiedAt?: string;
+    sourceUrl?: string;
+    questions?: Array<{ id: string; question: string; required?: boolean }>;
   } | null;
 }
 
-export function ApplicationBuilderPage({ grantContext }: ApplicationBuilderPageProps) {
-  const [saved] = useState("2 minutes ago");
+export function ApplicationBuilderPage({
+  organization,
+  documents,
+  grantContext,
+}: ApplicationBuilderPageProps) {
+  const [state, formAction, isPending] = useActionState(startApplicationDraft, {});
 
   return (
     <AppShell header={null}>
       <div className="border-b border-border bg-surface px-4 py-3 md:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-medium text-text">
-              Organization Details — 60% complete
-            </p>
-            <div className="mt-2 h-2 w-full max-w-xs overflow-hidden rounded-full bg-bg">
-              <div className="h-full w-[60%] rounded-full bg-primary" />
-            </div>
+            <p className="text-sm font-medium text-text">Application setup</p>
+            <p className="text-xs text-text-muted">Project-specific details only</p>
           </div>
           <div className="flex items-center gap-1.5 text-sm text-success-dark">
             <CheckCircle2 className="h-4 w-4" />
-            Last saved {saved}
+            Organization profile loaded
           </div>
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-0 lg:grid-cols-2">
-        <div className="space-y-6 border-b border-border p-6 md:p-8 lg:border-b-0 lg:border-r">
-          {grantContext && (
-            <Card padding="md" className="border-primary/20 bg-primary-light/20">
-              <div className="flex gap-3">
-                <Target className="h-5 w-5 shrink-0 text-primary" />
-                <div className="min-w-0 flex-1">
-                  <div className="mb-2 flex flex-wrap items-center gap-2">
-                    <Badge variant="default">Drafting for grant</Badge>
-                    <span className="text-xs text-text-muted">{grantContext.category}</span>
+      <form action={formAction} className="mx-auto max-w-5xl space-y-6 p-6 md:p-8">
+        <input type="hidden" name="grantId" value={grantContext?.id ?? ""} />
+        {state.error && (
+          <p className="rounded-md bg-danger-light px-3 py-2 text-sm text-danger-dark">
+            {state.error}
+          </p>
+        )}
+
+        <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
+          <div className="space-y-6">
+            {grantContext && (
+              <Card padding="md" className="border-primary/20 bg-primary-light/20">
+                <div className="flex gap-3">
+                  <Target className="h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <Badge variant="default">Selected grant</Badge>
+                    <h1 className="mt-2 font-semibold text-text">{grantContext.title}</h1>
+                    <p className="text-sm text-text-secondary">
+                      {grantContext.funder}
+                      {grantContext.deadline ? ` | Deadline ${grantContext.deadline}` : ""}
+                    </p>
                   </div>
-                  <h2 className="break-words font-semibold text-text">
-                    {grantContext.title}
-                  </h2>
+                </div>
+              </Card>
+            )}
+
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold text-text">Project basics</h2>
+              <Input label="Project or program name" name="projectName" required maxLength={500} error={state.fieldErrors?.projectName} />
+              <div className="grid gap-4 sm:grid-cols-3">
+                <Input label="Amount requested" name="amountRequested" type="number" min={1} step={1} required error={state.fieldErrors?.amountRequested} />
+                <Input label="Project start" name="projectStartDate" type="date" required error={state.fieldErrors?.projectStartDate} />
+                <Input label="Project end" name="projectEndDate" type="date" required error={state.fieldErrors?.projectEndDate} />
+              </div>
+              <Textarea label="Project summary" name="projectSummary" rows={4} required maxLength={5000} error={state.fieldErrors?.projectSummary} />
+            </section>
+
+            <section className="space-y-4 border-t border-border pt-6">
+              <h2 className="text-lg font-semibold text-text">Need and beneficiaries</h2>
+              <Textarea label="Specific problem or need" name="problemStatement" rows={4} required maxLength={5000} error={state.fieldErrors?.problemStatement} />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Input label="Target beneficiaries" name="targetBeneficiaries" required maxLength={500} error={state.fieldErrors?.targetBeneficiaries} />
+                <Input label="Number of people served (optional)" name="peopleServed" type="number" min={1} step={1} error={state.fieldErrors?.peopleServed} />
+              </div>
+            </section>
+
+            {grantContext?.questions && grantContext.questions.length > 0 && (
+              <section className="space-y-4 border-t border-border pt-6">
+                <div>
+                  <h2 className="text-lg font-semibold text-text">Verified funder questions</h2>
                   <p className="mt-1 text-sm text-text-secondary">
-                    {grantContext.funder}
-                    {grantContext.deadline ? ` · Deadline ${grantContext.deadline}` : ""}
+                    These are separate from GrantClient&apos;s standard proposal sections.
+                    {grantContext.verifiedAt ? ` Verified ${new Date(grantContext.verifiedAt).toLocaleDateString()}.` : ""}
                   </p>
                 </div>
-                <Link
-                  href="/applications/builder"
-                  aria-label="Remove selected grant"
-                  title="Remove selected grant"
-                  className="group -mr-1 -mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/80 bg-surface/80 text-text-muted shadow-sm transition-all hover:-translate-y-0.5 hover:border-danger/30 hover:bg-danger-light hover:text-danger-dark focus:outline-none focus:ring-[3px] focus:ring-danger/10"
-                >
-                  <X className="h-4 w-4 transition-transform group-hover:scale-110" />
-                </Link>
-              </div>
+                {grantContext.questions.map((question) => (
+                  <Textarea
+                    key={question.id}
+                    label={question.question}
+                    name={`grantQuestion:${question.id}`}
+                    rows={4}
+                    required={question.required}
+                    maxLength={5000}
+                    error={state.fieldErrors?.[`grantQuestion:${question.id}`]}
+                  />
+                ))}
+                {grantContext.sourceUrl && (
+                  <a href={grantContext.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
+                    View verified source
+                  </a>
+                )}
+              </section>
+            )}
+
+            <section className="space-y-4 border-t border-border pt-6">
+              <h2 className="text-lg font-semibold text-text">Plan and outcomes</h2>
+              <Textarea label="Planned activities" name="plannedActivities" rows={4} required maxLength={5000} error={state.fieldErrors?.plannedActivities} />
+              <Textarea label="Measurable outcomes" name="measurableOutcomes" rows={4} required maxLength={5000} error={state.fieldErrors?.measurableOutcomes} />
+              <Textarea label="Evaluation approach" name="evaluationApproach" rows={4} required maxLength={5000} error={state.fieldErrors?.evaluationApproach} />
+              <Textarea label="Project budget summary" name="projectBudgetSummary" rows={4} required maxLength={5000} error={state.fieldErrors?.projectBudgetSummary} />
+            </section>
+
+            <section className="space-y-4 border-t border-border pt-6">
+              <h2 className="text-lg font-semibold text-text">Helpful context</h2>
+              <Textarea label="Sustainability plan (optional)" name="sustainabilityPlan" rows={3} maxLength={5000} />
+              <Textarea label="Partnerships (optional)" name="partnerships" rows={3} maxLength={5000} />
+              <Textarea label="Staff responsible (optional)" name="staffResponsible" rows={3} maxLength={5000} />
+              <Textarea label="Application notes (optional)" name="organizationNotes" rows={3} maxLength={5000} />
+              {documents.length > 0 && (
+                <fieldset className="space-y-2">
+                  <legend className="text-sm font-medium text-text">Supporting documents</legend>
+                  {documents.map((document) => (
+                    <label key={document.id} className="flex items-center gap-2 text-sm text-text-secondary">
+                      <input type="checkbox" name="selectedDocumentIds" value={document.id} />
+                      {document.fileName}
+                    </label>
+                  ))}
+                </fieldset>
+              )}
+            </section>
+          </div>
+
+          <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+            <Card padding="md">
+              <h2 className="font-semibold text-text">{organization.name}</h2>
+              <p className="mt-2 text-sm text-text-secondary">{organization.mission}</p>
+              <Link href="/settings" className="mt-3 inline-block text-sm font-medium text-primary hover:underline">
+                Update organization profile
+              </Link>
             </Card>
-          )}
-          <Input label="Organization name" defaultValue="Urban Reach Initiative" />
-          <Textarea
-            label="Mission statement"
-            hint="e.g., 'We serve 500+ teens in Brooklyn through literacy programs'"
-            rows={4}
-            defaultValue="To empower underserved communities through sustainable technology education and equitable access to learning resources."
-          />
-          <Input label="Annual budget" placeholder="$500,000" defaultValue="$750,000" />
-          <Textarea
-            label="Impact goals"
-            rows={3}
-            placeholder="Describe the outcomes you aim to achieve..."
-          />
-          <div className="space-y-1.5">
-            <label className="block text-sm font-medium text-text">
-              Supporting documents
-            </label>
-            <div className="flex min-h-[120px] flex-col items-center justify-center rounded-md border-2 border-dashed border-border bg-bg p-6 text-center">
+            <Card padding="md">
               <p className="text-sm text-text-secondary">
-                Drag and drop files here, or{" "}
-                <button type="button" className="font-medium text-primary hover:underline">
-                  browse
-                </button>
+                These answers create a structured proposal. Narrative sections can be generated individually after setup.
               </p>
-            </div>
-          </div>
+              <Button type="submit" className="mt-4 w-full">
+                {isPending ? "Saving..." : "Save and build proposal"}
+              </Button>
+            </Card>
+          </aside>
         </div>
-
-        <div className="bg-bg p-6 md:p-8">
-          <Card padding="md" className="mb-6 border-primary/20 bg-primary-light/20">
-            <div className="flex gap-2">
-              <Sparkles className="h-5 w-5 shrink-0 text-primary" />
-              <div>
-                <h3 className="font-semibold text-text">AI Match Reasoning</h3>
-                <p className="mt-1 text-sm text-text-secondary">
-                  This grant aligns with your youth education focus and urban
-                  program locations. Highlight your 2023 literacy outcomes for
-                  the strongest match.
-                </p>
-              </div>
-            </div>
-          </Card>
-
-          <h3 className="mb-3 text-sm font-semibold text-text">Quick tools</h3>
-          <div className="mb-6 flex flex-wrap gap-2">
-            {aiTools.map((tool) => (
-              <button
-                key={tool}
-                type="button"
-                className="rounded-md border border-border bg-surface px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors hover:border-primary hover:text-primary"
-              >
-                {tool}
-              </button>
-            ))}
-          </div>
-
-          <form action={startApplicationDraft}>
-            <input type="hidden" name="grantId" value={grantContext?.id ?? ""} />
-            <input type="hidden" name="grantTitle" value={grantContext?.title ?? ""} />
-            <input type="hidden" name="grantFunder" value={grantContext?.funder ?? ""} />
-            <input type="hidden" name="grantCategory" value={grantContext?.category ?? ""} />
-            <input
-              type="hidden"
-              name="applicationUrl"
-              value={grantContext?.applicationUrl ?? ""}
-            />
-            <Button type="submit" className="w-full">
-              <Wand2 className="h-4 w-4" />
-              Generate first draft
-            </Button>
-          </form>
-        </div>
-      </div>
+      </form>
     </AppShell>
   );
 }

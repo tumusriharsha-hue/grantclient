@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { fontVariables } from "@/lib/fonts";
 import { siteMetadata } from "@/data";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
-
-const themeScript = `try {
-  var theme = window.localStorage.getItem("grantclient:theme");
-  var dark = theme === "dark";
-  document.documentElement.classList.toggle("dark", dark);
-} catch (_) {}`;
 
 export const metadata: Metadata = {
   title: {
@@ -25,8 +18,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = (await headers()).get("x-nonce") ?? undefined;
-
   return (
     <html
       lang="en"
@@ -34,12 +25,6 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full">
-        <script
-          id="grantclient-theme"
-          {...(nonce ? { nonce } : {})}
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: themeScript }}
-        />
         {children}
       </body>
     </html>

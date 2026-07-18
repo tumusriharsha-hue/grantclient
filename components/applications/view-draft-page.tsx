@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Download, FileText, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, CheckCircle2, Download, FileText, RotateCcw, Sparkles, Wand2 } from "lucide-react";
 import { useState, useTransition } from "react";
 import { saveApplicationDraft } from "@/app/actions/applications";
+import { generateApplicationSection } from "@/app/actions/ai";
 import { AppHeader, AppShell } from "@/components/layout";
 import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
 import type { DraftSection } from "@/lib/applications/defaults";
+import { proposalTemplate } from "@/lib/applications/proposal-template";
 
 interface ViewDraftPageProps {
   applicationId: string;
@@ -25,13 +27,62 @@ export function ViewDraftPage({
   const [sections, setSections] = useState(initialSections);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [isSaving, startSaving] = useTransition();
+  const [isGenerating, startGenerating] = useTransition();
+  const [generatingKey, setGeneratingKey] = useState<string | null>(null);
 
   function updateSection(index: number, body: string) {
     setSections((current) =>
       current.map((section, sectionIndex) =>
-        sectionIndex === index ? { ...section, body } : section,
+        sectionIndex === index ? { ...section, body, status: "draft" } : section,
       ),
     );
+  }
+
+  function generateSection(index: number) {
+    const section = sections[index];
+    if (!section?.sectionKey) return;
+    setSaveMessage(null);
+    setGeneratingKey(section.sectionKey);
+    startGenerating(async () => {
+      const result = await generateApplicationSection({
+        applicationId,
+        sectionKey: section.sectionKey!,
+      });
+      setGeneratingKey(null);
+      if (!result.success) {
+        setSaveMessage(result.error);
+        return;
+      }
+      setSections((current) => current.map((item, sectionIndex) =>
+        sectionIndex === index
+          ? {
+              ...item,
+              previousBody: result.section.previousContent,
+              body: result.section.content,
+              missingInformation: result.section.missingInformation,
+              usedSourceFields: result.section.usedSourceFields,
+              status: "draft",
+            }
+          : item,
+      ));
+      setSaveMessage("Section generated and saved");
+    });
+  }
+
+  function setSectionComplete(index: number) {
+    setSections((current) => current.map((section, sectionIndex) =>
+      sectionIndex === index
+        ? { ...section, status: section.status === "complete" ? "draft" : "complete" }
+        : section,
+    ));
+  }
+
+  function restoreSection(index: number) {
+    setSections((current) => current.map((section, sectionIndex) =>
+      sectionIndex === index && section.previousBody !== null && section.previousBody !== undefined
+        ? { ...section, body: section.previousBody, previousBody: section.body, status: "draft" }
+        : section,
+    ));
   }
 
   function handleExportPdf() {
@@ -79,10 +130,10 @@ export function ViewDraftPage({
             <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <Badge variant="default">AI draft</Badge>
+                  <Badge variant="default">Structured proposal</Badge>
                   <span className="inline-flex items-center gap-1 text-xs text-success-dark">
                     <CheckCircle2 className="h-3.5 w-3.5" />
-                    Generated just now
+                    Saved section by section
                   </span>
                 </div>
                 <h1 className="text-2xl font-bold text-text">
@@ -112,22 +163,65 @@ export function ViewDraftPage({
               {saveMessage && (
                 <p className="text-sm text-text-secondary">{saveMessage}</p>
               )}
-              {sections.map((section, index) => (
+              {sections.map((section, index) => {
+                const template = proposalTemplate.find((item) => item.id === section.sectionKey);
+                return (
                 <section
-                  key={section.title}
+                  key={section.sectionKey ?? section.title}
                   className="rounded-md border border-border bg-bg p-4"
                 >
-                  <div className="mb-3">
+                  <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <h2 className="font-semibold text-text">{section.title}</h2>
+                    <div className="flex flex-wrap gap-2">
+                      {template?.aiEnabled && (
+                        <Button
+                          type="button"
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => generateSection(index)}
+                          disabled={isGenerating}
+                        >
+                          <Wand2 className="h-4 w-4" />
+                          {generatingKey === section.sectionKey
+                            ? "Generating..."
+                            : section.body
+                              ? "Regenerate"
+                              : "Generate section"}
+                        </Button>
+                      )}
+                      {section.previousBody !== null && section.previousBody !== undefined && (
+                        <Button type="button" variant="ghost" size="sm" onClick={() => restoreSection(index)}>
+                          <RotateCcw className="h-4 w-4" />
+                          Restore
+                        </Button>
+                      )}
+                      <Button type="button" variant="ghost" size="sm" onClick={() => setSectionComplete(index)}>
+                        <Check className="h-4 w-4" />
+                        {section.status === "complete" ? "Completed" : "Mark complete"}
+                      </Button>
+                    </div>
                   </div>
                   <Textarea
                     value={section.body}
                     rows={5}
+                    placeholder={template?.deterministic ? "Saved facts appear here." : "Generate this section or write your own response."}
                     onChange={(event) => updateSection(index, event.target.value)}
                     className="min-h-32 resize-y bg-surface leading-relaxed"
                   />
+                  {section.missingInformation && section.missingInformation.length > 0 && (
+                    <p className="mt-2 text-xs text-warning-dark">
+                      Needs input: {section.missingInformation.join(", ")}
+                    </p>
+                  )}
+                  {section.usedSourceFields && section.usedSourceFields.length > 0 && (
+                    <details className="mt-3 text-xs text-text-muted">
+                      <summary className="cursor-pointer font-medium">Source details used</summary>
+                      <p className="mt-1 break-words">{section.usedSourceFields.join(", ")}</p>
+                    </details>
+                  )}
                 </section>
-              ))}
+                );
+              })}
             </div>
           </Card>
 
@@ -136,25 +230,11 @@ export function ViewDraftPage({
               <div className="flex gap-3">
                 <Sparkles className="h-5 w-5 shrink-0 text-primary" />
                 <div>
-                  <h2 className="font-semibold text-text">AI review panel</h2>
+                  <h2 className="font-semibold text-text">Section drafting</h2>
                   <p className="mt-1 text-sm text-text-secondary">
-                    Use these tools to refine the generated application.
+                    Generate one narrative section at a time. Existing text remains intact if generation fails.
                   </p>
                 </div>
-              </div>
-              <div className="mt-4 space-y-2">
-                {["Improve tone", "Add measurable outcomes", "Shorten draft"].map(
-                  (action) => (
-                    <Button
-                      key={action}
-                      type="button"
-                      variant="secondary"
-                      className="w-full justify-start"
-                    >
-                      {action}
-                    </Button>
-                  ),
-                )}
               </div>
             </Card>
 

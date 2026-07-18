@@ -1,8 +1,14 @@
 import type { Json } from "@/types/database";
 
 export interface DraftSection {
+  id?: string;
+  sectionKey?: string;
   title: string;
   body: string;
+  status?: "not_started" | "draft" | "complete" | "stale";
+  previousBody?: string | null;
+  missingInformation?: string[];
+  usedSourceFields?: string[];
 }
 
 export const defaultDraftSections: DraftSection[] = [

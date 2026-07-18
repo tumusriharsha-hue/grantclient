@@ -35,7 +35,26 @@ export interface Grant {
   region: GrantRegion;
   status: GrantStatus;
   amount?: number;
+  awardMin?: number;
+  awardMax?: number;
   deadline?: string;
+  rollingDeadline?: boolean;
+  eligibilitySummary?: string;
+  eligibleOrganizationTypes?: string[];
+  requiredNonprofitStatus?: string;
+  eligibleLocations?: string[];
+  geographicScope?: string;
+  focusAreas?: string[];
+  populationsServed?: string[];
+  minimumAnnualBudget?: number;
+  maximumAnnualBudget?: number;
+  minimumRequestAmount?: number;
+  maximumRequestAmount?: number;
+  requirements?: string[];
+  requiredDocuments?: string[];
+  applicationQuestions?: Array<{ id: string; question: string; required?: boolean }>;
+  sourceUrl?: string;
+  verifiedAt?: string;
   /** External funder application portal URL */
   applicationUrl: string;
   createdAt: string;

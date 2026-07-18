@@ -2,24 +2,35 @@
 
 import { revalidatePath } from "next/cache";
 import { isGuestUser } from "@/lib/auth/session";
-import {
-  budgetRangeToAmount,
-  buildLocationFromStateCity,
-  buildMissionFromCategories,
-} from "@/lib/onboarding/helpers";
+import { buildLocationFromStateCity } from "@/lib/onboarding/helpers";
 import { createClient } from "@/lib/supabase/server";
 import { isOwnProfilePictureUrl } from "@/lib/storage/profile-pictures";
 import {
+  normalizeOptionalWebsite,
   onboardingCompleteSchema,
   organizationToOnboardingValues,
   validateOnboardingStep,
   type OnboardingFormValues,
 } from "@/lib/validations/onboarding";
 import type { Organization } from "@/types/database";
+import {
+  normalizeOrganizationType,
+  organizationTypeToStorageValue,
+} from "@/types/organization";
 
 export type OrganizationActionResult =
   | { success: true; organization: Organization }
   | { success: false; error: string; fieldErrors?: Record<string, string> };
+
+const MIGRATION_PENDING_ORGANIZATION_COLUMNS = [
+  "nonprofit_status",
+  "programs",
+  "impact_goals",
+  "previous_grant_experience",
+  "website",
+  "requested_funding_min",
+  "requested_funding_max",
+] as const;
 
 export async function getOrganizationForUser(): Promise<Organization | null> {
   const supabase = await createClient();
@@ -38,7 +49,7 @@ export async function getOrganizationForUser(): Promise<Organization | null> {
     .maybeSingle();
 
   if (error) {
-    throw new Error(error.message);
+    throw new Error("Unable to load the organization profile.");
   }
 
   return data;
@@ -56,25 +67,53 @@ function buildOrganizationPayload(
   return {
     user_id: userId,
     organization_name: values.organization_name?.trim() || "Untitled Organization",
-    organization_type: values.organization_type ?? "Other",
+    organization_type: organizationTypeToStorageValue(
+      normalizeOrganizationType(values.organization_type),
+    ),
     has_501c3: values.has_501c3 ?? false,
     is_501c3: values.has_501c3 ?? false,
+    nonprofit_status: values.has_501c3 ? "501c3" : "nonprofit",
     mission_categories: missionCategories,
+    programs: values.programs ?? [],
+    impact_goals: values.impact_goals?.trim() || null,
     populations_served: values.populations_served ?? [],
     state: values.state?.trim() || null,
     city: values.city?.trim() || null,
-    annual_budget_range: values.annual_budget_range ?? null,
+    annual_budget_range: values.annual_budget_range || null,
+    previous_grant_experience: values.previous_grant_experience?.trim() || null,
+    website: normalizeOptionalWebsite(values.website) || null,
     organization_age_range: values.organization_age_range ?? null,
-    preferred_grant_amount: values.preferred_grant_amount ?? null,
+    preferred_grant_amount: values.preferred_grant_amount || null,
+    requested_funding_min: values.requested_funding_min ?? null,
+    requested_funding_max: values.requested_funding_max ?? null,
     preferred_grant_types: values.preferred_grant_types ?? [],
     accept_government_grants: values.accept_government_grants ?? true,
     keywords: missionCategories,
-    mission: buildMissionFromCategories(missionCategories),
+    mission: values.mission?.trim() || null,
     location,
-    budget: budgetRangeToAmount(values.annual_budget_range ?? null),
+    budget: values.budget ?? null,
     onboarding_step: step,
     onboarding_completed: complete,
   };
+}
+
+function buildOrganizationCompatibilityPayload(
+  payload: ReturnType<typeof buildOrganizationPayload>,
+) {
+  const compatiblePayload = { ...payload };
+
+  for (const column of MIGRATION_PENDING_ORGANIZATION_COLUMNS) {
+    delete compatiblePayload[column];
+  }
+
+  return compatiblePayload;
+}
+
+function isSchemaCacheColumnError(error: { code?: string; message?: string } | null) {
+  return (
+    error?.code === "PGRST204" ||
+    /schema cache|could not find.*column/i.test(error?.message ?? "")
+  );
 }
 
 export async function saveOnboardingProgress(
@@ -135,7 +174,7 @@ export async function saveOnboardingProgress(
     .eq("user_id", user.id)
     .maybeSingle();
 
-  const { data, error } = existing
+  let { data, error } = existing
     ? await supabase
         .from("organizations")
         .update(payload)
@@ -144,8 +183,44 @@ export async function saveOnboardingProgress(
         .single()
     : await supabase.from("organizations").insert(payload).select("*").single();
 
-  if (error) {
-    return { success: false, error: error.message };
+  if (error && isSchemaCacheColumnError(error)) {
+    const compatiblePayload = buildOrganizationCompatibilityPayload(payload);
+    const retryResult = existing
+      ? await supabase
+          .from("organizations")
+          .update(compatiblePayload)
+          .eq("user_id", user.id)
+          .select("*")
+          .single()
+      : await supabase
+          .from("organizations")
+          .insert(compatiblePayload)
+          .select("*")
+          .single();
+
+    data = retryResult.data;
+    error = retryResult.error;
+  }
+
+  if (error || !data) {
+    return { success: false, error: "Unable to save the organization profile." };
+  }
+
+  if (existing) {
+    const { data: applications } = await supabase
+      .from("applications")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("organization_id", data.id);
+    const applicationIds = (applications ?? []).map((application) => application.id);
+    if (applicationIds.length > 0) {
+      await supabase
+        .from("application_sections")
+        .update({ status: "stale" })
+        .eq("user_id", user.id)
+        .in("application_id", applicationIds)
+        .not("generated_at", "is", null);
+    }
   }
 
   revalidatePath("/dashboard");
@@ -164,7 +239,7 @@ export async function saveOrganizationProfile(
     {
       ...values,
       organization_name: String(input.organization_name ?? ""),
-      organization_type: String(input.organization_type ?? "Other") as OnboardingFormValues["organization_type"],
+      organization_type: normalizeOrganizationType(input.organization_type),
       has_501c3: Boolean(input.is_501c3),
       mission_categories: ((input.keywords as string[] | undefined) ??
         []) as OnboardingFormValues["mission_categories"],
@@ -214,7 +289,7 @@ export async function updateOrganizationProfilePicture(
     .single();
 
   if (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: "Unable to update the profile picture." };
   }
 
   revalidatePath("/settings");

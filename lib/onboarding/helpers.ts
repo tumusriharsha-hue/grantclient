@@ -41,12 +41,17 @@ export function budgetRangeToAmount(range?: AnnualBudgetRange | null): number | 
 
 export function isOnboardingComplete(organization: {
   onboarding_completed?: boolean | null;
+  onboarding_step?: number | null;
   organization_name?: string | null;
   state?: string | null;
   mission_categories?: string[] | null;
 } | null): boolean {
   if (!organization) return false;
   if (organization.onboarding_completed) return true;
+
+  if (organization.onboarding_completed === false || organization.onboarding_step) {
+    return false;
+  }
 
   return Boolean(
     organization.organization_name &&

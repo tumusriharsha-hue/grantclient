@@ -6,7 +6,8 @@ import { OnboardingWizard } from "@/components/onboarding";
 import { Card } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { ProfilePictureUploader } from "./profile-picture-uploader";
-import type { Organization } from "@/types/database";
+import { OrganizationDocumentManager } from "./organization-document-manager";
+import type { Organization, Tables } from "@/types/database";
 import type { User } from "@supabase/supabase-js";
 
 const sections = [
@@ -20,9 +21,10 @@ type SectionId = (typeof sections)[number]["id"];
 interface SettingsPageProps {
   user: User | null;
   organization: Organization | null;
+  documents: Tables<"organization_documents">[];
 }
 
-export function SettingsPage({ user, organization }: SettingsPageProps) {
+export function SettingsPage({ user, organization, documents }: SettingsPageProps) {
   const [active, setActive] = useState<SectionId>("profile");
   const isGuest = Boolean(user?.is_anonymous);
   const canEditProfile = Boolean(user && !user.is_anonymous);
@@ -63,6 +65,9 @@ export function SettingsPage({ user, organization }: SettingsPageProps) {
                 initialUrl={organization?.profile_picture_url}
                 canEditProfile={canEditProfile && Boolean(organization)}
               />
+              {organization && (
+                <OrganizationDocumentManager initialDocuments={documents} />
+              )}
               <OnboardingWizard
                 key={organization?.id ?? "new-org"}
                 organization={organization}

@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Lightbulb, PenLine } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { AlertTriangle, ArrowRight, ChevronDown, ExternalLink, PenLine, RefreshCw } from "lucide-react";
+import { useState, useTransition } from "react";
+import { refreshGrantExplanations } from "@/app/actions/ai";
 import {
   Badge,
   Button,
@@ -11,11 +13,10 @@ import {
   MatchScore,
 } from "@/components/ui";
 import { getStateLabel } from "@/lib/onboarding/us-states";
-import { getTopMatchedGrants } from "@/lib/grant-matching";
+import type { RecommendedGrant } from "@/lib/grants/matching-types";
 import { formatCurrency } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import type { Organization } from "@/types/database";
-import type { Grant } from "@/types/grant";
 
 type AppTab = "all" | "drafting" | "submitted" | "approved" | "rejected";
 type DashboardApplicationStatus = "Drafting" | "Submitted" | "Approved" | "Rejected";
@@ -35,9 +36,34 @@ const statusStyles: Record<string, string> = {
   Rejected: "bg-danger-light text-danger-dark",
 };
 
+const scoreComponentLabels: Record<string, string> = {
+  focusArea: "Focus area",
+  population: "Population served",
+  geography: "Geography",
+  fundingRange: "Funding range",
+  missionAlignment: "Mission alignment",
+  organizationFit: "Organization fit",
+  eligibilityConfidence: "Eligibility confidence",
+  deadlinePracticality: "Deadline practicality",
+};
+
+function componentLabel(key: string) {
+  return scoreComponentLabels[key] ?? key;
+}
+
+function formatAwardRange(grant: RecommendedGrant) {
+  const min = grant.awardMin ?? grant.amount;
+  const max = grant.awardMax ?? grant.amount;
+  if (min === undefined && max === undefined) return "Amount varies";
+  if (min !== undefined && max !== undefined && min !== max) {
+    return `${formatCurrency(min)} - ${formatCurrency(max)}`;
+  }
+  return formatCurrency(min ?? max ?? 0);
+}
+
 interface DashboardContentProps {
   organization: Organization;
-  grants: Grant[];
+  recommendedGrants: RecommendedGrant[];
   applications: DashboardApplicationItem[];
 }
 
@@ -53,15 +79,25 @@ const applicationActionsClass =
 
 export function DashboardContent({
   organization,
-  grants,
+  recommendedGrants,
   applications,
 }: DashboardContentProps) {
+  const router = useRouter();
   const [appTab, setAppTab] = useState<AppTab>("all");
+  const [explanationMessage, setExplanationMessage] = useState<string | null>(null);
+  const [isRefreshingExplanations, startExplanationRefresh] = useTransition();
 
-  const recommendedGrants = useMemo(
-    () => getTopMatchedGrants(grants, organization, 3),
-    [grants, organization],
-  );
+  function refreshExplanations() {
+    setExplanationMessage(null);
+    startExplanationRefresh(async () => {
+      const result = await refreshGrantExplanations();
+      if (!result.success) {
+        setExplanationMessage(result.error);
+        return;
+      }
+      router.refresh();
+    });
+  }
 
   const focusLabel =
     organization.mission_categories?.join(", ") ??
@@ -107,10 +143,27 @@ export function DashboardContent({
       </div>
 
       <section>
-        <h2 className="mb-1 text-xl font-bold text-text">Top Grants for You</h2>
-        <p className="mb-4 text-sm text-text-secondary">
-          Personalized recommendations for {organization.organization_name}
-        </p>
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="mb-1 text-xl font-bold text-text">Top Grants for You</h2>
+            <p className="text-sm text-text-secondary">
+              Personalized recommendations for {organization.organization_name}
+            </p>
+          </div>
+          <Button
+            type="button"
+            size="sm"
+            variant="secondary"
+            onClick={refreshExplanations}
+            disabled={isRefreshingExplanations || recommendedGrants.length === 0}
+          >
+            <RefreshCw className={cn("h-4 w-4", isRefreshingExplanations && "animate-spin")} />
+            {isRefreshingExplanations ? "Generating..." : "Refresh explanations"}
+          </Button>
+        </div>
+        {explanationMessage && (
+          <p className="mb-4 text-sm text-text-secondary">{explanationMessage}</p>
+        )}
         {recommendedGrants.length === 0 ? (
           <Card padding="lg">
             <p className="text-sm text-text-secondary">
@@ -126,23 +179,48 @@ export function DashboardContent({
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {recommendedGrants.map((grant) => (
               <Card key={grant.id} hover padding="md" className="flex flex-col">
-                <MatchScore score={grant.matchScore} size="sm" className="mb-4" />
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <MatchScore score={grant.totalScore} size="sm" />
+                  <Badge
+                    variant={grant.eligibilityStatus === "eligible" ? "success" : "warning"}
+                    className="text-right"
+                  >
+                    {grant.eligibilityStatus.replaceAll("_", " ")}
+                  </Badge>
+                </div>
                 <h3 className="font-semibold text-text">{grant.title}</h3>
                 <p className="text-sm text-text-secondary">{grant.funder}</p>
                 <p className="mt-2 text-sm font-medium">
-                  {grant.amount ? formatCurrency(grant.amount) : "Amount varies"}
+                  {formatAwardRange(grant)}
                 </p>
-                <Badge variant={getDeadlineVariant(grant.daysLeft)} className="mt-2 w-fit">
+                <Badge
+                  variant={getDeadlineVariant(grant.daysUntilDeadline ?? 999)}
+                  className="mt-2 w-fit"
+                >
                   {grant.deadlineLabel}
                 </Badge>
                 <div className="mt-3 flex flex-1 flex-col gap-1.5">
-                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
-                    <Lightbulb className="h-3.5 w-3.5" />
-                    AI tips
+                  <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+                    Why it fits
                   </p>
-                  <p className="text-sm italic text-text-secondary">
-                    &ldquo;{grant.matchReasons[0] ?? "Strong fit based on your organization profile."}&rdquo;
-                  </p>
+                  {grant.explanation?.summary && (
+                    <p className="text-sm text-text-secondary">
+                      {grant.explanation.summary}
+                    </p>
+                  )}
+                  <ul className="list-disc space-y-1 pl-4 text-sm text-text-secondary">
+                    {(grant.explanation?.strengths ?? grant.factualFitReasons)
+                      .slice(0, 3)
+                      .map((reason) => (
+                      <li key={reason}>{reason}</li>
+                      ))}
+                  </ul>
+                  {grant.verificationItems.length > 0 && (
+                    <p className="mt-2 flex gap-1.5 text-xs text-warning-dark">
+                      <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                      {grant.verificationItems[0]}
+                    </p>
+                  )}
                   <a
                     href={grant.applicationUrl}
                     target="_blank"
@@ -153,6 +231,23 @@ export function DashboardContent({
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>
+                <details className="group mt-4 border-t border-border pt-3">
+                  <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-text-secondary">
+                    Score breakdown
+                    <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
+                  </summary>
+                  <dl className="mt-3 space-y-1.5 text-xs text-text-secondary">
+                    {Object.entries(grant.components).map(([key, item]) => (
+                      <div key={key} className="flex justify-between gap-3">
+                        <dt>{componentLabel(key)}</dt>
+                        <dd className="font-medium text-text">{item.score}/{item.maxScore}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-3 text-xs text-text-muted">
+                    Estimated fit based on profile and grant facts. Funding is not guaranteed.
+                  </p>
+                </details>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row md:flex-col xl:flex-row">
                   <Link href={`/grants/${grant.id}`} className="sm:flex-[0.85] md:flex-none xl:flex-[0.85]">
                     <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
@@ -164,7 +259,7 @@ export function DashboardContent({
                     className="sm:flex-[1.15] md:flex-none xl:flex-[1.15]"
                   >
                     <Button size="sm" className="w-full whitespace-nowrap">
-                      Draft application
+                      Start Application
                       <PenLine className="h-4 w-4" />
                     </Button>
                   </Link>

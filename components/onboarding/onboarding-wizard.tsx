@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { saveOnboardingProgress } from "@/app/actions/organization";
-import { Button, Card, Input, Select } from "@/components/ui";
+import { Button, Card, Input, Select, Textarea } from "@/components/ui";
 import { ChipSelect } from "@/components/onboarding/chip-select";
 import { OnboardingProgress } from "@/components/onboarding/onboarding-progress";
 import { StateSelect } from "@/components/onboarding/state-select";
@@ -15,13 +15,11 @@ import {
 import { cn } from "@/lib/utils";
 import type { Organization } from "@/types/database";
 import {
-  ANNUAL_BUDGET_RANGES,
   MISSION_CATEGORIES,
   ONBOARDING_STEPS,
   ORGANIZATION_AGE_RANGES,
   ORGANIZATION_TYPES,
   POPULATIONS_SERVED,
-  PREFERRED_GRANT_AMOUNTS,
   PREFERRED_GRANT_TYPES,
   TOTAL_ONBOARDING_STEPS,
   type OrganizationType,
@@ -189,13 +187,41 @@ export function OnboardingWizard({
         );
       case 2:
         return (
-          <ChipSelect
-            options={MISSION_CATEGORIES}
-            value={values.mission_categories ?? []}
-            onChange={(mission_categories) => updateValues({ mission_categories })}
-            disabled={!canEditProfile}
-            error={fieldErrors.mission_categories}
-          />
+          <div className="space-y-5">
+            <Textarea
+              label="Mission Statement"
+              rows={4}
+              value={values.mission ?? ""}
+              onChange={(event) => updateValues({ mission: event.target.value })}
+              error={fieldErrors.mission}
+              disabled={!canEditProfile}
+              required
+            />
+            <ChipSelect
+              options={MISSION_CATEGORIES}
+              value={values.mission_categories ?? []}
+              onChange={(mission_categories) => updateValues({ mission_categories })}
+              disabled={!canEditProfile}
+              error={fieldErrors.mission_categories}
+            />
+            <Textarea
+              label="Programs (optional)"
+              rows={3}
+              value={(values.programs ?? []).join("\n")}
+              onChange={(event) => updateValues({
+                programs: event.target.value.split("\n").map((item) => item.trim()).filter(Boolean),
+              })}
+              hint="Enter one program per line."
+              disabled={!canEditProfile}
+            />
+            <Textarea
+              label="Impact Goals (optional)"
+              rows={3}
+              value={values.impact_goals ?? ""}
+              onChange={(event) => updateValues({ impact_goals: event.target.value })}
+              disabled={!canEditProfile}
+            />
+          </div>
         );
       case 3:
         return (
@@ -228,23 +254,16 @@ export function OnboardingWizard({
       case 5:
         return (
           <div className="space-y-5">
-            <Select
+            <Input
               label="Annual Budget"
-              value={values.annual_budget_range ?? ""}
+              type="number"
+              min={0}
+              step={1}
+              value={values.budget ?? ""}
               onChange={(event) =>
-                updateValues({
-                  annual_budget_range: event.target
-                    .value as OnboardingFormValues["annual_budget_range"],
-                })
+                updateValues({ budget: event.target.value ? Number(event.target.value) : undefined })
               }
-              options={[
-                { value: "", label: "Select a range" },
-                ...ANNUAL_BUDGET_RANGES.map((range) => ({
-                  value: range,
-                  label: range,
-                })),
-              ]}
-              error={fieldErrors.annual_budget_range}
+              error={fieldErrors.budget}
               disabled={!canEditProfile}
             />
             <Select
@@ -266,30 +285,55 @@ export function OnboardingWizard({
               error={fieldErrors.organization_age_range}
               disabled={!canEditProfile}
             />
+            <Input
+              label="Website (optional)"
+              type="text"
+              inputMode="url"
+              autoCapitalize="none"
+              autoCorrect="off"
+              value={values.website ?? ""}
+              onChange={(event) => updateValues({ website: event.target.value })}
+              error={fieldErrors.website}
+              disabled={!canEditProfile}
+            />
+            <Textarea
+              label="Previous Grant Experience (optional)"
+              rows={3}
+              value={values.previous_grant_experience ?? ""}
+              onChange={(event) => updateValues({ previous_grant_experience: event.target.value })}
+              disabled={!canEditProfile}
+            />
           </div>
         );
       case 6:
         return (
           <div className="space-y-5">
-            <Select
-              label="Preferred Grant Amount"
-              value={values.preferred_grant_amount ?? ""}
-              onChange={(event) =>
-                updateValues({
-                  preferred_grant_amount: event.target
-                    .value as OnboardingFormValues["preferred_grant_amount"],
-                })
-              }
-              options={[
-                { value: "", label: "Select an amount range" },
-                ...PREFERRED_GRANT_AMOUNTS.map((amount) => ({
-                  value: amount,
-                  label: amount,
-                })),
-              ]}
-              error={fieldErrors.preferred_grant_amount}
-              disabled={!canEditProfile}
-            />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Input
+                label="Minimum Funding Request"
+                type="number"
+                min={0}
+                step={1}
+                value={values.requested_funding_min ?? ""}
+                onChange={(event) => updateValues({
+                  requested_funding_min: event.target.value ? Number(event.target.value) : undefined,
+                })}
+                error={fieldErrors.requested_funding_min}
+                disabled={!canEditProfile}
+              />
+              <Input
+                label="Maximum Funding Request"
+                type="number"
+                min={1}
+                step={1}
+                value={values.requested_funding_max ?? ""}
+                onChange={(event) => updateValues({
+                  requested_funding_max: event.target.value ? Number(event.target.value) : undefined,
+                })}
+                error={fieldErrors.requested_funding_max}
+                disabled={!canEditProfile}
+              />
+            </div>
             <div>
               <p className="mb-2 block text-sm font-medium text-text">Grant Types</p>
               <ChipSelect

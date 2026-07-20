@@ -23,6 +23,7 @@ import {
   type DeadlineRangeFilter,
 } from "@/lib/grant-matching";
 import type { Grant, GrantCategory, GrantRegion } from "@/types/grant";
+import { isActionableGrant } from "@/lib/grants/status";
 
 const EXTERNAL_SEARCH_LIMIT = 75;
 
@@ -43,8 +44,8 @@ export async function getAllGrants(): Promise<Grant[]> {
     getSimplerGrants().catch(() => []),
     getCaliforniaGrants().catch(() => []),
   ]);
-  return [...localGrants, ...simplerGrants, ...californiaGrants].filter(
-    (grant) => grant.status === "open" && (getDaysUntilDeadline(grant.deadline) ?? 999) >= 0,
+  return [...localGrants, ...simplerGrants, ...californiaGrants].filter((grant) =>
+    isActionableGrant(grant),
   );
 }
 
@@ -175,7 +176,7 @@ function grantMatchesCatalogFilters(grant: Grant, filters: GrantCatalogFilters):
     return false;
   }
 
-  return grant.status === "open" && daysLeft >= 0;
+  return isActionableGrant(grant) && daysLeft >= 0;
 }
 
 export async function getFilteredGrants(filters: GrantCatalogFilters): Promise<Grant[]> {

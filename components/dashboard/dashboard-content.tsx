@@ -17,6 +17,8 @@ import type { RecommendedGrant } from "@/lib/grants/matching-types";
 import { formatCurrency } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import type { Organization } from "@/types/database";
+import { calculateFundingFit, calculatePopulationFit } from "@/lib/grants/fit";
+import { getDesiredFundingRange, getGrantAwardRange } from "@/lib/grants/filter-grants";
 
 type AppTab = "all" | "drafting" | "submitted" | "approved" | "rejected";
 type DashboardApplicationStatus = "Drafting" | "Submitted" | "Approved" | "Rejected";
@@ -244,6 +246,28 @@ export function DashboardContent({
                       </div>
                     ))}
                   </dl>
+                  {(() => {
+                    const populationFit = calculatePopulationFit(organization.populations_served ?? [], grant.populationsServed ?? []);
+                    const fundingFit = calculateFundingFit(getDesiredFundingRange(organization), getGrantAwardRange(grant));
+                    return (
+                      <div className="mt-3 space-y-2 border-t border-border pt-3 text-xs text-text-secondary">
+                        <div>
+                          <p className="font-semibold text-text">Population Served — {populationFit.status.replaceAll("_", " ")}</p>
+                          <p>Source field: <code>organizations.populations_served</code></p>
+                          <p>Organization: {(organization.populations_served ?? []).join(", ") || "Information needed"}</p>
+                          <p>Grant targets: {(grant.populationsServed ?? []).join(", ") || "General community / not listed"}</p>
+                          <p>{populationFit.explanation}</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-text">Funding Fit — {fundingFit.status === "within_range" ? "Within Your Range" : fundingFit.status.replaceAll("_", " ")}</p>
+                          <p>Source fields: <code>organizations.requested_funding_min</code> and <code>organizations.requested_funding_max</code></p>
+                          <p>Organization range: {getDesiredFundingRange(organization).min !== null || getDesiredFundingRange(organization).max !== null ? `${formatCurrency(getDesiredFundingRange(organization).min ?? 0)}–${formatCurrency(getDesiredFundingRange(organization).max ?? 0)}` : "Information needed"}</p>
+                          <p>Verified grant range: {formatAwardRange(grant)}</p>
+                          <p>{fundingFit.explanation}</p>
+                        </div>
+                      </div>
+                    );
+                  })()}
                   <p className="mt-3 text-xs text-text-muted">
                     Estimated fit based on profile and grant facts. Funding is not guaranteed.
                   </p>

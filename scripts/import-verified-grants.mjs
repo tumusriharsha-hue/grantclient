@@ -53,9 +53,51 @@ function slugify(text) {
 
 function normalizeUrl(url) {
   const trimmed = url.trim().replace(/[.,;)]+$/, "");
-  if (!trimmed) return "https://example.org/grants/apply";
+  if (!trimmed) return "";
   if (trimmed.startsWith("http")) return trimmed;
   return `https://${trimmed}`;
+}
+
+function classifyStatus(entry) {
+  const text = `${entry.deadline} ${entry.eligible} ${entry.summary}`.toLowerCase();
+  const explicitDate = extractExplicitDate(entry.deadline);
+  if (/invitation[- ]only|invitation[- ]based|primarily invited/.test(text)) return "invitation_only";
+  if (/does not accept unsolicited|not accepting unsolicited|no unsolicited/.test(text)) return "no_unsolicited_applications";
+  if (/upcoming/.test(text)) return "upcoming";
+  if (explicitDate && new Date(`${explicitDate}T23:59:59Z`) < new Date()) return "expired";
+  if (/\brolling\b|year-round|anytime|throughout the year/.test(text)) return "rolling";
+  return "recurring_unconfirmed";
+}
+
+function deadlineType(entry) {
+  const text = entry.deadline.toLowerCase();
+  if (extractExplicitDate(entry.deadline)) return "fixed";
+  if (/rolling|year-round|anytime|throughout the year/.test(text)) return "rolling";
+  if (/annual|biannual|quarterly|multiple cycles|cyclical|periodic/.test(text)) return "multiple_cycles";
+  return "unknown";
+}
+
+function structuredEligibility(entry) {
+  const text = entry.eligible.toLowerCase();
+  const organizationTypes = [];
+  if (/501\s*\(?c\)?\s*\(?3\)?|501c3|nonprofit|non-profit/.test(text)) organizationTypes.push("501(c)(3) Nonprofit");
+  if (/school|school district|college|university|higher education/.test(text)) organizationTypes.push("School or educational institution");
+  if (/government|public agenc|municipal|tribal|tribe/.test(text)) organizationTypes.push("Government or tribal entity");
+  if (/fiscal sponsor/.test(text)) organizationTypes.push("Fiscal sponsor");
+  const populations = [
+    ["youth|teen|child|student|young people", "Youth and students"],
+    ["veteran", "Veterans"],
+    ["animal|pet|shelter", "Animals and animal welfare"],
+    ["immigrant|refugee", "Immigrants and refugees"],
+    ["low-income|low income|poverty", "Low-income communities"],
+  ].filter(([pattern]) => new RegExp(pattern).test(text)).map(([, label]) => label);
+  return {
+    eligibleOrganizationTypes: [...new Set(organizationTypes)],
+    requiredNonprofitStatus: /501\s*\(?c\)?\s*\(?3\)?|501c3/.test(text) ? "501c3" : null,
+    eligibleLocations: entry.scope ? [entry.scope] : [],
+    focusAreas: entry.focus.split(",").map((value) => value.trim()).filter(Boolean),
+    populationsServed: populations,
+  };
 }
 
 function pickCategory(focusText) {
@@ -469,6 +511,10 @@ function buildGrant(entry, index) {
   const deadline = parseDeadline(entry.deadline);
   const applicationUrl = normalizeUrl(entry.applicationPath);
   const createdAt = new Date(Date.UTC(2025, 0, 1 + index)).toISOString();
+  const status = classifyStatus(entry);
+  const eligibility = structuredEligibility(entry);
+  const reviewedAt = new Date().toISOString();
+  const nextReviewAt = new Date(Date.now() + 30 * 86400000).toISOString();
 
   const descriptionParts = [
     entry.summary,
@@ -487,9 +533,24 @@ function buildGrant(entry, index) {
     funder: entry.funder,
     category,
     region,
-    status: "open",
+    status,
     ...(amount ? { amount } : {}),
     ...(deadline ? { deadline } : {}),
+    ...eligibility,
+    applicationOpenDate: null,
+    deadlineType: deadlineType(entry),
+    deadlineTimezone: null,
+    officialUrl: normalizeUrl(entry.website),
+    sourceUrl: normalizeUrl(entry.website),
+    verifiedAt: null,
+    nextReviewAt,
+    confidenceLevel: "low",
+    invitationOnly: status === "invitation_only",
+    unsolicitedApplicationsAccepted: status === "no_unsolicited_applications" ? false : null,
+    rollingDeadline: status === "rolling",
+    restrictions: [],
+    typicalAward: amount ?? null,
+    verificationNotes: `Imported from repository source text on ${reviewedAt.slice(0, 10)}; live official-source verification is still required.`,
     applicationUrl,
     createdAt,
     updatedAt: UPDATED_AT,

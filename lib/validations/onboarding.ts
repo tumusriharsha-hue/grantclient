@@ -52,12 +52,15 @@ const optionalPreferredAmountSchema = z.preprocess(
 export const onboardingStep1Schema = z.object({
   organization_name: z.string().trim().min(1, "Organization name is required"),
   organization_type: organizationTypeSchema,
-  has_501c3: z.boolean().default(false),
+  has_501c3: z.boolean({ error: "Please confirm your 501(c)(3) status" }),
 });
 
 export const onboardingStep2Schema = z.object({
   mission: z.string().trim().min(20, "Tell us a little more about your mission").max(2000),
-  programs: z.array(z.string().trim().min(1).max(500)).max(20).default([]),
+  programs: z
+    .array(z.string().trim().min(1).max(500))
+    .min(1, "Add at least one program")
+    .max(20),
   impact_goals: z.string().trim().max(3000).default(""),
   mission_categories: z
     .array(missionCategorySchema)
@@ -178,7 +181,7 @@ export function organizationToOnboardingValues(
   if (!organization) {
     return {
       organization_type: DEFAULT_ORGANIZATION_TYPE,
-      has_501c3: false,
+      has_501c3: undefined,
       accept_government_grants: true,
       mission_categories: [],
       mission: "",
@@ -197,7 +200,7 @@ export function organizationToOnboardingValues(
     organization_type: normalizeOrganizationType(
       organization.organization_type ?? DEFAULT_ORGANIZATION_TYPE,
     ),
-    has_501c3: organization.has_501c3 ?? organization.is_501c3 ?? false,
+    has_501c3: organization.has_501c3 ?? organization.is_501c3 ?? undefined,
     mission_categories: (organization.mission_categories ?? []) as OnboardingStep2Input["mission_categories"],
     mission: organization.mission ?? "",
     programs: organization.programs ?? [],

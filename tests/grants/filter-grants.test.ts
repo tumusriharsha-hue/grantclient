@@ -53,4 +53,15 @@ describe("filterGrantEligibility", () => {
     );
     expect(result.eligible).toBe(true);
   });
+
+  it("does not treat a verified 501(c)(3) profile as a status failure", () => {
+    const result = filterGrantEligibility(
+      organization,
+      makeGrant({ verifiedAt: undefined }),
+      NOW,
+    );
+    expect(result.eligible).toBe(true);
+    expect(result.rejectionReasons).toEqual([]);
+    expect(result.verificationItems[0]).toContain("Funder eligibility details");
+  });
 });

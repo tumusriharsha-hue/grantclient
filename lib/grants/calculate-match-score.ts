@@ -14,6 +14,7 @@ import type { Organization } from "@/types/database";
 import type { Grant } from "@/types/grant";
 import { getGrantCategoriesForMission } from "@/lib/grants/enrich-grant";
 import { MISSION_CATEGORIES, type MissionCategory } from "@/types/organization";
+import { calculateFundingFit, calculatePopulationFit } from "@/lib/grants/fit";
 
 const STOP_WORDS = new Set([
   "about", "after", "also", "and", "are", "for", "from", "into", "our", "that",
@@ -70,19 +71,8 @@ function scoreFocus(organization: Organization, grant: Grant): MatchScoreCompone
 }
 
 function scorePopulation(organization: Organization, grant: Grant): MatchScoreComponent {
-  const orgTags = organization.populations_served ?? [];
-  const grantTags = grant.populationsServed ?? [];
-  if (orgTags.length === 0 || grantTags.length === 0) {
-    return component(20, 0, []);
-  }
-  const matches = grantTags.filter((tag) =>
-    orgTags.some((orgTag) => normalize(orgTag) === normalize(tag)),
-  );
-  return component(
-    20,
-    20 * (matches.length / Math.max(orgTags.length, grantTags.length)),
-    matches.slice(0, 3),
-  );
+  const result = calculatePopulationFit(organization.populations_served ?? [], grant.populationsServed ?? []);
+  return component(20, 20 * result.score / 100, [result.explanation]);
 }
 
 function scoreGeography(organization: Organization, grant: Grant): MatchScoreComponent {
@@ -109,20 +99,8 @@ function scoreGeography(organization: Organization, grant: Grant): MatchScoreCom
 function scoreFunding(organization: Organization, grant: Grant): MatchScoreComponent {
   const desired = getDesiredFundingRange(organization);
   const award = getGrantAwardRange(grant);
-  if (
-    (desired.min === null && desired.max === null) ||
-    (award.min === null && award.max === null)
-  ) {
-    return component(15, 0, []);
-  }
-  const desiredMin = desired.min ?? 0;
-  const desiredMax = desired.max ?? Math.max(award.max ?? award.min ?? desiredMin, desiredMin);
-  const awardMin = award.min ?? 0;
-  const awardMax = award.max ?? Math.max(desiredMax, awardMin);
-  const intersection = Math.max(0, Math.min(desiredMax, awardMax) - Math.max(desiredMin, awardMin));
-  const union = Math.max(desiredMax, awardMax) - Math.min(desiredMin, awardMin);
-  const ratio = union === 0 ? 1 : intersection / union;
-  return component(15, ratio > 0 ? 8 + ratio * 7 : 0, ratio > 0 ? ["Funding ranges overlap"] : []);
+  const result = calculateFundingFit(desired, award);
+  return component(15, 15 * result.score / 100, [result.explanation]);
 }
 
 function scoreMission(organization: Organization, grant: Grant): MatchScoreComponent {

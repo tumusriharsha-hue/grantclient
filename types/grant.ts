@@ -14,7 +14,10 @@ export const GRANT_CATEGORIES = [
 
 export type GrantCategory = (typeof GRANT_CATEGORIES)[number];
 
-export type GrantStatus = "draft" | "open" | "closed" | "awarded";
+export type GrantStatus =
+  | "draft" | "open" | "upcoming" | "rolling" | "closed" | "expired"
+  | "paused" | "invitation_only" | "no_unsolicited_applications"
+  | "recurring_unconfirmed" | "archived" | "awarded";
 
 export type GrantRegion =
   | "National"
@@ -38,6 +41,9 @@ export interface Grant {
   awardMin?: number;
   awardMax?: number;
   deadline?: string;
+  applicationOpenDate?: string;
+  deadlineType?: "fixed" | "rolling" | "multiple_cycles" | "unknown";
+  deadlineTimezone?: string;
   rollingDeadline?: boolean;
   eligibilitySummary?: string;
   eligibleOrganizationTypes?: string[];
@@ -54,7 +60,15 @@ export interface Grant {
   requiredDocuments?: string[];
   applicationQuestions?: Array<{ id: string; question: string; required?: boolean }>;
   sourceUrl?: string;
+  officialUrl?: string;
   verifiedAt?: string;
+  nextReviewAt?: string;
+  confidenceLevel?: "high" | "medium" | "low";
+  invitationOnly?: boolean;
+  unsolicitedApplicationsAccepted?: boolean;
+  restrictions?: string[];
+  typicalAward?: number;
+  verificationNotes?: string;
   /** External funder application portal URL */
   applicationUrl: string;
   createdAt: string;

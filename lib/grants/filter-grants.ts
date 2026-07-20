@@ -2,6 +2,8 @@ import { getRegionsForState } from "@/lib/onboarding/us-states";
 import type { EligibilityResult } from "@/lib/grants/matching-types";
 import type { Organization } from "@/types/database";
 import type { Grant } from "@/types/grant";
+import { isActionableGrant } from "@/lib/grants/status";
+import { calculateFundingFit } from "@/lib/grants/fit";
 
 function normalize(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -45,8 +47,8 @@ export function getGrantAwardRange(grant: Grant): {
   max: number | null;
 } {
   return {
-    min: grant.awardMin ?? grant.amount ?? null,
-    max: grant.awardMax ?? grant.amount ?? null,
+    min: grant.awardMin ?? grant.typicalAward ?? grant.amount ?? null,
+    max: grant.awardMax ?? grant.typicalAward ?? grant.amount ?? null,
   };
 }
 
@@ -100,8 +102,8 @@ export function filterGrantEligibility(
   const rejectionReasons: string[] = [];
   const verificationItems: string[] = [];
 
-  if (grant.status !== "open") {
-    rejectionReasons.push("Grant is not open");
+  if (!isActionableGrant(grant, now)) {
+    rejectionReasons.push("Grant is not currently actionable");
   }
 
   if (!grant.rollingDeadline) {
@@ -177,7 +179,7 @@ export function filterGrantEligibility(
   if (
     (desired.min !== null || desired.max !== null) &&
     (award.min !== null || award.max !== null) &&
-    !rangesOverlap(desired, award)
+    ["below_range", "above_range"].includes(calculateFundingFit(desired, award).status)
   ) {
     rejectionReasons.push("Award range does not overlap the desired funding range");
   }
@@ -217,7 +219,7 @@ export function filterGrantEligibility(
     rejectionReasons,
     verificationItems: grant.verifiedAt
       ? []
-      : ["Grant eligibility details have not been recently verified"],
+      : ["Funder eligibility details have not been recently verified; confirm them on the grant page"],
   };
 }
 

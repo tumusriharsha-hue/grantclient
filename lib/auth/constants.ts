@@ -19,16 +19,12 @@ export const PROTECTED_ROUTES = [
   "/setup",
 ] as const;
 
-/** Requires full account — guests are redirected to signup */
+/** Requires full account — guests can browse the dashboard and grant catalog, but not mutate data. */
 export const FULL_ACCOUNT_ROUTES = [
-  "/dashboard",
-  "/grants",
-  "/browse",
   "/saved",
   "/applications",
   "/assistant",
-  "/settings",
-  "/setup",
+  "/documents",
 ] as const;
 
 export const PUBLIC_AUTH_ROUTES = ["/login", "/signup", "/auth/signin", "/auth/signup"] as const;

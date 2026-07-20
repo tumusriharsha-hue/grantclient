@@ -27,7 +27,7 @@ interface SettingsPageProps {
 export function SettingsPage({ user, organization, documents }: SettingsPageProps) {
   const [active, setActive] = useState<SectionId>("profile");
   const isGuest = Boolean(user?.is_anonymous);
-  const canEditProfile = Boolean(user && !user.is_anonymous);
+  const canEditProfile = Boolean(user);
 
   return (
     <AppShell header={<AppHeader showSearch={false} title="Settings" />}>

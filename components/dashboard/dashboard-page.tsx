@@ -22,7 +22,7 @@ export function DashboardPage({
   applications,
 }: DashboardPageProps) {
   const isGuest = Boolean(user?.is_anonymous);
-  const canEditProfile = Boolean(user && !user.is_anonymous);
+  const canEditProfile = Boolean(user);
   const setupComplete = isOnboardingComplete(organization);
 
   return (

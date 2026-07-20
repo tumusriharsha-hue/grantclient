@@ -1,0 +1,1774 @@
+{
+  "generatedAt": "2026-07-20T21:13:16.907Z",
+  "total": 202,
+  "statusCounts": {
+    "invitation_only": 45,
+    "rolling": 48,
+    "recurring_unconfirmed": 92,
+    "expired": 5,
+    "upcoming": 12
+  },
+  "records": [
+    {
+      "grantId": "houston-endowment-general-grants",
+      "title": "Houston Endowment General Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "houston-endowment-collaboration-fund",
+      "title": "Houston Endowment Collaboration Fund",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "meadows-foundation-grants",
+      "title": "Meadows Foundation Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "greater-houston-community-foundation-high-impact-grantmaking",
+      "title": "Greater Houston Community Foundation — High-Impact Grantmaking",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "moody-foundation-grants",
+      "title": "Moody Foundation Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "rwjf-exploring-equitable-futures",
+      "title": "RWJF Exploring Equitable Futures",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "rwjf-from-insight-to-action-health-equity-research",
+      "title": "RWJF From Insight to Action: Health Equity Research",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "rwjf-local-data-for-equitable-communities",
+      "title": "RWJF Local Data for Equitable Communities",
+      "status": "expired",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "rwjf-health-equity-scholars-for-action-hes4a",
+      "title": "RWJF Health Equity Scholars for Action (HES4A)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "petco-love-spay-neuter-veterinary-care-grant",
+      "title": "Petco Love Spay/Neuter & Veterinary Care Grant",
+      "status": "upcoming",
+      "issues": [
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "petco-love-stories-grant-campaign",
+      "title": "Petco Love Stories Grant Campaign",
+      "status": "upcoming",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "petsmart-charities-adoption-growth-grant",
+      "title": "PetSmart Charities Adoption Growth Grant",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "walmart-spark-good-local-grants",
+      "title": "Walmart Spark Good Local Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "rwjf-global-ideas-for-u-s-solutions",
+      "title": "RWJF Global Ideas for U.S. Solutions",
+      "status": "expired",
+      "issues": [
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "rwjf-health-policy-fellows",
+      "title": "RWJF Health Policy Fellows",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "petsmart-charities-access-to-veterinary-care-grants",
+      "title": "PetSmart Charities Access to Veterinary Care Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "petsmart-charities-pet-food-assistance-grants",
+      "title": "PetSmart Charities Pet Food Assistance Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nea-grants-for-arts-projects-gap-july-2026-cycle",
+      "title": "NEA Grants for Arts Projects (GAP) — July 2026 Cycle",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nea-our-town",
+      "title": "NEA Our Town",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nea-research-grants-in-the-arts",
+      "title": "NEA Research Grants in the Arts",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nea-research-labs",
+      "title": "NEA Research Labs",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "sports-matter-program-dick-s-sporting-goods-foundation",
+      "title": "Sports Matter Program (DICK’S Sporting Goods Foundation)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "dick-s-sporting-goods-foundation-multi-year-partnership-program",
+      "title": "DICK’S Sporting Goods Foundation Multi-Year Partnership Program",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "walmart-foundation-local-community-grant-program",
+      "title": "Walmart Foundation Local Community Grant Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "usda-community-food-projects-competitive-grants-program-cfp",
+      "title": "USDA Community Food Projects Competitive Grants Program (CFP)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "usda-cfpcgp-planning-projects",
+      "title": "USDA CFPCGP Planning Projects",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "feeding-america-food-security-equity-impact-fund",
+      "title": "Feeding America Food Security Equity Impact Fund",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "chick-fil-a-true-inspiration-awards-2028-cycle-opens-march-2027",
+      "title": "Chick-fil-A True Inspiration Awards — 2028 Cycle (Opens March 2027)",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "kresge-foundation-arts-culture-grants",
+      "title": "Kresge Foundation — Arts & Culture Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "kresge-foundation-education-grants",
+      "title": "Kresge Foundation — Education Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "kresge-foundation-environment-grants",
+      "title": "Kresge Foundation — Environment Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "kresge-foundation-human-services-grants",
+      "title": "Kresge Foundation — Human Services Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "san-antonio-area-foundation-collaborative-grants",
+      "title": "San Antonio Area Foundation Collaborative Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "san-antonio-area-foundation-capital-grants",
+      "title": "San Antonio Area Foundation Capital Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "austin-community-foundation-forever-austin-fund",
+      "title": "Austin Community Foundation — Forever Austin Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "austin-community-foundation-community-grants",
+      "title": "Austin Community Foundation — Community Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "austin-community-foundation-hispanic-impact-fund",
+      "title": "Austin Community Foundation — Hispanic Impact Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "austin-community-foundation-women-s-fund",
+      "title": "Austin Community Foundation — Women’s Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "austin-community-foundation-black-fund",
+      "title": "Austin Community Foundation — Black Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "bissell-pet-foundation-partners-for-pets-grant-program",
+      "title": "BISSELL Pet Foundation — Partners for Pets Grant Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "usda-community-food-projects-planning-projects-separate-track",
+      "title": "USDA Community Food Projects — Planning Projects (Separate Track)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "aspca-grants-for-animal-welfare-organizations",
+      "title": "ASPCA — Grants for Animal Welfare Organizations",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "communities-foundation-of-texas-community-grants",
+      "title": "Communities Foundation of Texas — Community Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "communities-foundation-of-texas-w-w-caruth-jr-fund",
+      "title": "Communities Foundation of Texas — W.W. Caruth Jr. Fund",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "chicago-community-trust-discretionary-grants",
+      "title": "Chicago Community Trust — Discretionary Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "chicago-community-trust-resilient-chicago-fund",
+      "title": "Chicago Community Trust — Resilient Chicago Fund",
+      "status": "expired",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "chicago-community-trust-young-leaders-fund",
+      "title": "Chicago Community Trust — Young Leaders Fund",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "chicago-community-trust-press-forward-chicago",
+      "title": "Chicago Community Trust — Press Forward Chicago",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "new-york-community-trust-competitive-grants-program",
+      "title": "New York Community Trust — Competitive Grants Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "new-york-community-trust-national-environment-program",
+      "title": "New York Community Trust — National Environment Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "new-york-community-trust-heisman-trophy-youth-development-fund",
+      "title": "New York Community Trust — Heisman Trophy Youth Development Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-southeast-michigan-community-grants-program",
+      "title": "Community Foundation for Southeast Michigan — Community Grants Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-southeast-michigan-michigan-justice-fund",
+      "title": "Community Foundation for Southeast Michigan — Michigan Justice Fund",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-impact-grants",
+      "title": "Greater New Orleans Foundation — IMPACT Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-impact-special-funding",
+      "title": "Greater New Orleans Foundation — IMPACT Special Funding",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-urban-forest-tree-planting-grants",
+      "title": "Greater New Orleans Foundation — Urban Forest Tree Planting Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-norco-community-fund",
+      "title": "Greater New Orleans Foundation — Norco Community Fund",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "arizona-community-foundation-statewide-competitive-grants",
+      "title": "Arizona Community Foundation — Statewide Competitive Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-flagstaff-grant-cycle",
+      "title": "Arizona Community Foundation — ACF of Flagstaff Grant Cycle",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-southern-arizona-core-grants",
+      "title": "Community Foundation for Southern Arizona — CORE Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "california-community-foundation-competitive-grants",
+      "title": "California Community Foundation — Competitive Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "california-community-foundation-wildfire-recovery-fund-community-healing",
+      "title": "California Community Foundation — Wildfire Recovery Fund: Community Healing & Restoration",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "north-texas-community-foundation-toolbox-grants",
+      "title": "North Texas Community Foundation — ToolBox Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "north-texas-community-foundation-conservation-environment-fund",
+      "title": "North Texas Community Foundation — Conservation & Environment Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "north-texas-community-foundation-children-s-fund",
+      "title": "North Texas Community Foundation — Children’s Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "north-texas-community-foundation-animal-welfare-grants",
+      "title": "North Texas Community Foundation — Animal Welfare Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-dallas-foundation-spring-summer-grant-cycles",
+      "title": "The Dallas Foundation — Spring & Summer Grant Cycles",
+      "status": "upcoming",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-dallas-foundation-animal-welfare-grants",
+      "title": "The Dallas Foundation — Animal Welfare Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-dallas-foundation-arts-culture-grants",
+      "title": "The Dallas Foundation — Arts & Culture Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "dallas-stars-foundation-community-grant-program",
+      "title": "Dallas Stars Foundation — Community Grant Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "dallas-stars-foundation-special-project-grants",
+      "title": "Dallas Stars Foundation — Special Project Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "az-blue-foundation-mental-health-grant",
+      "title": "AZ Blue Foundation — Mental Health Grant",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "google-ad-grants",
+      "title": "Google Ad Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "google-org-impact-challenge-generative-ai-accelerator",
+      "title": "Google.org Impact Challenge: Generative AI Accelerator",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "google-org-impact-challenge-ai-for-government-innovation",
+      "title": "Google.org Impact Challenge: AI for Government Innovation",
+      "status": "expired",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "macarthur-foundation-100-change-competition",
+      "title": "MacArthur Foundation — 100&Change Competition",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "macarthur-foundation-journalism-media-enduring-commitment",
+      "title": "MacArthur Foundation — Journalism & Media Enduring Commitment",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "macarthur-foundation-chicago-commitment-leaders-for-a-new-chicago",
+      "title": "MacArthur Foundation — Chicago Commitment (Leaders for a New Chicago)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-grants-to-black-led-organizatio",
+      "title": "Community Foundation for Greater Atlanta — Grants to Black-Led Organizations",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-metropolitan-atlanta-arts-grant",
+      "title": "Community Foundation for Greater Atlanta — Metropolitan Atlanta Arts Grant",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-housing-portfolio-grants",
+      "title": "Community Foundation for Greater Atlanta — Housing Portfolio Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-extra-wish-catalog",
+      "title": "Community Foundation for Greater Atlanta — Extra Wish Catalog",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-yavapai-county-grant-cycle",
+      "title": "Arizona Community Foundation — ACF of Yavapai County Grant Cycle",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-sedona-grant-cycle",
+      "title": "Arizona Community Foundation — ACF of Sedona Grant Cycle",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "az-blue-foundation-health-equity-grants-invitation-only",
+      "title": "AZ Blue Foundation — Health Equity Grants (Invitation-Only)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "inland-empire-community-foundation-community-impact-fund",
+      "title": "Inland Empire Community Foundation — Community Impact Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "communities-foundation-of-texas-nonprofit-gateway-open-grantmaking",
+      "title": "Communities Foundation of Texas — Nonprofit Gateway / Open Grantmaking",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-general-grantmaking-early-childhood-family-econom",
+      "title": "W.K. Kellogg Foundation — General Grantmaking (Early Childhood & Family Economic Security)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-food-systems-agriculture-grants",
+      "title": "W.K. Kellogg Foundation — Food Systems & Agriculture Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-health-health-equity-grants",
+      "title": "W.K. Kellogg Foundation — Health & Health Equity Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "oregon-community-foundation-baker-county-fund",
+      "title": "Oregon Community Foundation — Baker County Fund",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "oregon-community-foundation-arts-culture-grants-artists-field-fellowship",
+      "title": "Oregon Community Foundation — Arts & Culture Grants (Artists’ Field Fellowship)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "oregon-community-foundation-walker-fund-southern-oregon",
+      "title": "Oregon Community Foundation — Walker Fund (Southern Oregon)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "oregon-community-foundation-food-security-fund",
+      "title": "Oregon Community Foundation — Food Security Fund",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "doris-duke-foundation-environment-program-grants",
+      "title": "Doris Duke Foundation — Environment Program Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "doris-duke-foundation-performing-arts-program-leadership-grants",
+      "title": "Doris Duke Foundation — Performing Arts Program (Leadership Grants)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "doris-duke-foundation-child-well-being-program",
+      "title": "Doris Duke Foundation — Child Well-Being Program",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "doris-duke-foundation-building-bridges-program",
+      "title": "Doris Duke Foundation — Building Bridges Program",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "bank-of-america-neighborhood-builders-program",
+      "title": "Bank of America Neighborhood Builders Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "bank-of-america-grants-arts-culture",
+      "title": "Bank of America Grants — Arts & Culture",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-organizational-support-program-osp",
+      "title": "Texas Commission on the Arts — Organizational Support Program (OSP)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-jump-grants",
+      "title": "Texas Commission on the Arts — Jump! Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "cleveland-foundation-immediate-impact-grants-wellbeing-critical-needs",
+      "title": "Cleveland Foundation — Immediate Impact Grants (Wellbeing & Critical Needs)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "cleveland-foundation-long-term-impact-grow-our-region",
+      "title": "Cleveland Foundation — Long-Term Impact: Grow Our Region",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "cleveland-foundation-arts-culture-grants-via-grants-gateway",
+      "title": "Cleveland Foundation — Arts & Culture Grants (via Grants Gateway)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "saint-paul-minnesota-foundation-minnesota-community-ideas-program",
+      "title": "Saint Paul & Minnesota Foundation — Minnesota Community IDEAS Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "saint-paul-minnesota-foundation-community-solutions-grant-program",
+      "title": "Saint Paul & Minnesota Foundation — Community Solutions Grant Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "southern-minnesota-initiative-foundation-economic-community-workforce-de",
+      "title": "Southern Minnesota Initiative Foundation — Economic, Community & Workforce Development Grants",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "southern-minnesota-initiative-foundation-small-town-grants",
+      "title": "Southern Minnesota Initiative Foundation — Small Town Grants",
+      "status": "upcoming",
+      "issues": [
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-annual-competitive-grants",
+      "title": "Community Foundation Tampa Bay — Annual Competitive Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-critical-needs-list",
+      "title": "Community Foundation Tampa Bay — Critical Needs List",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-smith-associates-real-estate-foundation-g",
+      "title": "Community Foundation Tampa Bay — Smith & Associates Real Estate Foundation Grant",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "initiative-foundation-central-mn-emerging-needs-nonprofit-capacity-build",
+      "title": "Initiative Foundation (Central MN) — Emerging Needs & Nonprofit Capacity-Building Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-touring-grants",
+      "title": "Texas Commission on the Arts — Touring Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-arts-respond-public-art",
+      "title": "Texas Commission on the Arts — Arts Respond: Public Art",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "permian-basin-area-foundation-community-impact-grants",
+      "title": "Permian Basin Area Foundation — Community Impact Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "el-paso-community-foundation-competitive-grants",
+      "title": "El Paso Community Foundation — Competitive Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "microsoft-for-nonprofits-technology-grant-program",
+      "title": "Microsoft for Nonprofits — Technology Grant Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "microsoft-philanthropies-ai-for-humanitarian-action",
+      "title": "Microsoft Philanthropies — AI for Humanitarian Action",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "microsoft-employee-giving-match-program",
+      "title": "Microsoft Employee Giving Match Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "annie-e-casey-foundation-child-welfare-family-strengthening-grants",
+      "title": "Annie E. Casey Foundation — Child Welfare & Family Strengthening Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "annie-e-casey-foundation-thrive-by-25-initiative",
+      "title": "Annie E. Casey Foundation — Thrive by 25 Initiative",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "jpmorgan-chase-foundation-workforce-readiness-grants",
+      "title": "JPMorgan Chase Foundation — Workforce Readiness Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "jpmorgan-chase-foundation-advancingcities-initiative",
+      "title": "JPMorgan Chase Foundation — AdvancingCities Initiative",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "william-t-grant-foundation-research-grants",
+      "title": "William T. Grant Foundation — Research Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_eligible_organization_types",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "william-t-grant-foundation-institutional-challenge-grant",
+      "title": "William T. Grant Foundation — Institutional Challenge Grant",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "epa-environmental-justice-collaborative-problem-solving-ejcps-grants",
+      "title": "EPA Environmental Justice Collaborative Problem-Solving (EJCPS) Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "epa-environmental-justice-government-to-government-ejg2g-program",
+      "title": "EPA Environmental Justice Government-to-Government (EJG2G) Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "conrad-n-hilton-foundation-grants-homelessness-water-early-childhood",
+      "title": "Conrad N. Hilton Foundation — Grants (Homelessness, Water, Early Childhood)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "conrad-n-hilton-foundation-chronic-homelessness-initiative",
+      "title": "Conrad N. Hilton Foundation — Chronic Homelessness Initiative",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "lumina-foundation-grants-postsecondary-education",
+      "title": "Lumina Foundation — Grants (Postsecondary Education)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "lumina-foundation-adult-learner-and-workforce-credentials",
+      "title": "Lumina Foundation — Adult Learner and Workforce Credentials",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-denver-foundation-community-grants-program",
+      "title": "The Denver Foundation — Community Grants Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-denver-foundation-strengthening-neighborhoods-program",
+      "title": "The Denver Foundation — Strengthening Neighborhoods Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-denver-foundation-capacity-building-fund",
+      "title": "The Denver Foundation — Capacity Building Fund",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-denver-foundation-bowen-family-performing-arts-fund",
+      "title": "The Denver Foundation — Bowen Family Performing Arts Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "the-denver-foundation-lowe-fund-intellectual-developmental-disabilities",
+      "title": "The Denver Foundation — Lowe Fund (Intellectual & Developmental Disabilities)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "triangle-community-foundation-responsive-grantmaking-program",
+      "title": "Triangle Community Foundation — Responsive Grantmaking Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "triangle-community-foundation-education-youth-grant",
+      "title": "Triangle Community Foundation — Education & Youth Grant",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "triangle-community-foundation-triangle-capacity-building-network-tcbn-gr",
+      "title": "Triangle Community Foundation — Triangle Capacity-Building Network (TCBN) Grant",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "triangle-community-foundation-housing-affordability-grant",
+      "title": "Triangle Community Foundation — Housing Affordability Grant",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "target-circle-community-giving",
+      "title": "Target Circle Community Giving",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "target-foundation-strategic-grantmaking",
+      "title": "Target Foundation — Strategic Grantmaking",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "lowe-s-hometowns-community-grant",
+      "title": "Lowe’s Hometowns Community Grant",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "lowe-s-foundation-gable-grants-skilled-trades-education",
+      "title": "Lowe’s Foundation — Gable Grants (Skilled Trades Education)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "coastal-bend-community-foundation-competitive-grants-corpus-christi-area",
+      "title": "Coastal Bend Community Foundation — Competitive Grants (Corpus Christi area)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "heart-of-texas-community-foundation-grant-programs-bryan-college-station",
+      "title": "Heart of Texas Community Foundation — Grant Programs (Bryan/College Station)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-6-12-under-5-000",
+      "title": "Toshiba America Foundation — STEM Grants for Grades 6–12 (Under $5,000)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-6-12-over-5-000",
+      "title": "Toshiba America Foundation — STEM Grants for Grades 6–12 (Over $5,000)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-k-5",
+      "title": "Toshiba America Foundation — STEM Grants for Grades K–5",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "seattle-foundation-neighbor-to-neighbor-n2n-grants",
+      "title": "Seattle Foundation — Neighbor to Neighbor (N2N) Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "seattle-foundation-first-peoples-climate-fund",
+      "title": "Seattle Foundation — First Peoples Climate Fund",
+      "status": "expired",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "seattle-foundation-bipoc-nonprofit-effectiveness-grants",
+      "title": "Seattle Foundation — BIPOC Nonprofit Effectiveness Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-thriving-communities-englewood-little-vill",
+      "title": "Robert R. McCormick Foundation — Thriving Communities: Englewood & Little Village",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-early-childhood-education-grants",
+      "title": "Robert R. McCormick Foundation — Early Childhood Education Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-journalism-democracy-grants",
+      "title": "Robert R. McCormick Foundation — Journalism & Democracy Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-communities-fund-united-way-partnership",
+      "title": "Robert R. McCormick Foundation — Communities Fund (United Way Partnership)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nsf-advancing-informal-stem-learning-aisl",
+      "title": "NSF Advancing Informal STEM Learning (AISL)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nsf-improving-undergraduate-stem-education-iuse-ehr",
+      "title": "NSF Improving Undergraduate STEM Education (IUSE: EHR)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "nsf-civic-innovation-challenge-civic",
+      "title": "NSF Civic Innovation Challenge (CIVIC)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "weyerhaeuser-company-foundation-environment-community-grants",
+      "title": "Weyerhaeuser Company Foundation — Environment & Community Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "surdna-foundation-thriving-cultures-grants-arts-culture",
+      "title": "Surdna Foundation — Thriving Cultures Grants (Arts & Culture)",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-civil-society-program",
+      "title": "Charles Stewart Mott Foundation — Civil Society Program",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-environment-program",
+      "title": "Charles Stewart Mott Foundation — Environment Program",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-flint-area-program",
+      "title": "Charles Stewart Mott Foundation — Flint Area Program",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "home-depot-foundation-veteran-housing-grants-program",
+      "title": "Home Depot Foundation — Veteran Housing Grants Program",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "home-depot-foundation-community-impact-grants-skilled-trades-disaster-re",
+      "title": "Home Depot Foundation — Community Impact Grants (Skilled Trades / Disaster Relief)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "home-depot-foundation-rural-veterans-housing-via-housing-assistance-coun",
+      "title": "Home Depot Foundation — Rural Veterans Housing (via Housing Assistance Council)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "waco-foundation-immediate-impact-grants",
+      "title": "Waco Foundation — Immediate Impact Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "waco-foundation-critical-needs-grant",
+      "title": "Waco Foundation — Critical Needs Grant",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "waco-foundation-capacity-building-mini-grants",
+      "title": "Waco Foundation — Capacity Building Mini-Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "cooper-foundation-community-grants-waco",
+      "title": "Cooper Foundation — Community Grants (Waco)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "east-texas-community-foundation-competitive-grants",
+      "title": "East Texas Community Foundation — Competitive Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "united-way-of-waco-mclennan-county-community-impact-grants",
+      "title": "United Way of Waco-McLennan County — Community Impact Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "surdna-foundation-strong-local-economies-grants",
+      "title": "Surdna Foundation — Strong Local Economies Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "surdna-foundation-sustainable-environments-grants",
+      "title": "Surdna Foundation — Sustainable Environments Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ford-foundation-creativity-and-free-expression-grants",
+      "title": "Ford Foundation — Creativity and Free Expression Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ford-foundation-build-building-institutions-and-networks",
+      "title": "Ford Foundation — BUILD: Building Institutions and Networks",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ford-foundation-nyc-good-neighbor-committee-grants",
+      "title": "Ford Foundation — NYC Good Neighbor Committee Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ford-foundation-democracy-rule-of-law-grants",
+      "title": "Ford Foundation — Democracy & Rule of Law Grants",
+      "status": "invitation_only",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-healthy-kids-initiative",
+      "title": "Paso del Norte Health Foundation — Healthy Kids Initiative",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-think-change-initiative-mental-health",
+      "title": "Paso del Norte Health Foundation — Think.Change Initiative (Mental Health)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-behavioral-health-consortium-initiative",
+      "title": "Paso del Norte Health Foundation — Behavioral Health Consortium Initiative",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "paso-del-norte-community-foundation-charitable-fund-grants",
+      "title": "Paso del Norte Community Foundation — Charitable Fund Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "united-way-of-greater-houston-community-fund-grants",
+      "title": "United Way of Greater Houston — Community Fund Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "united-way-of-metropolitan-dallas-community-impact-grants",
+      "title": "United Way of Metropolitan Dallas — Community Impact Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-of-the-ozarks-competitive-grants",
+      "title": "Community Foundation of the Ozarks — Competitive Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-of-the-ozarks-workforce-development-fund",
+      "title": "Community Foundation of the Ozarks — Workforce Development Fund",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-of-greater-memphis-competitive-grants",
+      "title": "Community Foundation of Greater Memphis — Competitive Grants",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "community-foundation-of-greater-memphis-memphis-music-initiative-grants",
+      "title": "Community Foundation of Greater Memphis — Memphis Music Initiative Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "aspca-rachael-ray-save-them-all-grants",
+      "title": "ASPCA — Rachael Ray Save Them All Grants",
+      "status": "upcoming",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "aspca-anti-cruelty-grants",
+      "title": "ASPCA — Anti-Cruelty Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-active-lifestyles-youth-sports-recreation",
+      "title": "Ralph C. Wilson Jr. Foundation — Active Lifestyles (Youth Sports & Recreation)",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-nonprofit-support-innovation",
+      "title": "Ralph C. Wilson Jr. Foundation — Nonprofit Support & Innovation",
+      "status": "rolling",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-legacy-fund-for-youth-sports-rochester-area-community-",
+      "title": "Ralph C. Wilson Jr. Legacy Fund for Youth Sports — Rochester Area Community Foundation",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-arts-culture-initiative-via-community-found",
+      "title": "Ralph C. Wilson Jr. Foundation — Arts & Culture Initiative (via Community Foundation for Greater Buffalo)",
+      "status": "upcoming",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "amarillo-area-foundation-discretionary-grants-competitive-cycle",
+      "title": "Amarillo Area Foundation — Discretionary Grants (Competitive Cycle)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "amarillo-area-foundation-catalyst-grants",
+      "title": "Amarillo Area Foundation — Catalyst Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "amarillo-area-foundation-pantex-grant-program",
+      "title": "Amarillo Area Foundation — Pantex Grant Program",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "amarillo-area-foundation-the-panhandle-gives-giving-day-campaign",
+      "title": "Amarillo Area Foundation — The Panhandle Gives (Giving Day Campaign)",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "united-way-of-san-antonio-bexar-county-community-impact-grants",
+      "title": "United Way of San Antonio & Bexar County — Community Impact Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    },
+    {
+      "grantId": "united-way-for-greater-austin-community-impact-grants",
+      "title": "United Way for Greater Austin — Community Impact Grants",
+      "status": "recurring_unconfirmed",
+      "issues": [
+        "missing_deadline_or_rolling_evidence",
+        "missing_last_verified_at"
+      ]
+    }
+  ],
+  "duplicateCandidates": [],
+  "requiringReview": 202
+}

@@ -159,13 +159,6 @@ export async function saveOnboardingProgress(
     return { success: false, error: "Sign in to save your organization profile." };
   }
 
-  if (isGuestUser(user)) {
-    return {
-      success: false,
-      error: "Create a free account to set up your organization profile.",
-    };
-  }
-
   const payload = buildOrganizationPayload(user.id, values, step, complete);
 
   const { data: existing } = await supabase

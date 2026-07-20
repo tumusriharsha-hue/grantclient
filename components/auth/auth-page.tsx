@@ -31,6 +31,9 @@ export function AuthPage({ mode }: AuthPageProps) {
   );
   const accountRequired = searchParams.get("reason") === "account";
   const formDisabled = isSubmitting || Boolean(successMessage);
+  const guestSignInEnabled =
+    process.env.NEXT_PUBLIC_ENABLE_GUEST_SIGN_IN === "true" ||
+    process.env.NODE_ENV !== "production";
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -104,6 +107,29 @@ export function AuthPage({ mode }: AuthPageProps) {
     }
   }
 
+  async function handleGuestSignIn() {
+    if (!guestSignInEnabled || submittingRef.current) return;
+    setError(null);
+    setSuccessMessage(null);
+    submittingRef.current = true;
+    setIsSubmitting(true);
+
+    try {
+      const { error: guestError } = await createClient().auth.signInAnonymously();
+      if (guestError) {
+        setError(
+          "Guest sign-in is unavailable. Enable Anonymous Sign-Ins in Supabase, then try again.",
+        );
+        return;
+      }
+      router.push(nextPath);
+      router.refresh();
+    } finally {
+      submittingRef.current = false;
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-primary-light/70 via-surface to-bg p-8 md:p-12">
@@ -159,6 +185,18 @@ export function AuthPage({ mode }: AuthPageProps) {
             </svg>
             Continue with Google
           </Button>
+
+          {mode === "signin" && guestSignInEnabled && (
+            <Button
+              type="button"
+              variant="ghost"
+              className="mt-2 w-full"
+              onClick={handleGuestSignIn}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Starting guest session..." : "Continue as guest (testing)"}
+            </Button>
+          )}
 
           <div className="my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-border" />

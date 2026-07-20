@@ -164,25 +164,21 @@ export function OnboardingWizard({
               error={fieldErrors.organization_type}
               disabled={!canEditProfile}
             />
-            <label className="flex items-center justify-between rounded-md border border-border bg-bg px-4 py-3">
-              <div>
-                <p className="text-sm font-medium text-text">
-                  Do you have official 501(c)(3) status?
-                </p>
-                <p className="text-xs text-text-muted">
-                  Used to filter grants with tax-exempt requirements.
-                </p>
-              </div>
-              <input
-                type="checkbox"
-                checked={values.has_501c3 ?? false}
-                onChange={(event) =>
-                  updateValues({ has_501c3: event.target.checked })
-                }
-                disabled={!canEditProfile}
-                className="h-5 w-5 rounded border-border"
-              />
-            </label>
+            <Select
+              label="Do you have official 501(c)(3) status?"
+              value={values.has_501c3 === undefined ? "" : values.has_501c3 ? "yes" : "no"}
+              onChange={(event) =>
+                updateValues({ has_501c3: event.target.value === "yes" })
+              }
+              options={[
+                { value: "", label: "Select yes or no" },
+                { value: "yes", label: "Yes" },
+                { value: "no", label: "No" },
+              ]}
+              error={fieldErrors.has_501c3}
+              disabled={!canEditProfile}
+              required
+            />
           </div>
         );
       case 2:
@@ -205,13 +201,14 @@ export function OnboardingWizard({
               error={fieldErrors.mission_categories}
             />
             <Textarea
-              label="Programs (optional)"
+              label="Programs"
               rows={3}
               value={(values.programs ?? []).join("\n")}
               onChange={(event) => updateValues({
-                programs: event.target.value.split("\n").map((item) => item.trim()).filter(Boolean),
+                // Preserve spaces while typing; onboarding validation trims entries on save.
+                programs: event.target.value.split("\n"),
               })}
-              hint="Enter one program per line."
+              hint="Enter at least one program, with one program per line."
               disabled={!canEditProfile}
             />
             <Textarea
@@ -265,6 +262,7 @@ export function OnboardingWizard({
               }
               error={fieldErrors.budget}
               disabled={!canEditProfile}
+              required
             />
             <Select
               label="Years Operating"
@@ -309,8 +307,8 @@ export function OnboardingWizard({
         return (
           <div className="space-y-5">
             <div className="grid gap-4 sm:grid-cols-2">
-              <Input
-                label="Minimum Funding Request"
+                <Input
+                  label="Minimum Funding Request"
                 type="number"
                 min={0}
                 step={1}
@@ -318,8 +316,9 @@ export function OnboardingWizard({
                 onChange={(event) => updateValues({
                   requested_funding_min: event.target.value ? Number(event.target.value) : undefined,
                 })}
-                error={fieldErrors.requested_funding_min}
-                disabled={!canEditProfile}
+                  error={fieldErrors.requested_funding_min}
+                  disabled={!canEditProfile}
+                  required
               />
               <Input
                 label="Maximum Funding Request"
@@ -330,8 +329,9 @@ export function OnboardingWizard({
                 onChange={(event) => updateValues({
                   requested_funding_max: event.target.value ? Number(event.target.value) : undefined,
                 })}
-                error={fieldErrors.requested_funding_max}
-                disabled={!canEditProfile}
+                  error={fieldErrors.requested_funding_max}
+                  disabled={!canEditProfile}
+                  required
               />
             </div>
             <div>
@@ -397,7 +397,7 @@ export function OnboardingWizard({
           <div className="rounded-md bg-primary-light/20 px-4 py-3 text-sm text-text-secondary">
             {isGuest ? (
               <>
-                Create a free account to save your organization profile.{" "}
+                Guest setup is temporary testing data. Create an account to keep your organization profile.{" "}
                 <Link href="/signup?reason=account" className="font-medium text-primary hover:underline">
                   Sign up
                 </Link>

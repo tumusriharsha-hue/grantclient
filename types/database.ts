@@ -91,7 +91,8 @@ export type Database = {
       };
       grants: {
         Row: {
-          amount: number | null;
+        amount: number | null;
+          application_open_date: string | null;
           application_questions: Json | null;
           application_url: string;
           award_max: number | null;
@@ -99,6 +100,8 @@ export type Database = {
           category: string;
           created_at: string;
           deadline: string | null;
+          deadline_timezone: string | null;
+          deadline_type: string;
           description: string;
           eligibility_summary: string | null;
           eligible_locations: string[] | null;
@@ -107,6 +110,7 @@ export type Database = {
           funder: string;
           geographic_scope: string | null;
           id: string;
+          invitation_only: boolean;
           maximum_annual_budget: number | null;
           maximum_request_amount: number | null;
           minimum_annual_budget: number | null;
@@ -116,15 +120,23 @@ export type Database = {
           required_nonprofit_status: string | null;
           requirements: string[] | null;
           region: string;
+          official_url: string | null;
+          next_review_at: string | null;
+          confidence_level: string;
+          unsolicited_applications_accepted: boolean | null;
+          restrictions: string[] | null;
+          typical_award: number | null;
           rolling_deadline: boolean;
           source_url: string | null;
           status: string;
           title: string;
           updated_at: string;
           verified_at: string | null;
+          verification_notes: string | null;
         };
         Insert: {
           amount?: number | null;
+          application_open_date?: string | null;
           application_questions?: Json | null;
           application_url: string;
           award_max?: number | null;
@@ -132,6 +144,8 @@ export type Database = {
           category: string;
           created_at?: string;
           deadline?: string | null;
+          deadline_timezone?: string | null;
+          deadline_type?: string;
           description: string;
           eligibility_summary?: string | null;
           eligible_locations?: string[] | null;
@@ -140,6 +154,7 @@ export type Database = {
           funder: string;
           geographic_scope?: string | null;
           id: string;
+          invitation_only?: boolean;
           maximum_annual_budget?: number | null;
           maximum_request_amount?: number | null;
           minimum_annual_budget?: number | null;
@@ -149,15 +164,23 @@ export type Database = {
           required_nonprofit_status?: string | null;
           requirements?: string[] | null;
           region: string;
+          official_url?: string | null;
+          next_review_at?: string | null;
+          confidence_level?: string;
+          unsolicited_applications_accepted?: boolean | null;
+          restrictions?: string[] | null;
+          typical_award?: number | null;
           rolling_deadline?: boolean;
           source_url?: string | null;
           status?: string;
           title: string;
           updated_at?: string;
           verified_at?: string | null;
+          verification_notes?: string | null;
         };
         Update: {
           amount?: number | null;
+          application_open_date?: string | null;
           application_questions?: Json | null;
           application_url?: string;
           award_max?: number | null;
@@ -165,6 +188,8 @@ export type Database = {
           category?: string;
           created_at?: string;
           deadline?: string | null;
+          deadline_timezone?: string | null;
+          deadline_type?: string;
           description?: string;
           eligibility_summary?: string | null;
           eligible_locations?: string[] | null;
@@ -173,6 +198,7 @@ export type Database = {
           funder?: string;
           geographic_scope?: string | null;
           id?: string;
+          invitation_only?: boolean;
           maximum_annual_budget?: number | null;
           maximum_request_amount?: number | null;
           minimum_annual_budget?: number | null;
@@ -182,12 +208,19 @@ export type Database = {
           required_nonprofit_status?: string | null;
           requirements?: string[] | null;
           region?: string;
+          official_url?: string | null;
+          next_review_at?: string | null;
+          confidence_level?: string;
+          unsolicited_applications_accepted?: boolean | null;
+          restrictions?: string[] | null;
+          typical_award?: number | null;
           rolling_deadline?: boolean;
           source_url?: string | null;
           status?: string;
           title?: string;
           updated_at?: string;
           verified_at?: string | null;
+          verification_notes?: string | null;
         };
         Relationships: [];
       };

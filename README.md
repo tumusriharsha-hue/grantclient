@@ -40,7 +40,7 @@ See `.env.example` for all supported variables. Copy it to `.env.local` and fill
 2. Add the key and the selected model identifier to `.env.local`:
 
 ```bash
-NVIDIA_NIM_API_KEY=your-key
+NVIDIA_API_KEY=your-key
 NVIDIA_NIM_BASE_URL=https://integrate.api.nvidia.com/v1
 NVIDIA_NIM_MODEL=the-model-id-from-nvidia
 ```

@@ -1,6 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Application, ApplicationStatus } from "@/types/database";
-import type { DraftSection } from "@/lib/applications/defaults";
+import {
+  calculateDraftSectionProgress,
+  type DraftSection,
+} from "@/lib/applications/defaults";
 import { proposalTemplate } from "@/lib/applications/proposal-template";
 
 const applicationSelect = "*";
@@ -25,7 +28,38 @@ export async function getCurrentUserApplications(): Promise<Application[]> {
     throw new Error(`Failed to load applications: ${error.message}`);
   }
 
-  return data ?? [];
+  const applications = data ?? [];
+  const draftingIds = applications
+    .filter((application) => application.status === "drafting")
+    .map((application) => application.id);
+  if (draftingIds.length === 0) return applications;
+
+  const { data: sectionRows, error: sectionError } = await supabase
+    .from("application_sections")
+    .select("application_id, content")
+    .eq("user_id", user.id)
+    .in("application_id", draftingIds);
+  if (sectionError || !sectionRows) return applications;
+
+  const contentByApplication = new Map<string, string[]>();
+  sectionRows.forEach((section) => {
+    const contents = contentByApplication.get(section.application_id) ?? [];
+    contents.push(section.content);
+    contentByApplication.set(section.application_id, contents);
+  });
+
+  return applications.map((application) => {
+    const contents = contentByApplication.get(application.id);
+    return contents
+      ? {
+          ...application,
+          progress: calculateDraftSectionProgress(
+            contents,
+            proposalTemplate.length,
+          ),
+        }
+      : application;
+  });
 }
 
 export async function getCurrentUserApplicationById(

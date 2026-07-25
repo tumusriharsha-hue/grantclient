@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Check, CheckCircle2, Download, FileText, RotateCcw, Sparkles, Wand2 } from "lucide-react";
+import { ArrowLeft, Check, CheckCircle2, Download, FileText, Sparkles, Wand2 } from "lucide-react";
 import { useState, useTransition } from "react";
 import { saveApplicationDraft } from "@/app/actions/applications";
 import { generateApplicationSection } from "@/app/actions/ai";
@@ -77,23 +77,16 @@ export function ViewDraftPage({
     ));
   }
 
-  function restoreSection(index: number) {
-    setSections((current) => current.map((section, sectionIndex) =>
-      sectionIndex === index && section.previousBody !== null && section.previousBody !== undefined
-        ? { ...section, body: section.previousBody, previousBody: section.body, status: "draft" }
-        : section,
-    ));
-  }
-
-  function handleExportPdf() {
-    const pdf = createDraftPdf(title, sections);
+  async function handleExportPdf() {
+    const logo = await loadPdfLogo().catch(() => null);
+    const pdf = createDraftPdf(title, sections, logo);
     const url = window.URL.createObjectURL(
       new Blob([pdf], { type: "application/pdf" }),
     );
     const link = document.createElement("a");
 
     link.href = url;
-    link.download = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "application-draft"}.pdf`;
+    link.download = formatPdfFileName(title);
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -144,11 +137,21 @@ export function ViewDraftPage({
                 </p>
               </div>
               <div className="flex gap-2">
-                <Button variant="secondary" size="sm" onClick={handleExportPdf}>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="shrink-0 whitespace-nowrap"
+                  onClick={handleExportPdf}
+                >
                   <Download className="h-4 w-4" />
                   Export PDF
                 </Button>
-                <Button size="sm" onClick={handleSaveDraft} disabled={isSaving}>
+                <Button
+                  size="sm"
+                  className="shrink-0 whitespace-nowrap"
+                  onClick={handleSaveDraft}
+                  disabled={isSaving}
+                >
                   {isSaving ? "Saving..." : "Save draft"}
                 </Button>
               </div>
@@ -176,7 +179,7 @@ export function ViewDraftPage({
                       {template?.aiEnabled && (
                         <Button
                           type="button"
-                          variant="secondary"
+                          variant={section.body ? "ghost" : "secondary"}
                           size="sm"
                           onClick={() => generateSection(index)}
                           disabled={isGenerating}
@@ -189,13 +192,16 @@ export function ViewDraftPage({
                               : "Generate section"}
                         </Button>
                       )}
-                      {section.previousBody !== null && section.previousBody !== undefined && (
-                        <Button type="button" variant="ghost" size="sm" onClick={() => restoreSection(index)}>
-                          <RotateCcw className="h-4 w-4" />
-                          Restore
-                        </Button>
-                      )}
-                      <Button type="button" variant="ghost" size="sm" onClick={() => setSectionComplete(index)}>
+                      <Button
+                        type="button"
+                        size="sm"
+                        className={
+                          section.status === "complete"
+                            ? "bg-success hover:bg-success-dark"
+                            : undefined
+                        }
+                        onClick={() => setSectionComplete(index)}
+                      >
                         <Check className="h-4 w-4" />
                         {section.status === "complete" ? "Completed" : "Mark complete"}
                       </Button>
@@ -209,15 +215,22 @@ export function ViewDraftPage({
                     className="min-h-32 resize-y bg-surface leading-relaxed"
                   />
                   {section.missingInformation && section.missingInformation.length > 0 && (
-                    <p className="mt-2 text-xs text-warning-dark">
-                      Needs input: {section.missingInformation.join(", ")}
-                    </p>
-                  )}
-                  {section.usedSourceFields && section.usedSourceFields.length > 0 && (
-                    <details className="mt-3 text-xs text-text-muted">
-                      <summary className="cursor-pointer font-medium">Source details used</summary>
-                      <p className="mt-1 break-words">{section.usedSourceFields.join(", ")}</p>
-                    </details>
+                    <div className="mt-2 flex flex-wrap gap-x-1 text-xs text-warning-dark">
+                      <span>Needs input:</span>
+                      {section.missingInformation.map((item, itemIndex) => (
+                        <span key={`${item}-${itemIndex}`}>
+                          <Link
+                            href={`/applications/builder?edit=${encodeURIComponent(applicationId)}`}
+                            className="font-medium underline underline-offset-2 hover:text-warning-dark/80"
+                          >
+                            {item}
+                          </Link>
+                          {itemIndex < section.missingInformation!.length - 1
+                            ? ","
+                            : ""}
+                        </span>
+                      ))}
+                    </div>
                   )}
                 </section>
                 );
@@ -256,16 +269,77 @@ export function ViewDraftPage({
   );
 }
 
+function formatPdfFileName(value: string) {
+  const cleaned = value
+    .replace(/[<>:"/\\|?*\x00-\x1F]/g, " ")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/[. ]+$/g, "");
+  const titleCased = cleaned
+    .split(" ")
+    .map((word) => word ? `${word[0].toUpperCase()}${word.slice(1)}` : word)
+    .join(" ");
+
+  return `${titleCased || "Application Draft"}.pdf`;
+}
+
+interface PdfLogoImage {
+  hex: string;
+  width: number;
+  height: number;
+}
+
+function loadPdfLogo(): Promise<PdfLogoImage> {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+
+    image.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      const context = canvas.getContext("2d");
+
+      if (!context) {
+        reject(new Error("Unable to prepare the PDF logo."));
+        return;
+      }
+
+      context.fillStyle = "#ffffff";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(image, 0, 0);
+
+      const encoded = canvas.toDataURL("image/jpeg", 0.92).split(",")[1];
+      if (!encoded) {
+        reject(new Error("Unable to encode the PDF logo."));
+        return;
+      }
+
+      const binary = window.atob(encoded);
+      let hex = "";
+      for (let index = 0; index < binary.length; index += 1) {
+        hex += binary.charCodeAt(index).toString(16).padStart(2, "0");
+      }
+
+      resolve({ hex, width: canvas.width, height: canvas.height });
+    };
+    image.onerror = () => reject(new Error("Unable to load the PDF logo."));
+    image.src = "/brand/grantclient-logo-transparent.png";
+  });
+}
+
 function createDraftPdf(
   title: string,
   sections: { title: string; body: string }[],
+  logo: PdfLogoImage | null,
 ) {
   const pageWidth = 612;
   const pageHeight = 792;
-  const margin = 72;
+  const margin = 54;
+  const footerBoundary = 54;
   const contentWidth = pageWidth - margin * 2;
-  const pages: string[][] = [[]];
-  let y = pageHeight - margin;
+  const pages: string[][] = [];
+  let y = 0;
 
   function currentPage() {
     return pages[pages.length - 1];
@@ -273,56 +347,230 @@ function createDraftPdf(
 
   function addPage() {
     pages.push([]);
-    y = pageHeight - margin;
+    currentPage().push(
+      "q 0.04 0.66 0.91 rg 54 745 504 2 re f Q",
+      logo
+        ? `q 106 0 0 23 ${margin} 751 cm /Logo Do Q`
+        : `BT /F2 9 Tf 0.12 0.36 0.55 rg ${margin} 758 Td (GRANTCLIENT) Tj ET`,
+      `BT /F2 8 Tf 0.37 0.44 0.50 rg ${pageWidth - margin - 42} 758 Td (DRAFT) Tj ET`,
+    );
+    y = 718;
   }
 
   function ensureSpace(height: number) {
-    if (y - height < margin) {
+    if (y - height < footerBoundary) {
       addPage();
     }
   }
 
-  function addText(text: string, x: number, size: number, lineHeight: number) {
+  function addText(
+    text: string,
+    x: number,
+    size: number,
+    lineHeight: number,
+    font = "F1",
+    color = "0.12 0.15 0.20",
+  ) {
     ensureSpace(lineHeight);
-    currentPage().push(`BT /F1 ${size} Tf ${x} ${y} Td (${escapePdfText(text)}) Tj ET`);
+    currentPage().push(
+      `BT /${font} ${size} Tf ${color} rg ${x} ${y} Td (${escapePdfText(text)}) Tj ET`,
+    );
     y -= lineHeight;
   }
 
-  function addWrappedText(text: string, size: number, lineHeight: number) {
-    const maxChars = Math.max(20, Math.floor(contentWidth / (size * 0.52)));
-    const paragraphs = text.split(/\n+/);
+  function addWrappedLine(
+    text: string,
+    {
+      x = margin,
+      width = contentWidth,
+      size = 10.5,
+      lineHeight = 15,
+      font = "F1",
+      color = "0.18 0.21 0.25",
+      characterWidthFactor = 0.5,
+    }: {
+      x?: number;
+      width?: number;
+      size?: number;
+      lineHeight?: number;
+      font?: string;
+      color?: string;
+      characterWidthFactor?: number;
+    } = {},
+  ) {
+    const maxChars = Math.max(
+      20,
+      Math.floor(width / (size * characterWidthFactor)),
+    );
+    const lines = wrapText(text, maxChars);
+    lines.forEach((line) => addText(line, x, size, lineHeight, font, color));
+  }
 
-    paragraphs.forEach((paragraph, paragraphIndex) => {
-      const lines = wrapText(paragraph, maxChars);
-      lines.forEach((line) => addText(line, margin, size, lineHeight));
+  function addBodyText(text: string) {
+    const sourceLines = sanitizePdfText(text).split(/\r?\n/);
 
-      if (paragraphIndex < paragraphs.length - 1) {
-        y -= lineHeight / 2;
+    sourceLines.forEach((sourceLine, index) => {
+      const paragraph = sourceLine.trim();
+      if (!paragraph) {
+        y -= 7;
+        return;
       }
+
+      const isBullet = /^[-*]\s+/.test(paragraph);
+      const isNeedsInput = paragraph.includes("[NEEDS INPUT:");
+      const textX = isBullet ? margin + 14 : margin;
+      const textWidth = isBullet ? contentWidth - 14 : contentWidth;
+      const textColor = isNeedsInput
+        ? "0.65 0.34 0.08"
+        : "0.18 0.21 0.25";
+      const labelMatch = paragraph.match(/^([A-Za-z][A-Za-z /&-]{0,38}:)\s*(.*)$/);
+
+      if (labelMatch && !isBullet) {
+        const [, label, value] = labelMatch;
+        const maxChars = Math.max(20, Math.floor(textWidth / (10.5 * 0.5)));
+        const lines = wrapText(`${label} ${value}`.trim(), maxChars);
+
+        lines.forEach((line, lineIndex) => {
+          if (lineIndex === 0 && line.startsWith(label)) {
+            ensureSpace(15);
+            const remainder = line.slice(label.length);
+            currentPage().push(
+              `BT /F2 10.5 Tf ${textColor} rg ${textX} ${y} Td (${escapePdfText(label)}) Tj /F1 10.5 Tf (${escapePdfText(remainder)}) Tj ET`,
+            );
+            y -= 15;
+          } else {
+            addText(line, textX, 10.5, 15, "F1", textColor);
+          }
+        });
+      } else {
+        addWrappedLine(paragraph, {
+          x: textX,
+          width: textWidth,
+          color: textColor,
+        });
+      }
+
+      if (index < sourceLines.length - 1) y -= 4;
     });
   }
 
-  addText(title, margin, 20, 28);
-  addText("Generated draft - GrantClient", margin, 10, 24);
-  y -= 8;
+  addPage();
+  const proposalTitle = title || "Untitled Application";
+  const titleFontSize = 20;
+  const titleLineHeight = 25;
+  const titleWidth = contentWidth - 48;
+  const titleLines = wrapText(
+    proposalTitle,
+    Math.floor(titleWidth / (titleFontSize * 0.56)),
+  );
+  const titleCardTop = 704;
+  const titleCardHeight = 80 + titleLines.length * titleLineHeight;
+  const titleCardBottom = titleCardTop - titleCardHeight;
 
-  sections.forEach((section) => {
-    ensureSpace(64);
-    addText(section.title, margin, 14, 20);
-    addWrappedText(section.body, 11, 16);
+  currentPage().push(
+    `q 0.97 0.98 0.99 rg ${margin} ${titleCardBottom} ${contentWidth} ${titleCardHeight} re f Q`,
+    `q 0.04 0.66 0.91 rg ${margin} ${titleCardBottom} 4 ${titleCardHeight} re f Q`,
+    `q 0.90 0.92 0.94 RG 0.7 w ${margin} ${titleCardBottom} ${contentWidth} ${titleCardHeight} re S Q`,
+  );
+  y = titleCardTop - 25;
+  addText(
+    "FUNDING PROPOSAL",
+    margin + 24,
+    8,
+    21,
+    "F2",
+    "0.04 0.53 0.75",
+  );
+  y -= 7;
+  titleLines.forEach((line) =>
+    addText(
+      line,
+      margin + 24,
+      titleFontSize,
+      titleLineHeight,
+      "F2",
+      "0.02 0.16 0.24",
+    ),
+  );
+  y -= 5;
+  addText(
+    `Prepared ${new Date().toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    })}`,
+    margin + 24,
+    9,
+    15,
+    "F1",
+    "0.37 0.44 0.50",
+  );
+  y = titleCardBottom - 30;
+
+  sections.forEach((section, index) => {
+    ensureSpace(82);
+    const headingLines = wrapText(
+      `${index + 1}. ${section.title || "Untitled section"}`,
+      58,
+    ).slice(0, 2);
+    const headingHeight = 24 + Math.max(0, headingLines.length - 1) * 15;
+    currentPage().push(
+      `q 0.93 0.96 0.98 rg ${margin} ${y - headingHeight + 7} ${contentWidth} ${headingHeight} re f Q`,
+      `q 0.12 0.36 0.55 rg ${margin} ${y - headingHeight + 7} 4 ${headingHeight} re f Q`,
+    );
+    y -= 10;
+    headingLines.forEach((line) =>
+      addText(line, margin + 16, 12, 15, "F2", "0.08 0.19 0.28"),
+    );
     y -= 12;
+
+    if (section.body.trim()) {
+      addBodyText(section.body);
+    } else {
+      addText(
+        "No content has been added to this section.",
+        margin,
+        10,
+        15,
+        "F1",
+        "0.48 0.51 0.55",
+      );
+    }
+    y -= 22;
   });
 
-  return buildPdfDocument(pages, pageWidth, pageHeight);
+  pages.forEach((page, index) => {
+    page.push(
+      `q 0.82 0.85 0.88 RG 0.5 w ${margin} 38 m ${pageWidth - margin} 38 l S Q`,
+      `BT /F1 8 Tf 0.45 0.49 0.54 rg ${margin} 24 Td (GrantClient - Confidential draft) Tj ET`,
+      `BT /F1 8 Tf 0.45 0.49 0.54 rg ${pageWidth - margin - 62} 24 Td (Page ${index + 1} of ${pages.length}) Tj ET`,
+    );
+  });
+
+  return buildPdfDocument(pages, pageWidth, pageHeight, logo);
 }
 
-function buildPdfDocument(pages: string[][], pageWidth: number, pageHeight: number) {
+function buildPdfDocument(
+  pages: string[][],
+  pageWidth: number,
+  pageHeight: number,
+  logo: PdfLogoImage | null,
+) {
   const objects: string[] = [];
   const pageObjectNumbers: number[] = [];
 
   objects.push("<< /Type /Catalog /Pages 2 0 R >>");
   objects.push("");
   objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>");
+  objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>");
+  objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman >>");
+  const logoObjectNumber = logo ? objects.length + 1 : null;
+  if (logo) {
+    const imageStream = `${logo.hex}>`;
+    objects.push(
+      `<< /Type /XObject /Subtype /Image /Width ${logo.width} /Height ${logo.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter [/ASCIIHexDecode /DCTDecode] /Length ${imageStream.length} >>\nstream\n${imageStream}\nendstream`,
+    );
+  }
 
   pages.forEach((lines) => {
     const content = lines.join("\n");
@@ -330,8 +578,11 @@ function buildPdfDocument(pages: string[][], pageWidth: number, pageHeight: numb
     const pageObjectNumber = objects.length + 1;
 
     pageObjectNumbers.push(pageObjectNumber);
+    const imageResources = logoObjectNumber
+      ? ` /XObject << /Logo ${logoObjectNumber} 0 R >>`
+      : "";
     objects.push(
-      `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /Font << /F1 3 0 R >> >> /Contents ${contentObjectNumber} 0 R >>`,
+      `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >>${imageResources} >> /Contents ${contentObjectNumber} 0 R >>`,
     );
     objects.push(`<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
   });

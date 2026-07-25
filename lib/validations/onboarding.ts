@@ -58,7 +58,7 @@ export const onboardingStep1Schema = z.object({
 export const onboardingStep2Schema = z.object({
   mission: z.string().trim().min(20, "Tell us a little more about your mission").max(2000),
   programs: z
-    .array(z.string().trim().min(1).max(500))
+    .array(z.string().trim().min(1, "Add at least one program").max(500))
     .min(1, "Add at least one program")
     .max(20),
   impact_goals: z.string().trim().max(3000).default(""),

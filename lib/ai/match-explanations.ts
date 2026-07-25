@@ -69,7 +69,9 @@ export async function loadCachedMatchExplanations(
   });
 }
 
-export async function generateMatchExplanations(): Promise<
+export async function generateMatchExplanations(
+  options: { force?: boolean } = {},
+): Promise<
   | { success: true }
   | { success: false; error: string; code: string }
 > {
@@ -88,6 +90,10 @@ export async function generateMatchExplanations(): Promise<
     const { client, model } = getNvidiaClient();
     const missing = [] as RecommendedGrant[];
     for (const grant of grants) {
+      if (options.force) {
+        missing.push(grant);
+        continue;
+      }
       const key = cacheKey(organization, grant, model);
       const { data } = await supabase
         .from("grant_match_snapshots")

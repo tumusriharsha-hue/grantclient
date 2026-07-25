@@ -9,6 +9,7 @@ import {
   ensureNeedsInputMarkers,
 } from "@/lib/ai/section-context";
 import { proposalTemplate } from "@/lib/applications/proposal-template";
+import { calculateDraftSectionProgress } from "@/lib/applications/defaults";
 import { createClient } from "@/lib/supabase/server";
 import type { Json } from "@/types/database";
 
@@ -189,6 +190,23 @@ export async function generateProposalSection(applicationId: string, sectionKey:
       .eq("id", section.id)
       .eq("user_id", user.id);
     if (saveError) throw new Error("save_failed");
+    const { data: applicationSections } = await supabase
+      .from("application_sections")
+      .select("content")
+      .eq("application_id", applicationId)
+      .eq("user_id", user.id);
+    if (applicationSections) {
+      await supabase
+        .from("applications")
+        .update({
+          progress: calculateDraftSectionProgress(
+            applicationSections.map((item) => item.content),
+            proposalTemplate.length,
+          ),
+        })
+        .eq("id", applicationId)
+        .eq("user_id", user.id);
+    }
     return {
       success: true as const,
       section: {

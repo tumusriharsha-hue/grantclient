@@ -12,7 +12,6 @@ import type { User } from "@supabase/supabase-js";
 
 const sections = [
   { id: "profile", label: "Organization Profile" },
-  { id: "notifications", label: "Notifications" },
   { id: "help", label: "Help & Support" },
 ] as const;
 
@@ -76,24 +75,6 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
                 mode="settings"
               />
             </div>
-          )}
-
-          {active === "notifications" && (
-            <Card padding="lg">
-              <h2 className="mb-4 text-xl font-bold text-text">Notifications</h2>
-              <div className="space-y-4">
-                {[
-                  "Email on grant matches",
-                  "Email on deadline reminders",
-                  "Email on application updates",
-                ].map((item) => (
-                  <label key={item} className="flex items-center gap-3 text-sm">
-                    <input type="checkbox" defaultChecked className="rounded" />
-                    {item}
-                  </label>
-                ))}
-              </div>
-            </Card>
           )}
 
           {active === "help" && (

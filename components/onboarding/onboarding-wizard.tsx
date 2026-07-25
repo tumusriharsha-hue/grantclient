@@ -209,7 +209,9 @@ export function OnboardingWizard({
                 programs: event.target.value.split("\n"),
               })}
               hint="Enter at least one program, with one program per line."
+              error={fieldErrors.programs}
               disabled={!canEditProfile}
+              required
             />
             <Textarea
               label="Impact Goals (optional)"
@@ -381,9 +383,11 @@ export function OnboardingWizard({
           <p className="text-sm font-medium uppercase tracking-wide text-primary">
             Organization setup
           </p>
-          <h1 className="mt-2 text-2xl font-bold text-text">
-            {currentStep?.subtitle}
-          </h1>
+          <div className="mt-3 rounded-lg border border-border bg-surface px-5 py-4 shadow-[var(--shadow-card)]">
+            <h1 className="text-2xl font-bold text-text">
+              {currentStep?.subtitle}
+            </h1>
+          </div>
           <p className="mt-2 text-sm text-text-secondary">
             Takes about 3 minutes. Your answers power grant recommendations.
           </p>

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AlertTriangle, ArrowRight, ChevronDown, ExternalLink, PenLine, RefreshCw } from "lucide-react";
-import { useState, useTransition } from "react";
+import { ArrowRight, ChevronDown, ExternalLink, PenLine } from "lucide-react";
+import { useEffect, useState, useTransition } from "react";
 import { refreshGrantExplanations } from "@/app/actions/ai";
 import {
   Badge,
@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import type { Organization } from "@/types/database";
 import { calculateFundingFit, calculatePopulationFit } from "@/lib/grants/fit";
 import { getDesiredFundingRange, getGrantAwardRange } from "@/lib/grants/filter-grants";
+import { syncTopGrantNotifications } from "@/lib/notifications/top-grant-notifications";
 
 type AppTab = "all" | "drafting" | "submitted" | "approved" | "rejected";
 type DashboardApplicationStatus = "Drafting" | "Submitted" | "Approved" | "Rejected";
@@ -64,22 +65,26 @@ function formatAwardRange(grant: RecommendedGrant) {
 }
 
 interface DashboardContentProps {
+  loginSessionKey: string;
   organization: Organization;
   recommendedGrants: RecommendedGrant[];
   applications: DashboardApplicationItem[];
 }
 
 const applicationRowClass =
-  "flex min-h-[82px] flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between";
-const applicationContentClass = "flex min-h-[54px] flex-col";
+  "flex min-h-[82px] min-w-0 flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between";
+const applicationContentClass = "flex min-h-[54px] min-w-0 flex-1 flex-col";
 const applicationTitleStatusClass = "min-h-[42px]";
 const applicationDetailsClass = "mt-1 min-h-[24px] space-y-1";
 const centeredApplicationDetailsClass =
   "mt-1 flex min-h-[24px] flex-1 items-center";
 const applicationActionsClass =
-  "flex min-w-[132px] flex-col gap-2 sm:self-center sm:flex-row md:flex-col lg:flex-row";
+  "flex w-full min-w-0 flex-col gap-2 sm:w-auto sm:min-w-[132px] sm:self-center sm:flex-row md:flex-col lg:flex-row";
+const applicationActionButtonClass =
+  "w-full whitespace-normal break-words sm:whitespace-nowrap";
 
 export function DashboardContent({
+  loginSessionKey,
   organization,
   recommendedGrants,
   applications,
@@ -89,17 +94,39 @@ export function DashboardContent({
   const [explanationMessage, setExplanationMessage] = useState<string | null>(null);
   const [isRefreshingExplanations, startExplanationRefresh] = useTransition();
 
-  function refreshExplanations() {
-    setExplanationMessage(null);
+  useEffect(() => {
+    if (recommendedGrants.length === 0) return;
+
+    const refreshKey = `grantclient:dashboard-ai:${organization.user_id}:${loginSessionKey}`;
+    if (window.sessionStorage.getItem(refreshKey)) return;
+
+    window.sessionStorage.setItem(refreshKey, "started");
     startExplanationRefresh(async () => {
       const result = await refreshGrantExplanations();
       if (!result.success) {
+        window.sessionStorage.removeItem(refreshKey);
         setExplanationMessage(result.error);
         return;
       }
+      window.sessionStorage.setItem(refreshKey, "completed");
       router.refresh();
     });
-  }
+  }, [
+    loginSessionKey,
+    organization.user_id,
+    recommendedGrants.length,
+    router,
+  ]);
+
+  useEffect(() => {
+    syncTopGrantNotifications(
+      organization.user_id,
+      recommendedGrants.map((grant) => ({
+        id: grant.id,
+        title: grant.title,
+      })),
+    );
+  }, [organization.user_id, recommendedGrants]);
 
   const focusLabel =
     organization.mission_categories?.join(", ") ??
@@ -145,24 +172,19 @@ export function DashboardContent({
       </div>
 
       <section>
-        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-4">
           <div>
             <h2 className="mb-1 text-xl font-bold text-text">Top Grants for You</h2>
             <p className="text-sm text-text-secondary">
               Personalized recommendations for {organization.organization_name}
             </p>
           </div>
-          <Button
-            type="button"
-            size="sm"
-            variant="secondary"
-            onClick={refreshExplanations}
-            disabled={isRefreshingExplanations || recommendedGrants.length === 0}
-          >
-            <RefreshCw className={cn("h-4 w-4", isRefreshingExplanations && "animate-spin")} />
-            {isRefreshingExplanations ? "Generating..." : "Refresh explanations"}
-          </Button>
         </div>
+        {isRefreshingExplanations && (
+          <p className="mb-4 text-sm text-text-muted">
+            Updating grant explanations…
+          </p>
+        )}
         {explanationMessage && (
           <p className="mb-4 text-sm text-text-secondary">{explanationMessage}</p>
         )}
@@ -183,12 +205,14 @@ export function DashboardContent({
               <Card key={grant.id} hover padding="md" className="flex flex-col">
                 <div className="mb-4 flex items-start justify-between gap-3">
                   <MatchScore score={grant.totalScore} size="sm" />
-                  <Badge
-                    variant={grant.eligibilityStatus === "eligible" ? "success" : "warning"}
-                    className="text-right"
-                  >
-                    {grant.eligibilityStatus.replaceAll("_", " ")}
-                  </Badge>
+                  {grant.eligibilityStatus !== "needs_verification" && (
+                    <Badge
+                      variant={grant.eligibilityStatus === "eligible" ? "success" : "warning"}
+                      className="text-right"
+                    >
+                      {grant.eligibilityStatus.replaceAll("_", " ")}
+                    </Badge>
+                  )}
                 </div>
                 <h3 className="font-semibold text-text">{grant.title}</h3>
                 <p className="text-sm text-text-secondary">{grant.funder}</p>
@@ -217,12 +241,6 @@ export function DashboardContent({
                       <li key={reason}>{reason}</li>
                       ))}
                   </ul>
-                  {grant.verificationItems.length > 0 && (
-                    <p className="mt-2 flex gap-1.5 text-xs text-warning-dark">
-                      <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                      {grant.verificationItems[0]}
-                    </p>
-                  )}
                   <a
                     href={grant.applicationUrl}
                     target="_blank"
@@ -348,8 +366,21 @@ export function DashboardContent({
           {visibleApplicationCount === 0 && (
             <Card padding="md">
               <p className="text-sm text-text-secondary">
-                No applications in this category yet. Start one from the Drafting Lab
-                or choose a grant from Grant Finder.
+                No applications in this category yet. Start one from the{" "}
+                <Link
+                  href="/applications/builder"
+                  className="font-medium text-primary hover:underline"
+                >
+                  Drafting Lab
+                </Link>{" "}
+                or choose a grant from{" "}
+                <Link
+                  href="/grants"
+                  className="font-medium text-primary hover:underline"
+                >
+                  Grant Finder
+                </Link>
+                .
               </p>
             </Card>
           )}
@@ -382,12 +413,12 @@ export function DashboardContent({
                     </div>
                     <div className={applicationActionsClass}>
                       <Link href={`/applications/${item.id}`}>
-                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="secondary" size="sm" className={applicationActionButtonClass}>
                           View Application
                         </Button>
                       </Link>
                       <Link href={`/applications/status/${item.id}`}>
-                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="ghost" size="sm" className={applicationActionButtonClass}>
                           Update Status
                         </Button>
                       </Link>
@@ -426,12 +457,12 @@ export function DashboardContent({
                     </div>
                     <div className={applicationActionsClass}>
                       <Link href={`/applications/${item.id}`}>
-                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="secondary" size="sm" className={applicationActionButtonClass}>
                           View Application
                         </Button>
                       </Link>
                       <Link href={`/applications/status/${item.id}`}>
-                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="ghost" size="sm" className={applicationActionButtonClass}>
                           Update Status
                         </Button>
                       </Link>
@@ -471,12 +502,12 @@ export function DashboardContent({
                     </div>
                     <div className={applicationActionsClass}>
                       <Link href={`/applications/${item.id}`}>
-                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="secondary" size="sm" className={applicationActionButtonClass}>
                           View Application
                         </Button>
                       </Link>
                       <Link href={`/applications/status/${item.id}`}>
-                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="ghost" size="sm" className={applicationActionButtonClass}>
                           Update Status
                         </Button>
                       </Link>
@@ -515,12 +546,12 @@ export function DashboardContent({
                     </div>
                     <div className={applicationActionsClass}>
                       <Link href={`/applications/${item.id}`}>
-                        <Button variant="secondary" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="secondary" size="sm" className={applicationActionButtonClass}>
                           View Application
                         </Button>
                       </Link>
                       <Link href={`/applications/status/${item.id}`}>
-                        <Button variant="ghost" size="sm" className="w-full whitespace-nowrap">
+                        <Button variant="ghost" size="sm" className={applicationActionButtonClass}>
                           Update Status
                         </Button>
                       </Link>

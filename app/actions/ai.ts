@@ -6,7 +6,7 @@ import { generateProposalSection } from "@/lib/ai/generate-section";
 import { z } from "zod";
 
 export async function refreshGrantExplanations() {
-  const result = await generateMatchExplanations();
+  const result = await generateMatchExplanations({ force: true });
   if (result.success) revalidatePath("/dashboard");
   return result;
 }

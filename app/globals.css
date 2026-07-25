@@ -82,6 +82,14 @@ body {
   opacity: 1;
 }
 
+:root.dark .grantclient-logo-always-light .grantclient-logo-light {
+  opacity: 1;
+}
+
+:root.dark .grantclient-logo-always-light .grantclient-logo-dark {
+  opacity: 0;
+}
+
 .typed-headline-cursor {
   background: #000000;
 }

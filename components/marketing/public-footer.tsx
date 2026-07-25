@@ -114,7 +114,7 @@ export function PublicFooter() {
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <Link href="/" className="inline-flex justify-center">
-            <GrantClientLogo className="w-[190px] brightness-0 invert" />
+            <GrantClientLogo className="grantclient-logo-always-light w-[190px] brightness-0 invert" />
           </Link>
           <p className="mt-7 max-w-3xl text-sm font-medium text-text-muted sm:text-base">
             AI-powered grant discovery and application builder for nonprofits.

@@ -18,13 +18,13 @@ export function GrantClientLogo({ className, priority = false }: GrantClientLogo
         className="grantclient-logo-light h-auto w-full transition-opacity"
       />
       <Image
-        src="/brand/grantclient-logo-dark.png"
+        src="/brand/grantclient-logo-transparent.png"
         alt=""
-        width={558}
-        height={101}
+        width={433}
+        height={95}
         priority={priority}
         aria-hidden="true"
-        className="grantclient-logo-dark absolute left-0 top-1/2 h-auto w-full -translate-y-1/2 opacity-0 transition-opacity"
+        className="grantclient-logo-dark absolute left-0 top-1/2 h-auto w-full -translate-y-1/2 brightness-0 invert opacity-0 transition-opacity"
       />
     </span>
   );

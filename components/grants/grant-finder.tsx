@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { useUser } from "@/hooks/use-user";
 import {
   filterAndSortGrants,
-  scoreAndFilterGrants,
+  scoreGrants,
   type AmountRangeFilter,
   type DeadlineRangeFilter,
   type GrantSortOption,
@@ -283,8 +283,17 @@ export function GrantFinderPage({
   const [sort, setSort] = useState<GrantSortOption>("match");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState<number>(20);
+  const hasCatalogFilters =
+    search.trim() !== "" ||
+    categories.length > 0 ||
+    amountRanges.length > 0 ||
+    deadlineRanges.length > 0;
 
   useEffect(() => {
+    if (!hasCatalogFilters) {
+      return;
+    }
+
     const controller = new AbortController();
     const timeout = window.setTimeout(async () => {
       const params = new URLSearchParams({ search });
@@ -320,11 +329,13 @@ export function GrantFinderPage({
       controller.abort();
       window.clearTimeout(timeout);
     };
-  }, [amountRanges, categories, deadlineRanges, grants, search]);
+  }, [amountRanges, categories, deadlineRanges, grants, hasCatalogFilters, search]);
 
+  const activeCatalogGrants = hasCatalogFilters ? catalogGrants : grants;
+  const isCatalogRefreshing = hasCatalogFilters && isRefreshing;
   const scoredGrants = useMemo(
-    () => scoreAndFilterGrants(catalogGrants, organization),
-    [catalogGrants, organization],
+    () => scoreGrants(activeCatalogGrants, organization),
+    [activeCatalogGrants, organization],
   );
 
   const filteredGrants = useMemo(
@@ -398,7 +409,7 @@ export function GrantFinderPage({
           <div className="mb-3">
             <h1 className="text-2xl font-bold text-text">Grant Finder</h1>
             <p className="mt-1 text-sm text-text-secondary">
-              Browse {catalogGrants.length} funding opportunities matched to your profile.
+              Browse {activeCatalogGrants.length} funding opportunities ranked for your profile.
             </p>
           </div>
 
@@ -520,7 +531,7 @@ export function GrantFinderPage({
                 ? `${pageStartIndex + 1}-${pageEndIndex}`
                 : "0"}{" "}
               of {filteredGrants.length} grants
-              {isRefreshing && (
+              {isCatalogRefreshing && (
                 <span className="whitespace-nowrap">
                   {" "}
                   &middot; Refreshing results
@@ -546,7 +557,7 @@ export function GrantFinderPage({
             )}
           </div>
 
-          {filteredGrants.length === 0 && isRefreshing ? (
+          {filteredGrants.length === 0 && isCatalogRefreshing ? (
             <Card padding="lg">
               <h2 className="text-lg font-semibold text-text">
                 Refreshing results

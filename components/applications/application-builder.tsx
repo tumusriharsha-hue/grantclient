@@ -2,12 +2,16 @@
 
 import { CheckCircle2, Target } from "lucide-react";
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { startApplicationDraft } from "@/app/actions/applications";
 import { AppShell } from "@/components/layout";
 import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
+import type { ApplicationSetupInput } from "@/lib/validations/application";
+import { DatePicker } from "./application-status-form";
 
 interface ApplicationBuilderPageProps {
+  applicationId?: string;
+  initialValues?: ApplicationSetupInput;
   organization: {
     name: string;
     mission: string;
@@ -26,11 +30,19 @@ interface ApplicationBuilderPageProps {
 }
 
 export function ApplicationBuilderPage({
+  applicationId,
+  initialValues,
   organization,
   documents,
   grantContext,
 }: ApplicationBuilderPageProps) {
   const [state, formAction, isPending] = useActionState(startApplicationDraft, {});
+  const [projectStartDate, setProjectStartDate] = useState(
+    initialValues?.projectStartDate ?? "",
+  );
+  const [projectEndDate, setProjectEndDate] = useState(
+    initialValues?.projectEndDate ?? "",
+  );
 
   return (
     <AppShell header={null}>
@@ -48,6 +60,7 @@ export function ApplicationBuilderPage({
       </div>
 
       <form action={formAction} className="mx-auto max-w-5xl space-y-6 p-6 md:p-8">
+        <input type="hidden" name="applicationId" value={applicationId ?? ""} />
         <input type="hidden" name="grantId" value={grantContext?.id ?? ""} />
         {state.error && (
           <p className="rounded-md bg-danger-light px-3 py-2 text-sm text-danger-dark">
@@ -75,21 +88,33 @@ export function ApplicationBuilderPage({
 
             <section className="space-y-4">
               <h2 className="text-lg font-semibold text-text">Project basics</h2>
-              <Input label="Project or program name" name="projectName" required maxLength={500} error={state.fieldErrors?.projectName} />
+              <Input label="Project or program name" name="projectName" defaultValue={initialValues?.projectName} required maxLength={500} error={state.fieldErrors?.projectName} />
               <div className="grid gap-4 sm:grid-cols-3">
-                <Input label="Amount requested" name="amountRequested" type="number" min={1} step={1} required error={state.fieldErrors?.amountRequested} />
-                <Input label="Project start" name="projectStartDate" type="date" required error={state.fieldErrors?.projectStartDate} />
-                <Input label="Project end" name="projectEndDate" type="date" required error={state.fieldErrors?.projectEndDate} />
+                <Input label="Amount requested" name="amountRequested" defaultValue={initialValues?.amountRequested} type="number" min={1} step={1} required error={state.fieldErrors?.amountRequested} />
+                <DatePicker
+                  label="Project start"
+                  name="projectStartDate"
+                  value={projectStartDate}
+                  onChange={setProjectStartDate}
+                  error={state.fieldErrors?.projectStartDate}
+                />
+                <DatePicker
+                  label="Project end"
+                  name="projectEndDate"
+                  value={projectEndDate}
+                  onChange={setProjectEndDate}
+                  error={state.fieldErrors?.projectEndDate}
+                />
               </div>
-              <Textarea label="Project summary" name="projectSummary" rows={4} required maxLength={5000} error={state.fieldErrors?.projectSummary} />
+              <Textarea label="Project summary" name="projectSummary" defaultValue={initialValues?.projectSummary} rows={4} required maxLength={5000} error={state.fieldErrors?.projectSummary} />
             </section>
 
             <section className="space-y-4 border-t border-border pt-6">
               <h2 className="text-lg font-semibold text-text">Need and beneficiaries</h2>
-              <Textarea label="Specific problem or need" name="problemStatement" rows={4} required maxLength={5000} error={state.fieldErrors?.problemStatement} />
+              <Textarea label="Specific problem or need" name="problemStatement" defaultValue={initialValues?.problemStatement} rows={4} required maxLength={5000} error={state.fieldErrors?.problemStatement} />
               <div className="grid gap-4 sm:grid-cols-2">
-                <Input label="Target beneficiaries" name="targetBeneficiaries" required maxLength={500} error={state.fieldErrors?.targetBeneficiaries} />
-                <Input label="Number of people served (optional)" name="peopleServed" type="number" min={1} step={1} error={state.fieldErrors?.peopleServed} />
+                <Input label="Target beneficiaries" name="targetBeneficiaries" defaultValue={initialValues?.targetBeneficiaries} required maxLength={500} error={state.fieldErrors?.targetBeneficiaries} />
+                <Input label="Number of people served (optional)" name="peopleServed" defaultValue={initialValues?.peopleServed} type="number" min={1} step={1} error={state.fieldErrors?.peopleServed} />
               </div>
             </section>
 
@@ -107,6 +132,7 @@ export function ApplicationBuilderPage({
                     key={question.id}
                     label={question.question}
                     name={`grantQuestion:${question.id}`}
+                    defaultValue={initialValues?.grantQuestionResponses[question.id]}
                     rows={4}
                     required={question.required}
                     maxLength={5000}
@@ -123,24 +149,29 @@ export function ApplicationBuilderPage({
 
             <section className="space-y-4 border-t border-border pt-6">
               <h2 className="text-lg font-semibold text-text">Plan and outcomes</h2>
-              <Textarea label="Planned activities" name="plannedActivities" rows={4} required maxLength={5000} error={state.fieldErrors?.plannedActivities} />
-              <Textarea label="Measurable outcomes" name="measurableOutcomes" rows={4} required maxLength={5000} error={state.fieldErrors?.measurableOutcomes} />
-              <Textarea label="Evaluation approach" name="evaluationApproach" rows={4} required maxLength={5000} error={state.fieldErrors?.evaluationApproach} />
-              <Textarea label="Project budget summary" name="projectBudgetSummary" rows={4} required maxLength={5000} error={state.fieldErrors?.projectBudgetSummary} />
+              <Textarea label="Planned activities" name="plannedActivities" defaultValue={initialValues?.plannedActivities} rows={4} required maxLength={5000} error={state.fieldErrors?.plannedActivities} />
+              <Textarea label="Measurable outcomes" name="measurableOutcomes" defaultValue={initialValues?.measurableOutcomes} rows={4} required maxLength={5000} error={state.fieldErrors?.measurableOutcomes} />
+              <Textarea label="Evaluation approach" name="evaluationApproach" defaultValue={initialValues?.evaluationApproach} rows={4} required maxLength={5000} error={state.fieldErrors?.evaluationApproach} />
+              <Textarea label="Project budget summary" name="projectBudgetSummary" defaultValue={initialValues?.projectBudgetSummary} rows={4} required maxLength={5000} error={state.fieldErrors?.projectBudgetSummary} />
             </section>
 
             <section className="space-y-4 border-t border-border pt-6">
               <h2 className="text-lg font-semibold text-text">Helpful context</h2>
-              <Textarea label="Sustainability plan (optional)" name="sustainabilityPlan" rows={3} maxLength={5000} />
-              <Textarea label="Partnerships (optional)" name="partnerships" rows={3} maxLength={5000} />
-              <Textarea label="Staff responsible (optional)" name="staffResponsible" rows={3} maxLength={5000} />
-              <Textarea label="Application notes (optional)" name="organizationNotes" rows={3} maxLength={5000} />
+              <Textarea label="Sustainability plan (optional)" name="sustainabilityPlan" defaultValue={initialValues?.sustainabilityPlan} rows={3} maxLength={5000} />
+              <Textarea label="Partnerships (optional)" name="partnerships" defaultValue={initialValues?.partnerships} rows={3} maxLength={5000} />
+              <Textarea label="Staff responsible (optional)" name="staffResponsible" defaultValue={initialValues?.staffResponsible} rows={3} maxLength={5000} />
+              <Textarea label="Application notes (optional)" name="organizationNotes" defaultValue={initialValues?.organizationNotes} rows={3} maxLength={5000} />
               {documents.length > 0 && (
                 <fieldset className="space-y-2">
                   <legend className="text-sm font-medium text-text">Supporting documents</legend>
                   {documents.map((document) => (
                     <label key={document.id} className="flex items-center gap-2 text-sm text-text-secondary">
-                      <input type="checkbox" name="selectedDocumentIds" value={document.id} />
+                      <input
+                        type="checkbox"
+                        name="selectedDocumentIds"
+                        value={document.id}
+                        defaultChecked={initialValues?.selectedDocumentIds.includes(document.id)}
+                      />
                       {document.fileName}
                     </label>
                   ))}
@@ -162,7 +193,11 @@ export function ApplicationBuilderPage({
                 These answers create a structured proposal. Narrative sections can be generated individually after setup.
               </p>
               <Button type="submit" className="mt-4 w-full">
-                {isPending ? "Saving..." : "Save and build proposal"}
+                {isPending
+                  ? "Saving..."
+                  : applicationId
+                    ? "Save setup changes"
+                    : "Save and build proposal"}
               </Button>
             </Card>
           </aside>

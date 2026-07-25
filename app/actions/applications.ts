@@ -4,9 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { isGuestUser } from "@/lib/auth/session";
 import {
+  calculateDraftSectionProgress,
   type DraftSection,
 } from "@/lib/applications/defaults";
-import { buildInitialApplicationSections } from "@/lib/applications/proposal-template";
+import {
+  buildInitialApplicationSections,
+  proposalTemplate,
+} from "@/lib/applications/proposal-template";
 import { getGrantById } from "@/lib/grants/queries";
 import { createClient } from "@/lib/supabase/server";
 import { parseApplicationSetup } from "@/lib/validations/application";
@@ -95,11 +99,21 @@ function isMissingApplicationSectionsError(error: { code?: string; message?: str
   );
 }
 
+function isMissingApplicationColumnError(error: { code?: string; message?: string } | null) {
+  return (
+    error?.code === "PGRST204" ||
+    /schema cache|could not find.*column|column .* does not exist/i.test(
+      error?.message ?? "",
+    )
+  );
+}
+
 export async function startApplicationDraft(
   _previousState: ApplicationSetupActionState,
   formData: FormData,
 ): Promise<ApplicationSetupActionState> {
   const { supabase, user } = await requireFullUser();
+  const applicationId = getFormString(formData, "applicationId");
   const parsed = parseApplicationSetup(formData);
   if (!parsed.success) {
     return {
@@ -176,22 +190,36 @@ export async function startApplicationDraft(
     : {};
 
   const initialSections = buildInitialApplicationSections(organization, verifiedSetup, grant);
+  const initialProgress = calculateDraftSectionProgress(
+    initialSections.map((section) => section.content),
+    proposalTemplate.length,
+  );
   const legacyDraft = initialSections.map((section) => ({
     title: section.title,
     body: section.content,
   }));
 
-  const existingQuery = grantId
+  const existingQuery = applicationId
     ? await supabase
+        .from("applications")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("id", applicationId)
+        .maybeSingle()
+    : grantId
+      ? await supabase
         .from("applications")
         .select("id")
         .eq("user_id", user.id)
         .eq("grant_id", grantId)
         .maybeSingle()
-    : { data: null, error: null };
+      : { data: null, error: null };
 
   if (existingQuery.error) {
     return { error: "Unable to check for an existing application." };
+  }
+  if (applicationId && !existingQuery.data) {
+    return { error: "The application you tried to edit could not be found." };
   }
 
   const applicationPayload = {
@@ -208,15 +236,18 @@ export async function startApplicationDraft(
     amount: `$${setup.amountRequested.toLocaleString("en-US")}`,
     title,
     status: "drafting",
-    progress: 35,
+    progress: initialProgress,
     draft_content: legacyDraft as unknown as Json,
     last_updated_at: new Date().toISOString(),
   };
 
-  const applicationResult = existingQuery.data
+  const editPayload: ApplicationUpdate = { ...applicationPayload };
+  delete editPayload.draft_content;
+  delete editPayload.progress;
+  let applicationResult = existingQuery.data
     ? await supabase
         .from("applications")
-        .update(applicationPayload)
+        .update(editPayload)
         .eq("user_id", user.id)
         .eq("id", existingQuery.data.id)
         .select("id")
@@ -227,11 +258,55 @@ export async function startApplicationDraft(
         .select("id")
         .single();
 
+  if (applicationResult.error && isMissingApplicationColumnError(applicationResult.error)) {
+    const compatibleInsertPayload = {
+      user_id: user.id,
+      grant_id: grantId,
+      grant_title: grant?.title ?? null,
+      grant_funder: grant?.funder ?? null,
+      grant_category: grant?.category ?? null,
+      application_url: grant?.applicationUrl ?? null,
+      amount: `$${setup.amountRequested.toLocaleString("en-US")}`,
+      title,
+      status: "drafting",
+      progress: initialProgress,
+      draft_content: legacyDraft as unknown as Json,
+      last_updated_at: new Date().toISOString(),
+    };
+    const compatibleEditPayload: ApplicationUpdate = {
+      ...compatibleInsertPayload,
+    };
+    delete compatibleEditPayload.draft_content;
+    delete compatibleEditPayload.progress;
+
+    applicationResult = existingQuery.data
+      ? await supabase
+          .from("applications")
+          .update(compatibleEditPayload)
+          .eq("user_id", user.id)
+          .eq("id", existingQuery.data.id)
+          .select("id")
+          .single()
+      : await supabase
+          .from("applications")
+          .insert(compatibleInsertPayload)
+          .select("id")
+          .single();
+  }
+
   if (applicationResult.error) {
     return { error: "Unable to save the application setup." };
   }
 
-  const sectionRows = initialSections.map((section) => ({
+  const sectionsToSave = applicationId
+    ? initialSections.filter((section) =>
+        proposalTemplate.some(
+          (template) =>
+            template.id === section.section_key && template.deterministic,
+        ),
+      )
+    : initialSections;
+  const sectionRows = sectionsToSave.map((section) => ({
     application_id: applicationResult.data.id,
     user_id: user.id,
     ...section,
@@ -275,7 +350,10 @@ export async function saveApplicationDraft(input: {
       title,
       draft_content: sections as unknown as Json,
       last_updated_at: new Date().toISOString(),
-      progress: 60,
+      progress: calculateDraftSectionProgress(
+        sections.map((section) => section.body),
+        proposalTemplate.length,
+      ),
     })
     .eq("user_id", user.id)
     .eq("id", input.id);
@@ -332,8 +410,10 @@ export async function updateApplicationStatus(formData: FormData) {
     status,
     amount,
     status_note: statusNote,
-    progress: status === "drafting" ? 60 : 100,
   };
+  if (status !== "drafting") {
+    update.progress = 100;
+  }
 
   if (status === "drafting") {
     update.last_updated_at = statusDate ?? new Date().toISOString();

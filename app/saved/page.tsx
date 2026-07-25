@@ -25,7 +25,11 @@ export default async function SavedGrantsPage() {
           <div>
             <h1 className="text-2xl font-bold text-text">Saved Grants</h1>
             <p className="mt-2 text-sm text-text-secondary">
-              Grants you save from the Grant Finder appear here.
+              Grants you save from the{" "}
+              <Link href="/grants" className="font-medium text-primary hover:underline">
+                Grant Finder
+              </Link>{" "}
+              appear here.
             </p>
           </div>
           <Link href="/grants">
@@ -36,8 +40,11 @@ export default async function SavedGrantsPage() {
         {savedGrants.length === 0 ? (
           <Card padding="lg">
             <p className="text-sm text-text-secondary">
-              No saved grants yet. Browse the Grant Finder and save opportunities to
-              track them here.
+              No saved grants yet. Browse the{" "}
+              <Link href="/grants" className="font-medium text-primary hover:underline">
+                Grant Finder
+              </Link>{" "}
+              and save opportunities to track them here.
             </p>
           </Card>
         ) : (

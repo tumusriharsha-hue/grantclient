@@ -144,7 +144,7 @@ export async function saveOnboardingProgress(
     if (!validation.success) {
       return {
         success: false,
-        error: "Please fix the errors below.",
+        error: "Please fix the errors.",
         fieldErrors: validation.fieldErrors,
       };
     }

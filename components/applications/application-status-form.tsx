@@ -97,6 +97,7 @@ interface DatePickerProps {
   name?: string;
   value: string;
   onChange: (value: string) => void;
+  error?: string;
 }
 
 const monthFormatter = new Intl.DateTimeFormat("en-US", {
@@ -113,7 +114,13 @@ const displayDateFormatter = new Intl.DateTimeFormat("en-US", {
 const weekdayLabels = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const calendarPopoverWidth = 252;
 
-function DatePicker({ label, name, value, onChange }: DatePickerProps) {
+export function DatePicker({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+}: DatePickerProps) {
   const id = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -232,7 +239,12 @@ function DatePicker({ label, name, value, onChange }: DatePickerProps) {
       {name && <input type="hidden" name={name} value={value} />}
       <div
         ref={triggerRef}
-        className="flex h-11 w-full items-center gap-2 rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm leading-6 text-text shadow-sm transition-colors focus-within:border-primary focus-within:outline-none focus-within:ring-[3px] focus-within:ring-primary/10 hover:border-primary hover:bg-bg"
+        className={cn(
+          "flex h-11 w-full items-center gap-2 rounded-md border bg-surface px-3 py-2.5 text-sm leading-6 text-text shadow-sm transition-colors focus-within:outline-none focus-within:ring-[3px] hover:bg-bg",
+          error
+            ? "border-danger focus-within:border-danger focus-within:ring-danger/10"
+            : "border-border-hover focus-within:border-primary focus-within:ring-primary/10 hover:border-primary",
+        )}
       >
         <input
           id={id}
@@ -240,6 +252,8 @@ function DatePicker({ label, name, value, onChange }: DatePickerProps) {
           inputMode="numeric"
           placeholder="MM/DD/YYYY"
           value={inputValue}
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? `${id}-error` : undefined}
           className="min-w-0 flex-1 bg-transparent text-sm text-text outline-none placeholder:text-text-muted focus:outline-none focus-visible:!outline-none"
           onChange={(event) => setInputValue(event.target.value)}
           onBlur={commitTypedDate}
@@ -267,6 +281,11 @@ function DatePicker({ label, name, value, onChange }: DatePickerProps) {
           <Calendar className="h-4 w-4" />
         </button>
       </div>
+      {error && (
+        <p id={`${id}-error`} className="text-xs text-danger">
+          {error}
+        </p>
+      )}
 
       {open &&
         popoverStyle &&

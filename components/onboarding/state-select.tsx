@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import { US_STATES } from "@/lib/onboarding/us-states";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,23 @@ export function StateSelect({
   error,
 }: StateSelectProps) {
   const [query, setQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const listboxId = useId();
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, []);
 
   const filteredStates = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -34,47 +51,70 @@ export function StateSelect({
   const selectedLabel = US_STATES.find((state) => state.value === value)?.label;
 
   return (
-    <div className="space-y-2">
+    <div ref={containerRef} className="space-y-2">
       <label className="block text-sm font-medium text-text">State *</label>
       <input
         type="search"
         value={query}
-        onChange={(event) => setQuery(event.target.value)}
+        onChange={(event) => {
+          setQuery(event.target.value);
+          setIsOpen(true);
+        }}
+        onFocus={() => setIsOpen(true)}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            setIsOpen(false);
+            event.currentTarget.blur();
+          }
+        }}
         placeholder={selectedLabel ?? "Search states..."}
         disabled={disabled}
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-controls={listboxId}
+        aria-autocomplete="list"
         className={cn(
           "w-full rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10",
           error && "border-danger",
         )}
       />
-      <div className="max-h-48 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg">
-        {filteredStates.map((state) => (
-          <button
-            key={state.value}
-            type="button"
-            disabled={disabled}
-            onClick={() => {
-              onChange(state.value);
-              setQuery("");
-            }}
-            className={cn(
-              "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
-              value === state.value
-                ? "bg-primary-light font-medium text-primary-hover"
-                : "text-text-secondary hover:bg-primary-light/60 hover:text-text",
-            )}
-          >
-            <span>{state.label}</span>
-            <span className="flex items-center gap-2">
-              <span className="text-xs text-text-muted">{state.value}</span>
-              {value === state.value && <Check className="h-4 w-4 text-primary" />}
-            </span>
-          </button>
-        ))}
-        {filteredStates.length === 0 && (
-          <p className="px-3 py-4 text-sm text-text-muted">No states found.</p>
-        )}
-      </div>
+      {isOpen && (
+        <div
+          id={listboxId}
+          role="listbox"
+          className="max-h-48 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg"
+        >
+          {filteredStates.map((state) => (
+            <button
+              key={state.value}
+              type="button"
+              role="option"
+              aria-selected={value === state.value}
+              disabled={disabled}
+              onClick={() => {
+                onChange(state.value);
+                setQuery("");
+                setIsOpen(false);
+              }}
+              className={cn(
+                "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+                value === state.value
+                  ? "bg-primary-light font-medium text-primary-hover"
+                  : "text-text-secondary hover:bg-primary-light/60 hover:text-text",
+              )}
+            >
+              <span>{state.label}</span>
+              <span className="flex items-center gap-2">
+                <span className="text-xs text-text-muted">{state.value}</span>
+                {value === state.value && <Check className="h-4 w-4 text-primary" />}
+              </span>
+            </button>
+          ))}
+          {filteredStates.length === 0 && (
+            <p className="px-3 py-4 text-sm text-text-muted">No states found.</p>
+          )}
+        </div>
+      )}
       {selectedLabel && (
         <p className="text-xs text-text-secondary">Selected: {selectedLabel}</p>
       )}

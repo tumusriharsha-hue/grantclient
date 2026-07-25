@@ -29,6 +29,7 @@ export function DashboardPage({
     <AppShell>
       {setupComplete && organization ? (
         <DashboardContent
+          loginSessionKey={user?.last_sign_in_at ?? user?.id ?? "unknown"}
           organization={organization}
           recommendedGrants={recommendedGrants}
           applications={applications}

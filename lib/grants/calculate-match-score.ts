@@ -21,12 +21,21 @@ const STOP_WORDS = new Set([
   "the", "their", "this", "through", "with", "will", "your", "grant", "program",
 ]);
 
+const POSITIVE_SCORE_CALIBRATION_EXPONENT = 0.7;
+
 function clamp(value: number, max: number): number {
   return Math.max(0, Math.min(max, Math.round(value)));
 }
 
 function component(maxScore: number, score: number, reasons: string[]): MatchScoreComponent {
-  return { maxScore, score: clamp(score, maxScore), reasons };
+  const boundedScore = Math.max(0, Math.min(maxScore, score));
+  const calibratedScore =
+    boundedScore === 0 || boundedScore === maxScore
+      ? boundedScore
+      : maxScore *
+        (boundedScore / maxScore) ** POSITIVE_SCORE_CALIBRATION_EXPONENT;
+
+  return { maxScore, score: clamp(calibratedScore, maxScore), reasons };
 }
 
 function normalize(value: string): string {

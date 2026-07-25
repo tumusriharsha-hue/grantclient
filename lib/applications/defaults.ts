@@ -11,6 +11,21 @@ export interface DraftSection {
   usedSourceFields?: string[];
 }
 
+export function calculateDraftSectionProgress(
+  contents: string[],
+  totalSectionCount: number,
+) {
+  if (totalSectionCount <= 0) return 20;
+
+  const populatedSectionCount = contents
+    .slice(0, totalSectionCount)
+    .filter((content) => content.trim().length > 0).length;
+
+  return Math.round(
+    20 + (Math.min(populatedSectionCount, totalSectionCount) / totalSectionCount) * 80,
+  );
+}
+
 export const defaultDraftSections: DraftSection[] = [
   {
     title: "Executive summary",

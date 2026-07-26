@@ -29,7 +29,9 @@ export function formatAuthError(message: string, mode?: "signup" | "signin"): st
   }
 
   if (lower.includes("user already registered")) {
-    return "An account with this email already exists. Try signing in instead.";
+    return mode === "signup"
+      ? "Unable to create the account with those details. Please try again."
+      : "Incorrect email or password. Please try again.";
   }
 
   return message;

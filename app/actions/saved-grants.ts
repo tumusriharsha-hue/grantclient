@@ -38,7 +38,7 @@ export async function toggleSavedGrant(
     .maybeSingle();
 
   if (lookupError) {
-    return { success: false, error: lookupError.message };
+    return { success: false, error: "Unable to update saved grants." };
   }
 
   if (existing) {
@@ -49,7 +49,7 @@ export async function toggleSavedGrant(
       .eq("id", existing.id);
 
     if (error) {
-      return { success: false, error: error.message };
+      return { success: false, error: "Unable to update saved grants." };
     }
 
     revalidatePath("/grants");
@@ -65,7 +65,7 @@ export async function toggleSavedGrant(
   });
 
   if (error) {
-    return { success: false, error: error.message };
+    return { success: false, error: "Unable to update saved grants." };
   }
 
   revalidatePath("/grants");

@@ -8,11 +8,6 @@ export type SignUpActionResult =
   | { success: true; requiresEmailConfirmation?: boolean }
   | { success: false; error: string };
 
-function isExistingUserError(message: string): boolean {
-  const lower = message.toLowerCase();
-  return lower.includes("already") || lower.includes("registered");
-}
-
 export async function signUpWithEmail(
   email: string,
   password: string,
@@ -33,14 +28,6 @@ export async function signUpWithEmail(
   });
 
   if (error) {
-    if (isExistingUserError(error.message)) {
-      return {
-        success: false,
-        error:
-          "This email is already registered. Sign in with your password, or use a different email.",
-      };
-    }
-
     return {
       success: false,
       error: formatAuthError(error.message, "signup"),

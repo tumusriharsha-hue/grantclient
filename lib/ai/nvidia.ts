@@ -41,7 +41,7 @@ export interface AIHealthResult { ok: boolean; provider: "nvidia"; configured: b
 export function getNvidiaConfig() {
   const provider = (process.env.AI_PROVIDER?.trim() || "nvidia").toLowerCase();
   if (provider !== "nvidia") throw new NvidiaConfigurationError(`Unsupported AI_PROVIDER: ${provider}.`);
-  const apiKey = (process.env.NVIDIA_API_KEY ?? process.env.NVIDIA_NIM_API_KEY)?.trim();
+  const apiKey = process.env.NVIDIA_API_KEY?.trim();
   const model = process.env.NVIDIA_NIM_MODEL?.trim();
   const baseURL = (process.env.NVIDIA_NIM_BASE_URL?.trim() || "https://integrate.api.nvidia.com/v1").replace(/\/$/, "");
   const timeoutMs = readPositiveInt(process.env.NVIDIA_NIM_TIMEOUT_MS, 25_000);

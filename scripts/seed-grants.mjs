@@ -1,6 +1,7 @@
 /**
  * Seed grants from data/grants.json into Supabase.
- * Replaces the catalog: stale grants are deleted, then current grants are upserted.
+ * Upserts the catalog without deleting stale records. Pass --prune only after
+ * reviewing the audit and confirming no saved/application data depends on them.
  *
  * Workflow:
  *   node scripts/import-verified-grants.mjs
@@ -48,6 +49,7 @@ function mapGrantToRow(grant) {
     category: grant.category,
     region: grant.region,
     status: grant.status,
+    is_active: grant.isActive ?? Boolean(grant.verifiedAt),
     amount: grant.amount ?? null,
     application_open_date: grant.applicationOpenDate ?? null,
     deadline: grant.deadline ?? null,
@@ -55,8 +57,15 @@ function mapGrantToRow(grant) {
     deadline_timezone: grant.deadlineTimezone ?? null,
     application_url: grant.applicationUrl,
     official_url: grant.officialUrl ?? null,
+    guidelines_url: grant.guidelinesUrl ?? null,
+    funder_url: grant.funderUrl ?? null,
+    secondary_source_url: grant.secondarySourceUrl ?? null,
+    source_title: grant.sourceTitle ?? null,
+    source_published_at: grant.sourcePublishedAt ?? null,
     source_url: grant.sourceUrl ?? null,
     verified_at: grant.verifiedAt ?? null,
+    last_verification_attempt: grant.lastVerificationAttempt ?? null,
+    verified_by: grant.verifiedBy ?? null,
     next_review_at: grant.nextReviewAt ?? null,
     confidence_level: grant.confidenceLevel ?? "low",
     invitation_only: grant.invitationOnly ?? false,
@@ -64,6 +73,10 @@ function mapGrantToRow(grant) {
     restrictions: grant.restrictions ?? null,
     typical_award: grant.typicalAward ?? null,
     verification_notes: grant.verificationNotes ?? null,
+    previous_deadline: grant.previousDeadline ?? null,
+    last_known_deadline: grant.lastKnownDeadline ?? grant.deadline ?? null,
+    current_cycle: grant.currentCycle ?? null,
+    closed_reason: grant.closedReason ?? null,
     created_at: grant.createdAt,
     updated_at: grant.updatedAt,
   };
@@ -98,7 +111,7 @@ const staleIds = (existingRows ?? [])
   .map((row) => row.id)
   .filter((id) => !newIds.includes(id));
 
-if (staleIds.length > 0) {
+if (process.argv.includes("--prune") && staleIds.length > 0) {
   for (let index = 0; index < staleIds.length; index += BATCH_SIZE) {
     const batch = staleIds.slice(index, index + BATCH_SIZE);
     const { error } = await supabase.from("grants").delete().in("id", batch);
@@ -110,6 +123,8 @@ if (staleIds.length > 0) {
   }
 
   console.log(`Removed ${staleIds.length} stale grants`);
+} else if (staleIds.length > 0) {
+  console.log(`Preserved ${staleIds.length} stale grants (pass --prune only after review)`);
 }
 
 let upserted = 0;

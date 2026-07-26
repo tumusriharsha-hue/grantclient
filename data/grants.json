@@ -6,7 +6,7 @@
     "funder": "Houston Endowment",
     "category": "Education",
     "region": "Texas",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -37,7 +37,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://houstonendowment.org/grantmaking",
     "createdAt": "2025-01-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "houston-endowment-collaboration-fund",
@@ -46,7 +47,7 @@
     "funder": "Houston Endowment",
     "category": "Capacity Building",
     "region": "Texas",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 75000,
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -73,7 +74,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://houstonendowment.org/announcements/houston-endowment-launches-4-9-million-collaboration-fund",
     "createdAt": "2025-01-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "meadows-foundation-grants",
@@ -82,7 +84,7 @@
     "funder": "The Meadows Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -114,7 +116,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mfi.org/what-we-fund",
     "createdAt": "2025-01-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "greater-houston-community-foundation-high-impact-grantmaking",
@@ -123,7 +126,7 @@
     "funder": "Greater Houston Community Foundation",
     "category": "Community Development",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 200000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -152,7 +155,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://ghcf.org/community-impact/high-impact-grantmaking",
     "createdAt": "2025-01-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "moody-foundation-grants",
@@ -161,7 +165,7 @@
     "funder": "The Moody Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 525000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -193,7 +197,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://moodyf.org/grants",
     "createdAt": "2025-01-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "rwjf-exploring-equitable-futures",
@@ -202,7 +207,7 @@
     "funder": "Robert Wood Johnson Foundation",
     "category": "Healthcare",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -230,7 +235,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://rwjf.org/en/grants/active-funding-opportunities/2025/exploring-equitable-futures.html",
     "createdAt": "2025-01-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "rwjf-from-insight-to-action-health-equity-research",
@@ -239,7 +245,7 @@
     "funder": "Robert Wood Johnson Foundation",
     "category": "Healthcare",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 500000,
     "deadline": "2026-07-27",
     "eligibleOrganizationTypes": [],
@@ -267,7 +273,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://rwjf.org/en/grants/active-funding-opportunities/2026/from-insight-to-action-health-equity-research-that-meets-this-moment.html",
     "createdAt": "2025-01-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-07-27"
   },
   {
     "id": "rwjf-local-data-for-equitable-communities",
@@ -276,7 +284,7 @@
     "funder": "Robert Wood Johnson Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "expired",
+    "status": "unverified",
     "amount": 50000,
     "deadline": "2026-03-03",
     "eligibleOrganizationTypes": [
@@ -307,7 +315,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://rwjf.org/en/grants/active-funding-opportunities/2026/local-data-for-equitable-communities.html",
     "createdAt": "2025-01-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-03-03"
   },
   {
     "id": "rwjf-health-equity-scholars-for-action-hes4a",
@@ -316,7 +326,7 @@
     "funder": "Robert Wood Johnson Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 260000,
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -344,7 +354,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://rwjf.org/en/grants/active-funding-opportunities/2025/health-equity-scholars-for-action.html",
     "createdAt": "2025-01-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "petco-love-spay-neuter-veterinary-care-grant",
@@ -353,7 +364,7 @@
     "funder": "Petco Love",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "deadline": "2026-09-30",
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -382,7 +393,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://petcolove.org/shelter-partners/grants",
     "createdAt": "2025-01-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-09-30"
   },
   {
     "id": "petco-love-stories-grant-campaign",
@@ -391,7 +404,7 @@
     "funder": "Petco Love (with BOBS from Skechers)",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 100000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -422,7 +435,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://petcolove.org/shelter-partners/grants",
     "createdAt": "2025-01-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "petsmart-charities-adoption-growth-grant",
@@ -431,7 +445,7 @@
     "funder": "PetSmart Charities",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 75000,
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -460,7 +474,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://petsmartcharities.org/pro/grants/adoption-prep",
     "createdAt": "2025-01-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "walmart-spark-good-local-grants",
@@ -469,7 +484,7 @@
     "funder": "Walmart Foundation",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 2625,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -501,7 +516,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines",
     "createdAt": "2025-01-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "rwjf-global-ideas-for-u-s-solutions",
@@ -510,7 +526,7 @@
     "funder": "Robert Wood Johnson Foundation",
     "category": "Healthcare",
     "region": "National",
-    "status": "expired",
+    "status": "unverified",
     "deadline": "2026-04-13",
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -537,7 +553,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://rwjf.org/en/grants/active-funding-opportunities/2026/learning-from-abroad-to-reimagine-health-knowledge-systems-for-equity-and-wellbeing.html",
     "createdAt": "2025-01-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-04-13"
   },
   {
     "id": "rwjf-health-policy-fellows",
@@ -546,7 +564,7 @@
     "funder": "Robert Wood Johnson Foundation",
     "category": "Healthcare",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
     "eligibleLocations": [
@@ -572,7 +590,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://rwjf.org/en/grants/active-funding-opportunities/2025/robert-wood-johnson-foundation-health-policy-fellows.html",
     "createdAt": "2025-01-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "petsmart-charities-access-to-veterinary-care-grants",
@@ -581,7 +600,7 @@
     "funder": "PetSmart Charities",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -610,7 +629,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://petsmartcharities.org/pro/grants",
     "createdAt": "2025-01-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "petsmart-charities-pet-food-assistance-grants",
@@ -619,7 +639,7 @@
     "funder": "PetSmart Charities",
     "category": "Food Security",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -651,7 +671,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://petsmartcharities.org/pro/grants",
     "createdAt": "2025-01-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "nea-grants-for-arts-projects-gap-july-2026-cycle",
@@ -660,7 +681,7 @@
     "funder": "National Endowment for the Arts",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 55000,
     "deadline": "2026-07-09",
     "eligibleOrganizationTypes": [
@@ -691,7 +712,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.gov/grants/grants-for-arts-projects",
     "createdAt": "2025-01-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-07-09"
   },
   {
     "id": "nea-our-town",
@@ -700,7 +723,7 @@
     "funder": "National Endowment for the Arts",
     "category": "Community Development",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 55000,
     "deadline": "2026-07-09",
     "eligibleOrganizationTypes": [
@@ -732,7 +755,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.gov/grants/grants-for-arts-projects",
     "createdAt": "2025-01-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-07-09"
   },
   {
     "id": "nea-research-grants-in-the-arts",
@@ -741,7 +766,7 @@
     "funder": "National Endowment for the Arts",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -770,7 +795,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.gov/grants/research-awards",
     "createdAt": "2025-01-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "nea-research-labs",
@@ -779,7 +805,7 @@
     "funder": "National Endowment for the Arts",
     "category": "STEM & Technology",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -808,7 +834,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.gov/grants/research-awards",
     "createdAt": "2025-01-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "sports-matter-program-dick-s-sporting-goods-foundation",
@@ -817,7 +844,7 @@
     "funder": "The DICK’S Sporting Goods Foundation",
     "category": "Youth Programs",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 13000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -851,7 +878,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://sportsmatter.org/s/apply-for-funding",
     "createdAt": "2025-01-22T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "dick-s-sporting-goods-foundation-multi-year-partnership-program",
@@ -860,7 +888,7 @@
     "funder": "The DICK’S Sporting Goods Foundation",
     "category": "Youth Programs",
     "region": "Texas",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 175000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -893,7 +921,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://investors.dicks.com",
     "createdAt": "2025-01-23T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "walmart-foundation-local-community-grant-program",
@@ -902,7 +931,7 @@
     "funder": "Walmart Foundation",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 2625,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -935,7 +964,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://walmart.org/how-we-give/open-applications",
     "createdAt": "2025-01-24T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "usda-community-food-projects-competitive-grants-program-cfp",
@@ -944,7 +974,7 @@
     "funder": "USDA National Institute of Food and Agriculture (NIFA)",
     "category": "Food Security",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 4,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -974,7 +1004,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nifa.usda.gov/grants/programs/hunger-food-security-programs/community-food-projects-competitive-grant-program-cfpcgp",
     "createdAt": "2025-01-25T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "usda-cfpcgp-planning-projects",
@@ -983,7 +1014,7 @@
     "funder": "USDA National Institute of Food and Agriculture",
     "category": "Food Security",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 37500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -1013,7 +1044,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nifa.usda.gov/grants/programs/hunger-food-security-programs/community-food-projects-competitive-grant-program-cfpcgp",
     "createdAt": "2025-01-26T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "feeding-america-food-security-equity-impact-fund",
@@ -1022,7 +1054,7 @@
     "funder": "Feeding America",
     "category": "Food Security",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 375000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -1051,7 +1083,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://feedingamerica.org/our-work/equity-impact-fund",
     "createdAt": "2025-01-27T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "chick-fil-a-true-inspiration-awards-2028-cycle-opens-march-2027",
@@ -1060,7 +1093,7 @@
     "funder": "Chick-fil-A, Inc.",
     "category": "Education",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 190000,
     "deadline": "2027-05-01",
     "eligibleOrganizationTypes": [
@@ -1093,7 +1126,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://chick-fil-a.com/true-inspiration-awards/learn-more",
     "createdAt": "2025-01-28T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2027-05-01"
   },
   {
     "id": "kresge-foundation-arts-culture-grants",
@@ -1102,7 +1137,7 @@
     "funder": "The Kresge Foundation",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2502500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -1131,7 +1166,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://kresge.org/our-work/arts-culture",
     "createdAt": "2025-01-29T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "kresge-foundation-education-grants",
@@ -1140,7 +1176,7 @@
     "funder": "The Kresge Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2502500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -1170,7 +1206,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://kresge.org/our-work/education",
     "createdAt": "2025-01-30T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "kresge-foundation-environment-grants",
@@ -1179,7 +1216,7 @@
     "funder": "The Kresge Foundation",
     "category": "Environment",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1207,7 +1244,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://kresge.org/our-work/environment",
     "createdAt": "2025-01-31T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "kresge-foundation-human-services-grants",
@@ -1216,7 +1254,7 @@
     "funder": "The Kresge Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1246,7 +1284,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://kresge.org/our-work/human-services",
     "createdAt": "2025-02-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "san-antonio-area-foundation-collaborative-grants",
@@ -1255,7 +1294,7 @@
     "funder": "San Antonio Area Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1286,7 +1325,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://saafdn.org/nonprofits/grants",
     "createdAt": "2025-02-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "san-antonio-area-foundation-capital-grants",
@@ -1295,7 +1335,7 @@
     "funder": "San Antonio Area Foundation",
     "category": "Capacity Building",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1323,7 +1363,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://saafdn.org/nonprofits/grants",
     "createdAt": "2025-02-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "austin-community-foundation-forever-austin-fund",
@@ -1332,7 +1373,7 @@
     "funder": "Austin Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 2300000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -1364,7 +1405,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://austincf.org/grant/forever-austin-fund",
     "createdAt": "2025-02-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "austin-community-foundation-community-grants",
@@ -1373,7 +1415,7 @@
     "funder": "Austin Community Foundation",
     "category": "Community Development",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 38000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -1402,7 +1444,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://austincf.org/give-advise/manage-your-fund/grant-from-your-fund/community-grants",
     "createdAt": "2025-02-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "austin-community-foundation-hispanic-impact-fund",
@@ -1411,7 +1454,7 @@
     "funder": "Austin Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 550000,
     "deadline": "2026-07-31",
     "eligibleOrganizationTypes": [
@@ -1443,7 +1486,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://austincf.org/grant/hispanic-impact-fund",
     "createdAt": "2025-02-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-07-31"
   },
   {
     "id": "austin-community-foundation-women-s-fund",
@@ -1452,7 +1497,7 @@
     "funder": "Austin Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1481,7 +1526,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://austincf.org/grant/womens-fund",
     "createdAt": "2025-02-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "austin-community-foundation-black-fund",
@@ -1490,7 +1536,7 @@
     "funder": "Austin Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1519,7 +1565,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://austincf.org/grant/black-fund",
     "createdAt": "2025-02-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "bissell-pet-foundation-partners-for-pets-grant-program",
@@ -1528,7 +1575,7 @@
     "funder": "BISSELL Pet Foundation",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -1559,7 +1606,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://bissellpetfoundation.org/grant-information",
     "createdAt": "2025-02-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "usda-community-food-projects-planning-projects-separate-track",
@@ -1568,7 +1616,7 @@
     "funder": "USDA / National Institute of Food and Agriculture",
     "category": "Food Security",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 37500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -1598,7 +1646,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nifa.usda.gov/grants/programs/hunger-food-security-programs/community-food-projects-competitive-grant-program-cfpcgp",
     "createdAt": "2025-02-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "aspca-grants-for-animal-welfare-organizations",
@@ -1607,7 +1656,7 @@
     "funder": "ASPCA",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 255000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -1639,7 +1688,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://aspca.org/about-us/aspca-grants",
     "createdAt": "2025-02-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "communities-foundation-of-texas-community-grants",
@@ -1648,7 +1698,7 @@
     "funder": "Communities Foundation of Texas",
     "category": "Education",
     "region": "Texas",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1679,7 +1729,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cftexas.org/nonprofits/grants",
     "createdAt": "2025-02-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "communities-foundation-of-texas-w-w-caruth-jr-fund",
@@ -1688,7 +1739,7 @@
     "funder": "Communities Foundation of Texas",
     "category": "Education",
     "region": "Texas",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 300000000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -1719,7 +1770,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cftexas.org/nonprofits/grants",
     "createdAt": "2025-02-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "chicago-community-trust-discretionary-grants",
@@ -1728,7 +1780,7 @@
     "funder": "The Chicago Community Trust",
     "category": "Education",
     "region": "Midwest US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Fiscal sponsor"
@@ -1760,7 +1812,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cct.org/grants/how-to-apply",
     "createdAt": "2025-02-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "chicago-community-trust-resilient-chicago-fund",
@@ -1769,7 +1822,7 @@
     "funder": "The Chicago Community Trust",
     "category": "Community Development",
     "region": "Midwest US",
-    "status": "expired",
+    "status": "unverified",
     "amount": 5,
     "deadline": "2026-04-17",
     "eligibleOrganizationTypes": [
@@ -1801,7 +1854,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cct.org/partnerships/rcf",
     "createdAt": "2025-02-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-04-17"
   },
   {
     "id": "chicago-community-trust-young-leaders-fund",
@@ -1810,7 +1865,7 @@
     "funder": "The Chicago Community Trust",
     "category": "Youth Programs",
     "region": "Midwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1840,7 +1895,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cct.org/young-leaders-fund",
     "createdAt": "2025-02-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "chicago-community-trust-press-forward-chicago",
@@ -1849,7 +1905,7 @@
     "funder": "The Chicago Community Trust",
     "category": "Capacity Building",
     "region": "Midwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Fiscal sponsor"
@@ -1878,7 +1934,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cct.org/grants/opportunities/rfp-press-forward-chicago",
     "createdAt": "2025-02-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "new-york-community-trust-competitive-grants-program",
@@ -1887,7 +1944,7 @@
     "funder": "The New York Community Trust",
     "category": "Education",
     "region": "Northeast US",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 20000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -1920,7 +1977,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://thenytrust.org/nonprofits/what-we-fund-apply-for-grant",
     "createdAt": "2025-02-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "new-york-community-trust-national-environment-program",
@@ -1929,7 +1987,7 @@
     "funder": "The New York Community Trust",
     "category": "Environment",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1957,7 +2015,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://thenytrust.org/nonprofits/rfp-loi-additional-funding-opportunities",
     "createdAt": "2025-02-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "new-york-community-trust-heisman-trophy-youth-development-fund",
@@ -1966,7 +2025,7 @@
     "funder": "The New York Community Trust / Heisman Trophy Trust",
     "category": "Youth Programs",
     "region": "Northeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -1997,7 +2056,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://thenytrust.org/nonprofits/rfp-loi-additional-funding-opportunities",
     "createdAt": "2025-02-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-for-southeast-michigan-community-grants-program",
@@ -2006,7 +2066,7 @@
     "funder": "Community Foundation for Southeast Michigan",
     "category": "Education",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2038,7 +2098,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfsem.org/grants-endowment/apply-community-impact-grants",
     "createdAt": "2025-02-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-for-southeast-michigan-michigan-justice-fund",
@@ -2047,7 +2108,7 @@
     "funder": "Community Foundation for Southeast Michigan",
     "category": "Community Development",
     "region": "Midwest US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -2077,7 +2138,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfsem.org/initiative/michigan-justice-fund/grant-opportunities-michigan-justice-fund",
     "createdAt": "2025-02-22T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "greater-new-orleans-foundation-impact-grants",
@@ -2086,7 +2148,7 @@
     "funder": "Greater New Orleans Foundation",
     "category": "Education",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 20000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -2120,7 +2182,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://gnof.org/nonprofits/grants",
     "createdAt": "2025-02-23T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "greater-new-orleans-foundation-impact-special-funding",
@@ -2129,7 +2192,7 @@
     "funder": "Greater New Orleans Foundation",
     "category": "Youth Programs",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 20000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2161,7 +2224,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://gnof.org/program/impact-special-funding-opportunities",
     "createdAt": "2025-02-24T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "greater-new-orleans-foundation-urban-forest-tree-planting-grants",
@@ -2170,7 +2234,7 @@
     "funder": "Greater New Orleans Foundation",
     "category": "Environment",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2198,7 +2262,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://gnof.org/nonprofits/grants",
     "createdAt": "2025-02-25T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "greater-new-orleans-foundation-norco-community-fund",
@@ -2207,7 +2272,7 @@
     "funder": "Greater New Orleans Foundation",
     "category": "Community Development",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2235,7 +2300,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://gnof.org/nonprofits/grants",
     "createdAt": "2025-02-26T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "arizona-community-foundation-statewide-competitive-grants",
@@ -2244,7 +2310,7 @@
     "funder": "Arizona Community Foundation",
     "category": "Education",
     "region": "Southwest US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution",
@@ -2277,7 +2343,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://azfoundation.org/nonprofits/grant-opportunities",
     "createdAt": "2025-02-27T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "arizona-community-foundation-acf-of-flagstaff-grant-cycle",
@@ -2286,7 +2353,7 @@
     "funder": "Arizona Community Foundation",
     "category": "Education",
     "region": "Southwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution",
@@ -2318,7 +2385,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://azfoundation.org/ways-to-give/give-locally/acf-of-flagstaff/acf-of-flagstaff-grant-cycles",
     "createdAt": "2025-02-28T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-for-southern-arizona-core-grants",
@@ -2327,7 +2395,7 @@
     "funder": "Community Foundation for Southern Arizona",
     "category": "Capacity Building",
     "region": "Southwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 9000000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2356,7 +2424,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfsaz.org/grants/core-grants",
     "createdAt": "2025-03-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "california-community-foundation-competitive-grants",
@@ -2365,7 +2434,7 @@
     "funder": "California Community Foundation",
     "category": "Education",
     "region": "Western US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2398,7 +2467,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://calfund.org/opportunities",
     "createdAt": "2025-03-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "california-community-foundation-wildfire-recovery-fund-community-healing",
@@ -2407,7 +2477,7 @@
     "funder": "California Community Foundation",
     "category": "Community Development",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2436,7 +2506,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://calfund.org/grants/wildfire-recovery-fund-community-healing-restoration",
     "createdAt": "2025-03-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "north-texas-community-foundation-toolbox-grants",
@@ -2445,7 +2516,7 @@
     "funder": "North Texas Community Foundation",
     "category": "Capacity Building",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 35000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2474,7 +2545,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://northtexascf.org/community-investment/grant-focus-areas/toolbox-grants-program",
     "createdAt": "2025-03-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "north-texas-community-foundation-conservation-environment-fund",
@@ -2483,7 +2555,7 @@
     "funder": "North Texas Community Foundation",
     "category": "Environment",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2511,7 +2583,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
     "createdAt": "2025-03-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "north-texas-community-foundation-children-s-fund",
@@ -2520,7 +2593,7 @@
     "funder": "North Texas Community Foundation",
     "category": "Youth Programs",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2550,7 +2623,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
     "createdAt": "2025-03-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "north-texas-community-foundation-animal-welfare-grants",
@@ -2559,7 +2633,7 @@
     "funder": "North Texas Community Foundation",
     "category": "Animal Welfare",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2589,7 +2663,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
     "createdAt": "2025-03-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-dallas-foundation-spring-summer-grant-cycles",
@@ -2598,7 +2673,7 @@
     "funder": "The Dallas Foundation",
     "category": "Community Development",
     "region": "Texas",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 30000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2630,7 +2705,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dallasfoundation.org/our-impact/grant-opportunities",
     "createdAt": "2025-03-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-dallas-foundation-animal-welfare-grants",
@@ -2639,7 +2715,7 @@
     "funder": "The Dallas Foundation",
     "category": "Animal Welfare",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 30000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2670,7 +2746,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dallasfoundation.org/our-impact/grant-opportunities",
     "createdAt": "2025-03-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-dallas-foundation-arts-culture-grants",
@@ -2679,7 +2756,7 @@
     "funder": "The Dallas Foundation",
     "category": "Arts & Culture",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 30000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2708,7 +2785,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dallasfoundation.org/our-impact/grant-opportunities",
     "createdAt": "2025-03-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "dallas-stars-foundation-community-grant-program",
@@ -2717,7 +2795,7 @@
     "funder": "Dallas Stars Foundation",
     "category": "Youth Programs",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 10000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2748,7 +2826,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nhl.com/stars/community/grants",
     "createdAt": "2025-03-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "dallas-stars-foundation-special-project-grants",
@@ -2757,7 +2836,7 @@
     "funder": "Dallas Stars Foundation",
     "category": "Youth Programs",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -2786,7 +2865,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nhl.com/stars/community/grants",
     "createdAt": "2025-03-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "az-blue-foundation-mental-health-grant",
@@ -2795,7 +2875,7 @@
     "funder": "AZ Blue Foundation (Blue Cross Blue Shield of Arizona)",
     "category": "Healthcare",
     "region": "Southwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 100000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -2825,7 +2905,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://azbluefoundation.org/grants",
     "createdAt": "2025-03-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "google-ad-grants",
@@ -2834,7 +2915,7 @@
     "funder": "Google / Google for Nonprofits",
     "category": "Capacity Building",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 10000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -2865,7 +2946,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://google.com/nonprofits/eligibility",
     "createdAt": "2025-03-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "google-org-impact-challenge-generative-ai-accelerator",
@@ -2874,7 +2956,7 @@
     "funder": "Google.org",
     "category": "STEM & Technology",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 1250000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2904,7 +2986,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://google.org/intl/en_us",
     "createdAt": "2025-03-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "google-org-impact-challenge-ai-for-government-innovation",
@@ -2913,7 +2996,7 @@
     "funder": "Google.org",
     "category": "STEM & Technology",
     "region": "National",
-    "status": "expired",
+    "status": "unverified",
     "amount": 2000000,
     "deadline": "2026-04-03",
     "eligibleOrganizationTypes": [
@@ -2946,7 +3029,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://google.org/intl/en_us",
     "createdAt": "2025-03-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-04-03"
   },
   {
     "id": "macarthur-foundation-100-change-competition",
@@ -2955,7 +3040,7 @@
     "funder": "John D. and Catherine T. MacArthur Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 100000000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -2986,7 +3071,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://macfound.org/grants/info-for-grantseekers",
     "createdAt": "2025-03-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "macarthur-foundation-journalism-media-enduring-commitment",
@@ -2995,7 +3081,7 @@
     "funder": "John D. and Catherine T. MacArthur Foundation",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3023,7 +3109,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://macfound.org/programs/enduring-commitments/journalism-media/grant-guidelines",
     "createdAt": "2025-03-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "macarthur-foundation-chicago-commitment-leaders-for-a-new-chicago",
@@ -3032,7 +3119,7 @@
     "funder": "John D. and Catherine T. MacArthur Foundation",
     "category": "Education",
     "region": "Midwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3061,7 +3148,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://macfound.org/programs/field-support",
     "createdAt": "2025-03-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-for-greater-atlanta-grants-to-black-led-organizatio",
@@ -3070,7 +3158,7 @@
     "funder": "Community Foundation for Greater Atlanta",
     "category": "Community Development",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3099,7 +3187,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgreateratlanta.org/grant-opportunities",
     "createdAt": "2025-03-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-for-greater-atlanta-metropolitan-atlanta-arts-grant",
@@ -3108,7 +3197,7 @@
     "funder": "Community Foundation for Greater Atlanta",
     "category": "Arts & Culture",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 42500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3137,7 +3226,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgreateratlanta.org/grant-opportunities",
     "createdAt": "2025-03-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-for-greater-atlanta-housing-portfolio-grants",
@@ -3146,7 +3236,7 @@
     "funder": "Community Foundation for Greater Atlanta",
     "category": "Community Development",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "deadline": "2026-09-30",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3175,7 +3265,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgreateratlanta.org/grant-opportunities",
     "createdAt": "2025-03-22T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-09-30"
   },
   {
     "id": "community-foundation-for-greater-atlanta-extra-wish-catalog",
@@ -3184,7 +3276,7 @@
     "funder": "Community Foundation for Greater Atlanta",
     "category": "Community Development",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3213,7 +3305,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgreateratlanta.org/grant-opportunities",
     "createdAt": "2025-03-23T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "arizona-community-foundation-acf-of-yavapai-county-grant-cycle",
@@ -3222,7 +3315,7 @@
     "funder": "Arizona Community Foundation",
     "category": "Education",
     "region": "Southwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution",
@@ -3254,7 +3347,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://azfoundation.org/ways-to-give/give-locally/acf-of-yavapai-county/acf-of-yavapai-county-grant-cycles",
     "createdAt": "2025-03-24T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "arizona-community-foundation-acf-of-sedona-grant-cycle",
@@ -3263,7 +3357,7 @@
     "funder": "Arizona Community Foundation",
     "category": "Education",
     "region": "Southwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution",
@@ -3295,7 +3389,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://azfoundation.org/ways-to-give/give-locally/acf-of-sedona",
     "createdAt": "2025-03-25T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "az-blue-foundation-health-equity-grants-invitation-only",
@@ -3304,7 +3399,7 @@
     "funder": "AZ Blue Foundation (Blue Cross Blue Shield of Arizona)",
     "category": "Healthcare",
     "region": "Southwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -3333,7 +3428,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://azbluefoundation.org/grants",
     "createdAt": "2025-03-26T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "inland-empire-community-foundation-community-impact-fund",
@@ -3342,7 +3438,7 @@
     "funder": "Inland Empire Community Foundation",
     "category": "Youth Programs",
     "region": "Southwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 500000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3374,7 +3470,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://iegives.org/grants",
     "createdAt": "2025-03-27T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "communities-foundation-of-texas-nonprofit-gateway-open-grantmaking",
@@ -3383,7 +3480,7 @@
     "funder": "Communities Foundation of Texas",
     "category": "Education",
     "region": "Texas",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3414,7 +3511,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cftexas.org/nonprofits/grants",
     "createdAt": "2025-03-28T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "w-k-kellogg-foundation-general-grantmaking-early-childhood-family-econom",
@@ -3423,7 +3521,7 @@
     "funder": "W.K. Kellogg Foundation",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 103500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -3457,7 +3555,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wkkf.org/grantseekers",
     "createdAt": "2025-03-29T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "w-k-kellogg-foundation-food-systems-agriculture-grants",
@@ -3466,7 +3565,7 @@
     "funder": "W.K. Kellogg Foundation",
     "category": "Food Security",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 175000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -3496,7 +3595,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wkkf.org/grantseekers",
     "createdAt": "2025-03-30T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "w-k-kellogg-foundation-health-health-equity-grants",
@@ -3505,7 +3605,7 @@
     "funder": "W.K. Kellogg Foundation",
     "category": "Healthcare",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 225000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3536,7 +3636,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wkkf.org/grantseekers",
     "createdAt": "2025-03-31T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "oregon-community-foundation-baker-county-fund",
@@ -3545,7 +3646,7 @@
     "funder": "Oregon Community Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "deadline": "2026-07-15",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -3576,7 +3677,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://oregoncf.org/grants-and-scholarships/grants",
     "createdAt": "2025-04-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-07-15"
   },
   {
     "id": "oregon-community-foundation-arts-culture-grants-artists-field-fellowship",
@@ -3585,7 +3688,7 @@
     "funder": "Oregon Community Foundation",
     "category": "Arts & Culture",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3613,7 +3716,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://oregoncf.org/grants-and-scholarships/grants",
     "createdAt": "2025-04-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "oregon-community-foundation-walker-fund-southern-oregon",
@@ -3622,7 +3726,7 @@
     "funder": "Oregon Community Foundation",
     "category": "Education",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3652,7 +3756,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://oregoncf.org/grants-and-scholarships/grants",
     "createdAt": "2025-04-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "oregon-community-foundation-food-security-fund",
@@ -3661,7 +3766,7 @@
     "funder": "Oregon Community Foundation",
     "category": "Food Security",
     "region": "Western US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3689,7 +3794,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://oregoncf.org/grants-and-scholarships/grants",
     "createdAt": "2025-04-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "doris-duke-foundation-environment-program-grants",
@@ -3698,7 +3804,7 @@
     "funder": "Doris Duke Foundation",
     "category": "Environment",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3727,7 +3833,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dorisduke.org/grants",
     "createdAt": "2025-04-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "doris-duke-foundation-performing-arts-program-leadership-grants",
@@ -3736,7 +3843,7 @@
     "funder": "Doris Duke Foundation",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3765,7 +3872,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dorisduke.org/funding-areas/performing-arts",
     "createdAt": "2025-04-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "doris-duke-foundation-child-well-being-program",
@@ -3774,7 +3882,7 @@
     "funder": "Doris Duke Foundation",
     "category": "Youth Programs",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3806,7 +3914,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dorisduke.org/funding-areas/child-well-being",
     "createdAt": "2025-04-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "doris-duke-foundation-building-bridges-program",
@@ -3815,7 +3924,7 @@
     "funder": "Doris Duke Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3845,7 +3954,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://dorisduke.org/funding-areas/building-bridges",
     "createdAt": "2025-04-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "bank-of-america-neighborhood-builders-program",
@@ -3854,7 +3964,7 @@
     "funder": "Bank of America Charitable Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 400000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3884,7 +3994,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://about.bankofamerica.com/en/making-an-impact/neighborhood-builders",
     "createdAt": "2025-04-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "bank-of-america-grants-arts-culture",
@@ -3893,7 +4004,7 @@
     "funder": "Bank of America Charitable Foundation",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -3921,7 +4032,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://about.bankofamerica.com/en/making-an-impact/economic-opportunity",
     "createdAt": "2025-04-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "texas-commission-on-the-arts-organizational-support-program-osp",
@@ -3930,7 +4042,7 @@
     "funder": "Texas Commission on the Arts",
     "category": "Arts & Culture",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 102500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -3959,7 +4071,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.texas.gov/initatives/organizational-support-program",
     "createdAt": "2025-04-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "texas-commission-on-the-arts-jump-grants",
@@ -3968,7 +4081,7 @@
     "funder": "Texas Commission on the Arts",
     "category": "Arts & Culture",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 5500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -3998,7 +4111,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.texas.gov/initatives/jump-grants",
     "createdAt": "2025-04-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "cleveland-foundation-immediate-impact-grants-wellbeing-critical-needs",
@@ -4007,7 +4121,7 @@
     "funder": "The Cleveland Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 1201500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4038,7 +4152,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://clevelandfoundation.org/grants/overview",
     "createdAt": "2025-04-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "cleveland-foundation-long-term-impact-grow-our-region",
@@ -4047,7 +4162,7 @@
     "funder": "The Cleveland Foundation",
     "category": "STEM & Technology",
     "region": "Midwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -4076,7 +4191,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://clevelandfoundation.org/about-us/impact-agenda",
     "createdAt": "2025-04-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "cleveland-foundation-arts-culture-grants-via-grants-gateway",
@@ -4085,7 +4201,7 @@
     "funder": "The Cleveland Foundation",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 251500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4114,7 +4230,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://clevelandfoundation.org/grants/overview",
     "createdAt": "2025-04-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "saint-paul-minnesota-foundation-minnesota-community-ideas-program",
@@ -4123,7 +4240,7 @@
     "funder": "Saint Paul & Minnesota Foundation",
     "category": "Education",
     "region": "Midwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 2026,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4154,7 +4271,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://spmcf.org/nonprofits/grants-for-nonprofits/minnesota-community-ideas-program",
     "createdAt": "2025-04-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "saint-paul-minnesota-foundation-community-solutions-grant-program",
@@ -4163,7 +4281,7 @@
     "funder": "Saint Paul & Minnesota Foundation",
     "category": "Education",
     "region": "Midwest US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity",
@@ -4195,7 +4313,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://spmcf.org/nonprofits/grants-for-nonprofits",
     "createdAt": "2025-04-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "southern-minnesota-initiative-foundation-economic-community-workforce-de",
@@ -4204,7 +4323,7 @@
     "funder": "Southern Minnesota Initiative Foundation (SMIF)",
     "category": "Community Development",
     "region": "Midwest US",
-    "status": "upcoming",
+    "status": "unverified",
     "deadline": "2026-08-10",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -4236,7 +4355,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://smifoundation.org/grants/for-grant-seekers",
     "createdAt": "2025-04-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-08-10"
   },
   {
     "id": "southern-minnesota-initiative-foundation-small-town-grants",
@@ -4245,7 +4366,7 @@
     "funder": "Southern Minnesota Initiative Foundation (SMIF)",
     "category": "Community Development",
     "region": "Midwest US",
-    "status": "upcoming",
+    "status": "unverified",
     "deadline": "2026-07-22",
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -4273,7 +4394,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://smifoundation.org/grants/for-grant-seekers",
     "createdAt": "2025-04-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-07-22"
   },
   {
     "id": "community-foundation-tampa-bay-annual-competitive-grants",
@@ -4282,7 +4405,7 @@
     "funder": "Community Foundation Tampa Bay",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 30000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4315,7 +4438,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cftampabay.org/annual-competitive-grants",
     "createdAt": "2025-04-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-tampa-bay-critical-needs-list",
@@ -4324,7 +4448,7 @@
     "funder": "Community Foundation Tampa Bay",
     "category": "Capacity Building",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -4352,7 +4476,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cftampabay.org/grants",
     "createdAt": "2025-04-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-tampa-bay-smith-associates-real-estate-foundation-g",
@@ -4361,7 +4486,7 @@
     "funder": "Community Foundation Tampa Bay / Smith & Associates Real Estate Foundation",
     "category": "Youth Programs",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -4391,7 +4516,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cftampabay.org/grants",
     "createdAt": "2025-04-22T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "initiative-foundation-central-mn-emerging-needs-nonprofit-capacity-build",
@@ -4400,7 +4526,7 @@
     "funder": "Initiative Foundation",
     "category": "Capacity Building",
     "region": "Midwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution",
@@ -4430,7 +4556,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://ifound.org/grants/grants-available",
     "createdAt": "2025-04-23T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "texas-commission-on-the-arts-touring-grants",
@@ -4439,7 +4566,7 @@
     "funder": "Texas Commission on the Arts",
     "category": "Arts & Culture",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 4500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4468,7 +4595,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.texas.gov/initatives/touring-grants",
     "createdAt": "2025-04-24T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "texas-commission-on-the-arts-arts-respond-public-art",
@@ -4477,7 +4605,7 @@
     "funder": "Texas Commission on the Arts",
     "category": "Community Development",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 27500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -4509,7 +4637,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://arts.texas.gov/initatives/arts-respond",
     "createdAt": "2025-04-25T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "permian-basin-area-foundation-community-impact-grants",
@@ -4518,7 +4647,7 @@
     "funder": "Permian Basin Area Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -4550,7 +4679,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://pbaf.org/grants",
     "createdAt": "2025-04-26T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "el-paso-community-foundation-competitive-grants",
@@ -4559,7 +4689,7 @@
     "funder": "El Paso Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -4592,7 +4722,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://epcf.org/grant-programs",
     "createdAt": "2025-04-27T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "microsoft-for-nonprofits-technology-grant-program",
@@ -4601,7 +4732,7 @@
     "funder": "Microsoft Philanthropies",
     "category": "STEM & Technology",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 3500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -4633,7 +4764,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://microsoft.com/en-us/nonprofits/eligibility",
     "createdAt": "2025-04-28T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "microsoft-philanthropies-ai-for-humanitarian-action",
@@ -4642,7 +4774,7 @@
     "funder": "Microsoft Philanthropies",
     "category": "STEM & Technology",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2750000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4676,7 +4808,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://microsoft.com/en-us/corporate-responsibility/philanthropies",
     "createdAt": "2025-04-29T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "microsoft-employee-giving-match-program",
@@ -4685,7 +4818,7 @@
     "funder": "Microsoft Philanthropies",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 15000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4716,7 +4849,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://microsoft.com/en-us/corporate-responsibility/philanthropies/employee-engagement",
     "createdAt": "2025-04-30T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "annie-e-casey-foundation-child-welfare-family-strengthening-grants",
@@ -4725,7 +4859,7 @@
     "funder": "Annie E. Casey Foundation",
     "category": "Youth Programs",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 275000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -4759,7 +4893,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://aecf.org/grant-making",
     "createdAt": "2025-05-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "annie-e-casey-foundation-thrive-by-25-initiative",
@@ -4768,7 +4903,7 @@
     "funder": "Annie E. Casey Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 75000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -4802,7 +4937,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://aecf.org/topics/thrive-by-25",
     "createdAt": "2025-05-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "jpmorgan-chase-foundation-workforce-readiness-grants",
@@ -4811,7 +4947,7 @@
     "funder": "JPMorgan Chase Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2502500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4841,7 +4977,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://jpmorganchase.com/impact/philanthropy",
     "createdAt": "2025-05-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "jpmorgan-chase-foundation-advancingcities-initiative",
@@ -4850,7 +4987,7 @@
     "funder": "JPMorgan Chase Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 4000000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4881,7 +5018,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://jpmorganchase.com/impact/philanthropy/advancingcities",
     "createdAt": "2025-05-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "william-t-grant-foundation-research-grants",
@@ -4890,7 +5028,7 @@
     "funder": "William T. Grant Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 600000,
     "eligibleOrganizationTypes": [],
     "requiredNonprofitStatus": null,
@@ -4920,7 +5058,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wtgrantfoundation.org/funding/research-grants",
     "createdAt": "2025-05-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "william-t-grant-foundation-institutional-challenge-grant",
@@ -4929,7 +5068,7 @@
     "funder": "William T. Grant Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 650000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -4962,7 +5101,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wtgrantfoundation.org/funding/institutional-challenge-grant",
     "createdAt": "2025-05-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "epa-environmental-justice-collaborative-problem-solving-ejcps-grants",
@@ -4971,7 +5111,7 @@
     "funder": "U.S. Environmental Protection Agency",
     "category": "Community Development",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 325000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5002,7 +5142,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://epa.gov/environmentaljustice/environmental-justice-collaborative-problem-solving-cooperative-agreement-program",
     "createdAt": "2025-05-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "epa-environmental-justice-government-to-government-ejg2g-program",
@@ -5011,7 +5152,7 @@
     "funder": "U.S. Environmental Protection Agency",
     "category": "Community Development",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 200000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5042,7 +5183,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://epa.gov/environmentaljustice/ej-government-government-ej-g2g-program",
     "createdAt": "2025-05-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "conrad-n-hilton-foundation-grants-homelessness-water-early-childhood",
@@ -5051,7 +5193,7 @@
     "funder": "Conrad N. Hilton Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5082,7 +5224,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://hiltonfoundation.org/grants/how-to-apply",
     "createdAt": "2025-05-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "conrad-n-hilton-foundation-chronic-homelessness-initiative",
@@ -5091,7 +5234,7 @@
     "funder": "Conrad N. Hilton Foundation",
     "category": "Community Development",
     "region": "Western US",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2750000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5121,7 +5264,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://hiltonfoundation.org/programs/homelessness",
     "createdAt": "2025-05-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "lumina-foundation-grants-postsecondary-education",
@@ -5130,7 +5274,7 @@
     "funder": "Lumina Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 1525000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5160,7 +5304,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://luminafoundation.org/grants",
     "createdAt": "2025-05-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "lumina-foundation-adult-learner-and-workforce-credentials",
@@ -5169,7 +5314,7 @@
     "funder": "Lumina Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 1025000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5200,7 +5345,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://luminafoundation.org/grants",
     "createdAt": "2025-05-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-denver-foundation-community-grants-program",
@@ -5209,7 +5355,7 @@
     "funder": "The Denver Foundation",
     "category": "Education",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 35000,
     "deadline": "2026-08-03",
     "eligibleOrganizationTypes": [
@@ -5244,7 +5390,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://denverfoundation.org/our-grants-program",
     "createdAt": "2025-05-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-08-03"
   },
   {
     "id": "the-denver-foundation-strengthening-neighborhoods-program",
@@ -5253,7 +5401,7 @@
     "funder": "The Denver Foundation",
     "category": "Community Development",
     "region": "Western US",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 5000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5283,7 +5431,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://denverfoundation.org/funding-opportunities",
     "createdAt": "2025-05-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-denver-foundation-capacity-building-fund",
@@ -5292,7 +5441,7 @@
     "funder": "The Denver Foundation",
     "category": "Capacity Building",
     "region": "Western US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -5320,7 +5469,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://denverfoundation.org/funding-opportunities",
     "createdAt": "2025-05-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-denver-foundation-bowen-family-performing-arts-fund",
@@ -5329,7 +5479,7 @@
     "funder": "The Denver Foundation",
     "category": "Youth Programs",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -5361,7 +5511,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://denverfoundation.org/funding-opportunities",
     "createdAt": "2025-05-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "the-denver-foundation-lowe-fund-intellectual-developmental-disabilities",
@@ -5370,7 +5521,7 @@
     "funder": "The Denver Foundation",
     "category": "Healthcare",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 55000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5399,7 +5550,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://denverfoundation.org/funding-opportunities",
     "createdAt": "2025-05-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "triangle-community-foundation-responsive-grantmaking-program",
@@ -5408,7 +5560,7 @@
     "funder": "Triangle Community Foundation",
     "category": "Community Development",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 20000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5438,7 +5590,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://trianglecf.org/award/fund-for-the-triangle-responsive-grantmaking",
     "createdAt": "2025-05-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "triangle-community-foundation-education-youth-grant",
@@ -5447,7 +5600,7 @@
     "funder": "Triangle Community Foundation",
     "category": "Education",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 40000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5479,7 +5632,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://trianglecf.org/apply/grants-for-nonprofits",
     "createdAt": "2025-05-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "triangle-community-foundation-triangle-capacity-building-network-tcbn-gr",
@@ -5488,7 +5642,7 @@
     "funder": "Triangle Community Foundation",
     "category": "Capacity Building",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -5516,7 +5670,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://trianglecf.org/award/triangle-capacity-building-network-grant",
     "createdAt": "2025-05-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "triangle-community-foundation-housing-affordability-grant",
@@ -5525,7 +5680,7 @@
     "funder": "Triangle Community Foundation",
     "category": "Community Development",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 25000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5554,7 +5709,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://trianglecf.org/impact/housingaffordability",
     "createdAt": "2025-05-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "target-circle-community-giving",
@@ -5563,7 +5719,7 @@
     "funder": "Target Corporation",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -5593,7 +5749,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://target.com/circle/community-giving",
     "createdAt": "2025-05-22T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "target-foundation-strategic-grantmaking",
@@ -5602,7 +5759,7 @@
     "funder": "Target Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2750000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -5633,7 +5790,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://corporate.target.com/sustainability-esg/target-foundation",
     "createdAt": "2025-05-23T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "lowe-s-hometowns-community-grant",
@@ -5642,7 +5800,7 @@
     "funder": "Lowe’s Companies, Inc.",
     "category": "Community Development",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 25000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5674,7 +5832,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://lowes.com/l/about/community-impact",
     "createdAt": "2025-05-24T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "lowe-s-foundation-gable-grants-skilled-trades-education",
@@ -5683,7 +5842,7 @@
     "funder": "Lowe’s Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 1250000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5714,7 +5873,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://lowesfoundation.org/gable-grants",
     "createdAt": "2025-05-25T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "coastal-bend-community-foundation-competitive-grants-corpus-christi-area",
@@ -5723,7 +5883,7 @@
     "funder": "Coastal Bend Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -5756,7 +5916,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://coastalbendcf.org/grants",
     "createdAt": "2025-05-26T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "heart-of-texas-community-foundation-grant-programs-bryan-college-station",
@@ -5765,7 +5926,7 @@
     "funder": "Heart of Texas Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -5797,7 +5958,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://hotcf.org/grantmaking",
     "createdAt": "2025-05-27T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "toshiba-america-foundation-stem-grants-for-grades-6-12-under-5-000",
@@ -5806,7 +5968,7 @@
     "funder": "Toshiba America Foundation",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 5000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5837,7 +5999,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://toshiba.com/taf/612-2",
     "createdAt": "2025-05-28T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "toshiba-america-foundation-stem-grants-for-grades-6-12-over-5-000",
@@ -5846,7 +6009,7 @@
     "funder": "Toshiba America Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 15001,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5877,7 +6040,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://toshiba.com/taf/612-2",
     "createdAt": "2025-05-29T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "toshiba-america-foundation-stem-grants-for-grades-k-5",
@@ -5886,7 +6050,7 @@
     "funder": "Toshiba America Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 1000,
     "deadline": "2026-10-01",
     "eligibleOrganizationTypes": [
@@ -5918,7 +6082,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://toshiba.com/taf/k-5",
     "createdAt": "2025-05-30T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-10-01"
   },
   {
     "id": "seattle-foundation-neighbor-to-neighbor-n2n-grants",
@@ -5927,7 +6093,7 @@
     "funder": "Seattle Foundation",
     "category": "Youth Programs",
     "region": "Western US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -5958,7 +6124,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://seattlefoundation.org/current-grant-opportunities",
     "createdAt": "2025-05-31T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "seattle-foundation-first-peoples-climate-fund",
@@ -5967,7 +6134,7 @@
     "funder": "Seattle Foundation (partnership with City of Seattle Office of Sustainability & Environment)",
     "category": "Community Development",
     "region": "Western US",
-    "status": "expired",
+    "status": "unverified",
     "deadline": "2026-04-14",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -5998,7 +6165,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://seattlefoundation.org/current-grant-opportunities",
     "createdAt": "2025-06-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-04-14"
   },
   {
     "id": "seattle-foundation-bipoc-nonprofit-effectiveness-grants",
@@ -6007,7 +6176,7 @@
     "funder": "Seattle Foundation",
     "category": "Capacity Building",
     "region": "Western US",
-    "status": "invitation_only",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -6035,7 +6204,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://seattlefoundation.org/nonprofits",
     "createdAt": "2025-06-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "robert-r-mccormick-foundation-thriving-communities-englewood-little-vill",
@@ -6044,7 +6214,7 @@
     "funder": "Robert R. McCormick Foundation",
     "category": "Education",
     "region": "Midwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 5015000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6075,7 +6245,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mccormickfoundation.org/investments",
     "createdAt": "2025-06-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "robert-r-mccormick-foundation-early-childhood-education-grants",
@@ -6084,7 +6255,7 @@
     "funder": "Robert R. McCormick Foundation",
     "category": "Education",
     "region": "Midwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 5015000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -6117,7 +6288,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mccormickfoundation.org/investments",
     "createdAt": "2025-06-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "robert-r-mccormick-foundation-journalism-democracy-grants",
@@ -6126,7 +6298,7 @@
     "funder": "Robert R. McCormick Foundation",
     "category": "Community Development",
     "region": "Midwest US",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 5015000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6156,7 +6328,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mccormickfoundation.org/investments",
     "createdAt": "2025-06-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "robert-r-mccormick-foundation-communities-fund-united-way-partnership",
@@ -6165,7 +6338,7 @@
     "funder": "Robert R. McCormick Foundation",
     "category": "Community Development",
     "region": "Midwest US",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -6193,7 +6366,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mccormickfoundation.org/partnerships",
     "createdAt": "2025-06-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "nsf-advancing-informal-stem-learning-aisl",
@@ -6202,7 +6376,7 @@
     "funder": "National Science Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "deadline": "2026-09-18",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -6233,7 +6407,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nsf.gov/funding/opportunities/aisl-advancing-informal-stem-learning",
     "createdAt": "2025-06-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-09-18"
   },
   {
     "id": "nsf-improving-undergraduate-stem-education-iuse-ehr",
@@ -6242,7 +6418,7 @@
     "funder": "National Science Foundation",
     "category": "Education",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution"
@@ -6272,7 +6448,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nsf.gov/funding/opportunities/iuse-improving-undergraduate-stem-education-education-human-resources",
     "createdAt": "2025-06-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "nsf-civic-innovation-challenge-civic",
@@ -6281,7 +6458,7 @@
     "funder": "National Science Foundation (with U.S. Department of Energy)",
     "category": "STEM & Technology",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 37500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -6314,7 +6491,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://nsf.gov/funding/opportunities/civic-civic-innovation-challenge",
     "createdAt": "2025-06-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "weyerhaeuser-company-foundation-environment-community-grants",
@@ -6323,7 +6501,7 @@
     "funder": "Weyerhaeuser Company Foundation",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 25500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -6355,7 +6533,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://weyerhaeuser.com/sustainability/communities/weyerhaeuser-company-foundation",
     "createdAt": "2025-06-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "surdna-foundation-thriving-cultures-grants-arts-culture",
@@ -6364,7 +6543,7 @@
     "funder": "Surdna Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 275000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6394,7 +6573,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://surdna.org/our-programs/thriving-cultures",
     "createdAt": "2025-06-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "charles-stewart-mott-foundation-civil-society-program",
@@ -6403,7 +6583,7 @@
     "funder": "Charles Stewart Mott Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 132500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6433,7 +6613,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mott.org/what-we-fund",
     "createdAt": "2025-06-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "charles-stewart-mott-foundation-environment-program",
@@ -6442,7 +6623,7 @@
     "funder": "Charles Stewart Mott Foundation",
     "category": "Environment",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 132500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6471,7 +6652,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mott.org/what-we-fund",
     "createdAt": "2025-06-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "charles-stewart-mott-foundation-flint-area-program",
@@ -6480,7 +6662,7 @@
     "funder": "Charles Stewart Mott Foundation",
     "category": "Education",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 14000000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -6513,7 +6695,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://mott.org/what-we-fund",
     "createdAt": "2025-06-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "home-depot-foundation-veteran-housing-grants-program",
@@ -6522,7 +6705,7 @@
     "funder": "The Home Depot Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 300000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6554,7 +6737,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://corporate.homedepot.com/page/veteran-housing-grants",
     "createdAt": "2025-06-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "home-depot-foundation-community-impact-grants-skilled-trades-disaster-re",
@@ -6563,7 +6747,7 @@
     "funder": "The Home Depot Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -6592,7 +6776,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://corporate.homedepot.com/page/grants",
     "createdAt": "2025-06-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "home-depot-foundation-rural-veterans-housing-via-housing-assistance-coun",
@@ -6601,7 +6786,7 @@
     "funder": "The Home Depot Foundation (administered by Housing Assistance Council)",
     "category": "Community Development",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 30000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6632,7 +6817,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://ruralhome.org",
     "createdAt": "2025-06-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "waco-foundation-immediate-impact-grants",
@@ -6641,7 +6827,7 @@
     "funder": "Waco Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 25000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6673,7 +6859,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
     "createdAt": "2025-06-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "waco-foundation-critical-needs-grant",
@@ -6682,7 +6869,7 @@
     "funder": "Waco Foundation",
     "category": "Capacity Building",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 25000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6711,7 +6898,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
     "createdAt": "2025-06-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "waco-foundation-capacity-building-mini-grants",
@@ -6720,7 +6908,7 @@
     "funder": "Waco Foundation",
     "category": "Capacity Building",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -6748,7 +6936,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
     "createdAt": "2025-06-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "cooper-foundation-community-grants-waco",
@@ -6757,7 +6946,7 @@
     "funder": "Cooper Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -6788,7 +6977,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cooperfdn.org/grants",
     "createdAt": "2025-06-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "east-texas-community-foundation-competitive-grants",
@@ -6797,7 +6987,7 @@
     "funder": "East Texas Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "Government or tribal entity"
@@ -6829,7 +7019,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://etcf.org/grants",
     "createdAt": "2025-06-22T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "united-way-of-waco-mclennan-county-community-impact-grants",
@@ -6838,7 +7029,7 @@
     "funder": "United Way of Waco-McLennan County",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -6869,7 +7060,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://unitedwaywaco.org/for-nonprofits",
     "createdAt": "2025-06-23T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "surdna-foundation-strong-local-economies-grants",
@@ -6878,7 +7070,7 @@
     "funder": "Surdna Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 275000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6908,7 +7100,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://surdna.org/our-programs/strong-local-economies",
     "createdAt": "2025-06-24T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "surdna-foundation-sustainable-environments-grants",
@@ -6917,7 +7110,7 @@
     "funder": "Surdna Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 275000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6947,7 +7140,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://surdna.org/our-programs/sustainable-environments",
     "createdAt": "2025-06-25T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ford-foundation-creativity-and-free-expression-grants",
@@ -6956,7 +7150,7 @@
     "funder": "Ford Foundation",
     "category": "Arts & Culture",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -6985,7 +7179,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://fordfoundation.org/work/challenging-inequality",
     "createdAt": "2025-06-26T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ford-foundation-build-building-institutions-and-networks",
@@ -6994,7 +7189,7 @@
     "funder": "Ford Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 1750000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7025,7 +7220,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://fordfoundation.org/work/our-grants/building-institutions-and-networks",
     "createdAt": "2025-06-27T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ford-foundation-nyc-good-neighbor-committee-grants",
@@ -7034,7 +7230,7 @@
     "funder": "Ford Foundation",
     "category": "Education",
     "region": "Northeast US",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 65000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7065,7 +7261,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://fordfoundation.org/about/about-the-ford-foundation/new-york-city-good-neighbor-committee",
     "createdAt": "2025-06-28T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ford-foundation-democracy-rule-of-law-grants",
@@ -7074,7 +7271,7 @@
     "funder": "Ford Foundation",
     "category": "Community Development",
     "region": "National",
-    "status": "invitation_only",
+    "status": "unverified",
     "amount": 2550000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7104,7 +7301,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://fordfoundation.org/work/challenging-inequality",
     "createdAt": "2025-06-29T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "paso-del-norte-health-foundation-healthy-kids-initiative",
@@ -7113,7 +7311,7 @@
     "funder": "Paso del Norte Health Foundation",
     "category": "Youth Programs",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 282500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7143,7 +7341,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
     "createdAt": "2025-06-30T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "paso-del-norte-health-foundation-think-change-initiative-mental-health",
@@ -7152,7 +7351,7 @@
     "funder": "Paso del Norte Health Foundation",
     "category": "Healthcare",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7180,7 +7379,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
     "createdAt": "2025-07-01T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "paso-del-norte-health-foundation-behavioral-health-consortium-initiative",
@@ -7189,7 +7389,7 @@
     "funder": "Paso del Norte Health Foundation",
     "category": "Healthcare",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7217,7 +7417,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
     "createdAt": "2025-07-02T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "paso-del-norte-community-foundation-charitable-fund-grants",
@@ -7226,7 +7427,7 @@
     "funder": "Paso del Norte Community Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7258,7 +7459,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://pdnfoundation.org",
     "createdAt": "2025-07-03T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "united-way-of-greater-houston-community-fund-grants",
@@ -7267,7 +7469,7 @@
     "funder": "United Way of Greater Houston",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 275000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7299,7 +7501,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://unitedwayhouston.org/nonprofits",
     "createdAt": "2025-07-04T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "united-way-of-metropolitan-dallas-community-impact-grants",
@@ -7308,7 +7511,7 @@
     "funder": "United Way of Metropolitan Dallas",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 262500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7339,7 +7542,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://unitedwaydallas.org/for-nonprofits",
     "createdAt": "2025-07-05T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-of-the-ozarks-competitive-grants",
@@ -7348,7 +7552,7 @@
     "funder": "Community Foundation of the Ozarks",
     "category": "Education",
     "region": "Midwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 27500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7381,7 +7585,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfozarks.org/nonprofits/grants",
     "createdAt": "2025-07-06T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-of-the-ozarks-workforce-development-fund",
@@ -7390,7 +7595,7 @@
     "funder": "Community Foundation of the Ozarks",
     "category": "Education",
     "region": "Midwest US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7420,7 +7625,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfozarks.org/nonprofits/grants",
     "createdAt": "2025-07-07T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-of-greater-memphis-competitive-grants",
@@ -7429,7 +7635,7 @@
     "funder": "Community Foundation of Greater Memphis",
     "category": "Education",
     "region": "National",
-    "status": "rolling",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7460,7 +7666,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgm.org/nonprofits/grants",
     "createdAt": "2025-07-08T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "community-foundation-of-greater-memphis-memphis-music-initiative-grants",
@@ -7469,7 +7676,7 @@
     "funder": "Community Foundation of Greater Memphis",
     "category": "Youth Programs",
     "region": "Southeast US",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7500,7 +7707,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgm.org/nonprofits/grants",
     "createdAt": "2025-07-09T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "aspca-rachael-ray-save-them-all-grants",
@@ -7509,7 +7717,7 @@
     "funder": "ASPCA (administered by Best Friends Animal Society)",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 55000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7540,7 +7748,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://bestfriends.org/network/partner-perk/rachael-ray-save-them-all-grants",
     "createdAt": "2025-07-10T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "aspca-anti-cruelty-grants",
@@ -7549,7 +7758,7 @@
     "funder": "ASPCA",
     "category": "Animal Welfare",
     "region": "National",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7579,7 +7788,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://aspca.org/about-us/aspca-grants",
     "createdAt": "2025-07-11T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ralph-c-wilson-jr-foundation-active-lifestyles-youth-sports-recreation",
@@ -7588,7 +7798,7 @@
     "funder": "Ralph C. Wilson Jr. Foundation",
     "category": "Youth Programs",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 2505000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -7621,7 +7831,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://ralphcwilsonjrfoundation.org/how-to-apply",
     "createdAt": "2025-07-12T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ralph-c-wilson-jr-foundation-nonprofit-support-innovation",
@@ -7630,7 +7841,7 @@
     "funder": "Ralph C. Wilson Jr. Foundation",
     "category": "Capacity Building",
     "region": "Southeast US",
-    "status": "rolling",
+    "status": "unverified",
     "amount": 2505000,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7659,7 +7870,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://ralphcwilsonjrfoundation.org/how-to-apply",
     "createdAt": "2025-07-13T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "ralph-c-wilson-jr-legacy-fund-for-youth-sports-rochester-area-community-",
@@ -7668,7 +7880,7 @@
     "funder": "Ralph C. Wilson Jr. Foundation / Rochester Area Community Foundation",
     "category": "Youth Programs",
     "region": "Northeast US",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 15000,
     "deadline": "2025-12-19",
     "eligibleOrganizationTypes": [
@@ -7703,7 +7915,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://racf.org/grant/ralph-c-wilson-jr-legacy-fund-for-youth-sports",
     "createdAt": "2025-07-14T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2025-12-19"
   },
   {
     "id": "ralph-c-wilson-jr-foundation-arts-culture-initiative-via-community-found",
@@ -7712,7 +7926,7 @@
     "funder": "Ralph C. Wilson Jr. Foundation / Community Foundation for Greater Buffalo",
     "category": "Arts & Culture",
     "region": "Northeast US",
-    "status": "upcoming",
+    "status": "unverified",
     "amount": 2500,
     "deadline": "2026-08-28",
     "eligibleOrganizationTypes": [
@@ -7742,7 +7956,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://cfgb.org/nonprofits/grants/ralph-c-wilson-jr-foundation-arts-culture-initiative",
     "createdAt": "2025-07-15T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-08-28"
   },
   {
     "id": "amarillo-area-foundation-discretionary-grants-competitive-cycle",
@@ -7751,7 +7967,7 @@
     "funder": "Amarillo Area Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
       "School or educational institution",
@@ -7785,7 +8001,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://amarilloareafoundation.org/faq",
     "createdAt": "2025-07-16T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "amarillo-area-foundation-catalyst-grants",
@@ -7794,7 +8011,7 @@
     "funder": "Amarillo Area Foundation",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 11250,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit",
@@ -7828,7 +8045,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://amarilloareafoundation.org/catalyst-grants",
     "createdAt": "2025-07-17T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "amarillo-area-foundation-pantex-grant-program",
@@ -7837,7 +8055,7 @@
     "funder": "Amarillo Area Foundation (funded by PanTeXas Deterrence LLC)",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
     ],
@@ -7869,7 +8087,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://amarilloareafoundation.org/pantex",
     "createdAt": "2025-07-18T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "amarillo-area-foundation-the-panhandle-gives-giving-day-campaign",
@@ -7878,7 +8097,7 @@
     "funder": "Amarillo Area Foundation",
     "category": "Community Development",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 100,
     "deadline": "2026-12-01",
     "eligibleOrganizationTypes": [
@@ -7908,7 +8127,9 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://thepanhandlegives.org",
     "createdAt": "2025-07-19T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false,
+    "lastKnownDeadline": "2026-12-01"
   },
   {
     "id": "united-way-of-san-antonio-bexar-county-community-impact-grants",
@@ -7917,7 +8138,7 @@
     "funder": "United Way of San Antonio and Bexar County",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 162500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7949,7 +8170,8 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://unitedwaysatx.org/nonprofits",
     "createdAt": "2025-07-20T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   },
   {
     "id": "united-way-for-greater-austin-community-impact-grants",
@@ -7958,7 +8180,7 @@
     "funder": "United Way for Greater Austin",
     "category": "Education",
     "region": "Texas",
-    "status": "recurring_unconfirmed",
+    "status": "unverified",
     "amount": 112500,
     "eligibleOrganizationTypes": [
       "501(c)(3) Nonprofit"
@@ -7990,6 +8212,7 @@
     "verificationNotes": "Imported from repository source text on 2026-07-20; live official-source verification is still required.",
     "applicationUrl": "https://unitedwayaustin.org/for-nonprofits",
     "createdAt": "2025-07-21T00:00:00.000Z",
-    "updatedAt": "2026-07-03T00:00:00.000Z"
+    "updatedAt": "2026-07-03T00:00:00.000Z",
+    "isActive": false
   }
 ]

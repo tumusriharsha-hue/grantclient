@@ -61,12 +61,12 @@ function normalizeUrl(url) {
 function classifyStatus(entry) {
   const text = `${entry.deadline} ${entry.eligible} ${entry.summary}`.toLowerCase();
   const explicitDate = extractExplicitDate(entry.deadline);
-  if (/invitation[- ]only|invitation[- ]based|primarily invited/.test(text)) return "invitation_only";
-  if (/does not accept unsolicited|not accepting unsolicited|no unsolicited/.test(text)) return "no_unsolicited_applications";
+  if (/invitation[- ]only|invitation[- ]based|primarily invited/.test(text)) return "invite_only";
+  if (/does not accept unsolicited|not accepting unsolicited|no unsolicited/.test(text)) return "invite_only";
   if (/upcoming/.test(text)) return "upcoming";
-  if (explicitDate && new Date(`${explicitDate}T23:59:59Z`) < new Date()) return "expired";
+  if (explicitDate && new Date(`${explicitDate}T23:59:59Z`) < new Date()) return "closed";
   if (/\brolling\b|year-round|anytime|throughout the year/.test(text)) return "rolling";
-  return "recurring_unconfirmed";
+  return "awaiting_next_cycle";
 }
 
 function deadlineType(entry) {
@@ -511,7 +511,11 @@ function buildGrant(entry, index) {
   const deadline = parseDeadline(entry.deadline);
   const applicationUrl = normalizeUrl(entry.applicationPath);
   const createdAt = new Date(Date.UTC(2025, 0, 1 + index)).toISOString();
-  const status = classifyStatus(entry);
+  // The repository source is a staging input, not proof of a current grant
+  // cycle. Keep its historical classification out of the live status field
+  // until a reviewer confirms the official current source.
+  const sourceClassification = classifyStatus(entry);
+  const status = "unverified";
   const eligibility = structuredEligibility(entry);
   const reviewedAt = new Date().toISOString();
   const nextReviewAt = new Date(Date.now() + 30 * 86400000).toISOString();
@@ -534,6 +538,7 @@ function buildGrant(entry, index) {
     category,
     region,
     status,
+    isActive: false,
     ...(amount ? { amount } : {}),
     ...(deadline ? { deadline } : {}),
     ...eligibility,
@@ -545,12 +550,14 @@ function buildGrant(entry, index) {
     verifiedAt: null,
     nextReviewAt,
     confidenceLevel: "low",
-    invitationOnly: status === "invitation_only",
-    unsolicitedApplicationsAccepted: status === "no_unsolicited_applications" ? false : null,
-    rollingDeadline: status === "rolling",
+    invitationOnly: sourceClassification === "invite_only",
+    unsolicitedApplicationsAccepted: sourceClassification === "invite_only" ? false : null,
+    rollingDeadline: sourceClassification === "rolling",
     restrictions: [],
     typicalAward: amount ?? null,
     verificationNotes: `Imported from repository source text on ${reviewedAt.slice(0, 10)}; live official-source verification is still required.`,
+    lastVerificationAttempt: reviewedAt,
+    lastKnownDeadline: deadline ?? null,
     applicationUrl,
     createdAt,
     updatedAt: UPDATED_AT,

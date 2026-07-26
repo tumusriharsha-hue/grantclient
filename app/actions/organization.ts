@@ -122,8 +122,18 @@ export async function saveOnboardingProgress(
   complete = false,
   validationStep = step,
 ): Promise<OrganizationActionResult> {
+  if (!Number.isInteger(step) || step < 1 || step > 6 || !Number.isInteger(validationStep) || validationStep < 1 || validationStep > 6) {
+    return { success: false, error: "Invalid onboarding step." };
+  }
+
+  const partialValues = onboardingCompleteSchema.partial().safeParse(values);
+  if (!partialValues.success) {
+    return { success: false, error: "Please fix the onboarding fields." };
+  }
+  const normalizedValues = partialValues.data as OnboardingFormValues;
+
   if (complete) {
-    const parsed = onboardingCompleteSchema.safeParse(values);
+    const parsed = onboardingCompleteSchema.safeParse(normalizedValues);
     if (!parsed.success) {
       const fieldErrors: Record<string, string> = {};
       for (const issue of parsed.error.issues) {
@@ -140,7 +150,7 @@ export async function saveOnboardingProgress(
       };
     }
   } else {
-    const validation = validateOnboardingStep(validationStep, values);
+    const validation = validateOnboardingStep(validationStep, normalizedValues);
     if (!validation.success) {
       return {
         success: false,
@@ -159,7 +169,7 @@ export async function saveOnboardingProgress(
     return { success: false, error: "Sign in to save your organization profile." };
   }
 
-  const payload = buildOrganizationPayload(user.id, values, step, complete);
+  const payload = buildOrganizationPayload(user.id, normalizedValues, step, complete);
 
   const { data: existing } = await supabase
     .from("organizations")

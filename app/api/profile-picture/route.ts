@@ -6,6 +6,7 @@ import {
   MAX_PROFILE_PICTURE_SIZE,
   PROFILE_PICTURE_BUCKET,
 } from "@/lib/storage/profile-pictures";
+import { rateLimit } from "@/lib/ai/api-guards";
 
 function jsonError(message: string, status: number) {
   return NextResponse.json({ error: message }, { status });
@@ -23,6 +24,13 @@ export async function POST(request: NextRequest) {
 
   if (isGuestUser(user)) {
     return jsonError("Create an account to update your profile picture.", 403);
+  }
+  if (!rateLimit(`profile-picture:${user.id}`, 10)) {
+    return jsonError("Too many upload attempts. Try again later.", 429);
+  }
+  const contentLength = Number(request.headers.get("content-length") ?? 0);
+  if (contentLength > MAX_PROFILE_PICTURE_SIZE + 512_000) {
+    return jsonError("The image is too large.", 413);
   }
 
   const formData = await request.formData();

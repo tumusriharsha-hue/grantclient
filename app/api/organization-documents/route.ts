@@ -5,9 +5,11 @@ import {
   MAX_ORGANIZATION_DOCUMENT_SIZE,
   ORGANIZATION_DOCUMENT_BUCKET,
   ORGANIZATION_DOCUMENT_TYPES,
+  matchesDocumentSignature,
   safeDocumentFileName,
 } from "@/lib/storage/organization-documents";
 import { createClient } from "@/lib/supabase/server";
+import { rateLimit } from "@/lib/ai/api-guards";
 
 function jsonError(message: string, status: number) {
   return NextResponse.json({ error: message }, { status });
@@ -25,6 +27,13 @@ export async function POST(request: NextRequest) {
   const { supabase, user } = await authenticatedContext();
   if (!user) return jsonError("Sign in to upload documents.", 401);
   if (isGuestUser(user)) return jsonError("Create an account to upload documents.", 403);
+  if (!rateLimit(`document-upload:${user.id}`, 10)) {
+    return jsonError("Too many uploads. Try again later.", 429);
+  }
+  const contentLength = Number(request.headers.get("content-length") ?? 0);
+  if (contentLength > MAX_ORGANIZATION_DOCUMENT_SIZE + 1_000_000) {
+    return jsonError("The upload is too large.", 413);
+  }
 
   const formData = await request.formData();
   const file = formData.get("file");
@@ -36,6 +45,10 @@ export async function POST(request: NextRequest) {
   ) {
     return jsonError("Choose a PDF, Word, Excel, PNG, or JPEG file under 10 MB.", 400);
   }
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  if (!matchesDocumentSignature(file.type, bytes)) {
+    return jsonError("The file content does not match its declared type.", 400);
+  }
 
   const { data: organization } = await supabase
     .from("organizations")
@@ -46,7 +59,6 @@ export async function POST(request: NextRequest) {
 
   const fileName = safeDocumentFileName(file.name);
   const storagePath = `${user.id}/${crypto.randomUUID()}-${fileName}`;
-  const bytes = new Uint8Array(await file.arrayBuffer());
   const { error: uploadError } = await supabase.storage
     .from(ORGANIZATION_DOCUMENT_BUCKET)
     .upload(storagePath, bytes, { contentType: file.type, cacheControl: "3600" });
@@ -57,7 +69,7 @@ export async function POST(request: NextRequest) {
     .insert({
       organization_id: organization.id,
       user_id: user.id,
-      file_name: file.name.slice(0, 255),
+      file_name: fileName,
       storage_path: storagePath,
       mime_type: file.type,
       size_bytes: file.size,

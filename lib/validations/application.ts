@@ -31,6 +31,31 @@ export const applicationSetupSchema = z
     path: ["projectEndDate"],
   });
 
+export const draftSectionInputSchema = z.object({
+  id: z.string().max(100).optional(),
+  sectionKey: z.string().trim().max(100).optional(),
+  title: z.string().trim().min(1).max(200),
+  body: z.string().trim().max(20_000),
+  status: z.enum(["not_started", "draft", "complete", "stale"]).optional(),
+  previousBody: z.string().max(20_000).nullable().optional(),
+}).strict();
+
+export const saveApplicationDraftSchema = z.object({
+  id: z.uuid(),
+  title: z.string().trim().max(200),
+  sections: z.array(draftSectionInputSchema).max(30),
+}).strict();
+
+export const applicationStatusUpdateSchema = z.object({
+  applicationId: z.uuid(),
+  title: z.string().trim().min(1).max(200),
+  status: z.enum(["drafting", "submitted", "approved", "rejected"]),
+  statusDate: z.preprocess((value) => value === "" ? null : value, z.iso.date().nullable()),
+  nextDate: z.preprocess((value) => value === "" ? null : value, z.iso.date().nullable()),
+  amount: z.string().trim().max(100).nullable(),
+  statusNote: z.string().trim().max(5_000).nullable(),
+}).strict();
+
 export type ApplicationSetupInput = z.infer<typeof applicationSetupSchema>;
 
 export function parseApplicationSetup(formData: FormData) {

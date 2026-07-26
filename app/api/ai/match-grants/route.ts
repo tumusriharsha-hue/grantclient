@@ -12,6 +12,8 @@ export async function POST(request: Request) {
   const id = requestId();
   const length = Number(request.headers.get("content-length") ?? 0);
   if (length > AI_MAX_BODY_BYTES) return errorResponse(id, 413, "request_too_large", "Request is too large.");
+  const rawBody = await request.text();
+  if (rawBody.trim()) return errorResponse(id, 400, "invalid_request", "This endpoint does not accept a request body.");
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user || user.is_anonymous) return errorResponse(id, 401, "unauthorized", "Sign in to match grants.");

@@ -1,0 +1,4019 @@
+{
+  "generatedAt": "2026-07-25T21:17:37.219Z",
+  "totalGrants": 202,
+  "totalLinks": 404,
+  "healthyLinks": 336,
+  "failedLinks": 68,
+  "results": [
+    {
+      "grantId": "houston-endowment-general-grants",
+      "field": "officialProgramUrl",
+      "url": "https://houstonendowment.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://houstonendowment.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "houston-endowment-general-grants",
+      "field": "applicationUrl",
+      "url": "https://houstonendowment.org/grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://houstonendowment.org/grantmaking",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "houston-endowment-collaboration-fund",
+      "field": "officialProgramUrl",
+      "url": "https://houstonendowment.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://houstonendowment.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "houston-endowment-collaboration-fund",
+      "field": "applicationUrl",
+      "url": "https://houstonendowment.org/announcements/houston-endowment-launches-4-9-million-collaboration-fund",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://houstonendowment.org/announcements/houston-endowment-launches-4-9-million-collaboration-fund",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "meadows-foundation-grants",
+      "field": "officialProgramUrl",
+      "url": "https://mfi.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mfi.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "meadows-foundation-grants",
+      "field": "applicationUrl",
+      "url": "https://mfi.org/what-we-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mfi.org/what-we-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-houston-community-foundation-high-impact-grantmaking",
+      "field": "officialProgramUrl",
+      "url": "https://ghcf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://ghcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "greater-houston-community-foundation-high-impact-grantmaking",
+      "field": "applicationUrl",
+      "url": "https://ghcf.org/community-impact/high-impact-grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://ghcf.org/community-impact/high-impact-grantmaking/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "moody-foundation-grants",
+      "field": "officialProgramUrl",
+      "url": "https://moodyf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://moodyf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "moody-foundation-grants",
+      "field": "applicationUrl",
+      "url": "https://moodyf.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://moodyf.org/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-exploring-equitable-futures",
+      "field": "officialProgramUrl",
+      "url": "https://rwjf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-exploring-equitable-futures",
+      "field": "applicationUrl",
+      "url": "https://rwjf.org/en/grants/active-funding-opportunities/2025/exploring-equitable-futures.html",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/en/grants/active-funding-opportunities.html",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-from-insight-to-action-health-equity-research",
+      "field": "officialProgramUrl",
+      "url": "https://rwjf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-from-insight-to-action-health-equity-research",
+      "field": "applicationUrl",
+      "url": "https://rwjf.org/en/grants/active-funding-opportunities/2026/from-insight-to-action-health-equity-research-that-meets-this-moment.html",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/en/grants/active-funding-opportunities/2026/from-insight-to-action-health-equity-research-that-meets-this-moment.html",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-local-data-for-equitable-communities",
+      "field": "officialProgramUrl",
+      "url": "https://rwjf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-local-data-for-equitable-communities",
+      "field": "applicationUrl",
+      "url": "https://rwjf.org/en/grants/active-funding-opportunities/2026/local-data-for-equitable-communities.html",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/en/grants/active-funding-opportunities/2026/local-data-for-equitable-communities.html",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-health-equity-scholars-for-action-hes4a",
+      "field": "officialProgramUrl",
+      "url": "https://rwjf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-health-equity-scholars-for-action-hes4a",
+      "field": "applicationUrl",
+      "url": "https://rwjf.org/en/grants/active-funding-opportunities/2025/health-equity-scholars-for-action.html",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/en/grants/active-funding-opportunities/2025/health-equity-scholars-for-action.html",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "petco-love-spay-neuter-veterinary-care-grant",
+      "field": "officialProgramUrl",
+      "url": "https://petcolove.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petcolove.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petco-love-spay-neuter-veterinary-care-grant",
+      "field": "applicationUrl",
+      "url": "https://petcolove.org/shelter-partners/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petcolove.org/shelter-partners/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petco-love-stories-grant-campaign",
+      "field": "officialProgramUrl",
+      "url": "https://petcolove.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petcolove.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petco-love-stories-grant-campaign",
+      "field": "applicationUrl",
+      "url": "https://petcolove.org/shelter-partners/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petcolove.org/shelter-partners/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petsmart-charities-adoption-growth-grant",
+      "field": "officialProgramUrl",
+      "url": "https://petsmartcharities.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petsmartcharities.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petsmart-charities-adoption-growth-grant",
+      "field": "applicationUrl",
+      "url": "https://petsmartcharities.org/pro/grants/adoption-prep",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petsmartcharities.org/pro/grants/adoption-prep",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "walmart-spark-good-local-grants",
+      "field": "officialProgramUrl",
+      "url": "https://walmart.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.walmart.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "walmart-spark-good-local-grants",
+      "field": "applicationUrl",
+      "url": "https://walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-global-ideas-for-u-s-solutions",
+      "field": "officialProgramUrl",
+      "url": "https://rwjf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-global-ideas-for-u-s-solutions",
+      "field": "applicationUrl",
+      "url": "https://rwjf.org/en/grants/active-funding-opportunities/2026/learning-from-abroad-to-reimagine-health-knowledge-systems-for-equity-and-wellbeing.html",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/en/grants/active-funding-opportunities/2026/learning-from-abroad-to-reimagine-health-knowledge-systems-for-equity-and-wellbeing.html",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-health-policy-fellows",
+      "field": "officialProgramUrl",
+      "url": "https://rwjf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "rwjf-health-policy-fellows",
+      "field": "applicationUrl",
+      "url": "https://rwjf.org/en/grants/active-funding-opportunities/2025/robert-wood-johnson-foundation-health-policy-fellows.html",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.rwjf.org/en/grants/active-funding-opportunities.html",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "petsmart-charities-access-to-veterinary-care-grants",
+      "field": "officialProgramUrl",
+      "url": "https://petsmartcharities.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petsmartcharities.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petsmart-charities-access-to-veterinary-care-grants",
+      "field": "applicationUrl",
+      "url": "https://petsmartcharities.org/pro/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petsmartcharities.org/pro/grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petsmart-charities-pet-food-assistance-grants",
+      "field": "officialProgramUrl",
+      "url": "https://petsmartcharities.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petsmartcharities.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "petsmart-charities-pet-food-assistance-grants",
+      "field": "applicationUrl",
+      "url": "https://petsmartcharities.org/pro/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://petsmartcharities.org/pro/grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "nea-grants-for-arts-projects-gap-july-2026-cycle",
+      "field": "officialProgramUrl",
+      "url": "https://arts.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-grants-for-arts-projects-gap-july-2026-cycle",
+      "field": "applicationUrl",
+      "url": "https://arts.gov/grants/grants-for-arts-projects",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/grants/grants-for-arts-projects",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-our-town",
+      "field": "officialProgramUrl",
+      "url": "https://arts.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-our-town",
+      "field": "applicationUrl",
+      "url": "https://arts.gov/grants/grants-for-arts-projects",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/grants/grants-for-arts-projects",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-research-grants-in-the-arts",
+      "field": "officialProgramUrl",
+      "url": "https://arts.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-research-grants-in-the-arts",
+      "field": "applicationUrl",
+      "url": "https://arts.gov/grants/research-awards",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/grants/research-awards",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-research-labs",
+      "field": "officialProgramUrl",
+      "url": "https://arts.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nea-research-labs",
+      "field": "applicationUrl",
+      "url": "https://arts.gov/grants/research-awards",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.arts.gov/grants/research-awards",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "sports-matter-program-dick-s-sporting-goods-foundation",
+      "field": "officialProgramUrl",
+      "url": "https://sportsmatter.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "sports-matter-program-dick-s-sporting-goods-foundation",
+      "field": "applicationUrl",
+      "url": "https://sportsmatter.org/s/apply-for-funding",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "dick-s-sporting-goods-foundation-multi-year-partnership-program",
+      "field": "officialProgramUrl",
+      "url": "https://sportsmatter.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "dick-s-sporting-goods-foundation-multi-year-partnership-program",
+      "field": "applicationUrl",
+      "url": "https://investors.dicks.com/",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://investors.dicks.com/investors/default.aspx",
+      "redirectedToDifferentHost": false,
+      "error": "http_403"
+    },
+    {
+      "grantId": "walmart-foundation-local-community-grant-program",
+      "field": "officialProgramUrl",
+      "url": "https://walmart.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.walmart.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "walmart-foundation-local-community-grant-program",
+      "field": "applicationUrl",
+      "url": "https://walmart.org/how-we-give/open-applications",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.walmart.org/how-we-give/open-applications",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "usda-community-food-projects-competitive-grants-program-cfp",
+      "field": "officialProgramUrl",
+      "url": "https://nifa.usda.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nifa.usda.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "usda-community-food-projects-competitive-grants-program-cfp",
+      "field": "applicationUrl",
+      "url": "https://nifa.usda.gov/grants/programs/hunger-food-security-programs/community-food-projects-competitive-grant-program-cfpcgp",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nifa.usda.gov/grants/programs/community-food-projects-competitive-grant-program-cfpcgp",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "usda-cfpcgp-planning-projects",
+      "field": "officialProgramUrl",
+      "url": "https://nifa.usda.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nifa.usda.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "usda-cfpcgp-planning-projects",
+      "field": "applicationUrl",
+      "url": "https://nifa.usda.gov/grants/programs/hunger-food-security-programs/community-food-projects-competitive-grant-program-cfpcgp",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nifa.usda.gov/grants/programs/community-food-projects-competitive-grant-program-cfpcgp",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "feeding-america-food-security-equity-impact-fund",
+      "field": "officialProgramUrl",
+      "url": "https://feedingamerica.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.feedingamerica.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "feeding-america-food-security-equity-impact-fund",
+      "field": "applicationUrl",
+      "url": "https://feedingamerica.org/our-work/equity-impact-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.feedingamerica.org/our-work",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "chick-fil-a-true-inspiration-awards-2028-cycle-opens-march-2027",
+      "field": "officialProgramUrl",
+      "url": "https://chick-fil-a.com/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "chick-fil-a-true-inspiration-awards-2028-cycle-opens-march-2027",
+      "field": "applicationUrl",
+      "url": "https://chick-fil-a.com/true-inspiration-awards/learn-more",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "kresge-foundation-arts-culture-grants",
+      "field": "officialProgramUrl",
+      "url": "https://kresge.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-arts-culture-grants",
+      "field": "applicationUrl",
+      "url": "https://kresge.org/our-work/arts-culture",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/our-work/arts-culture/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-education-grants",
+      "field": "officialProgramUrl",
+      "url": "https://kresge.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-education-grants",
+      "field": "applicationUrl",
+      "url": "https://kresge.org/our-work/education",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/our-work/education/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-environment-grants",
+      "field": "officialProgramUrl",
+      "url": "https://kresge.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-environment-grants",
+      "field": "applicationUrl",
+      "url": "https://kresge.org/our-work/environment",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/our-work/environment/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-human-services-grants",
+      "field": "officialProgramUrl",
+      "url": "https://kresge.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "kresge-foundation-human-services-grants",
+      "field": "applicationUrl",
+      "url": "https://kresge.org/our-work/human-services",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://kresge.org/our-work/human-services/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "san-antonio-area-foundation-collaborative-grants",
+      "field": "officialProgramUrl",
+      "url": "https://saafdn.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://saafdn.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "san-antonio-area-foundation-collaborative-grants",
+      "field": "applicationUrl",
+      "url": "https://saafdn.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://saafdn.org/nonprofits/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "san-antonio-area-foundation-capital-grants",
+      "field": "officialProgramUrl",
+      "url": "https://saafdn.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://saafdn.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "san-antonio-area-foundation-capital-grants",
+      "field": "applicationUrl",
+      "url": "https://saafdn.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://saafdn.org/nonprofits/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-forever-austin-fund",
+      "field": "officialProgramUrl",
+      "url": "https://austincf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.austincf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-forever-austin-fund",
+      "field": "applicationUrl",
+      "url": "https://austincf.org/grant/forever-austin-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "http://www.austincf.org/grant/forever-austin-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-community-grants",
+      "field": "officialProgramUrl",
+      "url": "https://austincf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.austincf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-community-grants",
+      "field": "applicationUrl",
+      "url": "https://austincf.org/give-advise/manage-your-fund/grant-from-your-fund/community-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "http://www.austincf.org/give/fundholder-services/manage-your-fund/grant-from-your-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-hispanic-impact-fund",
+      "field": "officialProgramUrl",
+      "url": "https://austincf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.austincf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-hispanic-impact-fund",
+      "field": "applicationUrl",
+      "url": "https://austincf.org/grant/hispanic-impact-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "http://www.austincf.org/grant/hispanic-impact-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-women-s-fund",
+      "field": "officialProgramUrl",
+      "url": "https://austincf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.austincf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-women-s-fund",
+      "field": "applicationUrl",
+      "url": "https://austincf.org/grant/womens-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "http://www.austincf.org/grant/womens-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-black-fund",
+      "field": "officialProgramUrl",
+      "url": "https://austincf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.austincf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "austin-community-foundation-black-fund",
+      "field": "applicationUrl",
+      "url": "https://austincf.org/grant/black-fund",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "http://www.austincf.org/grant/black-fund",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "bissell-pet-foundation-partners-for-pets-grant-program",
+      "field": "officialProgramUrl",
+      "url": "https://bissellpetfoundation.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "bissell-pet-foundation-partners-for-pets-grant-program",
+      "field": "applicationUrl",
+      "url": "https://bissellpetfoundation.org/grant-information",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "usda-community-food-projects-planning-projects-separate-track",
+      "field": "officialProgramUrl",
+      "url": "https://nifa.usda.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nifa.usda.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "usda-community-food-projects-planning-projects-separate-track",
+      "field": "applicationUrl",
+      "url": "https://nifa.usda.gov/grants/programs/hunger-food-security-programs/community-food-projects-competitive-grant-program-cfpcgp",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nifa.usda.gov/grants/programs/community-food-projects-competitive-grant-program-cfpcgp",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "aspca-grants-for-animal-welfare-organizations",
+      "field": "officialProgramUrl",
+      "url": "https://aspca.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aspca.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "aspca-grants-for-animal-welfare-organizations",
+      "field": "applicationUrl",
+      "url": "https://aspca.org/about-us/aspca-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aspca.org/grants-and-scholarships/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "communities-foundation-of-texas-community-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cftexas.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftexas.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "communities-foundation-of-texas-community-grants",
+      "field": "applicationUrl",
+      "url": "https://cftexas.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftexas.org/nonprofits/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "communities-foundation-of-texas-w-w-caruth-jr-fund",
+      "field": "officialProgramUrl",
+      "url": "https://cftexas.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftexas.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "communities-foundation-of-texas-w-w-caruth-jr-fund",
+      "field": "applicationUrl",
+      "url": "https://cftexas.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftexas.org/nonprofits/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "chicago-community-trust-discretionary-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cct.org/",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-discretionary-grants",
+      "field": "applicationUrl",
+      "url": "https://cct.org/grants/how-to-apply",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/grants/how-to-apply",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-resilient-chicago-fund",
+      "field": "officialProgramUrl",
+      "url": "https://cct.org/",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-resilient-chicago-fund",
+      "field": "applicationUrl",
+      "url": "https://cct.org/partnerships/rcf",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/partnerships/rcf",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-young-leaders-fund",
+      "field": "officialProgramUrl",
+      "url": "https://cct.org/",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-young-leaders-fund",
+      "field": "applicationUrl",
+      "url": "https://cct.org/young-leaders-fund",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/young-leaders-fund",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-press-forward-chicago",
+      "field": "officialProgramUrl",
+      "url": "https://cct.org/",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "chicago-community-trust-press-forward-chicago",
+      "field": "applicationUrl",
+      "url": "https://cct.org/grants/opportunities/rfp-press-forward-chicago",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.cct.org/grants/opportunities/rfp-press-forward-chicago",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "new-york-community-trust-competitive-grants-program",
+      "field": "officialProgramUrl",
+      "url": "https://thenytrust.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://thenytrust.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "new-york-community-trust-competitive-grants-program",
+      "field": "applicationUrl",
+      "url": "https://thenytrust.org/nonprofits/what-we-fund-apply-for-grant",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://thenytrust.org/nonprofits/what-we-fund-apply-for-grant/",
+      "redirectedToDifferentHost": false,
+      "error": "http_403"
+    },
+    {
+      "grantId": "new-york-community-trust-national-environment-program",
+      "field": "officialProgramUrl",
+      "url": "https://thenytrust.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://thenytrust.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "new-york-community-trust-national-environment-program",
+      "field": "applicationUrl",
+      "url": "https://thenytrust.org/nonprofits/rfp-loi-additional-funding-opportunities",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://thenytrust.org/nonprofits/rfp-loi-additional-funding-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": "http_403"
+    },
+    {
+      "grantId": "new-york-community-trust-heisman-trophy-youth-development-fund",
+      "field": "officialProgramUrl",
+      "url": "https://thenytrust.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://thenytrust.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "new-york-community-trust-heisman-trophy-youth-development-fund",
+      "field": "applicationUrl",
+      "url": "https://thenytrust.org/nonprofits/rfp-loi-additional-funding-opportunities",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://thenytrust.org/nonprofits/rfp-loi-additional-funding-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": "http_403"
+    },
+    {
+      "grantId": "community-foundation-for-southeast-michigan-community-grants-program",
+      "field": "officialProgramUrl",
+      "url": "https://cfsem.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfsem.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-southeast-michigan-community-grants-program",
+      "field": "applicationUrl",
+      "url": "https://cfsem.org/grants-endowment/apply-community-impact-grants",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "community-foundation-for-southeast-michigan-michigan-justice-fund",
+      "field": "officialProgramUrl",
+      "url": "https://cfsem.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfsem.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-southeast-michigan-michigan-justice-fund",
+      "field": "applicationUrl",
+      "url": "https://cfsem.org/initiative/michigan-justice-fund/grant-opportunities-michigan-justice-fund",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://gnof.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://gnof.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/nonprofits/grants/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-impact-special-funding",
+      "field": "officialProgramUrl",
+      "url": "https://gnof.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-impact-special-funding",
+      "field": "applicationUrl",
+      "url": "https://gnof.org/program/impact-special-funding-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/program/impact-special-funding-opportunities/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-urban-forest-tree-planting-grants",
+      "field": "officialProgramUrl",
+      "url": "https://gnof.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-urban-forest-tree-planting-grants",
+      "field": "applicationUrl",
+      "url": "https://gnof.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/nonprofits/grants/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-norco-community-fund",
+      "field": "officialProgramUrl",
+      "url": "https://gnof.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "greater-new-orleans-foundation-norco-community-fund",
+      "field": "applicationUrl",
+      "url": "https://gnof.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gnof.org/nonprofits/grants/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-statewide-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://azfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-statewide-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://azfoundation.org/nonprofits/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/nonprofits/grant-opportunities/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-flagstaff-grant-cycle",
+      "field": "officialProgramUrl",
+      "url": "https://azfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-flagstaff-grant-cycle",
+      "field": "applicationUrl",
+      "url": "https://azfoundation.org/ways-to-give/give-locally/acf-of-flagstaff/acf-of-flagstaff-grant-cycles",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/ways-to-give/give-locally/acf-of-flagstaff/acf-of-flagstaff-grant-cycles/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-southern-arizona-core-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cfsaz.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfsaz.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-southern-arizona-core-grants",
+      "field": "applicationUrl",
+      "url": "https://cfsaz.org/grants/core-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfsaz.org/grants/core-grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "california-community-foundation-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://calfund.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.calfund.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "california-community-foundation-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://calfund.org/opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.calfund.org/opportunities/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "california-community-foundation-wildfire-recovery-fund-community-healing",
+      "field": "officialProgramUrl",
+      "url": "https://calfund.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.calfund.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "california-community-foundation-wildfire-recovery-fund-community-healing",
+      "field": "applicationUrl",
+      "url": "https://calfund.org/grants/wildfire-recovery-fund-community-healing-restoration",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.calfund.org/grants/wildfire-recovery-fund-community-healing-restoration/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "north-texas-community-foundation-toolbox-grants",
+      "field": "officialProgramUrl",
+      "url": "https://northtexascf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://northtexascf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "north-texas-community-foundation-toolbox-grants",
+      "field": "applicationUrl",
+      "url": "https://northtexascf.org/community-investment/grant-focus-areas/toolbox-grants-program",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://northtexascf.org/community-investment/grant-focus-areas/toolbox-grants-program",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "north-texas-community-foundation-conservation-environment-fund",
+      "field": "officialProgramUrl",
+      "url": "https://northtexascf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://northtexascf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "north-texas-community-foundation-conservation-environment-fund",
+      "field": "applicationUrl",
+      "url": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "north-texas-community-foundation-children-s-fund",
+      "field": "officialProgramUrl",
+      "url": "https://northtexascf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://northtexascf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "north-texas-community-foundation-children-s-fund",
+      "field": "applicationUrl",
+      "url": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "north-texas-community-foundation-animal-welfare-grants",
+      "field": "officialProgramUrl",
+      "url": "https://northtexascf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://northtexascf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "north-texas-community-foundation-animal-welfare-grants",
+      "field": "applicationUrl",
+      "url": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://northtexascf.org/your-giving/donor-services/funding-opportunities",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "the-dallas-foundation-spring-summer-grant-cycles",
+      "field": "officialProgramUrl",
+      "url": "https://dallasfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dallasfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "the-dallas-foundation-spring-summer-grant-cycles",
+      "field": "applicationUrl",
+      "url": "https://dallasfoundation.org/our-impact/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dallasfoundation.org/our-impact/grant-opportunities/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "the-dallas-foundation-animal-welfare-grants",
+      "field": "officialProgramUrl",
+      "url": "https://dallasfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dallasfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "the-dallas-foundation-animal-welfare-grants",
+      "field": "applicationUrl",
+      "url": "https://dallasfoundation.org/our-impact/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dallasfoundation.org/our-impact/grant-opportunities/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "the-dallas-foundation-arts-culture-grants",
+      "field": "officialProgramUrl",
+      "url": "https://dallasfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dallasfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "the-dallas-foundation-arts-culture-grants",
+      "field": "applicationUrl",
+      "url": "https://dallasfoundation.org/our-impact/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dallasfoundation.org/our-impact/grant-opportunities/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "dallas-stars-foundation-community-grant-program",
+      "field": "officialProgramUrl",
+      "url": "https://nhl.com/stars/community/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nhl.com/stars/community/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "dallas-stars-foundation-community-grant-program",
+      "field": "applicationUrl",
+      "url": "https://nhl.com/stars/community/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nhl.com/stars/community/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "dallas-stars-foundation-special-project-grants",
+      "field": "officialProgramUrl",
+      "url": "https://nhl.com/stars/community/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nhl.com/stars/community/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "dallas-stars-foundation-special-project-grants",
+      "field": "applicationUrl",
+      "url": "https://nhl.com/stars/community/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nhl.com/stars/community/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "az-blue-foundation-mental-health-grant",
+      "field": "officialProgramUrl",
+      "url": "https://azbluefoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azbluefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "az-blue-foundation-mental-health-grant",
+      "field": "applicationUrl",
+      "url": "https://azbluefoundation.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azbluefoundation.org/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "google-ad-grants",
+      "field": "officialProgramUrl",
+      "url": "https://google.com/nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.google.com/nonprofits/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "google-ad-grants",
+      "field": "applicationUrl",
+      "url": "https://google.com/nonprofits/eligibility",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.google.com/nonprofits/eligibility/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "google-org-impact-challenge-generative-ai-accelerator",
+      "field": "officialProgramUrl",
+      "url": "https://google.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.google.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "google-org-impact-challenge-generative-ai-accelerator",
+      "field": "applicationUrl",
+      "url": "https://google.org/intl/en_us",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.google.org/intl/en_us/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "google-org-impact-challenge-ai-for-government-innovation",
+      "field": "officialProgramUrl",
+      "url": "https://google.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.google.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "google-org-impact-challenge-ai-for-government-innovation",
+      "field": "applicationUrl",
+      "url": "https://google.org/intl/en_us",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.google.org/intl/en_us/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "macarthur-foundation-100-change-competition",
+      "field": "officialProgramUrl",
+      "url": "https://macfound.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.macfound.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "macarthur-foundation-100-change-competition",
+      "field": "applicationUrl",
+      "url": "https://macfound.org/grants/info-for-grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.macfound.org/grants/info-for-grantseekers",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "macarthur-foundation-journalism-media-enduring-commitment",
+      "field": "officialProgramUrl",
+      "url": "https://macfound.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.macfound.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "macarthur-foundation-journalism-media-enduring-commitment",
+      "field": "applicationUrl",
+      "url": "https://macfound.org/programs/enduring-commitments/journalism-media/grant-guidelines",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.macfound.org/programs/enduring-commitments/journalism-media/grant-guidelines",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "macarthur-foundation-chicago-commitment-leaders-for-a-new-chicago",
+      "field": "officialProgramUrl",
+      "url": "https://macfound.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.macfound.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "macarthur-foundation-chicago-commitment-leaders-for-a-new-chicago",
+      "field": "applicationUrl",
+      "url": "https://macfound.org/programs/field-support",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.macfound.org/programs/field-support/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-grants-to-black-led-organizatio",
+      "field": "officialProgramUrl",
+      "url": "https://cfgreateratlanta.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-grants-to-black-led-organizatio",
+      "field": "applicationUrl",
+      "url": "https://cfgreateratlanta.org/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/grant-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-metropolitan-atlanta-arts-grant",
+      "field": "officialProgramUrl",
+      "url": "https://cfgreateratlanta.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-metropolitan-atlanta-arts-grant",
+      "field": "applicationUrl",
+      "url": "https://cfgreateratlanta.org/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/grant-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-housing-portfolio-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cfgreateratlanta.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-housing-portfolio-grants",
+      "field": "applicationUrl",
+      "url": "https://cfgreateratlanta.org/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/grant-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-extra-wish-catalog",
+      "field": "officialProgramUrl",
+      "url": "https://cfgreateratlanta.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-for-greater-atlanta-extra-wish-catalog",
+      "field": "applicationUrl",
+      "url": "https://cfgreateratlanta.org/grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgreateratlanta.org/grant-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-yavapai-county-grant-cycle",
+      "field": "officialProgramUrl",
+      "url": "https://azfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-yavapai-county-grant-cycle",
+      "field": "applicationUrl",
+      "url": "https://azfoundation.org/ways-to-give/give-locally/acf-of-yavapai-county/acf-of-yavapai-county-grant-cycles",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/ways-to-give/give-locally/acf-of-yavapai-county/acf-of-yavapai-county-grant-cycles/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-sedona-grant-cycle",
+      "field": "officialProgramUrl",
+      "url": "https://azfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "arizona-community-foundation-acf-of-sedona-grant-cycle",
+      "field": "applicationUrl",
+      "url": "https://azfoundation.org/ways-to-give/give-locally/acf-of-sedona",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azfoundation.org/ways-to-give/give-locally/acf-of-sedona/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "az-blue-foundation-health-equity-grants-invitation-only",
+      "field": "officialProgramUrl",
+      "url": "https://azbluefoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azbluefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "az-blue-foundation-health-equity-grants-invitation-only",
+      "field": "applicationUrl",
+      "url": "https://azbluefoundation.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.azbluefoundation.org/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "inland-empire-community-foundation-community-impact-fund",
+      "field": "officialProgramUrl",
+      "url": "https://iegives.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.iegives.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "inland-empire-community-foundation-community-impact-fund",
+      "field": "applicationUrl",
+      "url": "https://iegives.org/grants",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.iegives.org/grants",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "communities-foundation-of-texas-nonprofit-gateway-open-grantmaking",
+      "field": "officialProgramUrl",
+      "url": "https://cftexas.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftexas.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "communities-foundation-of-texas-nonprofit-gateway-open-grantmaking",
+      "field": "applicationUrl",
+      "url": "https://cftexas.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftexas.org/nonprofits/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-general-grantmaking-early-childhood-family-econom",
+      "field": "officialProgramUrl",
+      "url": "https://wkkf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.wkkf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-general-grantmaking-early-childhood-family-econom",
+      "field": "applicationUrl",
+      "url": "https://wkkf.org/grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.wkkf.org/grantseekers",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-food-systems-agriculture-grants",
+      "field": "officialProgramUrl",
+      "url": "https://wkkf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.wkkf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-food-systems-agriculture-grants",
+      "field": "applicationUrl",
+      "url": "https://wkkf.org/grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.wkkf.org/grantseekers",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-health-health-equity-grants",
+      "field": "officialProgramUrl",
+      "url": "https://wkkf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.wkkf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "w-k-kellogg-foundation-health-health-equity-grants",
+      "field": "applicationUrl",
+      "url": "https://wkkf.org/grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.wkkf.org/grantseekers",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-baker-county-fund",
+      "field": "officialProgramUrl",
+      "url": "https://oregoncf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://oregoncf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-baker-county-fund",
+      "field": "applicationUrl",
+      "url": "https://oregoncf.org/grants-and-scholarships/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://oregoncf.org/grants-and-scholarships/grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-arts-culture-grants-artists-field-fellowship",
+      "field": "officialProgramUrl",
+      "url": "https://oregoncf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://oregoncf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-arts-culture-grants-artists-field-fellowship",
+      "field": "applicationUrl",
+      "url": "https://oregoncf.org/grants-and-scholarships/grants",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "oregon-community-foundation-walker-fund-southern-oregon",
+      "field": "officialProgramUrl",
+      "url": "https://oregoncf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://oregoncf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-walker-fund-southern-oregon",
+      "field": "applicationUrl",
+      "url": "https://oregoncf.org/grants-and-scholarships/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://oregoncf.org/grants-and-scholarships/grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-food-security-fund",
+      "field": "officialProgramUrl",
+      "url": "https://oregoncf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://oregoncf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "oregon-community-foundation-food-security-fund",
+      "field": "applicationUrl",
+      "url": "https://oregoncf.org/grants-and-scholarships/grants",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "doris-duke-foundation-environment-program-grants",
+      "field": "officialProgramUrl",
+      "url": "https://dorisduke.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-environment-program-grants",
+      "field": "applicationUrl",
+      "url": "https://dorisduke.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-performing-arts-program-leadership-grants",
+      "field": "officialProgramUrl",
+      "url": "https://dorisduke.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-performing-arts-program-leadership-grants",
+      "field": "applicationUrl",
+      "url": "https://dorisduke.org/funding-areas/performing-arts",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/programs/arts",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-child-well-being-program",
+      "field": "officialProgramUrl",
+      "url": "https://dorisduke.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-child-well-being-program",
+      "field": "applicationUrl",
+      "url": "https://dorisduke.org/funding-areas/child-well-being",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/programs/child-well-being",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-building-bridges-program",
+      "field": "officialProgramUrl",
+      "url": "https://dorisduke.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "doris-duke-foundation-building-bridges-program",
+      "field": "applicationUrl",
+      "url": "https://dorisduke.org/funding-areas/building-bridges",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.dorisduke.org/programs/building-bridges",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "bank-of-america-neighborhood-builders-program",
+      "field": "officialProgramUrl",
+      "url": "https://bankofamerica.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bankofamerica.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "bank-of-america-neighborhood-builders-program",
+      "field": "applicationUrl",
+      "url": "https://about.bankofamerica.com/en/making-an-impact/neighborhood-builders",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://about.bankofamerica.com/en/error/404",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "bank-of-america-grants-arts-culture",
+      "field": "officialProgramUrl",
+      "url": "https://bankofamerica.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.bankofamerica.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "bank-of-america-grants-arts-culture",
+      "field": "applicationUrl",
+      "url": "https://about.bankofamerica.com/en/making-an-impact/economic-opportunity",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://about.bankofamerica.com/en/error/404",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-organizational-support-program-osp",
+      "field": "officialProgramUrl",
+      "url": "https://arts.texas.gov/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-organizational-support-program-osp",
+      "field": "applicationUrl",
+      "url": "https://arts.texas.gov/initatives/organizational-support-program",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-jump-grants",
+      "field": "officialProgramUrl",
+      "url": "https://arts.texas.gov/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-jump-grants",
+      "field": "applicationUrl",
+      "url": "https://arts.texas.gov/initatives/jump-grants",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "cleveland-foundation-immediate-impact-grants-wellbeing-critical-needs",
+      "field": "officialProgramUrl",
+      "url": "https://clevelandfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.clevelandfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "cleveland-foundation-immediate-impact-grants-wellbeing-critical-needs",
+      "field": "applicationUrl",
+      "url": "https://clevelandfoundation.org/grants/overview",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.clevelandfoundation.org/grants/overview",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "cleveland-foundation-long-term-impact-grow-our-region",
+      "field": "officialProgramUrl",
+      "url": "https://clevelandfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.clevelandfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "cleveland-foundation-long-term-impact-grow-our-region",
+      "field": "applicationUrl",
+      "url": "https://clevelandfoundation.org/about-us/impact-agenda",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.clevelandfoundation.org/about-us/impact-agenda",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "cleveland-foundation-arts-culture-grants-via-grants-gateway",
+      "field": "officialProgramUrl",
+      "url": "https://clevelandfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.clevelandfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "cleveland-foundation-arts-culture-grants-via-grants-gateway",
+      "field": "applicationUrl",
+      "url": "https://clevelandfoundation.org/grants/overview",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.clevelandfoundation.org/grants/overview",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "saint-paul-minnesota-foundation-minnesota-community-ideas-program",
+      "field": "officialProgramUrl",
+      "url": "https://spmcf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://spmcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "saint-paul-minnesota-foundation-minnesota-community-ideas-program",
+      "field": "applicationUrl",
+      "url": "https://spmcf.org/nonprofits/grants-for-nonprofits/minnesota-community-ideas-program",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://spmcf.org/nonprofits/grants-for-nonprofits/minnesota-community-ideas-program",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "saint-paul-minnesota-foundation-community-solutions-grant-program",
+      "field": "officialProgramUrl",
+      "url": "https://spmcf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://spmcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "saint-paul-minnesota-foundation-community-solutions-grant-program",
+      "field": "applicationUrl",
+      "url": "https://spmcf.org/nonprofits/grants-for-nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://spmcf.org/nonprofits/grants-for-nonprofits",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "southern-minnesota-initiative-foundation-economic-community-workforce-de",
+      "field": "officialProgramUrl",
+      "url": "https://smifoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smifoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "southern-minnesota-initiative-foundation-economic-community-workforce-de",
+      "field": "applicationUrl",
+      "url": "https://smifoundation.org/grants/for-grant-seekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smifoundation.org/grants/for-grant-seekers/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "southern-minnesota-initiative-foundation-small-town-grants",
+      "field": "officialProgramUrl",
+      "url": "https://smifoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smifoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "southern-minnesota-initiative-foundation-small-town-grants",
+      "field": "applicationUrl",
+      "url": "https://smifoundation.org/grants/for-grant-seekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smifoundation.org/grants/for-grant-seekers/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-annual-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cftampabay.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftampabay.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-annual-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://cftampabay.org/annual-competitive-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftampabay.org/annual-competitive-grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-critical-needs-list",
+      "field": "officialProgramUrl",
+      "url": "https://cftampabay.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftampabay.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-critical-needs-list",
+      "field": "applicationUrl",
+      "url": "https://cftampabay.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftampabay.org/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-smith-associates-real-estate-foundation-g",
+      "field": "officialProgramUrl",
+      "url": "https://cftampabay.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftampabay.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-tampa-bay-smith-associates-real-estate-foundation-g",
+      "field": "applicationUrl",
+      "url": "https://cftampabay.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cftampabay.org/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "initiative-foundation-central-mn-emerging-needs-nonprofit-capacity-build",
+      "field": "officialProgramUrl",
+      "url": "https://ifound.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://ifound.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "initiative-foundation-central-mn-emerging-needs-nonprofit-capacity-build",
+      "field": "applicationUrl",
+      "url": "https://ifound.org/grants/grants-available",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://ifound.org/grants/grants-available/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-touring-grants",
+      "field": "officialProgramUrl",
+      "url": "https://arts.texas.gov/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-touring-grants",
+      "field": "applicationUrl",
+      "url": "https://arts.texas.gov/initatives/touring-grants",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-arts-respond-public-art",
+      "field": "officialProgramUrl",
+      "url": "https://arts.texas.gov/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "texas-commission-on-the-arts-arts-respond-public-art",
+      "field": "applicationUrl",
+      "url": "https://arts.texas.gov/initatives/arts-respond",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "permian-basin-area-foundation-community-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://pbaf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pbaf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "permian-basin-area-foundation-community-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://pbaf.org/grants",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://pbaf.org/grants",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "el-paso-community-foundation-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://epcf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://epcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "el-paso-community-foundation-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://epcf.org/grant-programs",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://epcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "microsoft-for-nonprofits-technology-grant-program",
+      "field": "officialProgramUrl",
+      "url": "https://microsoft.com/en-us/nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.microsoft.com/en-us/nonprofits",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "microsoft-for-nonprofits-technology-grant-program",
+      "field": "applicationUrl",
+      "url": "https://microsoft.com/en-us/nonprofits/eligibility",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.microsoft.com/en-us/nonprofits/eligibility",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "microsoft-philanthropies-ai-for-humanitarian-action",
+      "field": "officialProgramUrl",
+      "url": "https://microsoft.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.microsoft.com/en-us",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "microsoft-philanthropies-ai-for-humanitarian-action",
+      "field": "applicationUrl",
+      "url": "https://microsoft.com/en-us/corporate-responsibility/philanthropies",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.microsoft.com/en-us/corporate-responsibility",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "microsoft-employee-giving-match-program",
+      "field": "officialProgramUrl",
+      "url": "https://microsoft.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.microsoft.com/en-us",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "microsoft-employee-giving-match-program",
+      "field": "applicationUrl",
+      "url": "https://microsoft.com/en-us/corporate-responsibility/philanthropies/employee-engagement",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.microsoft.com/en-us/corporate-responsibility/philanthropies/employee-engagement",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "annie-e-casey-foundation-child-welfare-family-strengthening-grants",
+      "field": "officialProgramUrl",
+      "url": "https://aecf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aecf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "annie-e-casey-foundation-child-welfare-family-strengthening-grants",
+      "field": "applicationUrl",
+      "url": "https://aecf.org/grant-making",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.aecf.org/grant-making",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "annie-e-casey-foundation-thrive-by-25-initiative",
+      "field": "officialProgramUrl",
+      "url": "https://aecf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aecf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "annie-e-casey-foundation-thrive-by-25-initiative",
+      "field": "applicationUrl",
+      "url": "https://aecf.org/topics/thrive-by-25",
+      "ok": false,
+      "status": 403,
+      "finalUrl": "https://www.aecf.org/topics/thrive-by-25",
+      "redirectedToDifferentHost": true,
+      "error": "http_403"
+    },
+    {
+      "grantId": "jpmorgan-chase-foundation-workforce-readiness-grants",
+      "field": "officialProgramUrl",
+      "url": "https://jpmorganchase.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.jpmorganchase.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "jpmorgan-chase-foundation-workforce-readiness-grants",
+      "field": "applicationUrl",
+      "url": "https://jpmorganchase.com/impact/philanthropy",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.jpmorganchase.com/impact/philanthropy",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "jpmorgan-chase-foundation-advancingcities-initiative",
+      "field": "officialProgramUrl",
+      "url": "https://jpmorganchase.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.jpmorganchase.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "jpmorgan-chase-foundation-advancingcities-initiative",
+      "field": "applicationUrl",
+      "url": "https://jpmorganchase.com/impact/philanthropy/advancingcities",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.jpmorganchase.com/impact/philanthropy/advancingcities",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "william-t-grant-foundation-research-grants",
+      "field": "officialProgramUrl",
+      "url": "https://wtgrantfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wtgrantfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "william-t-grant-foundation-research-grants",
+      "field": "applicationUrl",
+      "url": "https://wtgrantfoundation.org/funding/research-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wtgrantfoundation.org/research-grants-on-improving-the-use-of-research-evidence-an-overview-of-the-program-and-how-to-apply",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "william-t-grant-foundation-institutional-challenge-grant",
+      "field": "officialProgramUrl",
+      "url": "https://wtgrantfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wtgrantfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "william-t-grant-foundation-institutional-challenge-grant",
+      "field": "applicationUrl",
+      "url": "https://wtgrantfoundation.org/funding/institutional-challenge-grant",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wtgrantfoundation.org/funding/institutional-challenge-grant",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "epa-environmental-justice-collaborative-problem-solving-ejcps-grants",
+      "field": "officialProgramUrl",
+      "url": "https://epa.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.epa.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "epa-environmental-justice-collaborative-problem-solving-ejcps-grants",
+      "field": "applicationUrl",
+      "url": "https://epa.gov/environmentaljustice/environmental-justice-collaborative-problem-solving-cooperative-agreement-program",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.epa.gov/environmentaljustice/environmental-justice-collaborative-problem-solving-cooperative-agreement-program",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "epa-environmental-justice-government-to-government-ejg2g-program",
+      "field": "officialProgramUrl",
+      "url": "https://epa.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.epa.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "epa-environmental-justice-government-to-government-ejg2g-program",
+      "field": "applicationUrl",
+      "url": "https://epa.gov/environmentaljustice/ej-government-government-ej-g2g-program",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.epa.gov/environmentaljustice/ej-government-government-ej-g2g-program",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "conrad-n-hilton-foundation-grants-homelessness-water-early-childhood",
+      "field": "officialProgramUrl",
+      "url": "https://hiltonfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.hiltonfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "conrad-n-hilton-foundation-grants-homelessness-water-early-childhood",
+      "field": "applicationUrl",
+      "url": "https://hiltonfoundation.org/grants/how-to-apply",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.hiltonfoundation.org/grants/how-to-apply",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "conrad-n-hilton-foundation-chronic-homelessness-initiative",
+      "field": "officialProgramUrl",
+      "url": "https://hiltonfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.hiltonfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "conrad-n-hilton-foundation-chronic-homelessness-initiative",
+      "field": "applicationUrl",
+      "url": "https://hiltonfoundation.org/programs/homelessness",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.hiltonfoundation.org/work/our-initiatives/homelessness/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "lumina-foundation-grants-postsecondary-education",
+      "field": "officialProgramUrl",
+      "url": "https://luminafoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.luminafoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "lumina-foundation-grants-postsecondary-education",
+      "field": "applicationUrl",
+      "url": "https://luminafoundation.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.luminafoundation.org/resources/grants/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "lumina-foundation-adult-learner-and-workforce-credentials",
+      "field": "officialProgramUrl",
+      "url": "https://luminafoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.luminafoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "lumina-foundation-adult-learner-and-workforce-credentials",
+      "field": "applicationUrl",
+      "url": "https://luminafoundation.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.luminafoundation.org/resources/grants/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-community-grants-program",
+      "field": "officialProgramUrl",
+      "url": "https://denverfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-community-grants-program",
+      "field": "applicationUrl",
+      "url": "https://denverfoundation.org/our-grants-program",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/our-grants-program/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-strengthening-neighborhoods-program",
+      "field": "officialProgramUrl",
+      "url": "https://denverfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-strengthening-neighborhoods-program",
+      "field": "applicationUrl",
+      "url": "https://denverfoundation.org/funding-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/funding-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-capacity-building-fund",
+      "field": "officialProgramUrl",
+      "url": "https://denverfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-capacity-building-fund",
+      "field": "applicationUrl",
+      "url": "https://denverfoundation.org/funding-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/funding-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-bowen-family-performing-arts-fund",
+      "field": "officialProgramUrl",
+      "url": "https://denverfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-bowen-family-performing-arts-fund",
+      "field": "applicationUrl",
+      "url": "https://denverfoundation.org/funding-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/funding-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-lowe-fund-intellectual-developmental-disabilities",
+      "field": "officialProgramUrl",
+      "url": "https://denverfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "the-denver-foundation-lowe-fund-intellectual-developmental-disabilities",
+      "field": "applicationUrl",
+      "url": "https://denverfoundation.org/funding-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://denverfoundation.org/funding-opportunities/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-responsive-grantmaking-program",
+      "field": "officialProgramUrl",
+      "url": "https://trianglecf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-responsive-grantmaking-program",
+      "field": "applicationUrl",
+      "url": "https://trianglecf.org/award/fund-for-the-triangle-responsive-grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/award/fund-for-the-triangle-responsive-grantmaking/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-education-youth-grant",
+      "field": "officialProgramUrl",
+      "url": "https://trianglecf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-education-youth-grant",
+      "field": "applicationUrl",
+      "url": "https://trianglecf.org/apply/grants-for-nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/apply/grants-for-nonprofits/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-triangle-capacity-building-network-tcbn-gr",
+      "field": "officialProgramUrl",
+      "url": "https://trianglecf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-triangle-capacity-building-network-tcbn-gr",
+      "field": "applicationUrl",
+      "url": "https://trianglecf.org/award/triangle-capacity-building-network-grant",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/award/triangle-capacity-building-network-grant/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-housing-affordability-grant",
+      "field": "officialProgramUrl",
+      "url": "https://trianglecf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "triangle-community-foundation-housing-affordability-grant",
+      "field": "applicationUrl",
+      "url": "https://trianglecf.org/impact/housingaffordability",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://trianglecf.org/impact/housingaffordability/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "target-circle-community-giving",
+      "field": "officialProgramUrl",
+      "url": "https://target.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.target.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "target-circle-community-giving",
+      "field": "applicationUrl",
+      "url": "https://target.com/circle/community-giving",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.target.com/circle/community-giving",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "target-foundation-strategic-grantmaking",
+      "field": "officialProgramUrl",
+      "url": "https://corporate.target.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://corporate.target.com/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "target-foundation-strategic-grantmaking",
+      "field": "applicationUrl",
+      "url": "https://corporate.target.com/sustainability-esg/target-foundation",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://corporate.target.com/about/purpose-history/communities/target-foundation",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "lowe-s-hometowns-community-grant",
+      "field": "officialProgramUrl",
+      "url": "https://lowes.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lowes.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "lowe-s-hometowns-community-grant",
+      "field": "applicationUrl",
+      "url": "https://lowes.com/l/about/community-impact",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.lowes.com/l/about/community-impact",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "lowe-s-foundation-gable-grants-skilled-trades-education",
+      "field": "officialProgramUrl",
+      "url": "https://lowesfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lowesfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "lowe-s-foundation-gable-grants-skilled-trades-education",
+      "field": "applicationUrl",
+      "url": "https://lowesfoundation.org/gable-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.lowesfoundation.org/gable-grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "coastal-bend-community-foundation-competitive-grants-corpus-christi-area",
+      "field": "officialProgramUrl",
+      "url": "https://coastalbendcf.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "coastal-bend-community-foundation-competitive-grants-corpus-christi-area",
+      "field": "applicationUrl",
+      "url": "https://coastalbendcf.org/grants",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "heart-of-texas-community-foundation-grant-programs-bryan-college-station",
+      "field": "officialProgramUrl",
+      "url": "https://hotcf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://hotcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "heart-of-texas-community-foundation-grant-programs-bryan-college-station",
+      "field": "applicationUrl",
+      "url": "https://hotcf.org/grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://hotcf.org/grantmaking",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-6-12-under-5-000",
+      "field": "officialProgramUrl",
+      "url": "https://toshiba.com/taf",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://toshiba.com/taf/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-6-12-under-5-000",
+      "field": "applicationUrl",
+      "url": "https://toshiba.com/taf/612-2",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://toshiba.com/taf/612-2/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-6-12-over-5-000",
+      "field": "officialProgramUrl",
+      "url": "https://toshiba.com/taf",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://toshiba.com/taf/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-6-12-over-5-000",
+      "field": "applicationUrl",
+      "url": "https://toshiba.com/taf/612-2",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://toshiba.com/taf/612-2/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-k-5",
+      "field": "officialProgramUrl",
+      "url": "https://toshiba.com/taf",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://toshiba.com/taf/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "toshiba-america-foundation-stem-grants-for-grades-k-5",
+      "field": "applicationUrl",
+      "url": "https://toshiba.com/taf/k-5",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://toshiba.com/taf/k-5",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "seattle-foundation-neighbor-to-neighbor-n2n-grants",
+      "field": "officialProgramUrl",
+      "url": "https://seattlefoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.seattlefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "seattle-foundation-neighbor-to-neighbor-n2n-grants",
+      "field": "applicationUrl",
+      "url": "https://seattlefoundation.org/current-grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.seattlefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "seattle-foundation-first-peoples-climate-fund",
+      "field": "officialProgramUrl",
+      "url": "https://seattlefoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.seattlefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "seattle-foundation-first-peoples-climate-fund",
+      "field": "applicationUrl",
+      "url": "https://seattlefoundation.org/current-grant-opportunities",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.seattlefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "seattle-foundation-bipoc-nonprofit-effectiveness-grants",
+      "field": "officialProgramUrl",
+      "url": "https://seattlefoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.seattlefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "seattle-foundation-bipoc-nonprofit-effectiveness-grants",
+      "field": "applicationUrl",
+      "url": "https://seattlefoundation.org/nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.seattlefoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-thriving-communities-englewood-little-vill",
+      "field": "officialProgramUrl",
+      "url": "https://mccormickfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-thriving-communities-englewood-little-vill",
+      "field": "applicationUrl",
+      "url": "https://mccormickfoundation.org/investments",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/investments/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-early-childhood-education-grants",
+      "field": "officialProgramUrl",
+      "url": "https://mccormickfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-early-childhood-education-grants",
+      "field": "applicationUrl",
+      "url": "https://mccormickfoundation.org/investments",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/investments/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-journalism-democracy-grants",
+      "field": "officialProgramUrl",
+      "url": "https://mccormickfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-journalism-democracy-grants",
+      "field": "applicationUrl",
+      "url": "https://mccormickfoundation.org/investments",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/investments/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-communities-fund-united-way-partnership",
+      "field": "officialProgramUrl",
+      "url": "https://mccormickfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "robert-r-mccormick-foundation-communities-fund-united-way-partnership",
+      "field": "applicationUrl",
+      "url": "https://mccormickfoundation.org/partnerships",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mccormickfoundation.org/partnerships/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nsf-advancing-informal-stem-learning-aisl",
+      "field": "officialProgramUrl",
+      "url": "https://nsf.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nsf.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nsf-advancing-informal-stem-learning-aisl",
+      "field": "applicationUrl",
+      "url": "https://nsf.gov/funding/opportunities/aisl-advancing-informal-stem-learning",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/aisl-advancing-informal-stem-learning/504793/nsf24-601",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nsf-improving-undergraduate-stem-education-iuse-ehr",
+      "field": "officialProgramUrl",
+      "url": "https://nsf.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nsf.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nsf-improving-undergraduate-stem-education-iuse-ehr",
+      "field": "applicationUrl",
+      "url": "https://nsf.gov/funding/opportunities/iuse-improving-undergraduate-stem-education-education-human-resources",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/iuse-improving-undergraduate-stem-education-education-human-resources",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "nsf-civic-innovation-challenge-civic",
+      "field": "officialProgramUrl",
+      "url": "https://nsf.gov/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nsf.gov/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "nsf-civic-innovation-challenge-civic",
+      "field": "applicationUrl",
+      "url": "https://nsf.gov/funding/opportunities/civic-civic-innovation-challenge",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.nsf.gov/funding/opportunities/civic-civic-innovation-challenge/505728/nsf24-534",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "weyerhaeuser-company-foundation-environment-community-grants",
+      "field": "officialProgramUrl",
+      "url": "https://weyerhaeuser.com/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.weyerhaeuser.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "weyerhaeuser-company-foundation-environment-community-grants",
+      "field": "applicationUrl",
+      "url": "https://weyerhaeuser.com/sustainability/communities/weyerhaeuser-company-foundation",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.weyerhaeuser.com/sustainability/communities/weyerhaeuser-company-foundation/",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "surdna-foundation-thriving-cultures-grants-arts-culture",
+      "field": "officialProgramUrl",
+      "url": "https://surdna.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://surdna.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "surdna-foundation-thriving-cultures-grants-arts-culture",
+      "field": "applicationUrl",
+      "url": "https://surdna.org/our-programs/thriving-cultures",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://surdna.org/programs/thriving-cultures/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-civil-society-program",
+      "field": "officialProgramUrl",
+      "url": "https://mott.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mott.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-civil-society-program",
+      "field": "applicationUrl",
+      "url": "https://mott.org/what-we-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mott.org/what-we-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-environment-program",
+      "field": "officialProgramUrl",
+      "url": "https://mott.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mott.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-environment-program",
+      "field": "applicationUrl",
+      "url": "https://mott.org/what-we-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mott.org/what-we-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-flint-area-program",
+      "field": "officialProgramUrl",
+      "url": "https://mott.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mott.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "charles-stewart-mott-foundation-flint-area-program",
+      "field": "applicationUrl",
+      "url": "https://mott.org/what-we-fund",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mott.org/what-we-fund/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "home-depot-foundation-veteran-housing-grants-program",
+      "field": "officialProgramUrl",
+      "url": "https://homedepotfoundation.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "home-depot-foundation-veteran-housing-grants-program",
+      "field": "applicationUrl",
+      "url": "https://corporate.homedepot.com/page/veteran-housing-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://corporate.homedepot.com/page/veteran-housing-grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "home-depot-foundation-community-impact-grants-skilled-trades-disaster-re",
+      "field": "officialProgramUrl",
+      "url": "https://homedepotfoundation.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "home-depot-foundation-community-impact-grants-skilled-trades-disaster-re",
+      "field": "applicationUrl",
+      "url": "https://corporate.homedepot.com/page/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://corporate.homedepot.com/page/grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "home-depot-foundation-rural-veterans-housing-via-housing-assistance-coun",
+      "field": "officialProgramUrl",
+      "url": "https://homedepotfoundation.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "home-depot-foundation-rural-veterans-housing-via-housing-assistance-coun",
+      "field": "applicationUrl",
+      "url": "https://ruralhome.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://ruralhome.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "waco-foundation-immediate-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://wacofoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wacofoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "waco-foundation-immediate-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "waco-foundation-critical-needs-grant",
+      "field": "officialProgramUrl",
+      "url": "https://wacofoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wacofoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "waco-foundation-critical-needs-grant",
+      "field": "applicationUrl",
+      "url": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "waco-foundation-capacity-building-mini-grants",
+      "field": "officialProgramUrl",
+      "url": "https://wacofoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wacofoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "waco-foundation-capacity-building-mini-grants",
+      "field": "applicationUrl",
+      "url": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://wacofoundation.org/community-impact/nonprofits/grantmaking",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "cooper-foundation-community-grants-waco",
+      "field": "officialProgramUrl",
+      "url": "https://cooperfdn.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cooperfdn.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "cooper-foundation-community-grants-waco",
+      "field": "applicationUrl",
+      "url": "https://cooperfdn.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cooperfdn.org/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "east-texas-community-foundation-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://etcf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://etcf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "east-texas-community-foundation-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://etcf.org/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://etcf.org/nonprofits/grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-waco-mclennan-county-community-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://unitedwaywaco.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://unitedwaywaco.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-waco-mclennan-county-community-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://unitedwaywaco.org/for-nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://unitedwaywaco.org/for-nonprofits/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "surdna-foundation-strong-local-economies-grants",
+      "field": "officialProgramUrl",
+      "url": "https://surdna.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://surdna.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "surdna-foundation-strong-local-economies-grants",
+      "field": "applicationUrl",
+      "url": "https://surdna.org/our-programs/strong-local-economies",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://surdna.org/our-programs/strong-local-economies",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "surdna-foundation-sustainable-environments-grants",
+      "field": "officialProgramUrl",
+      "url": "https://surdna.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://surdna.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "surdna-foundation-sustainable-environments-grants",
+      "field": "applicationUrl",
+      "url": "https://surdna.org/our-programs/sustainable-environments",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://surdna.org/programs/sustainable-environments/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-creativity-and-free-expression-grants",
+      "field": "officialProgramUrl",
+      "url": "https://fordfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-creativity-and-free-expression-grants",
+      "field": "applicationUrl",
+      "url": "https://fordfoundation.org/work/challenging-inequality",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/work/challenging-inequality/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-build-building-institutions-and-networks",
+      "field": "officialProgramUrl",
+      "url": "https://fordfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-build-building-institutions-and-networks",
+      "field": "applicationUrl",
+      "url": "https://fordfoundation.org/work/our-grants/building-institutions-and-networks",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/work/our-grants/building-institutions-and-networks/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-nyc-good-neighbor-committee-grants",
+      "field": "officialProgramUrl",
+      "url": "https://fordfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-nyc-good-neighbor-committee-grants",
+      "field": "applicationUrl",
+      "url": "https://fordfoundation.org/about/about-the-ford-foundation/new-york-city-good-neighbor-committee",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/about/about-the-ford-foundation/new-york-city-good-neighbor-committee/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-democracy-rule-of-law-grants",
+      "field": "officialProgramUrl",
+      "url": "https://fordfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ford-foundation-democracy-rule-of-law-grants",
+      "field": "applicationUrl",
+      "url": "https://fordfoundation.org/work/challenging-inequality",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.fordfoundation.org/work/challenging-inequality/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-healthy-kids-initiative",
+      "field": "officialProgramUrl",
+      "url": "https://pdnhf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnhf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-healthy-kids-initiative",
+      "field": "applicationUrl",
+      "url": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-think-change-initiative-mental-health",
+      "field": "officialProgramUrl",
+      "url": "https://pdnhf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnhf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-think-change-initiative-mental-health",
+      "field": "applicationUrl",
+      "url": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-behavioral-health-consortium-initiative",
+      "field": "officialProgramUrl",
+      "url": "https://pdnhf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnhf.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-health-foundation-behavioral-health-consortium-initiative",
+      "field": "applicationUrl",
+      "url": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnhf.org/grants-and-grantseekers/for-grantseekers",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-community-foundation-charitable-fund-grants",
+      "field": "officialProgramUrl",
+      "url": "https://pdnfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "paso-del-norte-community-foundation-charitable-fund-grants",
+      "field": "applicationUrl",
+      "url": "https://pdnfoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://pdnfoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-greater-houston-community-fund-grants",
+      "field": "officialProgramUrl",
+      "url": "https://unitedwayhouston.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://unitedwayhouston.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-greater-houston-community-fund-grants",
+      "field": "applicationUrl",
+      "url": "https://unitedwayhouston.org/nonprofits",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://unitedwayhouston.org/for-nonprofits/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-metropolitan-dallas-community-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://unitedwaydallas.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://unitedwaydallas.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-metropolitan-dallas-community-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://unitedwaydallas.org/for-nonprofits",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://unitedwaydallas.org/for-nonprofits",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    },
+    {
+      "grantId": "community-foundation-of-the-ozarks-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cfozarks.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cfozarks.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-of-the-ozarks-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://cfozarks.org/nonprofits/grants",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.cfozarks.org/nonprofits/grants",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "community-foundation-of-the-ozarks-workforce-development-fund",
+      "field": "officialProgramUrl",
+      "url": "https://cfozarks.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cfozarks.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-of-the-ozarks-workforce-development-fund",
+      "field": "applicationUrl",
+      "url": "https://cfozarks.org/nonprofits/grants",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://www.cfozarks.org/nonprofits/grants",
+      "redirectedToDifferentHost": true,
+      "error": "http_404"
+    },
+    {
+      "grantId": "community-foundation-of-greater-memphis-competitive-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cfgm.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgm.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-of-greater-memphis-competitive-grants",
+      "field": "applicationUrl",
+      "url": "https://cfgm.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgm.org/grants-scholarships/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-of-greater-memphis-memphis-music-initiative-grants",
+      "field": "officialProgramUrl",
+      "url": "https://cfgm.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgm.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "community-foundation-of-greater-memphis-memphis-music-initiative-grants",
+      "field": "applicationUrl",
+      "url": "https://cfgm.org/nonprofits/grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://cfgm.org/grants-scholarships/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "aspca-rachael-ray-save-them-all-grants",
+      "field": "officialProgramUrl",
+      "url": "https://aspca.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aspca.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "aspca-rachael-ray-save-them-all-grants",
+      "field": "applicationUrl",
+      "url": "https://bestfriends.org/network/partner-perk/rachael-ray-save-them-all-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://bestfriends.org/network/partner-perk/rachael-ray-save-them-all-grants",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "aspca-anti-cruelty-grants",
+      "field": "officialProgramUrl",
+      "url": "https://aspca.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aspca.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "aspca-anti-cruelty-grants",
+      "field": "applicationUrl",
+      "url": "https://aspca.org/about-us/aspca-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.aspca.org/grants-and-scholarships/grants",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-active-lifestyles-youth-sports-recreation",
+      "field": "officialProgramUrl",
+      "url": "https://ralphcwilsonjrfoundation.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-active-lifestyles-youth-sports-recreation",
+      "field": "applicationUrl",
+      "url": "https://ralphcwilsonjrfoundation.org/how-to-apply",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-nonprofit-support-innovation",
+      "field": "officialProgramUrl",
+      "url": "https://ralphcwilsonjrfoundation.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-nonprofit-support-innovation",
+      "field": "applicationUrl",
+      "url": "https://ralphcwilsonjrfoundation.org/how-to-apply",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-legacy-fund-for-youth-sports-rochester-area-community-",
+      "field": "officialProgramUrl",
+      "url": "https://racf.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.racf.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-legacy-fund-for-youth-sports-rochester-area-community-",
+      "field": "applicationUrl",
+      "url": "https://racf.org/grant/ralph-c-wilson-jr-legacy-fund-for-youth-sports",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.racf.org/grant/ralph-c-wilson-jr-legacy-fund-for-youth-sports/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-arts-culture-initiative-via-community-found",
+      "field": "officialProgramUrl",
+      "url": "https://cfgb.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cfgb.org/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "ralph-c-wilson-jr-foundation-arts-culture-initiative-via-community-found",
+      "field": "applicationUrl",
+      "url": "https://cfgb.org/nonprofits/grants/ralph-c-wilson-jr-foundation-arts-culture-initiative",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.cfgb.org/nonprofits/grants/ralph-c-wilson-jr-foundation-arts-culture-initiative/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-discretionary-grants-competitive-cycle",
+      "field": "officialProgramUrl",
+      "url": "https://amarilloareafoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-discretionary-grants-competitive-cycle",
+      "field": "applicationUrl",
+      "url": "https://amarilloareafoundation.org/faq",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/faq/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-catalyst-grants",
+      "field": "officialProgramUrl",
+      "url": "https://amarilloareafoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-catalyst-grants",
+      "field": "applicationUrl",
+      "url": "https://amarilloareafoundation.org/catalyst-grants",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/catalyst-grants/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-pantex-grant-program",
+      "field": "officialProgramUrl",
+      "url": "https://amarilloareafoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-pantex-grant-program",
+      "field": "applicationUrl",
+      "url": "https://amarilloareafoundation.org/pantex",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/pantex/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-the-panhandle-gives-giving-day-campaign",
+      "field": "officialProgramUrl",
+      "url": "https://amarilloareafoundation.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://amarilloareafoundation.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "amarillo-area-foundation-the-panhandle-gives-giving-day-campaign",
+      "field": "applicationUrl",
+      "url": "https://thepanhandlegives.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://thepanhandlegives.mightycause.com/",
+      "redirectedToDifferentHost": true,
+      "error": null
+    },
+    {
+      "grantId": "united-way-of-san-antonio-bexar-county-community-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://unitedwaysatx.org/",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "network_error"
+    },
+    {
+      "grantId": "united-way-of-san-antonio-bexar-county-community-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://unitedwaysatx.org/nonprofits",
+      "ok": false,
+      "status": null,
+      "finalUrl": null,
+      "error": "timeout"
+    },
+    {
+      "grantId": "united-way-for-greater-austin-community-impact-grants",
+      "field": "officialProgramUrl",
+      "url": "https://unitedwayaustin.org/",
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://unitedwayaustin.org/",
+      "redirectedToDifferentHost": false,
+      "error": null
+    },
+    {
+      "grantId": "united-way-for-greater-austin-community-impact-grants",
+      "field": "applicationUrl",
+      "url": "https://unitedwayaustin.org/for-nonprofits",
+      "ok": false,
+      "status": 404,
+      "finalUrl": "https://unitedwayaustin.org/for-nonprofits",
+      "redirectedToDifferentHost": false,
+      "error": "http_404"
+    }
+  ]
+}

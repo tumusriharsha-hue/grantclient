@@ -40,14 +40,6 @@ type SearchCacheEntry = {
 const rateLimits = new Map<string, RateLimitEntry>();
 const searchCache = new Map<string, SearchCacheEntry>();
 
-function getClientKey(request: NextRequest) {
-  return (
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown"
-  );
-}
-
 function checkRateLimit(key: string) {
   const now = Date.now();
   const existing = rateLimits.get(key);
@@ -137,7 +129,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const rateLimit = checkRateLimit(getClientKey(request));
+  const rateLimit = checkRateLimit(`user:${user.id}`);
 
   if (rateLimit.limited) {
     return NextResponse.json(

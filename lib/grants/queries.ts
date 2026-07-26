@@ -35,7 +35,7 @@ async function getLocalGrants(): Promise<Grant[]> {
     throw new Error(`Failed to load grants: ${error.message}`);
   }
 
-  return (data ?? []).map(mapGrantRow);
+  return (data ?? []).map(mapGrantRow).filter((grant) => isActionableGrant(grant));
 }
 
 export async function getAllGrants(): Promise<Grant[]> {
@@ -84,7 +84,7 @@ export async function getGrantsByCategory(category: GrantCategory): Promise<Gran
     throw new Error(`Failed to load grants: ${error.message}`);
   }
 
-  return (data ?? []).map(mapGrantRow);
+  return (data ?? []).map(mapGrantRow).filter((grant) => isActionableGrant(grant));
 }
 
 export async function getGrantsByRegion(region: GrantRegion): Promise<Grant[]> {
@@ -99,7 +99,7 @@ export async function getGrantsByRegion(region: GrantRegion): Promise<Grant[]> {
     throw new Error(`Failed to load grants: ${error.message}`);
   }
 
-  return (data ?? []).map(mapGrantRow);
+  return (data ?? []).map(mapGrantRow).filter((grant) => isActionableGrant(grant));
 }
 
 export async function searchGrants(query: string): Promise<Grant[]> {
@@ -121,7 +121,7 @@ export async function searchGrants(query: string): Promise<Grant[]> {
     throw new Error(`Failed to search grants: ${error.message}`);
   }
 
-  return (data ?? []).map(mapGrantRow);
+  return (data ?? []).map(mapGrantRow).filter((grant) => isActionableGrant(grant));
 }
 
 export interface GrantCatalogFilters

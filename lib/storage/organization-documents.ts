@@ -18,3 +18,29 @@ export function safeDocumentFileName(name: string) {
     .replace(/^-+|-+$/g, "")
     .slice(0, 120) || "document";
 }
+
+function startsWithBytes(bytes: Uint8Array, expected: number[]) {
+  return expected.every((byte, index) => bytes[index] === byte);
+}
+
+export function matchesDocumentSignature(
+  contentType: string,
+  bytes: Uint8Array,
+) {
+  switch (contentType.trim().toLowerCase()) {
+    case "application/pdf":
+      return new TextDecoder().decode(bytes.slice(0, 5)) === "%PDF-";
+    case "image/png":
+      return startsWithBytes(bytes, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+    case "image/jpeg":
+      return startsWithBytes(bytes, [0xff, 0xd8, 0xff]);
+    case "application/msword":
+    case "application/vnd.ms-excel":
+      return startsWithBytes(bytes, [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]);
+    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+      return startsWithBytes(bytes, [0x50, 0x4b, 0x03, 0x04]);
+    default:
+      return false;
+  }
+}

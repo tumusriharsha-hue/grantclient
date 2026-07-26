@@ -22,4 +22,24 @@ describe("rankRecommendedGrants", () => {
     const expired = makeGrant({ id: "expired", deadline: "2026-01-01" });
     expect(rankRecommendedGrants(organization, [valid, expired], { now: NOW })).toHaveLength(1);
   });
+
+  it("excludes inactive and unverified catalog records", () => {
+    const inactive = makeGrant({ id: "inactive", isActive: false });
+    const unverified = makeGrant({
+      id: "unverified",
+      sourceUrl: "https://example.org/program",
+      verifiedAt: undefined,
+    });
+    expect(rankRecommendedGrants(organization, [inactive, unverified], { now: NOW })).toHaveLength(0);
+  });
+
+  it("does not treat a non-rolling record as rolling", () => {
+    const mislabeled = makeGrant({
+      id: "mislabeled",
+      status: "rolling",
+      deadline: undefined,
+      rollingDeadline: false,
+    });
+    expect(rankRecommendedGrants(organization, [mislabeled], { now: NOW })).toHaveLength(0);
+  });
 });

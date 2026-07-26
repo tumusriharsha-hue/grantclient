@@ -13,9 +13,12 @@ import {
 } from "@/lib/applications/proposal-template";
 import { getGrantById } from "@/lib/grants/queries";
 import { createClient } from "@/lib/supabase/server";
-import { parseApplicationSetup } from "@/lib/validations/application";
+import {
+  applicationStatusUpdateSchema,
+  parseApplicationSetup,
+  saveApplicationDraftSchema,
+} from "@/lib/validations/application";
 import type {
-  ApplicationStatus,
   ApplicationUpdate,
   Json,
 } from "@/types/database";
@@ -28,13 +31,6 @@ export type ApplicationSetupActionState = {
   error?: string;
   fieldErrors?: Record<string, string>;
 };
-
-const applicationStatuses: ApplicationStatus[] = [
-  "drafting",
-  "submitted",
-  "approved",
-  "rejected",
-];
 
 async function requireFullUser() {
   const supabase = await createClient();
@@ -56,12 +52,6 @@ async function requireFullUser() {
 function getFormString(formData: FormData, key: string) {
   const value = formData.get(key);
   return typeof value === "string" ? value.trim() : "";
-}
-
-function normalizeStatus(value: string): ApplicationStatus {
-  return applicationStatuses.includes(value as ApplicationStatus)
-    ? (value as ApplicationStatus)
-    : "drafting";
 }
 
 function parseDateInput(value: string) {
@@ -332,8 +322,12 @@ export async function saveApplicationDraft(input: {
   sections: DraftSection[];
 }): Promise<ApplicationActionResult> {
   const { supabase, user } = await requireFullUser();
-  const title = input.title.trim() || "Untitled Application";
-  const sections = input.sections
+  const parsed = saveApplicationDraftSchema.safeParse(input);
+  if (!parsed.success) {
+    return { success: false, error: "Invalid application draft." };
+  }
+  const title = parsed.data.title || "Untitled Application";
+  const sections = parsed.data.sections
     .map((section) => ({
       id: section.id,
       sectionKey: section.sectionKey,
@@ -393,17 +387,21 @@ export async function saveApplicationDraft(input: {
 
 export async function updateApplicationStatus(formData: FormData) {
   const { supabase, user } = await requireFullUser();
-  const id = getFormString(formData, "applicationId");
-  const title = getFormString(formData, "title") || "Untitled Application";
-  const status = normalizeStatus(getFormString(formData, "status"));
-  const statusDate = parseDateInput(getFormString(formData, "statusDate"));
-  const nextDate = parseDateInput(getFormString(formData, "nextDate"));
-  const amount = getFormString(formData, "amount") || null;
-  const statusNote = getFormString(formData, "statusNote") || null;
-
-  if (!id) {
-    throw new Error("Missing application.");
+  const parsed = applicationStatusUpdateSchema.safeParse({
+    applicationId: getFormString(formData, "applicationId"),
+    title: getFormString(formData, "title"),
+    status: getFormString(formData, "status"),
+    statusDate: getFormString(formData, "statusDate"),
+    nextDate: getFormString(formData, "nextDate"),
+    amount: getFormString(formData, "amount") || null,
+    statusNote: getFormString(formData, "statusNote") || null,
+  });
+  if (!parsed.success) {
+    throw new Error("Invalid application status update.");
   }
+  const { applicationId: id, title, status, amount, statusNote } = parsed.data;
+  const statusDate = parsed.data.statusDate ? parseDateInput(parsed.data.statusDate) : null;
+  const nextDate = parsed.data.nextDate ? parseDateInput(parsed.data.nextDate) : null;
 
   const update: ApplicationUpdate = {
     title,

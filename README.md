@@ -1,13 +1,29 @@
 # Grantclient
 
-Grants made simple for nonprofits — discover funding, draft applications, and track submissions.
+Grantclient is a free, public web application that helps nonprofits discover
+funding opportunities, prepare grant applications with AI-assisted drafting,
+and track submissions in one place.
+
+**Live website:** [grantclient.com](https://grantclient.com)
+
+## Features
+
+- Grant discovery and deterministic organization-to-grant matching
+- Factual AI-assisted match explanations
+- Guided proposal setup and section-by-section drafting
+- Saved grants and application-status tracking
+- Organization profiles and private document storage
+- Email and Google authentication
+
+AI-generated content is assistive and should be reviewed and verified before
+being included in a grant application.
 
 ## Prerequisites
 
 - Node.js 22.12+
 - npm 10+
 
-## Setup
+## Local development
 
 ```bash
 npm install
@@ -17,6 +33,11 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+The production application is hosted at
+[https://grantclient.com](https://grantclient.com). Production secrets and
+environment-specific values should be configured in the hosting provider, not
+committed to this repository.
 
 ## Scripts
 
@@ -94,3 +115,8 @@ npm run pre-push
 ```
 
 A `pre-push` Git hook is installed at `.git/hooks/pre-push` to run these checks automatically.
+
+## Support
+
+For product or account support, email
+[support@grantclient.com](mailto:support@grantclient.com).

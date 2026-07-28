@@ -10,7 +10,7 @@ export default function TermsOfServicePage() {
   return (
     <LegalDocument
       title="Terms of Service"
-      lastUpdated="July 27, 2026"
+      lastUpdated="July 28, 2026"
       intro="These Terms of Service (“Terms”) govern your access to and use of Grantclient, including its website, grant-discovery tools, AI-assisted features, and related services (collectively, the “Service”). By creating an account, signing in, or otherwise using the Service, you agree to these Terms and acknowledge our Privacy Policy. If you do not agree, do not use the Service."
       sections={[
         {
@@ -69,7 +69,8 @@ export default function TermsOfServicePage() {
         {
           title: "Third-party services and content",
           body: [
-            "The Service relies on third-party providers and may link to funder websites or other external services. Their terms and privacy practices govern your use of their services. We do not control or endorse third-party content and are not responsible for its availability, accuracy, or conduct.",
+            "The Service relies on third-party providers, including providers used for authentication, hosting, storage, AI-assisted features, and website analytics, and may link to funder websites or other external services. Our Privacy Policy explains how these providers may process information in connection with the Service.",
+            "Third-party terms and privacy practices govern your direct use of third-party services. We do not control or endorse third-party content and are not responsible for its availability, accuracy, or conduct.",
           ],
         },
         {

@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalDocument
       title="Privacy Policy"
-      lastUpdated="July 27, 2026"
+      lastUpdated="July 28, 2026"
       intro="This Privacy Policy explains how Grantclient collects, uses, shares, and protects information when you use our website, accounts, grant-discovery tools, AI-assisted features, and related services (collectively, the “Service”). It also explains the choices available to you. By using the Service, you acknowledge the practices described here."
       sections={[
         {
@@ -27,14 +27,14 @@ export default function PrivacyPolicyPage() {
           title: "Information collected automatically",
           body: [
             "When you use the Service, our systems and hosting providers may automatically receive technical and activity information such as IP address, browser and device type, operating system, requested pages, referring pages, timestamps, authentication events, saved-grant and feature activity, error data, and security logs.",
-            "We use cookies and similar browser storage that are necessary to authenticate users, maintain sessions, protect accounts, remember limited application state, and operate the Service. We do not currently use advertising cookies or sell information for targeted advertising.",
+            "We use cookies and similar browser storage that are necessary to authenticate users, maintain sessions, protect accounts, remember limited application state, and operate the Service. We also use Google Analytics, which may use analytics cookies and similar technologies when pages load to help us understand visits, page usage, approximate location, device and browser information, and general interaction patterns. Google Analytics is not used by Grantclient to serve personalized advertising, and we do not sell information for targeted advertising.",
           ],
         },
         {
           title: "How we use information",
           body: [
             "We use information to create and secure accounts; provide grant search, matching, saving, application drafting, document storage, and other requested functionality; personalize recommendations; respond to support; maintain and troubleshoot the Service; prevent abuse; enforce our Terms; and comply with law.",
-            "We may use limited usage, error, and performance information to understand and improve the Service. We may also create aggregated or de-identified information that cannot reasonably identify you and use it for service analysis and improvement.",
+            "We use Google Analytics and limited usage, error, and performance information to understand how the Service is used and improve its usability and performance. We may also create aggregated or de-identified information that cannot reasonably identify you and use it for service analysis and improvement.",
             "We do not use your uploaded documents or application content to train our own general-purpose AI model.",
           ],
         },
@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
           title: "How we disclose information",
           body: [
             "We do not sell personal information, and we do not share it for cross-context behavioral advertising.",
-            "We disclose information to providers that help operate the Service. These currently include Supabase for authentication, databases, and file storage; Google when you choose Google sign-in; NVIDIA for requested AI features; and infrastructure or hosting providers that deliver and secure the website. Providers may access information only as needed to perform services for us, subject to their contractual and legal obligations.",
+            "We disclose information to providers that help operate the Service. These currently include Supabase for authentication, databases, and file storage; Google for optional Google sign-in and website analytics; NVIDIA for requested AI features; and infrastructure or hosting providers that deliver and secure the website. Providers may access information only as needed to perform services for us, subject to their contractual and legal obligations.",
             "We may disclose information when reasonably necessary to comply with law or legal process; protect the rights, safety, and security of users, Grantclient, or others; investigate fraud or abuse; or enforce our agreements.",
             "If Grantclient or the Service is involved in a merger, acquisition, financing, reorganization, bankruptcy, or transfer of assets, information may be disclosed to advisers and transferred as part of that transaction, subject to applicable law and appropriate confidentiality protections.",
             "We may disclose information at your direction or with your consent, and may disclose aggregated or de-identified information that cannot reasonably identify you.",
@@ -68,6 +68,7 @@ export default function PrivacyPolicyPage() {
           title: "Your choices and privacy rights",
           body: [
             "You can review and update much of your organization information in Settings and remove uploaded documents through the document manager. You may stop using the Service at any time.",
+            "Grantclient does not currently provide an in-site control for analytics cookies. You may limit or block cookies through your browser settings or use Google’s available browser opt-out tools. Blocking cookies may affect authentication or other features that depend on necessary browser storage.",
             "You may email support@grantclient.com to request access to, correction of, or deletion of your personal information, or to ask for a portable copy where applicable. Depending on your location, you may also have rights to object to or restrict certain processing, withdraw consent, appeal a denied request, or complain to your local data-protection authority.",
             "We may ask you to verify your identity and authority over an organization before completing a request. Applicable law may allow or require us to deny or limit a request. Authorized agents may submit requests where permitted by law, subject to verification.",
             "Grantclient does not currently send promotional marketing email. You cannot opt out of essential account, security, legal, or service messages.",

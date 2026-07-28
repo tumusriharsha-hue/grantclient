@@ -1,5 +1,5 @@
 export { ApiError, apiClient } from "./api-client";
-export { AUTH_ROUTES, FULL_ACCOUNT_ROUTES, PROTECTED_ROUTES } from "./auth/constants";
+export { AUTH_ROUTES, PROTECTED_ROUTES } from "./auth/constants";
 export {
   getUserDisplayName,
   getUserInitials,

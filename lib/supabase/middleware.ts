@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { FULL_ACCOUNT_ROUTES, PROTECTED_ROUTES, PUBLIC_AUTH_ROUTES } from "@/lib/auth/constants";
+import { PROTECTED_ROUTES, PUBLIC_AUTH_ROUTES } from "@/lib/auth/constants";
 import { sanitizeRedirectPath } from "@/lib/auth/redirect";
-import { isAuthenticatedUser, isGuestUser } from "@/lib/auth/session";
+import { isAuthenticatedUser } from "@/lib/auth/session";
 import { createServerClient } from "@supabase/ssr";
 import type { Database } from "@/types/database";
 
@@ -48,26 +48,14 @@ export async function updateSession(
   } = await supabase.auth.getUser();
 
   const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
-  const requiresFullAccount = FULL_ACCOUNT_ROUTES.some((route) =>
-    pathname.startsWith(route),
-  );
   const requestedPath = `${pathname}${request.nextUrl.search}`;
 
-  if (isProtected && !user) {
+  if (isProtected && !isAuthenticatedUser(user)) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
     loginUrl.search = "";
     loginUrl.searchParams.set("next", sanitizeRedirectPath(requestedPath));
     return NextResponse.redirect(loginUrl);
-  }
-
-  if (requiresFullAccount && user && isGuestUser(user)) {
-    const signupUrl = request.nextUrl.clone();
-    signupUrl.pathname = "/signup";
-    signupUrl.search = "";
-    signupUrl.searchParams.set("reason", "account");
-    signupUrl.searchParams.set("next", sanitizeRedirectPath(requestedPath));
-    return NextResponse.redirect(signupUrl);
   }
 
   if (

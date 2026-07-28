@@ -9,7 +9,7 @@ const securityHeaders = [
     value: "camera=(), microphone=(), geolocation=()",
   },
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
-  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   { key: "X-DNS-Prefetch-Control", value: "off" },
   ...(process.env.NODE_ENV === "production"
     ? [

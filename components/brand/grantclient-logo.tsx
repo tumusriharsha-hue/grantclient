@@ -1,17 +1,17 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-interface GrantClientLogoProps {
+interface GrantclientLogoProps {
   className?: string;
   priority?: boolean;
 }
 
-export function GrantClientLogo({ className, priority = false }: GrantClientLogoProps) {
+export function GrantclientLogo({ className, priority = false }: GrantclientLogoProps) {
   return (
     <span className={cn("grantclient-logo relative block w-[190px]", className)}>
       <Image
         src="/brand/grantclient-logo-transparent.png"
-        alt="GrantClient"
+        alt="Grantclient"
         width={433}
         height={95}
         priority={priority}

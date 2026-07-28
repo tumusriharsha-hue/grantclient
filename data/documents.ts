@@ -44,7 +44,7 @@ export const templateDocuments: DocumentFile[] = [
     name: "Budget Template.xlsx",
     type: "Excel",
     tags: ["template"],
-    modified: "GrantClient",
+    modified: "Grantclient",
     section: "templates",
   },
   {
@@ -52,7 +52,7 @@ export const templateDocuments: DocumentFile[] = [
     name: "Mission Statement Template.docx",
     type: "Word",
     tags: ["template"],
-    modified: "GrantClient",
+    modified: "Grantclient",
     section: "templates",
   },
   {
@@ -60,7 +60,7 @@ export const templateDocuments: DocumentFile[] = [
     name: "Impact Report Template.docx",
     type: "Word",
     tags: ["template"],
-    modified: "GrantClient",
+    modified: "Grantclient",
     section: "templates",
   },
 ];

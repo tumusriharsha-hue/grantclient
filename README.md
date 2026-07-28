@@ -1,4 +1,4 @@
-# GrantClient
+# Grantclient
 
 Grants made simple for nonprofits — discover funding, draft applications, and track submissions.
 
@@ -51,7 +51,7 @@ Choose a text model that supports OpenAI-compatible chat completions and JSON ou
 
 ## Grant matching architecture
 
-Recommendations are deterministic. GrantClient first removes grants that clearly fail a stored deadline, status, organization type, nonprofit status, geography, budget, or funding-range requirement. Missing restrictions do not disqualify an organization; they create verification warnings.
+Recommendations are deterministic. Grantclient first removes grants that clearly fail a stored deadline, status, organization type, nonprofit status, geography, budget, or funding-range requirement. Missing restrictions do not disqualify an organization; they create verification warnings.
 
 Eligible grants receive a versioned 0-100 score calculated in TypeScript:
 
@@ -70,7 +70,7 @@ The dashboard sorts by score, then by deadline, and displays at most five grants
 
 ## Proposal drafting
 
-Applications start with project-specific setup; organization facts are reused from the saved profile. GrantClient creates a fourteen-section proposal template and deterministically fills cover information and the attachment checklist. Narrative sections are generated individually and saved immediately. Each request contains only fields declared by that section's template and has a strict word/token limit. Missing facts produce `[NEEDS INPUT: ...]` markers instead of invented content.
+Applications start with project-specific setup; organization facts are reused from the saved profile. Grantclient creates a fourteen-section proposal template and deterministically fills cover information and the attachment checklist. Narrative sections are generated individually and saved immediately. Each request contains only fields declared by that section's template and has a strict word/token limit. Missing facts produce `[NEEDS INPUT: ...]` markers instead of invented content.
 
 Token usage is controlled by filtering before AI, batching match explanations, caching by organization/grant/model/prompt versions, truncating non-critical context, omitting uploaded documents, limiting output tokens, and never sending unrelated sections or conversation history.
 

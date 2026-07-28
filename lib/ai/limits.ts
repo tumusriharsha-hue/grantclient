@@ -4,7 +4,7 @@ export const AI_LIMITS = {
   applicationContextCharacters: 8000,
   applicationQuestionCharacters: 4000,
   sectionMaximumWords: 600,
-  matchExplanationOutputTokens: 700,
+  matchExplanationOutputTokens: 1400,
   sectionOutputTokens: 900,
 } as const;
 

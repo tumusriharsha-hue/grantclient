@@ -120,7 +120,7 @@ export async function generateMatchExplanations(
       messages: [
         {
           role: "system",
-          content: "You are an experienced nonprofit grant consultant. Return JSON only as {\"explanations\":[{\"grantId\":string,\"summary\":string,\"strengths\":string[],\"caution\":string|null}]}. Explain the supplied deterministic grant-fit scores for nonprofit organizations. Ground every explanation in the supplied mission, program, target-population, location, funding, and requirement facts. Never change scores, infer eligibility, recommend unrelated opportunities, or invent facts.",
+          content: "You are an experienced nonprofit grant consultant. Return one valid JSON object only, with exactly this shape and no extra keys: {\"explanations\":[{\"grantId\":string,\"summary\":string,\"strengths\":string[],\"caution\":string|null}]}. Include exactly one explanation for every supplied grant and copy each grantId exactly. Keep each summary to at most 2 short sentences, include 1 to 3 concise strengths, and use null when there is no factual caution. Explain the supplied deterministic grant-fit scores for nonprofit organizations. Ground every explanation in the supplied mission, program, target-population, location, funding, and requirement facts. Never change scores, infer eligibility, recommend unrelated opportunities, or invent facts.",
         },
         { role: "user", content: JSON.stringify(request) },
       ],
@@ -128,7 +128,13 @@ export async function generateMatchExplanations(
     const parsed = parseMatchExplanationResponse(
       completion.choices[0]?.message.content ?? null,
     );
-    if (!parsed) throw new Error("invalid_response");
+    if (!parsed) {
+      console.error("[AI match explanations] Invalid model response", {
+        finishReason: completion.choices[0]?.finish_reason,
+        contentLength: completion.choices[0]?.message.content?.length ?? 0,
+      });
+      throw new Error("invalid_response");
+    }
     const allowedIds = new Set(missing.map((grant) => grant.id));
     const explanations = parsed.explanations.filter((item) => allowedIds.has(item.grantId));
     const explanationById = new Map<string, MatchExplanation>(
@@ -163,6 +169,24 @@ export async function generateMatchExplanations(
     if (error) throw new Error("cache_write_failed");
     return { success: true };
   } catch (error) {
+    console.error("[AI match explanations]", {
+      name: error instanceof Error ? error.name : "UnknownError",
+      message: error instanceof Error ? error.message : String(error),
+      status:
+        typeof error === "object" &&
+        error !== null &&
+        "status" in error &&
+        typeof error.status === "number"
+          ? error.status
+          : undefined,
+      code:
+        typeof error === "object" &&
+        error !== null &&
+        "code" in error &&
+        typeof error.code === "string"
+          ? error.code
+          : undefined,
+    });
     const controlled = controlledAiError(error);
     return { success: false, code: controlled.code, error: controlled.message };
   }

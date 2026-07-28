@@ -60,7 +60,7 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
               </Card>
               <ProfilePictureUploader
                 userId={user?.id ?? null}
-                organizationName={organization?.organization_name ?? "GrantClient"}
+                organizationName={organization?.organization_name ?? "Grantclient"}
                 initialUrl={organization?.profile_picture_url}
                 canEditProfile={canEditProfile && Boolean(organization)}
               />
@@ -80,7 +80,16 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
           {active === "help" && (
             <Card padding="lg">
               <h2 className="text-xl font-bold text-text">Help & Support</h2>
-              <p className="mt-2 text-sm text-text-secondary">Coming soon.</p>
+              <p className="mt-2 text-sm text-text-secondary">
+                Need help or have a question? Email us at{" "}
+                <a
+                  href="mailto:support@grantclient.com"
+                  className="font-medium text-primary hover:underline"
+                >
+                  support@grantclient.com
+                </a>
+                .
+              </p>
             </Card>
           )}
         </div>

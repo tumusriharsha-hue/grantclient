@@ -93,7 +93,7 @@ export function DocumentsPage() {
                   <File className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium text-text">{doc.name}</p>
-                    <p className="text-xs text-text-muted">Provided by GrantClient</p>
+                    <p className="text-xs text-text-muted">Provided by Grantclient</p>
                   </div>
                 </div>
               </Card>

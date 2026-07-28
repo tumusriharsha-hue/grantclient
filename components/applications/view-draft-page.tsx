@@ -542,7 +542,7 @@ function createDraftPdf(
   pages.forEach((page, index) => {
     page.push(
       `q 0.82 0.85 0.88 RG 0.5 w ${margin} 38 m ${pageWidth - margin} 38 l S Q`,
-      `BT /F1 8 Tf 0.45 0.49 0.54 rg ${margin} 24 Td (GrantClient - Confidential draft) Tj ET`,
+      `BT /F1 8 Tf 0.45 0.49 0.54 rg ${margin} 24 Td (Grantclient - Confidential draft) Tj ET`,
       `BT /F1 8 Tf 0.45 0.49 0.54 rg ${pageWidth - margin - 62} 24 Td (Page ${index + 1} of ${pages.length}) Tj ET`,
     );
   });

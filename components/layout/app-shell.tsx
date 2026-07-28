@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { mainNavItems } from "@/data";
 import { signOut, useUser } from "@/hooks/use-user";
 import { getUserInitials } from "@/lib/auth/session";
-import { GrantClientLogo } from "@/components/brand/grantclient-logo";
+import { GrantclientLogo } from "@/components/brand/grantclient-logo";
 import { Badge } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import {
@@ -29,7 +29,7 @@ export function AppSidebar() {
     <>
       <div className="flex justify-center px-5 pb-5 pt-5">
         <Link href="/" className="inline-flex">
-          <GrantClientLogo className="-translate-x-2 w-[185px]" priority />
+          <GrantclientLogo className="-translate-x-2 w-[185px]" priority />
         </Link>
       </div>
       <nav className="flex-1 space-y-0.5 px-3">

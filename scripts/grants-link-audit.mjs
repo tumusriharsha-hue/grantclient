@@ -38,7 +38,7 @@ async function checkUrl(url) {
       method: "HEAD",
       redirect: "follow",
       signal: controller.signal,
-      headers: { "user-agent": "GrantClient-verification-audit/1.0" },
+      headers: { "user-agent": "Grantclient-verification-audit/1.0" },
     });
 
     if ([403, 405, 429].includes(response.status)) {
@@ -46,7 +46,7 @@ async function checkUrl(url) {
         method: "GET",
         redirect: "follow",
         signal: controller.signal,
-        headers: { "user-agent": "GrantClient-verification-audit/1.0" },
+        headers: { "user-agent": "Grantclient-verification-audit/1.0" },
       });
     }
 

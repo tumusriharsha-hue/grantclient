@@ -123,7 +123,7 @@ export function ApplicationBuilderPage({
                 <div>
                   <h2 className="text-lg font-semibold text-text">Verified funder questions</h2>
                   <p className="mt-1 text-sm text-text-secondary">
-                    These are separate from GrantClient&apos;s standard proposal sections.
+                    These are separate from Grantclient&apos;s standard proposal sections.
                     {grantContext.verifiedAt ? ` Verified ${new Date(grantContext.verifiedAt).toLocaleDateString()}.` : ""}
                   </p>
                 </div>

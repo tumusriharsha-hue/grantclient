@@ -14,6 +14,24 @@ interface LegalDocumentProps {
   sections: LegalSection[];
 }
 
+const SUPPORT_EMAIL = "support@grantclient.com";
+
+function linkSupportEmail(text: string) {
+  return text.split(SUPPORT_EMAIL).map((part, index, parts) => (
+    <span key={`${part}-${index}`}>
+      {part}
+      {index < parts.length - 1 && (
+        <a
+          href={`mailto:${SUPPORT_EMAIL}`}
+          className="text-primary hover:underline"
+        >
+          {SUPPORT_EMAIL}
+        </a>
+      )}
+    </span>
+  ));
+}
+
 export function LegalDocument({
   title,
   lastUpdated,
@@ -42,7 +60,7 @@ export function LegalDocument({
               <h2 className="text-lg font-semibold text-text">{section.title}</h2>
               <div className="mt-3 space-y-3 text-sm leading-relaxed text-text-secondary">
                 {section.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph}>{linkSupportEmail(paragraph)}</p>
                 ))}
               </div>
             </section>

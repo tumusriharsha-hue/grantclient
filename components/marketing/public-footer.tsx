@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { SVGProps } from "react";
 import { Mail } from "lucide-react";
-import { GrantClientLogo } from "@/components/brand/grantclient-logo";
+import { GrantclientLogo } from "@/components/brand/grantclient-logo";
 
 type FooterLink = {
   label: string;
@@ -114,7 +114,7 @@ export function PublicFooter() {
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <Link href="/" className="inline-flex justify-center">
-            <GrantClientLogo className="grantclient-logo-always-light w-[190px] brightness-0 invert" />
+            <GrantclientLogo className="grantclient-logo-always-light w-[190px] brightness-0 invert" />
           </Link>
           <p className="mt-7 max-w-3xl text-sm font-medium text-text-muted sm:text-base">
             AI-powered grant discovery and application builder for nonprofits.
@@ -156,7 +156,7 @@ export function PublicFooter() {
         <div className="mt-14 border-t border-slate-800 pt-7">
           <div className="flex flex-col gap-4 text-center text-sm font-medium text-text-muted sm:flex-row sm:items-center sm:justify-between sm:text-left">
             <p suppressHydrationWarning>
-              © {new Date().getFullYear()} GrantClient. All rights reserved.
+              © {new Date().getFullYear()} Grantclient. All rights reserved.
             </p>
             <div className="flex justify-center gap-6">
               <Link href="/privacy" className="transition hover:text-white">

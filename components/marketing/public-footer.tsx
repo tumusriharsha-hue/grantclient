@@ -49,17 +49,12 @@ const footerColumns = [
   {
     title: "Organization",
     links: [
-      { label: "About Us", href: "/" },
       { label: "Grants", href: "/grants" },
-      { label: "Marketplace", href: "/browse" },
-      { label: "Resources", href: "/documents" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Partners", href: "mailto:partners@grantclient.com" },
-      { label: "Support Us", href: "mailto:support@grantclient.com" },
       { label: "Contact", href: "mailto:support@grantclient.com" },
     ],
   },

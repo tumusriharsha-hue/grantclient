@@ -25,7 +25,6 @@ function getNextCharacterDelay(characterCount: number) {
 
 export function TypedHeadline() {
   const [characterCount, setCharacterCount] = useState(0);
-  const [cursorIsBlack, setCursorIsBlack] = useState(true);
   const isComplete = characterCount >= HEADLINE.length;
 
   useEffect(() => {
@@ -51,18 +50,6 @@ export function TypedHeadline() {
       }
     };
   }, []);
-
-  useEffect(() => {
-    if (!isComplete) {
-      return;
-    }
-
-    const interval = window.setInterval(() => {
-      setCursorIsBlack((isBlack) => !isBlack);
-    }, 500);
-
-    return () => window.clearInterval(interval);
-  }, [isComplete]);
 
   return (
     <span className="relative inline-block" aria-label={HEADLINE}>
@@ -97,8 +84,7 @@ export function TypedHeadline() {
           HEADLINE.slice(0, characterCount)
         )}
         <span
-          className="typed-headline-cursor ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.08em]"
-          data-visible={cursorIsBlack ? "true" : "false"}
+          className="typed-headline-cursor ml-1 inline-block h-[0.9em] translate-y-[0.08em]"
         />
       </span>
     </span>

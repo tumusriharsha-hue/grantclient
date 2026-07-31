@@ -42,18 +42,28 @@ export function getGrantNotifications(userId: string): GrantNotification[] {
     );
     if (!Array.isArray(value)) return [];
 
-    return value.filter(
+    const notifications = value.filter(
       (item): item is GrantNotification =>
         Boolean(
           item &&
             typeof item === "object" &&
             typeof item.id === "string" &&
+            !item.id.startsWith("preview:") &&
+            !item.id.startsWith("preview-2:") &&
             typeof item.grantId === "string" &&
             typeof item.grantTitle === "string" &&
             typeof item.createdAt === "string" &&
-            typeof item.read === "boolean",
+            typeof item.read === "boolean" &&
+            item.preview !== true,
         ),
     );
+    if (notifications.length !== value.length) {
+      window.localStorage.setItem(
+        notificationsKey(userId),
+        JSON.stringify(notifications),
+      );
+    }
+    return notifications;
   } catch {
     return [];
   }
@@ -66,12 +76,6 @@ export function syncTopGrantNotifications(
   if (typeof window === "undefined" || grants.length === 0) return;
 
   const currentIds = grants.map((grant) => grant.id);
-  const storedSeenIds = window.localStorage.getItem(seenKey(userId));
-  if (storedSeenIds === null) {
-    window.localStorage.setItem(seenKey(userId), JSON.stringify(currentIds));
-    return;
-  }
-
   const seenIds = new Set(readStringArray(seenKey(userId)));
   const newGrants = grants.filter((grant) => !seenIds.has(grant.id));
   window.localStorage.setItem(

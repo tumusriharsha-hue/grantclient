@@ -1,11 +1,5 @@
 export { siteMetadata } from "./site";
 export {
-  applicationStatus,
-  dashboardStats,
-  recommendedGrants,
-  upcomingDeadlines,
-} from "./dashboard";
-export {
   eligibilityItems,
   featuredGrant,
   grantMatches,

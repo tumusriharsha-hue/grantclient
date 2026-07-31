@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Target } from "lucide-react";
+import { Target } from "lucide-react";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import { startApplicationDraft } from "@/app/actions/applications";
@@ -51,10 +51,6 @@ export function ApplicationBuilderPage({
           <div>
             <p className="text-sm font-medium text-text">Application setup</p>
             <p className="text-xs text-text-muted">Project-specific details only</p>
-          </div>
-          <div className="flex items-center gap-1.5 text-sm text-success-dark">
-            <CheckCircle2 className="h-4 w-4" />
-            Organization profile loaded
           </div>
         </div>
       </div>

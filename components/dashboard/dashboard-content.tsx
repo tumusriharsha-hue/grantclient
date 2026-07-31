@@ -387,9 +387,6 @@ export function DashboardContent({
 
           {showDrafting && draftingApplications.length > 0 && (
             <div className="space-y-3">
-              {appTab === "all" && (
-                <h3 className="text-sm font-semibold text-text-secondary">Drafting</h3>
-              )}
               {draftingApplications.map((item) => (
                 <Card key={item.id} padding="md">
                   <div className={applicationRowClass}>
@@ -431,9 +428,6 @@ export function DashboardContent({
 
           {showSubmitted && submittedApplications.length > 0 && (
             <div className="space-y-3">
-              {appTab === "all" && (
-                <h3 className="text-sm font-semibold text-text-secondary">Submitted</h3>
-              )}
               {submittedApplications.map((item) => (
                 <Card key={item.id} padding="md">
                   <div className={applicationRowClass}>
@@ -475,9 +469,6 @@ export function DashboardContent({
 
           {showApproved && approvedApplications.length > 0 && (
             <div className="space-y-3">
-              {appTab === "all" && (
-                <h3 className="text-sm font-semibold text-text-secondary">Approved</h3>
-              )}
               {approvedApplications.map((item) => (
                 <Card key={item.id} padding="md">
                   <div className={applicationRowClass}>
@@ -520,9 +511,6 @@ export function DashboardContent({
 
           {showRejected && rejectedApplications.length > 0 && (
             <div className="space-y-3">
-              {appTab === "all" && (
-                <h3 className="text-sm font-semibold text-text-secondary">Rejected</h3>
-              )}
               {rejectedApplications.map((item) => (
                 <Card key={item.id} padding="md">
                   <div className={applicationRowClass}>

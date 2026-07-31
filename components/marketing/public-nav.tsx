@@ -9,11 +9,11 @@ interface PublicNavProps {
 export function PublicNav({ showSignIn = true }: PublicNavProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4 sm:justify-between">
         <Link href="/" className="inline-flex">
           <GrantclientLogo className="w-[170px]" priority />
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="hidden items-center gap-3 sm:flex">
           {showSignIn && (
             <Link href="/login">
               <Button variant="ghost" size="sm">

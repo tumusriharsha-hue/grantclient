@@ -14,7 +14,6 @@ import {
   clearGrantNotifications,
   getGrantNotifications,
   GRANT_NOTIFICATIONS_UPDATED_EVENT,
-  markGrantNotificationsRead,
   type GrantNotification,
 } from "@/lib/notifications/top-grant-notifications";
 
@@ -128,8 +127,9 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
   useEffect(() => {
     if (!user || user.is_anonymous) return;
 
-    const updateNotifications = () =>
+    const updateNotifications = () => {
       setGrantNotifications(getGrantNotifications(user.id));
+    };
     updateNotifications();
     window.addEventListener(
       GRANT_NOTIFICATIONS_UPDATED_EVENT,
@@ -189,9 +189,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
     setDarkMode((current) => !current);
   }
 
-  const unreadNotificationCount = grantNotifications.filter(
-    (notification) => !notification.read,
-  ).length;
+  const notificationCount = grantNotifications.length;
 
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -246,47 +244,31 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
             aria-label="Notifications"
             aria-expanded={notificationsOpen}
             onClick={() => {
-              setNotificationsOpen((open) => {
-                const nextOpen = !open;
-                if (
-                  nextOpen &&
-                  user &&
-                  !user.is_anonymous &&
-                  unreadNotificationCount > 0
-                ) {
-                  setGrantNotifications(markGrantNotificationsRead(user.id));
-                }
-                return nextOpen;
-              });
+              setNotificationsOpen((open) => !open);
               setProfileOpen(false);
             }}
           >
             <Bell className="h-[18px] w-[18px]" />
-            {unreadNotificationCount > 0 && (
+            {notificationCount > 0 && (
               <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-danger px-1 text-[10px] font-bold leading-none text-white">
-                {Math.min(unreadNotificationCount, 9)}
-                {unreadNotificationCount > 9 ? "+" : ""}
+                {Math.min(notificationCount, 9)}
+                {notificationCount > 9 ? "+" : ""}
               </span>
             )}
           </button>
           {notificationsOpen && (
-            <div className="absolute right-0 top-11 z-50 w-80 max-w-[calc(100vw-2rem)] rounded-md border border-border bg-surface shadow-lg">
-              <div className="border-b border-border px-4 py-3">
+            <div className="fixed left-1/2 top-16 z-50 flex max-h-[calc(100dvh-5rem)] w-[calc(100vw-3rem)] max-w-xs -translate-x-1/2 flex-col overflow-hidden rounded-md border border-border bg-surface shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-11 sm:w-80 sm:max-w-[calc(100vw-2rem)] sm:translate-x-0">
+              <div className="px-4 pb-1 pt-3">
                 <h2 className="text-sm font-semibold text-text">Notifications</h2>
-                <p className="mt-0.5 text-xs text-text-muted">
-                  {unreadNotificationCount > 0
-                    ? `${unreadNotificationCount} new notification${unreadNotificationCount === 1 ? "" : "s"}`
-                    : "No new notifications"}
-                </p>
               </div>
               {grantNotifications.length > 0 ? (
                 <>
-                  <div className="max-h-80 divide-y divide-border overflow-y-auto">
+                  <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-3 sm:max-h-80">
                     {grantNotifications.map((notification) => (
                       <Link
                         key={notification.id}
                         href={`/grants/${encodeURIComponent(notification.grantId)}`}
-                        className="block px-4 py-3 hover:bg-bg"
+                        className="block rounded-lg border border-border bg-bg px-4 py-3 shadow-sm transition hover:border-primary/40 hover:bg-primary-light/20"
                         onClick={() => setNotificationsOpen(false)}
                       >
                         <p className="text-sm font-medium text-text">
@@ -313,8 +295,8 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
                   </div>
                 </>
               ) : (
-                <p className="px-4 py-5 text-sm text-text-muted">
-                  New top grant matches will appear here.
+                <p className="px-4 pb-4 pt-2 text-left text-xs text-text-muted">
+                  No new notifications
                 </p>
               )}
             </div>

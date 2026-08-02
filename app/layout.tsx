@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   },
   description: siteMetadata.description,
   applicationName: siteMetadata.title,
+  verification: {
+    google: "LzJ_3_KFx3nMPHSkwLLpICYtycVM9SmE4ZIaWIGndoU",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

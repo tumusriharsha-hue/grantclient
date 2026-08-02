@@ -4,6 +4,9 @@ import { LegalDocument } from "@/components/legal/legal-document";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Grantclient collects, uses, shares, and protects information.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

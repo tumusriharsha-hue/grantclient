@@ -6,6 +6,17 @@ import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Grant Finder",
+  description:
+    "Browse current grant opportunities for nonprofits and find funding that fits your organization.",
+  alternates: {
+    canonical: "/grants",
+  },
+  openGraph: {
+    title: "Grant Finder",
+    description:
+      "Browse current grant opportunities for nonprofits and find funding that fits your organization.",
+    url: "/grants",
+  },
 };
 
 interface GrantsRouteProps {

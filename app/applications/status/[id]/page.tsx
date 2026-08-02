@@ -6,6 +6,7 @@ import { ApplicationStatusEditor } from "@/components/applications/application-s
 import { AppHeader, AppShell } from "@/components/layout";
 import { getCurrentUserApplicationById } from "@/lib/applications/queries";
 import type { ApplicationStatus } from "@/types/database";
+import { noIndexRobots } from "@/lib/seo";
 
 interface ApplicationStatusRouteProps {
   params: Promise<{ id: string }>;
@@ -35,6 +36,7 @@ export async function generateMetadata({
 
   return {
     title: application ? `Update ${application.title}` : "Update Application Status",
+    robots: noIndexRobots,
   };
 }
 

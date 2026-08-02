@@ -6,9 +6,11 @@ import {
   getCurrentUserApplicationById,
   getCurrentUserApplicationSections,
 } from "@/lib/applications/queries";
+import { noIndexRobots } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "View Draft",
+  robots: noIndexRobots,
 };
 
 interface ViewDraftRouteProps {

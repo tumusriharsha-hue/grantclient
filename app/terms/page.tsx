@@ -4,6 +4,9 @@ import { LegalDocument } from "@/components/legal/legal-document";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "The terms that govern use of Grantclient.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsOfServicePage() {

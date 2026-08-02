@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { SettingsPage } from "@/components/settings";
 import { createClient } from "@/lib/supabase/server";
 import type { Tables } from "@/types/database";
+import { noIndexRobots } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Settings",
+  robots: noIndexRobots,
 };
 
 export default async function SettingsRoute() {

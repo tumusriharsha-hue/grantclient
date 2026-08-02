@@ -15,9 +15,11 @@ import { rankRecommendedGrants } from "@/lib/grants/rank-recommended-grants";
 import type { RecommendedGrant } from "@/lib/grants/matching-types";
 import { loadCachedMatchExplanations } from "@/lib/ai/match-explanations";
 import { createClient } from "@/lib/supabase/server";
+import { noIndexRobots } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Dashboard",
+  robots: noIndexRobots,
 };
 
 function getApplicationDetail(application: {

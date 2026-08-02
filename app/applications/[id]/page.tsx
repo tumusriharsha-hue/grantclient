@@ -15,6 +15,7 @@ import {
   getLastUpdatedLabel,
   getSubmittedLabel,
 } from "@/lib/applications/date-labels";
+import { noIndexRobots } from "@/lib/seo";
 
 interface ApplicationRouteProps {
   params: Promise<{ id: string }>;
@@ -63,6 +64,7 @@ export async function generateMetadata({
 
   return {
     title: application ? `View ${application.title}` : "View Application",
+    robots: noIndexRobots,
   };
 }
 

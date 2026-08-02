@@ -6,9 +6,11 @@ import { formatGrantDeadline } from "@/lib/grant-matching";
 import { getAllGrants } from "@/lib/grants/queries";
 import { filterSavedGrants, getCurrentUserSavedGrantIds } from "@/lib/grants/saved-grants";
 import { formatCurrency } from "@/lib/utils";
+import { noIndexRobots } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Saved Grants",
+  robots: noIndexRobots,
 };
 
 export default async function SavedGrantsPage() {

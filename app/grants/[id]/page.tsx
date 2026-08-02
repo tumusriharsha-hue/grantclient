@@ -5,6 +5,7 @@ import { getGrantById } from "@/lib/grants/queries";
 import { getCurrentUserSavedGrantIds } from "@/lib/grants/saved-grants";
 import { scoreGrant } from "@/lib/grant-matching";
 import { createClient } from "@/lib/supabase/server";
+import { getPageDescription } from "@/lib/seo";
 
 interface GrantDetailRouteProps {
   params: Promise<{ id: string }>;
@@ -15,9 +16,34 @@ export async function generateMetadata({
 }: GrantDetailRouteProps): Promise<Metadata> {
   const { id } = await params;
   const grant = await getGrantById(id);
+  const title = grant?.title ?? id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+  if (!grant) {
+    return {
+      title,
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const description = getPageDescription(
+    `${grant.description} Offered by ${grant.funder}.`,
+  );
+  const canonicalPath = `/grants/${encodeURIComponent(grant.id)}`;
 
   return {
-    title: grant?.title ?? id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+    title,
+    description,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalPath,
+    },
   };
 }
 

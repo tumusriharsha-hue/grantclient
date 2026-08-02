@@ -6,9 +6,11 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentUserApplicationById } from "@/lib/applications/queries";
 import { applicationSetupSchema } from "@/lib/validations/application";
+import { noIndexRobots } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Application Builder",
+  robots: noIndexRobots,
 };
 
 interface ApplicationBuilderRouteProps {

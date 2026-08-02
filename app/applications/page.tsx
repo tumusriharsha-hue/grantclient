@@ -14,9 +14,11 @@ import {
   getApplicationStatusLabel,
   getCurrentUserApplications,
 } from "@/lib/applications/queries";
+import { noIndexRobots } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "My Applications",
+  robots: noIndexRobots,
 };
 
 type ApplicationStatusLabel = "Drafting" | "Submitted" | "Approved" | "Rejected";

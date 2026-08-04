@@ -16,6 +16,11 @@ const staticPages: MetadataRoute.Sitemap = [
     priority: 0.9,
   },
   {
+    url: getAbsoluteUrl("/about"),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
+  {
     url: getAbsoluteUrl("/privacy"),
     changeFrequency: "yearly",
     priority: 0.2,

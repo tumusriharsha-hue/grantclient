@@ -38,8 +38,8 @@ export function LandingPage() {
             <TypedHeadline />
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
-            AI-powered grant discovery and application builder. Spend less time
-            searching, more time growing.
+            Grantclient is a free AI-powered grant discovery and application
+            builder for nonprofits. Spend less time searching, more time growing.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/signup">

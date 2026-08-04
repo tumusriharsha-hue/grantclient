@@ -7,6 +7,11 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  title: {
+    absolute: "Grantclient — AI Grant Finder for Nonprofits",
+  },
+  description:
+    "Find nonprofit grants, draft applications with AI, and track submissions with Grantclient's free grant discovery and application tools.",
   alternates: {
     canonical: "/",
   },
@@ -20,6 +25,7 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       name: siteMetadata.title,
+      alternateName: ["Grant Client", "grantclient.com"],
       url: SITE_URL,
       description: siteMetadata.description,
       publisher: {

@@ -33,4 +33,5 @@ export const organizationStructuredData = {
   url: SITE_URL,
   logo: getAbsoluteUrl("/brand/grantclient-logo-transparent.png"),
   email: "support@grantclient.com",
+  sameAs: ["https://www.instagram.com/grantclient/"],
 };

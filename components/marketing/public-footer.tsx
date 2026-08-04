@@ -26,29 +26,11 @@ function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M6.5 10v8" />
-      <path d="M6.5 6v.01" />
-      <path d="M11 18v-8" />
-      <path d="M11 13.5a3.5 3.5 0 0 1 7 0V18" />
-    </svg>
-  );
-}
-
 const footerColumns = [
   {
     title: "Organization",
     links: [
+      { label: "About", href: "/about" },
       { label: "Grants", href: "/grants" },
     ],
   },
@@ -72,11 +54,6 @@ const socialLinks = [
     label: "Instagram",
     href: "https://www.instagram.com/grantclient",
     icon: InstagramIcon,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/grantclient",
-    icon: LinkedInIcon,
   },
   {
     label: "Email",

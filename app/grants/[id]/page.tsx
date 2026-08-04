@@ -5,7 +5,7 @@ import { getGrantById } from "@/lib/grants/queries";
 import { getCurrentUserSavedGrantIds } from "@/lib/grants/saved-grants";
 import { scoreGrant } from "@/lib/grant-matching";
 import { createClient } from "@/lib/supabase/server";
-import { getPageDescription } from "@/lib/seo";
+import { getAbsoluteUrl, getPageDescription } from "@/lib/seo";
 
 interface GrantDetailRouteProps {
   params: Promise<{ id: string }>;
@@ -77,10 +77,44 @@ export default async function GrantDetailPage({ params }: GrantDetailRouteProps)
     savedGrantIds = savedIds;
   }
 
+  const canonicalPath = `/grants/${encodeURIComponent(grant.id)}`;
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Grantclient",
+        item: getAbsoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Grant Finder",
+        item: getAbsoluteUrl("/grants"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: grant.title,
+        item: getAbsoluteUrl(canonicalPath),
+      },
+    ],
+  };
+
   return (
-    <GrantDetailView
-      grant={scoreGrant(grant, organization)}
-      saved={savedGrantIds.includes(grant.id)}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <GrantDetailView
+        grant={scoreGrant(grant, organization)}
+        saved={savedGrantIds.includes(grant.id)}
+      />
+    </>
   );
 }

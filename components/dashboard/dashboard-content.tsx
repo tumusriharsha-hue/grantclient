@@ -64,6 +64,31 @@ function formatAwardRange(grant: RecommendedGrant) {
   return formatCurrency(min ?? max ?? 0);
 }
 
+const populationFitLabels = {
+  strong_match: "Direct match",
+  partial_match: "Partial match",
+  general: "Broad eligibility",
+  mismatch: "No direct match",
+  unknown: "More information needed",
+} as const;
+
+const fundingFitLabels = {
+  within_range: "Within your range",
+  partial_overlap: "Partial overlap",
+  below_range: "Below your range",
+  above_range: "Above your range",
+  unknown: "More information needed",
+} as const;
+
+function formatPreferredFundingRange(range: { min: number | null; max: number | null }) {
+  if (range.min !== null && range.max !== null) {
+    return `${formatCurrency(range.min)}–${formatCurrency(range.max)}`;
+  }
+  if (range.min !== null) return `${formatCurrency(range.min)} or more`;
+  if (range.max !== null) return `Up to ${formatCurrency(range.max)}`;
+  return "Not added yet";
+}
+
 interface DashboardContentProps {
   loginSessionKey: string;
   organization: Organization;
@@ -253,7 +278,7 @@ export function DashboardContent({
                 </div>
                 <details className="group mt-4 border-t border-border pt-3">
                   <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-text-secondary">
-                    Score breakdown
+                    Why this score
                     <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
                   </summary>
                   <dl className="mt-3 space-y-1.5 text-xs text-text-secondary">
@@ -266,22 +291,33 @@ export function DashboardContent({
                   </dl>
                   {(() => {
                     const populationFit = calculatePopulationFit(organization.populations_served ?? [], grant.populationsServed ?? []);
-                    const fundingFit = calculateFundingFit(getDesiredFundingRange(organization), getGrantAwardRange(grant));
+                    const preferredFundingRange = getDesiredFundingRange(organization);
+                    const fundingFit = calculateFundingFit(preferredFundingRange, getGrantAwardRange(grant));
+                    const needsPopulationDetails = (organization.populations_served ?? []).length === 0;
+                    const needsFundingDetails = preferredFundingRange.min === null && preferredFundingRange.max === null;
                     return (
                       <div className="mt-3 space-y-2 border-t border-border pt-3 text-xs text-text-secondary">
                         <div>
-                          <p className="font-semibold text-text">Population Served — {populationFit.status.replaceAll("_", " ")}</p>
-                          <p>Source field: <code>organizations.populations_served</code></p>
-                          <p>Organization: {(organization.populations_served ?? []).join(", ") || "Information needed"}</p>
-                          <p>Grant targets: {(grant.populationsServed ?? []).join(", ") || "General community / not listed"}</p>
+                          <p className="font-semibold text-text">Population alignment — {populationFitLabels[populationFit.status]}</p>
+                          <p>Your organization serves: {(organization.populations_served ?? []).join(", ") || "Not added yet"}</p>
+                          <p>This grant supports: {(grant.populationsServed ?? []).join(", ") || "A broad community; no specific population listed"}</p>
                           <p>{populationFit.explanation}</p>
+                          {needsPopulationDetails && (
+                            <Link href="/settings" className="font-medium text-primary hover:underline">
+                              Add populations served in Settings
+                            </Link>
+                          )}
                         </div>
                         <div>
-                          <p className="font-semibold text-text">Funding Fit — {fundingFit.status === "within_range" ? "Within Your Range" : fundingFit.status.replaceAll("_", " ")}</p>
-                          <p>Source fields: <code>organizations.requested_funding_min</code> and <code>organizations.requested_funding_max</code></p>
-                          <p>Organization range: {getDesiredFundingRange(organization).min !== null || getDesiredFundingRange(organization).max !== null ? `${formatCurrency(getDesiredFundingRange(organization).min ?? 0)}–${formatCurrency(getDesiredFundingRange(organization).max ?? 0)}` : "Information needed"}</p>
-                          <p>Verified grant range: {formatAwardRange(grant)}</p>
-                          <p>{fundingFit.explanation}</p>
+                          <p className="font-semibold text-text">Funding alignment — {fundingFitLabels[fundingFit.status]}</p>
+                          <p>Your preferred request: {formatPreferredFundingRange(preferredFundingRange)}</p>
+                          <p>Grant award: {formatAwardRange(grant)}</p>
+                          <p>{fundingFit.status === "unknown" ? "There is not enough information to compare the funding amounts yet." : fundingFit.explanation}</p>
+                          {needsFundingDetails && (
+                            <Link href="/settings" className="font-medium text-primary hover:underline">
+                              Add your preferred funding range in Settings
+                            </Link>
+                          )}
                         </div>
                       </div>
                     );

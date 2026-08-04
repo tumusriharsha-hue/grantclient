@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { siteMetadata } from "@/data";
 
-export const SITE_URL = "https://grantclient.com";
+export const SITE_URL = "https://www.grantclient.com";
 
 export const noIndexRobots: Metadata["robots"] = {
   index: false,

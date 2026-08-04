@@ -57,11 +57,11 @@ See `.env.example` for all supported variables. Copy it to `.env.local` and fill
 
 ### Google OAuth redirects
 
-Set `NEXT_PUBLIC_SITE_URL=https://grantclient.com` in the production hosting
+Set `NEXT_PUBLIC_SITE_URL=https://www.grantclient.com` in the production hosting
 environment. In Supabase **Authentication > URL Configuration**, set:
 
-- Site URL: `https://grantclient.com`
-- Redirect URL: `https://grantclient.com/auth/callback`
+- Site URL: `https://www.grantclient.com`
+- Redirect URL: `https://www.grantclient.com/auth/callback`
 
 Keep `http://localhost:3000/auth/callback` as an additional redirect URL only
 for local development. Supabase falls back to its Site URL when an OAuth

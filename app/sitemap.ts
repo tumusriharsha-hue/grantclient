@@ -11,11 +11,6 @@ const staticPages: MetadataRoute.Sitemap = [
     priority: 1,
   },
   {
-    url: getAbsoluteUrl("/grants"),
-    changeFrequency: "daily",
-    priority: 0.9,
-  },
-  {
     url: getAbsoluteUrl("/about"),
     changeFrequency: "monthly",
     priority: 0.6,
@@ -36,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const grants = await getAllGrants();
     const grantPages: MetadataRoute.Sitemap = grants.map((grant) => ({
-      url: getAbsoluteUrl(`/grants/${encodeURIComponent(grant.id)}`),
+      url: getAbsoluteUrl(`/opportunities/${encodeURIComponent(grant.id)}`),
       lastModified: grant.updatedAt || grant.verifiedAt || undefined,
       changeFrequency: "weekly",
       priority: 0.7,

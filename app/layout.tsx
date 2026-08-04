@@ -9,8 +9,11 @@ import "./globals.css";
 const GOOGLE_ANALYTICS_ID = "G-FCW65WX5EN";
 const EXISTING_GOOGLE_SITE_VERIFICATION =
   "LzJ_3_KFx3nMPHSkwLLpICYtycVM9SmE4ZIaWIGndoU";
+const NEW_GOOGLE_SITE_VERIFICATION =
+  "LEx0qfp_RzqtRxgi0GBVBuwrBdPnjCsSHadSp3DFUAU";
 const googleSiteVerificationTokens = [
   EXISTING_GOOGLE_SITE_VERIFICATION,
+  NEW_GOOGLE_SITE_VERIFICATION,
   process.env.GOOGLE_SITE_VERIFICATION,
 ].filter((token): token is string => Boolean(token));
 

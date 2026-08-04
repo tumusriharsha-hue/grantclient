@@ -7,6 +7,12 @@ import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const GOOGLE_ANALYTICS_ID = "G-FCW65WX5EN";
+const EXISTING_GOOGLE_SITE_VERIFICATION =
+  "LzJ_3_KFx3nMPHSkwLLpICYtycVM9SmE4ZIaWIGndoU";
+const googleSiteVerificationTokens = [
+  EXISTING_GOOGLE_SITE_VERIFICATION,
+  process.env.GOOGLE_SITE_VERIFICATION,
+].filter((token): token is string => Boolean(token));
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +25,7 @@ export const metadata: Metadata = {
   description: siteMetadata.description,
   applicationName: siteMetadata.title,
   verification: {
-    google: "LzJ_3_KFx3nMPHSkwLLpICYtycVM9SmE4ZIaWIGndoU",
+    google: googleSiteVerificationTokens,
   },
   openGraph: {
     type: "website",
@@ -62,10 +68,10 @@ export default async function RootLayout({
         {children}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           nonce={nonce}
         />
-        <Script id="google-analytics" strategy="beforeInteractive" nonce={nonce}>
+        <Script id="google-analytics" strategy="afterInteractive" nonce={nonce}>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

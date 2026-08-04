@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { AUTH_ROUTES } from "@/lib/auth/constants";
 import { sanitizeRedirectPath } from "@/lib/auth/redirect";
 import { formatAuthError } from "@/lib/auth/errors";
+import { getSiteOrigin } from "@/lib/auth/site-url";
 import { signUpWithEmail } from "@/app/actions/auth";
 import { GrantclientLogo } from "@/components/brand/grantclient-logo";
 import { Button, Input } from "@/components/ui";
@@ -93,7 +94,7 @@ export function AuthPage({ mode }: AuthPageProps) {
     setIsSubmitting(true);
 
     try {
-      const redirectTo = `${window.location.origin}${AUTH_ROUTES.callback}?next=${encodeURIComponent(nextPath)}`;
+      const redirectTo = `${getSiteOrigin(window.location.origin)}${AUTH_ROUTES.callback}?next=${encodeURIComponent(nextPath)}`;
       const { error: authError } = await createClient().auth.signInWithOAuth({
         provider: "google",
         options: { redirectTo },

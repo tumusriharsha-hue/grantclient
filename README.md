@@ -55,6 +55,19 @@ See `.env.example` for all supported variables. Copy it to `.env.local` and fill
 
 **Never commit** `.env.local` or any file containing secrets. The service role key and OAuth client secret must stay server-side only.
 
+### Google OAuth redirects
+
+Set `NEXT_PUBLIC_SITE_URL=https://grantclient.com` in the production hosting
+environment. In Supabase **Authentication > URL Configuration**, set:
+
+- Site URL: `https://grantclient.com`
+- Redirect URL: `https://grantclient.com/auth/callback`
+
+Keep `http://localhost:3000/auth/callback` as an additional redirect URL only
+for local development. Supabase falls back to its Site URL when an OAuth
+`redirectTo` value is not allowlisted, so a localhost Site URL will send
+production users back to localhost after Google sign-in.
+
 ### NVIDIA NIM
 
 1. Open the [NVIDIA API Catalog](https://build.nvidia.com/), select a chat-completion model, choose **Get API Key**, and generate a key.

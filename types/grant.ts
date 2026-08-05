@@ -17,7 +17,7 @@ export type GrantCategory = (typeof GRANT_CATEGORIES)[number];
 export type GrantStatus =
   | "draft" | "open" | "upcoming" | "rolling" | "awaiting_next_cycle"
   | "closed" | "discontinued" | "invite_only" | "unverified"
-  | "paused" | "awarded";
+  | "paused" | "awarded" | "expired" | "archived";
 
 export type GrantRegion =
   | "National"

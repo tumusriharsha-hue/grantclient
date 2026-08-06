@@ -124,6 +124,15 @@ function sessionError(): OrganizationActionResult {
   };
 }
 
+function removeEmptyOnboardingValues(values: OnboardingFormValues) {
+  return Object.fromEntries(
+    Object.entries(values).filter(([, value]) => {
+      if (value === "" || value === null || value === undefined) return false;
+      return !Array.isArray(value) || value.length > 0;
+    }),
+  );
+}
+
 export async function saveOnboardingProgress(
   values: OnboardingFormValues,
   step: number,
@@ -134,11 +143,13 @@ export async function saveOnboardingProgress(
     return { success: false, error: "Invalid onboarding step." };
   }
 
-  const partialValues = onboardingPartialSchema.safeParse(values);
+  const partialValues = onboardingPartialSchema.safeParse(
+    removeEmptyOnboardingValues(values),
+  );
   if (!partialValues.success) {
     return { success: false, error: "Please fix the onboarding fields." };
   }
-  const normalizedValues = partialValues.data as OnboardingFormValues;
+  const normalizedValues: OnboardingFormValues = partialValues.data;
 
   if (complete) {
     const parsed = onboardingCompleteSchema.safeParse(normalizedValues);

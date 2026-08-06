@@ -22,6 +22,20 @@ const step1Values = {
   has_501c3: true,
 };
 
+const initialFormValues = {
+  ...step1Values,
+  mission: "",
+  programs: [],
+  impact_goals: "",
+  mission_categories: [],
+  populations_served: [],
+  city: "",
+  previous_grant_experience: "",
+  website: "",
+  preferred_grant_types: [],
+  accept_government_grants: true,
+};
+
 const expiredSessionError = {
   success: false,
   error: "Your session has expired. Please sign in again to save your profile.",
@@ -38,6 +52,14 @@ describe("saveOnboardingProgress", () => {
     await expect(saveOnboardingProgress(step1Values, 1, false, 1)).resolves.toEqual(
       expiredSessionError,
     );
+  });
+
+  it("accepts untouched empty later-step fields during step-one saves", async () => {
+    getUser.mockResolvedValue({ data: { user: null }, error: null });
+
+    await expect(
+      saveOnboardingProgress(initialFormValues, 2, false, 1),
+    ).resolves.toEqual(expiredSessionError);
   });
 
   it("returns a safe error for an invalid refresh token", async () => {

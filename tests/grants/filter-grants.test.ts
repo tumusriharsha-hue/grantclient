@@ -64,4 +64,17 @@ describe("filterGrantEligibility", () => {
     expect(result.rejectionReasons).toEqual([]);
     expect(result.verificationItems[0]).toContain("Funder eligibility details");
   });
+
+  it("matches Grants.gov nonprofit applicant types to a 501(c)(3) profile", () => {
+    const result = filterGrantEligibility(
+      organization,
+      makeGrant({
+        eligibleOrganizationTypes: ["nonprofits_non_higher_education_with_501c3"],
+      }),
+      NOW,
+    );
+
+    expect(result.eligible).toBe(true);
+    expect(result.rejectionReasons).not.toContain("Organization type is not eligible");
+  });
 });

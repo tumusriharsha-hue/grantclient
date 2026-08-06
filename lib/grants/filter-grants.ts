@@ -14,6 +14,28 @@ function hasOverlap(left: string[], right: string[]): boolean {
   return right.some((value) => normalized.has(normalize(value)));
 }
 
+function matchesOrganizationType(
+  organization: Organization,
+  eligibleTypes: string[],
+): boolean {
+  if (hasOverlap(eligibleTypes, [organization.organization_type])) return true;
+
+  const organizationType = normalize(organization.organization_type);
+  const isNonprofit = organizationType.includes("nonprofit");
+  if (!isNonprofit) return false;
+
+  const has501c3 = organization.has_501c3 ?? organization.is_501c3;
+  return eligibleTypes.some((type) => {
+    const normalizedType = normalize(type);
+    if (normalizedType === "nonprofit") return true;
+    if (!normalizedType.includes("nonprofit")) return false;
+
+    if (normalizedType.includes("with501c3")) return has501c3 === true;
+    if (normalizedType.includes("without501c3")) return has501c3 === false;
+    return true;
+  });
+}
+
 export function getDesiredFundingRange(organization: Organization): {
   min: number | null;
   max: number | null;
@@ -121,7 +143,7 @@ export function filterGrantEligibility(
 
   if (
     grant.eligibleOrganizationTypes?.length &&
-    !hasOverlap(grant.eligibleOrganizationTypes, [organization.organization_type])
+    !matchesOrganizationType(organization, grant.eligibleOrganizationTypes)
   ) {
     rejectionReasons.push("Organization type is not eligible");
   }

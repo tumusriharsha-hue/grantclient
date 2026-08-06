@@ -86,7 +86,7 @@ export const onboardingStep5Schema = z.object({
   website: optionalWebsiteSchema.default(""),
 });
 
-export const onboardingStep6Schema = z.object({
+const onboardingStep6FieldsSchema = z.object({
   preferred_grant_amount: optionalPreferredAmountSchema,
   requested_funding_min: z.number().int().min(0, "Minimum request cannot be negative"),
   requested_funding_max: z.number().int().min(1, "Maximum request is required"),
@@ -94,17 +94,37 @@ export const onboardingStep6Schema = z.object({
     .array(preferredTypeSchema)
     .min(1, "Select at least one grant type"),
   accept_government_grants: z.boolean().default(true),
-}).refine((values) => values.requested_funding_max >= values.requested_funding_min, {
-  message: "Maximum request must be at least the minimum request",
-  path: ["requested_funding_max"],
 });
 
-export const onboardingCompleteSchema = onboardingStep1Schema
+function addFundingRangeIssue(
+  values: { requested_funding_min: number; requested_funding_max: number },
+  context: z.RefinementCtx,
+) {
+  if (values.requested_funding_max < values.requested_funding_min) {
+    context.addIssue({
+      code: "custom",
+      message: "Maximum request must be at least the minimum request",
+      path: ["requested_funding_max"],
+    });
+  }
+}
+
+export const onboardingStep6Schema = onboardingStep6FieldsSchema.superRefine(
+  addFundingRangeIssue,
+);
+
+const onboardingBaseSchema = onboardingStep1Schema
   .merge(onboardingStep2Schema)
   .merge(onboardingStep3Schema)
   .merge(onboardingStep4Schema)
   .merge(onboardingStep5Schema)
-  .merge(onboardingStep6Schema);
+  .merge(onboardingStep6FieldsSchema);
+
+export const onboardingPartialSchema = onboardingBaseSchema.partial();
+
+export const onboardingCompleteSchema = onboardingBaseSchema.superRefine(
+  addFundingRangeIssue,
+);
 
 export type OnboardingStep1Input = z.infer<typeof onboardingStep1Schema>;
 export type OnboardingStep2Input = z.infer<typeof onboardingStep2Schema>;
@@ -112,9 +132,10 @@ export type OnboardingStep3Input = z.infer<typeof onboardingStep3Schema>;
 export type OnboardingStep4Input = z.infer<typeof onboardingStep4Schema>;
 export type OnboardingStep5Input = z.infer<typeof onboardingStep5Schema>;
 export type OnboardingStep6Input = z.infer<typeof onboardingStep6Schema>;
+export type PartialOnboardingInput = z.infer<typeof onboardingPartialSchema>;
 export type OnboardingCompleteInput = z.infer<typeof onboardingCompleteSchema>;
 
-export type OnboardingFormValues = Partial<OnboardingCompleteInput> & {
+export type OnboardingFormValues = PartialOnboardingInput & {
   onboarding_step?: number;
 };
 

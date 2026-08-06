@@ -77,24 +77,30 @@ export function OnboardingWizard({
     setSubmitError(null);
     setFieldErrors({});
 
-    const result = await saveOnboardingProgress(
-      values,
-      savedStep,
-      complete,
-      validationStep,
-    );
-    setIsSaving(false);
+    try {
+      const result = await saveOnboardingProgress(
+        values,
+        savedStep,
+        complete,
+        validationStep,
+      );
 
-    if (!result.success) {
-      setSubmitError(result.error);
-      if (result.fieldErrors) {
-        setFieldErrors(result.fieldErrors);
+      if (!result.success) {
+        setSubmitError(result.error);
+        if (result.fieldErrors) {
+          setFieldErrors(result.fieldErrors);
+        }
+        return false;
       }
-      return false;
-    }
 
-    setSaveMessage("Progress saved");
-    return true;
+      setSaveMessage("Progress saved");
+      return true;
+    } catch {
+      setSubmitError("Unable to save your profile. Please sign in again and retry.");
+      return false;
+    } finally {
+      setIsSaving(false);
+    }
   }
 
   async function handleNext() {

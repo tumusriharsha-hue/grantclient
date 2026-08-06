@@ -8,6 +8,7 @@ import { isOwnProfilePictureUrl } from "@/lib/storage/profile-pictures";
 import {
   normalizeOptionalWebsite,
   onboardingCompleteSchema,
+  onboardingPartialSchema,
   organizationToOnboardingValues,
   validateOnboardingStep,
   type OnboardingFormValues,
@@ -116,6 +117,13 @@ function isSchemaCacheColumnError(error: { code?: string; message?: string } | n
   );
 }
 
+function sessionError(): OrganizationActionResult {
+  return {
+    success: false,
+    error: "Your session has expired. Please sign in again to save your profile.",
+  };
+}
+
 export async function saveOnboardingProgress(
   values: OnboardingFormValues,
   step: number,
@@ -126,7 +134,7 @@ export async function saveOnboardingProgress(
     return { success: false, error: "Invalid onboarding step." };
   }
 
-  const partialValues = onboardingCompleteSchema.partial().safeParse(values);
+  const partialValues = onboardingPartialSchema.safeParse(values);
   if (!partialValues.success) {
     return { success: false, error: "Please fix the onboarding fields." };
   }
@@ -161,12 +169,19 @@ export async function saveOnboardingProgress(
   }
 
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user: { id: string } | null = null;
+  try {
+    const authResult = await supabase.auth.getUser();
+    if (authResult.error) {
+      return sessionError();
+    }
+    user = authResult.data.user;
+  } catch {
+    return sessionError();
+  }
 
   if (!user) {
-    return { success: false, error: "Sign in to save your organization profile." };
+    return sessionError();
   }
 
   const payload = buildOrganizationPayload(user.id, normalizedValues, step, complete);

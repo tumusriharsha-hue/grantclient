@@ -42,7 +42,7 @@ export function WorkflowStepCard({
   return (
     <article
       className={cn(
-        "relative flex min-h-60 flex-col justify-between rounded-lg border border-dashed border-border-hover bg-surface p-6 sm:p-8",
+        "relative flex flex-col justify-start rounded-lg border border-dashed border-border-hover bg-surface p-6 sm:min-h-60 sm:justify-between sm:p-8",
         className,
       )}
       {...props}
@@ -51,7 +51,7 @@ export function WorkflowStepCard({
       <span className="relative z-10 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
         Step {number}
       </span>
-      <div className="relative z-10 mt-16 max-w-xl space-y-2">
+      <div className="relative z-10 mt-8 max-w-xl space-y-2 sm:mt-16">
         <h3 className="text-xl font-bold tracking-[-0.02em] text-text sm:text-2xl">
           {title}
         </h3>

@@ -6,7 +6,6 @@ import {
   Check,
   FileSearch,
   Filter,
-  HeartHandshake,
   PenLine,
   Search,
   SlidersHorizontal,
@@ -74,13 +73,6 @@ const features = [
   },
 ];
 
-const nonprofitBenefits = [
-  "One organization profile powers recommendations across the workspace.",
-  "Search and filtering stay available even before a profile is complete.",
-  "Saved grants and application drafts stay connected to the opportunity.",
-  "Clear fit explanations help teams decide where to spend limited time.",
-];
-
 export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="scroll-mt-24 bg-bg py-20 sm:py-24 lg:py-32">
@@ -135,45 +127,6 @@ export function FeaturesSection() {
               </p>
             </Card>
           ))}
-        </div>
-      </PageContainer>
-    </section>
-  );
-}
-
-export function SmallNonprofitSection() {
-  return (
-    <section className="bg-bg py-20 sm:py-24 lg:py-32">
-      <PageContainer size="xl">
-        <div className="grid overflow-hidden rounded-[2rem] border border-border bg-surface lg:grid-cols-2">
-          <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light text-primary">
-              <HeartHandshake className="h-5 w-5" aria-hidden="true" />
-            </div>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              Built for small nonprofit teams
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-text sm:text-4xl">
-              Keep the whole funding picture in view
-            </h2>
-            <p className="mt-5 text-base leading-7 text-text-secondary">
-              Grantclient brings discovery, fit, deadlines, saved grants, and application work into one calm workspace without changing how your team operates.
-            </p>
-          </div>
-          <div className="border-t border-border bg-primary-light/25 p-7 sm:p-10 lg:border-l lg:border-t-0 lg:p-14">
-            <ul className="space-y-6">
-              {nonprofitBenefits.map((benefit) => (
-                <li key={benefit} className="flex gap-4">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                    <Check className="h-3.5 w-3.5" aria-hidden="true" />
-                  </span>
-                  <span className="text-sm leading-6 text-text sm:text-base sm:leading-7">
-                    {benefit}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </PageContainer>
     </section>

@@ -7,7 +7,6 @@ import { WorkspacePreview } from "./workspace-preview";
 import {
   FeaturesSection,
   HowItWorksSection,
-  SmallNonprofitSection,
   WorkflowSection,
 } from "./landing-sections";
 
@@ -53,7 +52,6 @@ export function LandingPage() {
       <WorkspacePreview />
       <HowItWorksSection />
       <FeaturesSection />
-      <SmallNonprofitSection />
       <WorkflowSection />
       </main>
 

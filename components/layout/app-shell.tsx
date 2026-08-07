@@ -26,7 +26,7 @@ export function AppSidebar() {
 
   const nav = (
     <>
-      <div className="flex h-20 shrink-0 items-center border-b border-border px-2 md:group-hover/sidebar:px-5">
+      <div className="flex h-20 shrink-0 items-center border-b border-border px-5">
         <Link
           href="/"
           className="flex h-10 w-full items-center overflow-hidden rounded-md"
@@ -35,7 +35,7 @@ export function AppSidebar() {
         </Link>
       </div>
 
-      <nav className="flex-1 space-y-1.5 overflow-y-auto px-2 py-6 md:group-hover/sidebar:px-3">
+      <nav className="flex-1 space-y-1.5 overflow-y-auto px-3 py-6">
         {mainNavItems.map((item) => {
           const active = activeItem?.id === item.id;
           const Icon = item.icon;
@@ -45,16 +45,14 @@ export function AppSidebar() {
               href={item.href}
               onClick={() => setMobileOpen(false)}
               className={cn(
-                "group/item flex h-11 items-center gap-3 rounded-xl px-2 text-sm font-medium transition-colors md:justify-center md:group-hover/sidebar:justify-start md:group-hover/sidebar:px-3",
+                "group/item flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium transition-colors",
                 active
                   ? "bg-primary-light/70 text-primary"
                   : "text-text-secondary hover:bg-surface hover:text-text",
               )}
             >
               <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-              <span className="md:opacity-0 md:transition-opacity md:duration-200 md:group-hover/sidebar:opacity-100">
-                {item.label}
-              </span>
+              <span>{item.label}</span>
             </Link>
           );
         })}
@@ -84,7 +82,7 @@ export function AppSidebar() {
 
       <aside
         className={cn(
-          "group/sidebar fixed left-0 top-0 z-50 flex h-full w-[280px] flex-col overflow-hidden border-r border-border bg-bg transition-[width,transform] duration-200 ease-out md:w-16 md:translate-x-0 md:hover:w-[280px]",
+          "fixed left-0 top-0 z-50 flex h-full w-[280px] flex-col overflow-hidden border-r border-border bg-bg transition-transform duration-200 ease-out md:translate-x-0",
           mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
       >
@@ -411,7 +409,7 @@ export function AppShell({ children, header }: AppShellProps) {
   return (
     <div className="min-h-screen bg-bg">
       <AppSidebar />
-      <div className="md:pl-16">
+      <div className="md:pl-[280px]">
         {header ?? <AppHeader />}
         <main className="min-h-[calc(100vh-5rem)]">{children}</main>
       </div>

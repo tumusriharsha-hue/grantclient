@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useId, useMemo, useRef, useState, useTransition } from "react";
 import { toggleSavedGrant } from "@/app/actions/saved-grants";
 import { AppShell } from "@/components/layout";
-import { Button, Card, Select } from "@/components/ui";
+import { Button, Card, PageContainer, PageHeading, Select } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/hooks/use-user";
 import {
@@ -404,16 +404,15 @@ export function GrantFinderPage({
 
   return (
     <AppShell header={null}>
-      <div className="border-b border-border bg-surface px-4 py-4 md:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-3">
-            <h1 className="text-2xl font-bold text-text">Grant Finder</h1>
-            <p className="mt-1 text-sm text-text-secondary">
-              Browse {activeCatalogGrants.length} funding opportunities ranked for your profile.
-            </p>
-          </div>
+      <div className="border-b border-border bg-surface py-8 sm:py-10">
+        <PageContainer size="xl">
+          <PageHeading
+            eyebrow="Funding opportunities"
+            title="Grant Finder"
+            description={`Browse ${activeCatalogGrants.length} funding opportunities ranked for your profile.`}
+          />
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
             <input
               type="search"
               value={search}
@@ -422,7 +421,7 @@ export function GrantFinderPage({
                 setCurrentPage(1);
               }}
               placeholder="Search title, description, keywords, or category…"
-              className="flex-1 rounded-md border border-border bg-bg px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
+              className="h-12 flex-1 rounded-full border border-border bg-bg px-5 text-sm focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
             />
             <Button
               variant="secondary"
@@ -433,14 +432,14 @@ export function GrantFinderPage({
               Filters
             </Button>
           </div>
-        </div>
+        </PageContainer>
       </div>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 p-4 sm:p-6 lg:flex-row lg:gap-8 lg:p-8">
+      <PageContainer size="xl" className="flex flex-col gap-6 py-6 sm:py-8 lg:flex-row lg:gap-8 lg:py-10">
         <aside
           className={`${showFilters ? "block" : "hidden"} w-full shrink-0 space-y-4 lg:block lg:w-72`}
         >
-          <Card padding="md" className="space-y-4">
+          <Card padding="md" className="space-y-4 lg:sticky lg:top-24">
             <div className="flex items-center justify-between border-b border-border pb-3">
               <div>
                 <h2 className="text-sm font-semibold text-text">Filters</h2>
@@ -638,7 +637,7 @@ export function GrantFinderPage({
             </>
           )}
         </div>
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

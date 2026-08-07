@@ -34,13 +34,13 @@ export function GrantBrowserCard({
   }
 
   return (
-    <Card hover padding="lg" className="min-w-0 overflow-hidden">
+    <Card hover padding="lg" className="min-w-0 overflow-hidden p-6 sm:p-7">
       <div className="min-w-0">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0">
             <Link
               href={`/grants/${grant.id}`}
-              className="break-words text-lg font-semibold text-text hover:text-primary"
+              className="break-words text-xl font-semibold tracking-[-0.02em] text-text hover:text-primary"
             >
               {grant.title}
             </Link>
@@ -68,7 +68,7 @@ export function GrantBrowserCard({
           <span className="min-w-0 break-words text-text-secondary">{grant.region}</span>
         </div>
 
-        <p className="mt-3 line-clamp-2 break-words text-sm text-text-secondary">
+        <p className="mt-4 line-clamp-2 break-words text-sm leading-6 text-text-secondary">
           {grant.description}
         </p>
 
@@ -88,7 +88,7 @@ export function GrantBrowserCard({
           </p>
         )}
 
-        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+        <div className="mt-6 flex flex-col gap-2 border-t border-border pt-5 sm:flex-row sm:flex-wrap">
           <Button
             type="button"
             variant={saved ? "primary" : "secondary"}

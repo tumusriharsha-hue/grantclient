@@ -381,26 +381,24 @@ export function OnboardingWizard({
     <div
       className={cn(
         "w-full",
-        mode === "onboarding" ? "mx-auto max-w-2xl px-4 py-8" : "p-0",
+        mode === "onboarding" ? "mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12" : "p-0",
       )}
     >
       {mode === "onboarding" && (
-        <div className="mb-6 text-center">
-          <p className="text-sm font-medium uppercase tracking-wide text-primary">
+        <div className="mb-8 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
             Organization setup
           </p>
-          <div className="mt-3 rounded-lg border border-border bg-surface px-5 py-4 shadow-[var(--shadow-card)]">
-            <h1 className="text-2xl font-bold text-text">
-              {currentStep?.subtitle}
-            </h1>
-          </div>
-          <p className="mt-2 text-sm text-text-secondary">
+          <h1 className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-text sm:text-4xl">
+            {currentStep?.subtitle}
+          </h1>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-text-secondary sm:text-base">
             Takes about 3 minutes. Your answers power grant recommendations.
           </p>
         </div>
       )}
 
-      <Card padding="lg" className="space-y-6">
+      <Card padding="lg" className="space-y-7 p-6 sm:p-8">
         <OnboardingProgress step={step} />
 
         {!canEditProfile && (

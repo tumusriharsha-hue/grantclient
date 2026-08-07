@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AppShell } from "@/components/layout";
-import { Badge, Button, Card, getDeadlineVariant } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  getDeadlineVariant,
+  PageContainer,
+  PageHeading,
+} from "@/components/ui";
 import { formatGrantDeadline } from "@/lib/grant-matching";
 import { getAllGrants } from "@/lib/grants/queries";
 import { filterSavedGrants, getCurrentUserSavedGrantIds } from "@/lib/grants/saved-grants";
@@ -22,25 +29,28 @@ export default async function SavedGrantsPage() {
 
   return (
     <AppShell header={null}>
-      <div className="mx-auto max-w-5xl space-y-6 p-6 md:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-text">Saved Grants</h1>
-            <p className="mt-2 text-sm text-text-secondary">
+      <PageContainer size="lg" className="space-y-8 py-8 sm:py-10 lg:py-12">
+        <PageHeading
+          eyebrow="Your funding pipeline"
+          title="Saved grants"
+          description={
+            <>
               Grants you save from the{" "}
               <Link href="/grants" className="font-medium text-primary hover:underline">
                 Grant Finder
               </Link>{" "}
               appear here.
-            </p>
-          </div>
-          <Link href="/grants">
-            <Button variant="secondary">Browse grants</Button>
-          </Link>
-        </div>
+            </>
+          }
+          actions={
+            <Link href="/grants">
+              <Button>Browse grants</Button>
+            </Link>
+          }
+        />
 
         {savedGrants.length === 0 ? (
-          <Card padding="lg">
+          <Card padding="lg" className="p-7 sm:p-8">
             <p className="text-sm text-text-secondary">
               No saved grants yet. Browse the{" "}
               <Link href="/grants" className="font-medium text-primary hover:underline">
@@ -52,7 +62,7 @@ export default async function SavedGrantsPage() {
         ) : (
           <div className="space-y-4">
             {savedGrants.map((grant) => (
-              <Card key={grant.id} hover padding="lg">
+              <Card key={grant.id} hover padding="lg" className="p-6 sm:p-7">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
                     <div className="mb-2 flex flex-wrap gap-2">
@@ -89,7 +99,7 @@ export default async function SavedGrantsPage() {
             ))}
           </div>
         )}
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

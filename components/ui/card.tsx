@@ -21,9 +21,9 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-lg border border-border bg-surface shadow-[var(--shadow-card)]",
+        "rounded-2xl border border-border bg-surface shadow-none",
         hover &&
-          "transition-all duration-200 hover:border-border-hover hover:shadow-[var(--shadow-card-hover)]",
+          "transition-all duration-200 hover:border-primary/35 hover:shadow-[var(--shadow-card-hover)]",
         paddingMap[padding],
         className,
       )}

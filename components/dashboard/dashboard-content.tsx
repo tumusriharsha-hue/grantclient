@@ -11,6 +11,9 @@ import {
   Card,
   getDeadlineVariant,
   MatchScore,
+  PageContainer,
+  PageHeading,
+  SectionHeading,
 } from "@/components/ui";
 import { getStateLabel } from "@/lib/onboarding/us-states";
 import type { RecommendedGrant } from "@/lib/grants/matching-types";
@@ -186,25 +189,32 @@ export function DashboardContent({
     (showRejected ? rejectedApplications.length : 0);
 
   return (
-    <div className="mx-auto max-w-6xl space-y-10 p-6 md:p-8">
-      <div>
-        <h1 className="text-2xl font-bold text-text">
-          Welcome, {organization.organization_name}
-        </h1>
-        <p className="mt-1 text-text-secondary">
-          Based on {focusLabel} in {locationLabel}.
-        </p>
-      </div>
+    <PageContainer size="xl" className="space-y-12 py-8 sm:py-10 lg:py-12">
+      <PageHeading
+        eyebrow="Organization dashboard"
+        title={`Welcome, ${organization.organization_name}`}
+        description={<>Recommendations based on {focusLabel} in {locationLabel}.</>}
+        actions={
+          <Link href="/grants">
+            <Button>
+              Find grants
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+        }
+      />
 
-      <section>
-        <div className="mb-4">
-          <div>
-            <h2 className="mb-1 text-xl font-bold text-text">Top Grants for You</h2>
-            <p className="text-sm text-text-secondary">
-              Personalized recommendations for {organization.organization_name}
-            </p>
-          </div>
-        </div>
+      <section aria-labelledby="recommended-grants-heading">
+        <SectionHeading
+          eyebrow="Recommended opportunities"
+          title={<span id="recommended-grants-heading">Top grants for you</span>}
+          description={`Personalized recommendations for ${organization.organization_name}`}
+          action={
+            <Link href="/grants" className="text-sm font-medium text-primary hover:underline">
+              View all grants
+            </Link>
+          }
+        />
         {isRefreshingExplanations && (
           <p className="mb-4 text-sm text-text-muted">
             Updating grant explanations…
@@ -225,7 +235,7 @@ export function DashboardContent({
             </p>
           </Card>
         ) : (
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-2">
             {recommendedGrants.map((grant) => (
               <Card key={grant.id} hover padding="md" className="flex flex-col">
                 <div className="mb-4 flex items-start justify-between gap-3">
@@ -348,7 +358,7 @@ export function DashboardContent({
         )}
       </section>
 
-      <Card padding="lg" className="border-primary/20 bg-primary-light/10">
+      <Card padding="lg" className="border-primary/20 bg-primary-light/20 p-7 sm:p-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-4">
             <div className="flex h-12 w-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-lg bg-primary text-white">
@@ -378,8 +388,12 @@ export function DashboardContent({
         </div>
       </Card>
 
-      <section>
-        <h2 className="mb-4 text-xl font-bold text-text">Your Applications</h2>
+      <section aria-labelledby="applications-heading">
+        <SectionHeading
+          eyebrow="Application pipeline"
+          title={<span id="applications-heading">Your applications</span>}
+          description="Review drafts, submitted applications, and decisions in one place."
+        />
         <div className="mb-4 flex flex-wrap gap-2">
           {tabs.map((tab) => (
             <button
@@ -387,7 +401,7 @@ export function DashboardContent({
               type="button"
               onClick={() => setAppTab(tab.id)}
               className={cn(
-                "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                 appTab === tab.id
                   ? "bg-primary text-white"
                   : "bg-surface text-text-secondary hover:bg-bg",
@@ -587,6 +601,6 @@ export function DashboardContent({
           )}
         </div>
       </section>
-    </div>
+    </PageContainer>
   );
 }

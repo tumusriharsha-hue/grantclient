@@ -64,10 +64,10 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontVariables} h-full antialiased`}
+      className={`${fontVariables} h-full font-sans antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full">
+      <body className="min-h-full font-sans">
         {children}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AppHeader, AppShell } from "@/components/layout";
 import { OnboardingWizard } from "@/components/onboarding";
-import { Card } from "@/components/ui";
+import { Card, PageContainer } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { ProfilePictureUploader } from "./profile-picture-uploader";
 import { OrganizationDocumentManager } from "./organization-document-manager";
@@ -30,15 +30,15 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
 
   return (
     <AppShell header={<AppHeader showSearch={false} title="Settings" />}>
-      <div className="mx-auto flex max-w-5xl flex-col gap-8 p-6 md:flex-row md:p-8">
-        <nav className="flex shrink-0 gap-1 overflow-x-auto md:w-56 md:flex-col">
+      <PageContainer size="lg" className="flex flex-col gap-8 py-8 sm:py-10 md:flex-row lg:gap-10 lg:py-12">
+        <nav className="flex shrink-0 gap-1 overflow-x-auto rounded-2xl border border-border bg-surface p-2 md:h-fit md:w-60 md:flex-col">
           {sections.map((section) => (
             <button
               key={section.id}
               type="button"
               onClick={() => setActive(section.id)}
               className={cn(
-                "whitespace-nowrap rounded-md px-3 py-2 text-left text-sm font-medium transition-colors",
+                "whitespace-nowrap rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors",
                 active === section.id
                   ? "bg-primary-light text-primary"
                   : "text-text-secondary hover:bg-bg hover:text-text",
@@ -52,8 +52,10 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
         <div className="min-w-0 flex-1">
           {active === "profile" && (
             <div className="space-y-5">
-              <Card padding="md">
-                <h2 className="text-xl font-bold text-text">Organization Profile</h2>
+              <Card padding="md" className="p-6 sm:p-7">
+                <h2 className="text-2xl font-semibold tracking-[-0.025em] text-text">
+                  Organization profile
+                </h2>
                 <p className="mt-1 text-sm text-text-secondary">
                   Update your onboarding answers to improve grant recommendations.
                 </p>
@@ -93,7 +95,7 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
             </Card>
           )}
         </div>
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

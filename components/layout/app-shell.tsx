@@ -26,12 +26,16 @@ export function AppSidebar() {
 
   const nav = (
     <>
-      <div className="flex justify-center px-5 pb-5 pt-5">
-        <Link href="/" className="inline-flex">
-          <GrantclientLogo className="-translate-x-2 w-[185px]" priority />
+      <div className="flex h-20 shrink-0 items-center border-b border-border px-2 md:group-hover/sidebar:px-5">
+        <Link
+          href="/"
+          className="flex h-10 w-full items-center overflow-hidden rounded-md"
+        >
+          <GrantclientLogo className="max-w-none w-[185px] shrink-0" priority />
         </Link>
       </div>
-      <nav className="flex-1 space-y-0.5 px-3">
+
+      <nav className="flex-1 space-y-1.5 overflow-y-auto px-2 py-6 md:group-hover/sidebar:px-3">
         {mainNavItems.map((item) => {
           const active = activeItem?.id === item.id;
           const Icon = item.icon;
@@ -41,14 +45,16 @@ export function AppSidebar() {
               href={item.href}
               onClick={() => setMobileOpen(false)}
               className={cn(
-                "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                "group/item flex h-11 items-center gap-3 rounded-xl px-2 text-sm font-medium transition-colors md:justify-center md:group-hover/sidebar:justify-start md:group-hover/sidebar:px-3",
                 active
-                  ? "bg-primary-light/60 text-primary"
-                  : "text-text-secondary hover:bg-bg hover:text-text",
+                  ? "bg-primary-light/70 text-primary"
+                  : "text-text-secondary hover:bg-surface hover:text-text",
               )}
             >
-              <Icon className="h-[18px] w-[18px] shrink-0" />
-              {item.label}
+              <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+              <span className="md:opacity-0 md:transition-opacity md:duration-200 md:group-hover/sidebar:opacity-100">
+                {item.label}
+              </span>
             </Link>
           );
         })}
@@ -61,7 +67,7 @@ export function AppSidebar() {
       <button
         type="button"
         onClick={() => setMobileOpen(true)}
-        className="group fixed left-4 top-4 z-50 rounded-md border border-border bg-surface p-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-light/40 hover:shadow-md active:translate-y-0 md:hidden"
+        className="group fixed left-4 top-5 z-50 rounded-full border border-border bg-surface p-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-light/40 hover:shadow-md active:translate-y-0 md:hidden"
         aria-label="Open menu"
       >
         <Menu className="h-5 w-5 text-text-secondary transition-transform duration-200 group-hover:scale-110 group-hover:text-primary" />
@@ -78,7 +84,7 @@ export function AppSidebar() {
 
       <aside
         className={cn(
-          "fixed left-0 top-0 z-50 flex h-full w-[280px] flex-col border-r border-border bg-bg transition-transform duration-300 md:translate-x-0",
+          "group/sidebar fixed left-0 top-0 z-50 flex h-full w-[280px] flex-col overflow-hidden border-r border-border bg-bg transition-[width,transform] duration-200 ease-out md:w-16 md:translate-x-0 md:hover:w-[280px]",
           mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
       >
@@ -202,7 +208,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-border bg-surface/95 px-4 backdrop-blur-sm md:px-8">
+    <header className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b border-border bg-surface/95 px-4 backdrop-blur-md md:px-8">
       <div className="w-8 md:hidden" />
       {title ? (
         <h1 className="text-lg font-semibold text-text">{title}</h1>
@@ -219,7 +225,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
               placeholder="Search grants..."
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              className="w-full rounded-md border border-border bg-bg py-2 pl-9 pr-3 text-sm placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
+              className="w-full rounded-full border border-border bg-bg py-2.5 pl-10 pr-4 text-sm placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
             />
           </div>
         </form>
@@ -240,7 +246,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
         <div ref={notificationsRef} className="relative">
           <button
             type="button"
-            className="relative rounded-md p-2 text-text-secondary hover:bg-bg hover:text-text"
+            className="relative rounded-full p-2.5 text-text-secondary hover:bg-bg hover:text-text"
             aria-label="Notifications"
             aria-expanded={notificationsOpen}
             onClick={() => {
@@ -405,9 +411,9 @@ export function AppShell({ children, header }: AppShellProps) {
   return (
     <div className="min-h-screen bg-bg">
       <AppSidebar />
-      <div className="md:pl-[280px]">
+      <div className="md:pl-16">
         {header ?? <AppHeader />}
-        <main>{children}</main>
+        <main className="min-h-[calc(100vh-5rem)]">{children}</main>
       </div>
     </div>
   );

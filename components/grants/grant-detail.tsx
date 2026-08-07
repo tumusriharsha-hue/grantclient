@@ -10,6 +10,7 @@ import {
   Button,
   Card,
   getDeadlineVariant,
+  PageContainer,
 } from "@/components/ui";
 import { eligibilityItems } from "@/data";
 import { useRequireFullAccount } from "@/hooks/use-user";
@@ -86,26 +87,30 @@ export function GrantDetailView({
 
   const content = (
     <>
-      <div className="border-b border-border bg-surface px-4 py-4 md:px-8">
-        <Link
-          href="/grants"
-          className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Finder
-        </Link>
+      <div className="border-b border-border bg-surface py-5">
+        <PageContainer size="xl">
+          <Link
+            href="/grants"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Grant Finder
+          </Link>
+        </PageContainer>
       </div>
 
-      <div className="mx-auto max-w-6xl p-6 md:p-8">
-        <div className="grid gap-8 lg:grid-cols-3">
-          <div className="space-y-6 lg:col-span-2">
+      <PageContainer size="xl" className="py-8 sm:py-10 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-10">
+          <div className="min-w-0 space-y-6">
             <div>
               <div className="mb-3 flex flex-wrap gap-2">
                 <Badge variant="default">{grant.category}</Badge>
                 <Badge variant={urgency}>{grant.deadlineLabel}</Badge>
               </div>
-              <h1 className="text-3xl font-bold text-text">{grant.title}</h1>
-              <p className="mt-1 text-text-secondary">{grant.funder}</p>
+              <h1 className="max-w-4xl text-3xl font-semibold tracking-[-0.035em] text-text sm:text-4xl">
+                {grant.title}
+              </h1>
+              <p className="mt-3 text-base text-text-secondary">{grant.funder}</p>
             </div>
 
             {urgency === "danger" && grant.daysLeft >= 0 && (
@@ -116,13 +121,13 @@ export function GrantDetailView({
               </Card>
             )}
 
-            <Card padding="lg">
-              <h2 className="mb-4 text-xl font-bold text-text">About this grant</h2>
+            <Card padding="lg" className="p-7 sm:p-8">
+              <h2 className="mb-4 text-xl font-semibold text-text">About this grant</h2>
               <p className="leading-relaxed text-text-secondary">{grant.description}</p>
             </Card>
 
-            <Card padding="lg">
-              <h2 className="mb-4 text-xl font-bold text-text">Eligibility checklist</h2>
+            <Card padding="lg" className="p-7 sm:p-8">
+              <h2 className="mb-4 text-xl font-semibold text-text">Eligibility checklist</h2>
               <ul className="space-y-4">
                 {eligibilityItems.map((item) => (
                   <li key={item.title} className="flex gap-3">
@@ -157,8 +162,8 @@ export function GrantDetailView({
             </Card>
           </div>
 
-          <div className="lg:col-span-1">
-            <Card padding="lg" className="sticky top-24">
+          <div>
+            <Card padding="lg" className="sticky top-24 p-7">
               <dl className="space-y-3 text-sm">
                 <div>
                   <dt className="text-text-secondary">Funding</dt>
@@ -231,7 +236,7 @@ export function GrantDetailView({
             </Card>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 

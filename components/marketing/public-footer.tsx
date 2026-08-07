@@ -28,6 +28,14 @@ function InstagramIcon(props: SVGProps<SVGSVGElement>) {
 
 const footerColumns = [
   {
+    title: "Product",
+    links: [
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "Features", href: "/#features" },
+      { label: "Browse grants", href: "/grants" },
+    ],
+  },
+  {
     title: "Organization",
     links: [
       { label: "About", href: "/about" },
@@ -83,16 +91,17 @@ function FooterLink({ href, label }: FooterLink) {
 export function PublicFooter() {
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          <Link href="/" className="inline-flex justify-center">
-            <GrantclientLogo className="grantclient-logo-always-light w-[190px] brightness-0 invert" />
-          </Link>
-          <p className="mt-7 max-w-3xl text-sm font-medium text-text-muted sm:text-base">
-            AI-powered grant discovery and application builder for nonprofits.
-            Find grants, apply faster, get funded.
-          </p>
-          <div className="mt-7 flex items-center justify-center gap-7">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="grid gap-14 lg:grid-cols-[1.2fr_1.8fr] lg:gap-20">
+          <div>
+            <Link href="/" className="inline-flex">
+              <GrantclientLogo className="grantclient-logo-always-light w-[190px] brightness-0 invert" />
+            </Link>
+            <p className="mt-6 max-w-md text-sm leading-6 text-text-muted sm:text-base">
+              AI-powered grant discovery and application tools for nonprofits.
+              Find opportunities, understand fit, and keep applications moving.
+            </p>
+            <div className="mt-7 flex items-center gap-6">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -105,27 +114,28 @@ export function PublicFooter() {
                 <social.icon className="h-6 w-6 stroke-[2.1]" />
               </a>
             ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+            {footerColumns.map((column) => (
+              <div key={column.title}>
+                <h2 className="text-sm font-semibold tracking-tight text-white">
+                  {column.title}
+                </h2>
+                <ul className="mt-5 space-y-4">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <FooterLink href={link.href} label={link.label} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-16 grid gap-10 text-center sm:grid-cols-3 sm:text-left">
-          {footerColumns.map((column) => (
-            <div key={column.title}>
-              <h2 className="text-base font-semibold tracking-tight text-white">
-                {column.title}
-              </h2>
-              <ul className="mt-5 space-y-4">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <FooterLink href={link.href} label={link.label} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-14 border-t border-slate-800 pt-7">
+        <div className="mt-16 border-t border-slate-800 pt-7">
           <div className="flex flex-col gap-4 text-center text-sm font-medium text-text-muted sm:flex-row sm:items-center sm:justify-between sm:text-left">
             <p suppressHydrationWarning>
               © {new Date().getFullYear()} Grantclient. All rights reserved.

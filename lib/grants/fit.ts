@@ -52,6 +52,33 @@ function formatRange(range: FundingRange): string {
   return "an unspecified range";
 }
 
+function scoreContainedFundingRange(
+  organizationRange: FundingRange,
+  grantRange: FundingRange,
+): number {
+  if (
+    organizationRange.min === null ||
+    organizationRange.max === null ||
+    grantRange.min === null ||
+    grantRange.max === null
+  ) {
+    return 90;
+  }
+
+  const organizationSpan = Math.max(organizationRange.max - organizationRange.min, 1);
+  const grantSpan = Math.max(grantRange.max - grantRange.min, 0);
+  const organizationMidpoint = (organizationRange.min + organizationRange.max) / 2;
+  const grantMidpoint = (grantRange.min + grantRange.max) / 2;
+  const midpointFit = Math.max(
+    0,
+    1 - Math.abs(grantMidpoint - organizationMidpoint) / (organizationSpan / 2),
+  );
+  const rangeSpecificity =
+    grantSpan <= organizationSpan ? 1 : organizationSpan / grantSpan;
+
+  return Math.round((80 + 20 * (0.65 * midpointFit + 0.35 * rangeSpecificity)) * 100) / 100;
+}
+
 export function calculateFundingFit(organizationRange: FundingRange, grantRange: FundingRange): FundingFitResult {
   if (!validRange(organizationRange) || !validRange(grantRange) || (organizationRange.min === null && organizationRange.max === null) || (grantRange.min === null && grantRange.max === null)) return { status: "unknown", score: 0, explanation: "Add a preferred funding range and verify the grant award range to improve this score.", overlapMinimum: null, overlapMaximum: null };
   const organizationMin = organizationRange.min ?? 0;
@@ -67,7 +94,15 @@ export function calculateFundingFit(organizationRange: FundingRange, grantRange:
   const fullyContains = grantMin >= organizationMin && grantMax <= organizationMax;
   const requestFitsGrant = organizationMin >= grantMin && organizationMax <= grantMax;
   const max = Number.isFinite(overlapMaximum) ? overlapMaximum : organizationRange.max;
-  if (fullyContains || requestFitsGrant) return { status: "within_range", score: 100, explanation: `Your organization is seeking ${formatRange(organizationRange)}. This grant awards ${formatRange(grantRange)}, which is within your funding range.`, overlapMinimum, overlapMaximum: max };
+  if (fullyContains || requestFitsGrant) {
+    return {
+      status: "within_range",
+      score: scoreContainedFundingRange(organizationRange, grantRange),
+      explanation: `Your organization is seeking ${formatRange(organizationRange)}. This grant awards ${formatRange(grantRange)}, which is within your funding range.`,
+      overlapMinimum,
+      overlapMaximum: max,
+    };
+  }
   const union = Math.max(organizationMax, grantMax) - Math.min(organizationMin, grantMin);
   const ratio = union > 0 && Number.isFinite(union) ? (overlapMaximum - overlapMinimum) / union : 0.5;
   return { status: "partial_overlap", score: Math.round(65 + Math.min(1, ratio) * 20), explanation: `Your range is ${formatRange(organizationRange)} and the grant range is ${formatRange(grantRange)}. The overlap is ${formatRange({ min: overlapMinimum, max })}.`, overlapMinimum, overlapMaximum: max };

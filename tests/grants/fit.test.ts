@@ -18,9 +18,12 @@ describe("calculatePopulationFit", () => {
 });
 
 describe("calculateFundingFit", () => {
-  it("returns a high positive result for either range fully containing the other", () => {
+  it("scores contained ranges by their amount and specificity", () => {
     expect(calculateFundingFit({ min: 10000, max: 50000 }, { min: 20000, max: 40000 }).status).toBe("within_range");
-    expect(calculateFundingFit({ min: 20000, max: 40000 }, { min: 10000, max: 100000 }).score).toBe(100);
+    const precise = calculateFundingFit({ min: 20000, max: 40000 }, { min: 25000, max: 35000 });
+    const broad = calculateFundingFit({ min: 20000, max: 40000 }, { min: 10000, max: 100000 });
+    expect(precise.score).toBeGreaterThan(broad.score);
+    expect(broad.score).toBeGreaterThan(80);
   });
 
   it("identifies overlap direction and incomplete data", () => {

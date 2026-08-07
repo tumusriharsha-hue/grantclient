@@ -13,7 +13,7 @@ export interface EligibilityResult {
   verificationItems: string[];
 }
 
-export const MATCH_SCORE_VERSION = "v3";
+export const MATCH_SCORE_VERSION = "v6";
 
 export const MATCH_SCORE_WEIGHTS = {
   focusArea: 25,

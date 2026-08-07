@@ -21,7 +21,7 @@ const STOP_WORDS = new Set([
   "the", "their", "this", "through", "with", "will", "your", "grant", "program",
 ]);
 
-const POSITIVE_SCORE_CALIBRATION_EXPONENT = 0.7;
+const POSITIVE_SCORE_CALIBRATION_EXPONENT = 0.65;
 
 function clamp(value: number, max: number): number {
   return Math.max(0, Math.min(max, Math.round(value)));
@@ -35,7 +35,11 @@ function component(maxScore: number, score: number, reasons: string[]): MatchSco
       : maxScore *
         (boundedScore / maxScore) ** POSITIVE_SCORE_CALIBRATION_EXPONENT;
 
-  return { maxScore, score: clamp(calibratedScore, maxScore), reasons };
+  return {
+    maxScore,
+    score: Math.round(calibratedScore * 100) / 100,
+    reasons,
+  };
 }
 
 function normalize(value: string): string {
@@ -154,7 +158,7 @@ function scoreDeadline(grant: Grant, now: Date): MatchScoreComponent {
   const days = Math.ceil(
     (new Date(`${grant.deadline}T23:59:59.999Z`).getTime() - now.getTime()) / 86_400_000,
   );
-  const score = days > 60 ? 5 : days > 30 ? 4 : days > 14 ? 3 : days > 7 ? 2 : 1;
+  const score = 1 + 4 * Math.min(180, Math.max(0, days)) / 180;
   return component(5, score, [`${Math.max(0, days)} days until deadline`]);
 }
 

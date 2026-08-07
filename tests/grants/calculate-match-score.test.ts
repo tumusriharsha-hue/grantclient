@@ -18,6 +18,23 @@ describe("calculateMatchScore", () => {
     }
   });
 
+  it("keeps component precision until the final score is rounded", () => {
+    const grant = makeGrant({
+      description: "Supports education programs for communities.",
+    });
+    const result = calculateMatchScore(
+      organization,
+      grant,
+      filterGrantEligibility(organization, grant, NOW),
+      NOW,
+    );
+
+    expect(result.components.missionAlignment.score).not.toBe(Math.round(
+      result.components.missionAlignment.score,
+    ));
+    expect(result.totalScore).toBe(Math.round(result.totalScore));
+  });
+
   it("defines weights totaling 100", () => {
     expect(Object.values(MATCH_SCORE_WEIGHTS).reduce((sum, value) => sum + value, 0)).toBe(100);
   });

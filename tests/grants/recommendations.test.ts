@@ -3,11 +3,11 @@ import { rankRecommendedGrants } from "@/lib/grants/rank-recommended-grants";
 import { makeGrant, NOW, organization } from "./fixtures";
 
 describe("rankRecommendedGrants", () => {
-  it("sorts by score and uses deadline as a tie breaker", () => {
+  it("ranks grants with more time to prepare higher", () => {
     const later = makeGrant({ id: "later", deadline: "2026-12-01" });
     const sooner = makeGrant({ id: "sooner", deadline: "2026-10-01" });
     const results = rankRecommendedGrants(organization, [later, sooner], { now: NOW });
-    expect(results.map((grant) => grant.id)).toEqual([sooner.id, later.id]);
+    expect(results.map((grant) => grant.id)).toEqual([later.id, sooner.id]);
   });
 
   it("returns no more than five grants", () => {
@@ -15,6 +15,23 @@ describe("rankRecommendedGrants", () => {
       makeGrant({ id: `grant-${index}` }),
     );
     expect(rankRecommendedGrants(organization, grants, { now: NOW })).toHaveLength(5);
+  });
+
+  it("spreads otherwise equal recommendation scores by rank", () => {
+    const grants = Array.from({ length: 5 }, (_, index) =>
+      makeGrant({
+        id: `equal-${index}`,
+        description: "Supports community programs.",
+        deadline: undefined,
+        rollingDeadline: true,
+      }),
+    );
+    const results = rankRecommendedGrants(organization, grants, { now: NOW });
+    const scores = results.map((grant) => grant.totalScore);
+
+    expect(new Set(scores).size).toBe(5);
+    expect(scores).toEqual([...scores].sort((left, right) => right - left));
+    expect(scores[0] - scores.at(-1)!).toBeGreaterThanOrEqual(7);
   });
 
   it("returns fewer than five when only fewer grants qualify", () => {

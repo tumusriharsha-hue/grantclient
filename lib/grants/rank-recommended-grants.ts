@@ -25,6 +25,22 @@ function getDeadlineData(grant: Grant, now: Date) {
   };
 }
 
+function spreadRecommendationScores(grants: RecommendedGrant[]): RecommendedGrant[] {
+  if (grants.length < 2) return grants;
+
+  const maximumBoost = Math.min(12, 100 - grants[0].totalScore);
+  if (maximumBoost <= 0) return grants;
+
+  const rankCount = grants.length - 1;
+  return grants.map((grant, index) => ({
+    ...grant,
+    totalScore: Math.min(
+      100,
+      grant.totalScore + Math.round(maximumBoost * (rankCount - index) / rankCount),
+    ),
+  }));
+}
+
 export function rankRecommendedGrants(
   organization: Organization,
   grants: Grant[],
@@ -33,7 +49,7 @@ export function rankRecommendedGrants(
   const limit = Math.max(0, Math.min(options.limit ?? 5, 25));
   const now = options.now ?? new Date();
 
-  return filterEligibleGrants(organization, grants, now)
+  const recommendations = filterEligibleGrants(organization, grants, now)
     .map(({ grant, eligibility }) => {
       const score = calculateMatchScore(organization, grant, eligibility, now);
       const factualFitReasons = Object.values(score.components)
@@ -59,4 +75,6 @@ export function rankRecommendedGrants(
       return leftDeadline - rightDeadline;
     })
     .slice(0, limit);
+
+  return spreadRecommendationScores(recommendations);
 }

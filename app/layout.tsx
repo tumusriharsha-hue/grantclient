@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   },
   description: siteMetadata.description,
   applicationName: siteMetadata.title,
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   verification: {
     google: googleSiteVerificationTokens,
   },

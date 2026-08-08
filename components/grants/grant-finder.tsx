@@ -76,11 +76,11 @@ function FilterSelect({ label, value, options, onValueChange }: FilterSelectProp
         type="button"
         aria-labelledby={`${id}-label`}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-3 rounded-md border border-border bg-bg px-3 py-2.5 text-left text-sm font-medium text-text shadow-sm transition-colors hover:border-border-hover hover:bg-surface focus:border-primary focus:bg-surface focus:outline-none focus:ring-[3px] focus:ring-primary/10"
+        className="flex h-11 w-full items-center justify-between gap-3 rounded-xl border border-border-hover bg-surface px-3.5 py-2.5 text-left text-sm font-medium text-text transition-colors hover:border-primary/40 focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
         onClick={() => setOpen((current) => !current)}
       >
         <span className="truncate">{selectedOption?.label ?? "Select"}</span>
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-surface text-primary">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-primary-light text-primary">
           <ChevronDown
             className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
           />
@@ -91,7 +91,7 @@ function FilterSelect({ label, value, options, onValueChange }: FilterSelectProp
         <div
           role="listbox"
           aria-labelledby={`${id}-label`}
-          className="absolute left-0 right-0 top-full z-50 mt-0 max-h-72 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg"
+          className="absolute left-0 right-0 top-full z-50 mt-1 max-h-72 overflow-y-auto rounded-xl border border-border bg-surface p-1.5 shadow-lg"
         >
           {options.map((option) => {
             const selected = option.value === value;
@@ -103,7 +103,7 @@ function FilterSelect({ label, value, options, onValueChange }: FilterSelectProp
                 role="option"
                 aria-selected={selected}
                 className={cn(
-                  "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+                  "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                   selected
                     ? "bg-primary-light text-primary-hover hover:bg-primary-light hover:text-primary-hover"
                     : "text-text-secondary hover:bg-primary-light/60 hover:text-text",
@@ -191,11 +191,11 @@ function MultiFilterSelect({
         type="button"
         aria-labelledby={`${id}-label`}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-3 rounded-md border border-border bg-bg px-3 py-2.5 text-left text-sm font-medium text-text shadow-sm transition-colors hover:border-border-hover hover:bg-surface focus:border-primary focus:bg-surface focus:outline-none focus:ring-[3px] focus:ring-primary/10"
+        className="flex h-11 w-full items-center justify-between gap-3 rounded-xl border border-border-hover bg-surface px-3.5 py-2.5 text-left text-sm font-medium text-text transition-colors hover:border-primary/40 focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
         onClick={() => setOpen((current) => !current)}
       >
         <span className="truncate">{displayLabel}</span>
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-surface text-primary">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-primary-light text-primary">
           <ChevronDown
             className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
           />
@@ -207,12 +207,12 @@ function MultiFilterSelect({
           role="listbox"
           aria-labelledby={`${id}-label`}
           aria-multiselectable="true"
-          className="absolute left-0 right-0 top-full z-50 mt-0 max-h-72 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg"
+          className="absolute left-0 right-0 top-full z-50 mt-1 max-h-72 overflow-y-auto rounded-xl border border-border bg-surface p-1.5 shadow-lg"
         >
           <button
             type="button"
             className={cn(
-              "mb-1 flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+              "mb-1 flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
               values.length === 0
                 ? "bg-primary-light text-primary-hover"
                 : "text-text-secondary hover:bg-primary-light/60 hover:text-text",
@@ -237,7 +237,7 @@ function MultiFilterSelect({
                 role="option"
                 aria-selected={selected}
                 className={cn(
-                  "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+                  "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                   selected
                     ? "bg-primary-light text-primary-hover"
                     : "text-text-secondary hover:bg-primary-light/60 hover:text-text",
@@ -445,7 +445,7 @@ export function GrantFinderPage({
                 <h2 className="text-sm font-semibold text-text">Filters</h2>
                 <p className="mt-0.5 text-xs text-text-muted">Refine matching grants</p>
               </div>
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-light text-primary">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-light text-primary">
                 <SlidersHorizontal className="h-4 w-4" />
               </div>
             </div>

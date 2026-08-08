@@ -233,17 +233,17 @@ export function DatePicker({
 
   return (
     <div ref={containerRef} className="relative space-y-1.5">
-      <label htmlFor={id} className="block text-xs font-semibold text-text-secondary">
+      <label htmlFor={id} className="block text-sm font-medium text-text">
         {label}
       </label>
       {name && <input type="hidden" name={name} value={value} />}
       <div
         ref={triggerRef}
         className={cn(
-          "flex h-11 w-full items-center gap-2 rounded-md border bg-surface px-3 py-2.5 text-sm leading-6 text-text shadow-sm transition-colors focus-within:outline-none focus-within:ring-[3px] hover:bg-bg",
+          "flex h-11 w-full items-center gap-2 rounded-xl border bg-surface px-3.5 py-2.5 text-sm leading-6 text-text transition-colors focus-within:outline-none focus-within:ring-[3px]",
           error
             ? "border-danger focus-within:border-danger focus-within:ring-danger/10"
-            : "border-border-hover focus-within:border-primary focus-within:ring-primary/10 hover:border-primary",
+            : "border-border-hover focus-within:border-primary focus-within:ring-primary/10 hover:border-primary/40",
         )}
       >
         <input
@@ -267,7 +267,7 @@ export function DatePicker({
           type="button"
           aria-label={`Open ${label} calendar`}
           aria-expanded={open}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary-light text-primary transition-colors hover:bg-primary hover:text-white"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary-light text-primary transition-colors hover:bg-primary hover:text-white"
           onClick={() => {
             if (!open && selectedDate) {
               setVisibleMonth(
@@ -293,7 +293,7 @@ export function DatePicker({
           <div
             ref={popoverRef}
             style={popoverStyle}
-            className="rounded-md border border-border bg-surface p-2.5 shadow-lg"
+            className="rounded-xl border border-border bg-surface p-2.5 shadow-lg"
           >
             <div className="flex items-center justify-between gap-2">
               <button

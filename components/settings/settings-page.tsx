@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { AppHeader, AppShell } from "@/components/layout";
+import { AppShell } from "@/components/layout";
 import { OnboardingWizard } from "@/components/onboarding";
-import { Card, PageContainer } from "@/components/ui";
+import { Card, PageContainer, PageHeading } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { ProfilePictureUploader } from "./profile-picture-uploader";
 import { OrganizationDocumentManager } from "./organization-document-manager";
@@ -29,8 +29,14 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
   const canEditProfile = Boolean(user);
 
   return (
-    <AppShell header={<AppHeader showSearch={false} title="Settings" />}>
-      <PageContainer size="lg" className="flex flex-col gap-8 py-8 sm:py-10 md:flex-row lg:gap-10 lg:py-12">
+    <AppShell header={null}>
+      <PageContainer size="lg" className="space-y-8 py-8 sm:py-10 lg:py-12">
+        <PageHeading
+          eyebrow="Account and organization"
+          title="Settings"
+          description="Manage your organization profile, documents, and account support."
+        />
+        <div className="flex flex-col gap-8 md:flex-row lg:gap-10">
         <nav className="flex shrink-0 gap-1 overflow-x-auto rounded-2xl border border-border bg-surface p-2 md:h-fit md:w-60 md:flex-col">
           {sections.map((section) => (
             <button
@@ -94,6 +100,7 @@ export function SettingsPage({ user, organization, documents }: SettingsPageProp
               </p>
             </Card>
           )}
+        </div>
         </div>
       </PageContainer>
     </AppShell>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, FileText, PenLine } from "lucide-react";
-import { AppHeader, AppShell } from "@/components/layout";
-import { Badge, Button, Card } from "@/components/ui";
+import { AppShell } from "@/components/layout";
+import { Badge, Button, Card, PageContainer } from "@/components/ui";
 import { normalizeDraftSections } from "@/lib/applications/defaults";
 import {
   getApplicationProgress,
@@ -84,8 +84,8 @@ export default async function ApplicationPage({ params }: ApplicationRouteProps)
   );
 
   return (
-    <AppShell header={<AppHeader showSearch={false} title="View Application" />}>
-      <div className="mx-auto max-w-5xl space-y-6 p-6 md:p-8">
+    <AppShell header={null}>
+      <PageContainer size="lg" className="space-y-6 py-8 sm:py-10 lg:py-12">
         <Link
           href="/applications"
           className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-primary"
@@ -111,7 +111,7 @@ export default async function ApplicationPage({ params }: ApplicationRouteProps)
                   </span>
                 )}
               </div>
-              <h1 className="break-words text-2xl font-bold text-text">
+              <h1 className="break-words text-3xl font-semibold tracking-[-0.035em] text-text sm:text-4xl">
                 {application.title}
               </h1>
               {(application.grant_title || application.grant_funder) && (
@@ -156,7 +156,7 @@ export default async function ApplicationPage({ params }: ApplicationRouteProps)
                 {sections.map((section) => (
                   <div
                     key={section.title}
-                    className="rounded-md border border-border bg-bg p-4"
+                    className="rounded-xl border border-border bg-bg p-4 sm:p-5"
                   >
                     <h3 className="font-semibold text-text">{section.title}</h3>
                     <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-text-secondary">
@@ -212,7 +212,7 @@ export default async function ApplicationPage({ params }: ApplicationRouteProps)
             </aside>
           </div>
         </Card>
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

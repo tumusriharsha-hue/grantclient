@@ -17,14 +17,14 @@ export function Input({ label, hint, error, className, id, ...props }: InputProp
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={inputId} className="block text-xs font-semibold text-text-secondary">
+        <label htmlFor={inputId} className="block text-sm font-medium text-text">
           {label}
         </label>
       )}
       <input
         id={inputId}
         className={cn(
-          "h-11 w-full rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm leading-6 text-text placeholder:text-text-muted transition-colors focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus-visible:!outline-none",
+          "h-11 w-full rounded-xl border border-border-hover bg-surface px-3.5 py-2.5 text-sm leading-6 text-text placeholder:text-text-muted transition-colors hover:border-primary/40 focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus-visible:!outline-none",
           error && "border-danger focus:border-danger focus:ring-danger/10",
           className,
         )}
@@ -58,7 +58,7 @@ export function Textarea({ label, hint, error, className, id, ...props }: Textar
       <textarea
         id={inputId}
         className={cn(
-          "w-full resize-y rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus-visible:!outline-none",
+          "w-full resize-y rounded-xl border border-border-hover bg-surface px-3.5 py-2.5 text-sm leading-6 text-text placeholder:text-text-muted transition-colors hover:border-primary/40 focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus-visible:!outline-none",
           error && "border-danger focus:border-danger focus:ring-danger/10",
           className,
         )}
@@ -180,7 +180,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   return (
     <div ref={containerRef} className="relative space-y-1.5">
       {label && (
-        <label id={`${inputId}-label`} htmlFor={inputId} className="block text-xs font-semibold text-text-secondary">
+        <label id={`${inputId}-label`} htmlFor={inputId} className="block text-sm font-medium text-text">
           {label}
         </label>
       )}
@@ -213,14 +213,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
         aria-expanded={open}
         disabled={disabled}
         className={cn(
-          "flex h-11 w-full items-center justify-between gap-3 rounded-md border border-border bg-bg px-3 py-2.5 text-left text-sm font-medium leading-6 text-text shadow-sm transition-colors hover:border-border-hover hover:bg-surface focus:border-primary focus:bg-surface focus:outline-none focus:ring-[3px] focus:ring-primary/10 disabled:pointer-events-none disabled:opacity-60",
+          "flex h-11 w-full items-center justify-between gap-3 rounded-xl border border-border-hover bg-surface px-3.5 py-2.5 text-left text-sm font-medium leading-6 text-text transition-colors hover:border-primary/40 focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10 disabled:pointer-events-none disabled:opacity-60",
           error && "border-danger focus:border-danger focus:ring-danger/10",
           className,
         )}
         onClick={() => setOpen((current) => !current)}
       >
         <span className="truncate">{selectedOption?.label ?? "Select"}</span>
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-surface text-primary">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-primary-light text-primary">
           <ChevronDown
             className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
           />
@@ -236,7 +236,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
                 role="listbox"
                 aria-labelledby={label ? `${inputId}-label` : undefined}
                 style={menuStyle}
-                className="max-h-72 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg"
+                className="max-h-72 overflow-y-auto rounded-xl border border-border bg-surface p-1.5 shadow-lg"
               >
                 {options.map((option) => {
                   const selected = option.value === selectedValue;
@@ -248,7 +248,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
                       role="option"
                       aria-selected={selected}
                       className={cn(
-                        "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+                        "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                         selected
                           ? "bg-primary-light text-primary-hover hover:bg-primary-light hover:text-primary-hover"
                           : "text-text-secondary hover:bg-primary-light/60 hover:text-text",

@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock3, FileText, PenLine } from "lucide-react";
-import { AppHeader, AppShell } from "@/components/layout";
+import { AppShell } from "@/components/layout";
 import { SectionJumpLink } from "@/components/applications";
-import { Badge, Button, Card } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  PageContainer,
+  PageHeading,
+  SectionHeading,
+} from "@/components/ui";
 import {
   getDecisionLabel,
   getLastUpdatedLabel,
@@ -93,29 +100,28 @@ export default async function ApplicationsPage() {
   }));
 
   return (
-    <AppShell header={<AppHeader showSearch={false} title="My Applications" />}>
-      <div className="mx-auto max-w-6xl space-y-8 p-6 md:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-text">My Applications</h1>
-            <p className="mt-1 text-text-secondary">
-              Track drafts, submissions, and funding decisions in one place.
-            </p>
-          </div>
-          <Link href="/applications/builder" className="w-full sm:w-auto">
-            <Button className="w-full whitespace-nowrap sm:w-auto">
-              New Application
-              <PenLine className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
+    <AppShell header={null}>
+      <PageContainer size="lg" className="space-y-10 py-8 sm:py-10 lg:py-12">
+        <PageHeading
+          eyebrow="Application pipeline"
+          title="My applications"
+          description="Track drafts, submissions, and funding decisions in one place."
+          actions={
+            <Link href="/applications/builder" className="w-full sm:w-auto">
+              <Button className="w-full whitespace-nowrap sm:w-auto">
+                New application
+                <PenLine className="h-4 w-4" />
+              </Button>
+            </Link>
+          }
+        />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {groupedApplications.map(({ status, items }) => (
             <SectionJumpLink
               key={status}
               targetId={statusSectionIds[status]}
-              className="block h-full rounded-lg focus:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/10"
+              className="block h-full rounded-2xl focus:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/10"
             >
               <Card hover padding="md" className="h-full">
                 <div className="flex h-full items-center justify-between gap-3">
@@ -137,13 +143,12 @@ export default async function ApplicationsPage() {
               id={statusSectionIds[status]}
               className="scroll-mt-24 space-y-3"
             >
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <h2 className="text-lg font-bold text-text">{status}</h2>
-                  <p className="text-sm text-text-secondary">{statusCopy[status]}</p>
-                </div>
-                <Badge variant={statusVariant[status]}>{items.length}</Badge>
-              </div>
+              <SectionHeading
+                title={status}
+                description={statusCopy[status]}
+                action={<Badge variant={statusVariant[status]}>{items.length}</Badge>}
+                className="mb-3"
+              />
 
               {items.length === 0 ? (
                 <Card padding="md">
@@ -237,7 +242,7 @@ export default async function ApplicationsPage() {
             </section>
           ))}
         </div>
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

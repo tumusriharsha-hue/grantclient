@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { ApplicationStatusEditor } from "@/components/applications/application-status-editor";
-import { AppHeader, AppShell } from "@/components/layout";
+import { AppShell } from "@/components/layout";
+import { PageContainer } from "@/components/ui";
 import { getCurrentUserApplicationById } from "@/lib/applications/queries";
 import type { ApplicationStatus } from "@/types/database";
 import { noIndexRobots } from "@/lib/seo";
@@ -51,8 +52,8 @@ export default async function ApplicationStatusPage({
   }
 
   return (
-    <AppShell header={<AppHeader showSearch={false} title="Update Status" />}>
-      <div className="mx-auto max-w-4xl space-y-6 p-6 md:p-8">
+    <AppShell header={null}>
+      <PageContainer size="md" className="space-y-6 py-8 sm:py-10 lg:py-12">
         <Link
           href="/applications"
           className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-primary"
@@ -70,7 +71,7 @@ export default async function ApplicationStatusPage({
           amount={application.amount ?? undefined}
           note={application.status_note ?? undefined}
         />
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

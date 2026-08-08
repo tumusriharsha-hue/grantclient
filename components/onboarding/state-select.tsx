@@ -74,7 +74,7 @@ export function StateSelect({
         aria-controls={listboxId}
         aria-autocomplete="list"
         className={cn(
-          "w-full rounded-md border border-border-hover bg-surface px-3 py-2.5 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10",
+          "h-11 w-full rounded-xl border border-border-hover bg-surface px-3.5 py-2.5 text-sm text-text placeholder:text-text-muted transition-colors hover:border-primary/40 focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10",
           error && "border-danger",
         )}
       />
@@ -82,7 +82,7 @@ export function StateSelect({
         <div
           id={listboxId}
           role="listbox"
-          className="max-h-48 overflow-y-auto rounded-lg border border-border bg-surface p-1 shadow-lg"
+          className="max-h-48 overflow-y-auto rounded-xl border border-border bg-surface p-1.5 shadow-lg"
         >
           {filteredStates.map((state) => (
             <button
@@ -97,7 +97,7 @@ export function StateSelect({
                 setIsOpen(false);
               }}
               className={cn(
-                "flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors",
+                "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                 value === state.value
                   ? "bg-primary-light font-medium text-primary-hover"
                   : "text-text-secondary hover:bg-primary-light/60 hover:text-text",

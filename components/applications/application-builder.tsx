@@ -5,7 +5,15 @@ import Link from "next/link";
 import { useActionState, useState } from "react";
 import { startApplicationDraft } from "@/app/actions/applications";
 import { AppShell } from "@/components/layout";
-import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  PageContainer,
+  PageHeading,
+  Textarea,
+} from "@/components/ui";
 import type { ApplicationSetupInput } from "@/lib/validations/application";
 import { DatePicker } from "./application-status-form";
 
@@ -46,20 +54,18 @@ export function ApplicationBuilderPage({
 
   return (
     <AppShell header={null}>
-      <div className="border-b border-border bg-surface px-4 py-3 md:px-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
-          <div>
-            <p className="text-sm font-medium text-text">Application setup</p>
-            <p className="text-xs text-text-muted">Project-specific details only</p>
-          </div>
-        </div>
-      </div>
+      <PageContainer size="lg" className="space-y-8 py-8 sm:py-10 lg:py-12">
+        <PageHeading
+          eyebrow="Drafting Lab"
+          title={applicationId ? "Edit application setup" : "Start an application"}
+          description="Add project-specific details before building the proposal section by section."
+        />
 
-      <form action={formAction} className="mx-auto max-w-5xl space-y-6 p-6 md:p-8">
+      <form action={formAction} className="space-y-6">
         <input type="hidden" name="applicationId" value={applicationId ?? ""} />
         <input type="hidden" name="grantId" value={grantContext?.id ?? ""} />
         {state.error && (
-          <p className="rounded-md bg-danger-light px-3 py-2 text-sm text-danger-dark">
+          <p className="rounded-xl border border-danger/15 bg-danger-light px-4 py-3 text-sm text-danger-dark">
             {state.error}
           </p>
         )}
@@ -72,7 +78,7 @@ export function ApplicationBuilderPage({
                   <Target className="h-5 w-5 shrink-0 text-primary" />
                   <div>
                     <Badge variant="default">Selected grant</Badge>
-                    <h1 className="mt-2 font-semibold text-text">{grantContext.title}</h1>
+                    <h2 className="mt-2 font-semibold text-text">{grantContext.title}</h2>
                     <p className="text-sm text-text-secondary">
                       {grantContext.funder}
                       {grantContext.deadline ? ` | Deadline ${grantContext.deadline}` : ""}
@@ -199,6 +205,7 @@ export function ApplicationBuilderPage({
           </aside>
         </div>
       </form>
+      </PageContainer>
     </AppShell>
   );
 }

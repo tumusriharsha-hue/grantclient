@@ -354,7 +354,7 @@ export function OnboardingWizard({
                 error={fieldErrors.preferred_grant_types}
               />
             </div>
-            <label className="flex items-center justify-between rounded-md border border-border bg-bg px-4 py-3">
+            <label className="flex items-center justify-between rounded-xl border border-border bg-bg px-4 py-3">
               <div>
                 <p className="text-sm font-medium text-text">
                   I am open to government grant opportunities
@@ -402,7 +402,7 @@ export function OnboardingWizard({
         <OnboardingProgress step={step} />
 
         {!canEditProfile && (
-          <div className="rounded-md bg-primary-light/20 px-4 py-3 text-sm text-text-secondary">
+          <div className="rounded-xl border border-primary/15 bg-primary-light/20 px-4 py-3 text-sm text-text-secondary">
             {isGuest ? (
               <>
                 Guest setup is temporary testing data. Create an account to keep your organization profile.{" "}
@@ -419,7 +419,7 @@ export function OnboardingWizard({
         {renderStep()}
 
         {submitError && (
-          <p className="rounded-md bg-danger-light px-3 py-2 text-sm text-danger-dark">
+          <p className="rounded-xl border border-danger/15 bg-danger-light px-4 py-3 text-sm text-danger-dark">
             {submitError}
           </p>
         )}

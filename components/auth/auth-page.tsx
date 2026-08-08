@@ -111,8 +111,8 @@ export function AuthPage({ mode }: AuthPageProps) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col md:flex-row">
-      <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-primary-light/70 via-surface to-bg p-8 md:p-12">
+    <div className="min-h-screen bg-bg p-4 sm:p-6 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:gap-6">
+      <div className="hidden items-center justify-center overflow-hidden rounded-[2rem] border border-border bg-gradient-to-br from-primary-light/70 via-surface to-bg p-12 lg:flex">
         <div className="max-w-md text-center md:text-left">
           <Link
             href="/"
@@ -121,18 +121,21 @@ export function AuthPage({ mode }: AuthPageProps) {
           >
             <GrantclientLogo className="w-[245px]" priority />
           </Link>
-          <h2 className="text-2xl font-bold text-text">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+            Funding tools built for nonprofits
+          </p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-[-0.035em] text-text">
             Grants made simple for nonprofits
           </h2>
-          <p className="mt-3 text-text-secondary">
+          <p className="mt-5 text-base leading-7 text-text-secondary">
             Discover funding opportunities, draft applications with AI, and track
             every submission in one place.
           </p>
         </div>
       </div>
 
-      <div className="flex flex-1 items-center justify-center bg-surface p-8">
-        <div className="w-full max-w-sm">
+      <div className="flex min-h-[calc(100vh-2rem)] items-center justify-center rounded-[2rem] border border-border bg-surface p-6 sm:min-h-[calc(100vh-3rem)] sm:p-10 lg:min-h-0">
+        <div className="w-full max-w-md">
           <Link
             href="/"
             aria-label="Go to the Grantclient home page"
@@ -140,12 +143,12 @@ export function AuthPage({ mode }: AuthPageProps) {
           >
             <GrantclientLogo className="w-[190px]" priority />
           </Link>
-          <h1 className="text-2xl font-bold text-text">
+          <h1 className="text-3xl font-semibold tracking-[-0.035em] text-text sm:text-4xl">
             {mode === "signup" ? "Create your account" : "Sign in to Grantclient"}
           </h1>
 
           {accountRequired && (
-            <p className="mt-3 rounded-md bg-primary-light/20 px-3 py-2 text-sm text-text-secondary">
+            <p className="mt-4 rounded-xl border border-primary/15 bg-primary-light/20 px-4 py-3 text-sm text-text-secondary">
               Sign in or create a free account to access Grantclient.
             </p>
           )}
@@ -193,7 +196,7 @@ export function AuthPage({ mode }: AuthPageProps) {
               disabled={formDisabled}
             />
             {successMessage && (
-              <div className="space-y-3 rounded-md bg-success-light px-3 py-2 text-sm text-success-dark">
+              <div className="space-y-3 rounded-xl border border-success/15 bg-success-light px-4 py-3 text-sm text-success-dark">
                 <p>{successMessage}</p>
                 <Link
                   href={`${AUTH_ROUTES.login}?next=${encodeURIComponent(nextPath)}`}
@@ -204,7 +207,7 @@ export function AuthPage({ mode }: AuthPageProps) {
               </div>
             )}
             {error && (
-              <div className="space-y-2 rounded-md bg-danger-light px-3 py-2 text-sm text-danger-dark">
+              <div className="space-y-2 rounded-xl border border-danger/15 bg-danger-light px-4 py-3 text-sm text-danger-dark">
                 <p>{error}</p>
                 {mode === "signup" &&
                   error.toLowerCase().includes("already registered") && (

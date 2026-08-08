@@ -5,8 +5,8 @@ import { ArrowLeft, Check, CheckCircle2, Download, FileText, Sparkles, Wand2 } f
 import { useState, useTransition } from "react";
 import { saveApplicationDraft } from "@/app/actions/applications";
 import { generateApplicationSection } from "@/app/actions/ai";
-import { AppHeader, AppShell } from "@/components/layout";
-import { Badge, Button, Card, Input, Textarea } from "@/components/ui";
+import { AppShell } from "@/components/layout";
+import { Badge, Button, Card, Input, PageContainer, Textarea } from "@/components/ui";
 import type { DraftSection } from "@/lib/applications/defaults";
 import { proposalTemplate } from "@/lib/applications/proposal-template";
 
@@ -108,8 +108,8 @@ export function ViewDraftPage({
   }
 
   return (
-    <AppShell header={<AppHeader showSearch={false} title="View Draft" />}>
-      <div className="mx-auto max-w-6xl space-y-6 p-6 md:p-8">
+    <AppShell header={null}>
+      <PageContainer size="lg" className="space-y-6 py-8 sm:py-10 lg:py-12">
         <Link
           href="/applications/builder"
           className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-primary"
@@ -129,7 +129,7 @@ export function ViewDraftPage({
                     Saved section by section
                   </span>
                 </div>
-                <h1 className="text-2xl font-bold text-text">
+                <h1 className="text-3xl font-semibold tracking-[-0.035em] text-text sm:text-4xl">
                   {title}
                 </h1>
                 <p className="mt-1 text-sm text-text-secondary">
@@ -171,7 +171,7 @@ export function ViewDraftPage({
                 return (
                 <section
                   key={section.sectionKey ?? section.title}
-                  className="rounded-md border border-border bg-bg p-4"
+                  className="rounded-xl border border-border bg-bg p-4 sm:p-5"
                 >
                   <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <h2 className="font-semibold text-text">{section.title}</h2>
@@ -264,7 +264,7 @@ export function ViewDraftPage({
             </Card>
           </aside>
         </div>
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

@@ -3,8 +3,16 @@
 import { File, Grid3X3, List, Upload } from "lucide-react";
 import { useState } from "react";
 import { templateDocuments, userDocuments } from "@/data";
-import { AppHeader, AppShell } from "@/components/layout";
-import { Badge, Button, Card } from "@/components/ui";
+import { AppShell } from "@/components/layout";
+import {
+  Badge,
+  Button,
+  Card,
+  Input,
+  PageContainer,
+  PageHeading,
+  SectionHeading,
+} from "@/components/ui";
 
 const typeColors: Record<string, string> = {
   PDF: "bg-danger-light text-danger-dark",
@@ -17,24 +25,29 @@ export function DocumentsPage() {
   const [view, setView] = useState<"grid" | "list">("grid");
 
   return (
-    <AppShell header={<AppHeader showSearch={false} title="Documents" />}>
-      <div className="mx-auto max-w-6xl p-6 md:p-8">
-        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <Button>
-            <Upload className="h-4 w-4" />
-            Upload Documents
-          </Button>
-          <div className="flex items-center gap-2">
-            <input
-              type="search"
-              placeholder="Search files..."
-              className="rounded-md border border-border bg-surface px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-[3px] focus:ring-primary/10"
-            />
-            <div className="flex rounded-md border border-border">
+    <AppShell header={null}>
+      <PageContainer size="lg" className="space-y-10 py-8 sm:py-10 lg:py-12">
+        <PageHeading
+          eyebrow="Organization workspace"
+          title="Documents"
+          description="Keep reusable files and Grantclient templates organized for application work."
+          actions={
+            <Button>
+              <Upload className="h-4 w-4" />
+              Upload documents
+            </Button>
+          }
+        />
+
+        <div className="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="w-full sm:max-w-sm">
+            <Input type="search" placeholder="Search files..." />
+          </div>
+          <div className="flex w-fit rounded-xl border border-border bg-bg p-1">
               <button
                 type="button"
                 onClick={() => setView("grid")}
-                className={`p-2 ${view === "grid" ? "bg-bg text-primary" : "text-text-muted"}`}
+                className={`rounded-lg p-2 transition-colors ${view === "grid" ? "bg-surface text-primary shadow-sm" : "text-text-muted hover:text-text"}`}
                 aria-label="Grid view"
               >
                 <Grid3X3 className="h-4 w-4" />
@@ -42,17 +55,19 @@ export function DocumentsPage() {
               <button
                 type="button"
                 onClick={() => setView("list")}
-                className={`p-2 ${view === "list" ? "bg-bg text-primary" : "text-text-muted"}`}
+                className={`rounded-lg p-2 transition-colors ${view === "list" ? "bg-surface text-primary shadow-sm" : "text-text-muted hover:text-text"}`}
                 aria-label="List view"
               >
                 <List className="h-4 w-4" />
               </button>
-            </div>
           </div>
         </div>
 
-        <section className="mb-10">
-          <h2 className="mb-4 text-lg font-bold text-text">My Uploads</h2>
+        <section>
+          <SectionHeading
+            title="My uploads"
+            description="Files available for your organization and application workflow."
+          />
           <div
             className={
               view === "grid"
@@ -63,8 +78,8 @@ export function DocumentsPage() {
             {userDocuments.map((doc) => (
               <Card key={doc.id} hover padding="md">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-bg">
-                    <File className="h-5 w-5 text-text-secondary" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-light text-primary">
+                    <File className="h-5 w-5" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-medium text-text">{doc.name}</p>
@@ -85,7 +100,10 @@ export function DocumentsPage() {
         </section>
 
         <section>
-          <h2 className="mb-4 text-lg font-bold text-text">Templates</h2>
+          <SectionHeading
+            title="Templates"
+            description="Reusable starting points provided by Grantclient."
+          />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {templateDocuments.map((doc) => (
               <Card key={doc.id} hover padding="md">
@@ -100,7 +118,7 @@ export function DocumentsPage() {
             ))}
           </div>
         </section>
-      </div>
+      </PageContainer>
     </AppShell>
   );
 }

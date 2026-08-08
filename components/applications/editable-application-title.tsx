@@ -38,7 +38,7 @@ export function EditableApplicationTitle({
       onChange={(event) => setTitle(event.target.value)}
       rows={1}
       style={{ width: titleWidth }}
-      className="-ml-3 block max-h-40 min-h-12 max-w-full resize-none overflow-hidden rounded-md border border-border bg-bg px-3 py-2 text-2xl font-bold leading-tight text-text transition-colors hover:border-border-hover focus:border-border-hover focus:outline-none focus-visible:!outline-none"
+      className="-ml-3 block max-h-40 min-h-12 max-w-full resize-none overflow-hidden rounded-xl border border-transparent bg-transparent px-3 py-2 text-3xl font-semibold leading-tight tracking-[-0.035em] text-text transition-colors hover:border-border hover:bg-bg focus:border-primary focus:bg-bg focus:outline-none focus-visible:!outline-none sm:text-4xl"
     />
   );
 }

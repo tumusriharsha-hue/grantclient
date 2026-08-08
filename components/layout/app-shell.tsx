@@ -89,7 +89,7 @@ export function AppSidebar() {
         <button
           type="button"
           onClick={() => setMobileOpen(false)}
-          className="absolute right-3 top-3 rounded-md p-1 text-text-secondary md:hidden"
+          className="absolute right-3 top-3 rounded-full p-1.5 text-text-secondary transition-colors hover:bg-surface hover:text-text md:hidden"
           aria-label="Close menu"
         >
           <X className="h-5 w-5" />
@@ -261,7 +261,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
             )}
           </button>
           {notificationsOpen && (
-            <div className="fixed left-1/2 top-16 z-50 flex max-h-[calc(100dvh-5rem)] w-[calc(100vw-3rem)] max-w-xs -translate-x-1/2 flex-col overflow-hidden rounded-md border border-border bg-surface shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-11 sm:w-80 sm:max-w-[calc(100vw-2rem)] sm:translate-x-0">
+            <div className="fixed left-1/2 top-16 z-50 flex max-h-[calc(100dvh-5rem)] w-[calc(100vw-3rem)] max-w-xs -translate-x-1/2 flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-11 sm:w-80 sm:max-w-[calc(100vw-2rem)] sm:translate-x-0">
               <div className="px-4 pb-1 pt-3">
                 <h2 className="text-sm font-semibold text-text">Notifications</h2>
               </div>
@@ -287,7 +287,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
                   <div className="border-t border-border p-2">
                     <button
                       type="button"
-                      className="w-full rounded-md px-3 py-2 text-sm font-medium text-text-secondary hover:bg-bg hover:text-danger"
+                      className="w-full rounded-xl px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-bg hover:text-danger"
                       onClick={() => {
                         if (!user || user.is_anonymous) return;
                         clearGrantNotifications(user.id);
@@ -321,7 +321,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
             {getUserInitials(user)}
           </button>
           {profileOpen && (
-            <div className="absolute right-0 top-11 z-50 w-64 rounded-md border border-border bg-surface shadow-lg">
+            <div className="absolute right-0 top-11 z-50 w-64 overflow-hidden rounded-2xl border border-border bg-surface shadow-lg">
               <Link
                 href="/settings"
                 className="flex items-center gap-3 border-b border-border px-4 py-3 hover:bg-bg"
@@ -365,7 +365,7 @@ export function AppHeader({ showSearch = true, title }: AppHeaderProps) {
               <div className="border-t border-border p-2">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-3 rounded-md px-2 py-2 text-sm text-text-secondary hover:bg-bg hover:text-text"
+                  className="flex w-full items-center justify-between gap-3 rounded-xl px-2 py-2 text-sm text-text-secondary transition-colors hover:bg-bg hover:text-text"
                   onClick={toggleTheme}
                 >
                   <span className="flex items-center gap-2">

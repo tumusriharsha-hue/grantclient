@@ -6,7 +6,7 @@ import { siteMetadata } from "@/data";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
-const GOOGLE_ANALYTICS_ID = "G-FCW65WX5EN";
+const GOOGLE_ANALYTICS_ID = "G-FLEYCLF72B";
 const EXISTING_GOOGLE_SITE_VERIFICATION =
   "LzJ_3_KFx3nMPHSkwLLpICYtycVM9SmE4ZIaWIGndoU";
 const NEW_GOOGLE_SITE_VERIFICATION =
